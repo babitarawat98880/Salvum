@@ -22,7 +22,7 @@ log.txt
 /www
 /platforms
 /plugins
-
+/node_modules
 # Compiled output
 /dist
 /tmp
