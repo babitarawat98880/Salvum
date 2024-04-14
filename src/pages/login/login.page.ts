@@ -165,8 +165,8 @@ export class LoginPage   {
               // });
             }
             else{
-              console.log("else dashboard")
-              this.navCtrl.navigateRoot(['dashboard', {id:  '0'}]);
+              this.navCtrl.navigateRoot(['dashboard', '0']);
+              // this.navCtrl.navigateRoot(['dashboard'] ,{state:{id:  '0'}});
             }               
 
           }

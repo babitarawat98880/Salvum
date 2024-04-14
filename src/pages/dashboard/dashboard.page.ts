@@ -3,7 +3,7 @@ import { MenuController } from "@ionic/angular";
 import { NavController,IonContent, PopoverController, ModalController,AlertController,ToastController, NavParams, LoadingController } from '@ionic/angular';
 import { ComponentService } from '../../services/component.service';
 import { APIService } from '../../services/api.service';
-// import 'rxjs/Rx';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 import * as filesize from 'filesize';
 // import { Socket } from 'ng-socket-io';
@@ -61,6 +61,7 @@ export class DashboardPage implements OnInit {
   alllevel:any;
   new_notis:any;
   members:any = [];
+  objData:any='';
   APIURL:any = localStorage.getItem('APIURL');
   @ViewChild('content', { static: false }) content: IonContent;
   constructor(
@@ -70,7 +71,9 @@ export class DashboardPage implements OnInit {
     public modalCtrl: ModalController,
     public alertCtrl: AlertController,
     public componentService:ComponentService,
-    public APIService:APIService
+    public APIService:APIService,
+    public route: ActivatedRoute,
+    public router: Router
   ) { 
     this.APIURL = localStorage.getItem('APIURL');
     this.API_ENDPOINT_URL = localStorage.getItem('API_ENDPOINT_URL');
@@ -83,39 +86,33 @@ export class DashboardPage implements OnInit {
       { title: 'Upgrade Package', component: 'PricingPage', icon: "pricetag-outline", url:'/profile' },
     ];
     localStorage.setItem('openedLevel', null || '');
-    // if(obj.data.userId != ':id' && obj.data.userId != '0' && obj.data.userId != ':userId' && obj.data.userId != undefined){
-    //   localStorage.setItem('isUserId', 'true');
-    //   localStorage.setItem('memberId', obj.data.userId);
-    //   this.sendData = {
-    //     memberId : obj.data.userId,
-    //     memberstatus : '2'
-    //   }
-    //   localStorage.setItem('view', 'Inbox');
-    //   this.memberServiceProvider.acceptInvitation(this.sendData).subscribe((dashboard_data)=>{
-    //     if(dashboard_data.error){
-    //         let toast = this.toastCtrl.create({
-    //             message: dashboard_data.error,
-    //             duration: 3000,
-    //             position: 'top',
-    //             cssClass: 'danger'
-    //         });
-    //         toast.present();
-    //     }else{
-    //         let toast = this.toastCtrl.create({
-    //             message: 'Invitation has been accepted successfully.',
-    //             duration: 3000,
-    //             position: 'top',
-    //             cssClass: 'success'
-    //         });
-    //         toast.present();
-    //         this.events.publish('countChanged:changed', '');
-    //         this.countChanged = '1';
-    //     }
-    //   },
-    //   err => {
-    //       this.showTechnicalError();
-    //   });
-    // }
+    this.route.queryParams.subscribe(params => {
+      console.log(this.route.snapshot.paramMap.get('id'));
+      this.objData.id = this.route.snapshot.paramMap.get('id')
+     
+    });
+
+    if(this.objData.userId != ':id' && this.objData.userId != '0' && this.objData.userId != ':userId' && this.objData.userId != undefined){
+      localStorage.setItem('isUserId', 'true');
+      localStorage.setItem('memberId',this.objData.userId);
+      this.sendData = {
+        memberId : this.objData.userId,
+        memberstatus : '2'
+      }
+      localStorage.setItem('view', 'Inbox');
+      this.APIService.putData('accptinvitation',this.sendData).subscribe((dashboard_data:any)=>{
+        if(dashboard_data.error){
+          this.componentService.presentToast(dashboard_data.error,'danger' );
+        }else{
+          this.componentService.presentToast('Invitation has been accepted successfully.','success' );
+            // this.events.publish('countChanged:changed', '');
+            this.countChanged = '1';
+        }
+      },
+      (err:any) => {
+          this.showTechnicalError();
+      });
+    }
     this.userId = localStorage.getItem('userinfo');
     // this.getUpdates().subscribe((new_notis:any) => {
     //   this.new_notis = new_notis;
