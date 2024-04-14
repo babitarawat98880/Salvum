@@ -6,6 +6,7 @@ import { APIService } from '../../services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 import * as filesize from 'filesize';
+import { EventService } from '../../services/event.service';
 // import { Socket } from 'ng-socket-io';
 import { Observable } from 'rxjs';
 @Component({
@@ -73,7 +74,8 @@ export class DashboardPage implements OnInit {
     public componentService:ComponentService,
     public APIService:APIService,
     public route: ActivatedRoute,
-    public router: Router
+    public router: Router,
+    public events:EventService
   ) { 
     this.APIURL = localStorage.getItem('APIURL');
     this.API_ENDPOINT_URL = localStorage.getItem('API_ENDPOINT_URL');
@@ -105,7 +107,7 @@ export class DashboardPage implements OnInit {
           this.componentService.presentToast(dashboard_data.error,'danger' );
         }else{
           this.componentService.presentToast('Invitation has been accepted successfully.','success' );
-            // this.events.publish('countChanged:changed', '');
+            this.events.publish('countChanged:changed', '');
             this.countChanged = '1';
         }
       },
@@ -347,7 +349,7 @@ export class DashboardPage implements OnInit {
                   this.componentService.presentToast('You are switched to selected company.','success')
                      this.current_companyId = this.companyId;
                      localStorage.setItem('switched_comp',this.companyId);
-                    //  this.events.publish('is_license_activated:changed', '');
+                     this.events.publish('is_license_activated:changed', '');
                      this.is_license_activated = '0';
                 }
                 else
@@ -461,7 +463,7 @@ export class DashboardPage implements OnInit {
             if(data == '1')
             {
               this.componentService.presentToast( 'License has been updated successfully.','success')
-              //  this.events.publish('is_license_activated:changed', '');
+               this.events.publish('is_license_activated:changed', '');
                this.goToJobsPage();
             }
           }
@@ -525,7 +527,7 @@ export class DashboardPage implements OnInit {
                 this.componentService.presentToast('Your subscriptiion has been canceled.','success')
                    this.is_recurring_billing = '0';
                    this.subscriptionId = null;
-                  //  this.events.publish('no_recurring:changed', '');
+                   this.events.publish('no_recurring:changed', '');
               }
               else
               {

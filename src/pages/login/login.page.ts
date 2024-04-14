@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventEmitter, Output } from '@angular/core';
 import { Platform, NavController, LoadingController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http'; 
-import { LoginService } from '../../services/login.service';
+import { EventService } from '../../services/event.service';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { ComponentService } from '../../services/component.service';
 import { APIService } from '../../services/api.service';
@@ -28,7 +28,7 @@ export class LoginPage   {
     public platform : Platform,
     public componentService: ComponentService,
     public http: HttpClient, 
-    // public cookieService: CookieService,
+    public events: EventService,
     public APIService:APIService
     ){
       this.loginForm = this.formBuilder.group({
@@ -122,7 +122,7 @@ export class LoginPage   {
             localStorage.setItem('userName',  res.data.name);
             localStorage.setItem('userImage', res.data.image); 
             localStorage.setItem('userCompany', res.data.company); 
-            // this.events.publish('username:changed', res);
+            this.events.publish('username:changed', res);
             string = 'level0#' + res.data._id;
             var password = res.data._id;
             encrypted = CryptoJS.AES.encrypt(string, password);

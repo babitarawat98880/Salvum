@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, Platform, ModalController, AlertController} from '@ionic/angular';
-
+import { EventService } from '../../services/event.service';
 import * as CryptoJS from 'crypto-js';
 import { ComponentService } from '../../services/component.service';
 import { APIService } from '../../services/api.service';
@@ -36,6 +36,7 @@ export class ProfilePage implements OnInit {
     public modalCtrl:ModalController,
     public alertCtrl: AlertController,
     public componentService:ComponentService,
+    public events :EventService
 ) {
     this.isAndroid = platform.is('android');
    
@@ -112,7 +113,7 @@ export class ProfilePage implements OnInit {
       if(data != null){
         localStorage.setItem('userImage', data.image);
         localStorage.setItem('userName', data.name);
-        // this.events.publish('username:changed', data);
+        this.events.publish('username:changed', data);
       } 
     },
     (err:any) => {
@@ -128,7 +129,7 @@ export class ProfilePage implements OnInit {
  
 
   ionViewWillUnload() {
-    // this.events.unsubscribe('openLevel:changed');
+    this.events.unsubscribe('openLevel:changed');
   }
 
   getAllEmails(){
