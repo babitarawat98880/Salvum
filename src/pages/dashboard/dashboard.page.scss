@@ -11,3 +11,10 @@ ion-header{
         right: 2px;
         top: 2px; 
 }
+ion-item.no-border {
+  --border-width: 0;
+}
+ion-item.management {
+  padding: 8px;
+  background: lightgray;
+}
