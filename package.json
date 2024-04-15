@@ -34,6 +34,7 @@
     "@ionic/angular": "^7.0.0",
     "@ionic/cli": "^7.2.0",
     "angular2-cookie": "^1.2.6",
+    "copy-to-clipboard": "^3.3.3",
     "cordova-plugin-fcm-with-dependecy-updated": "^7.8.0",
     "cordova-plugin-inappbrowser": "^4.1.0",
     "cordova-plugin-splashscreen": "^5.0.2",

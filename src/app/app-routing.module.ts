@@ -29,6 +29,10 @@ const routes: Routes = [
     path: 'add-email',
     loadChildren: () => import('../pages/add-email/add-email.module').then( m => m.AddEmailPageModule)
   },
+  {
+    path: 'license',
+    loadChildren: () => import('../pages/license/license.module').then( m => m.LicensePageModule)
+  },
 ];
 
 @NgModule({

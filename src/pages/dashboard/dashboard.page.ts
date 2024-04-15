@@ -5,7 +5,7 @@ import { ComponentService } from '../../services/component.service';
 import { APIService } from '../../services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
-import * as filesize from 'filesize';
+// import * as filesize from 'filesize';
 import { EventService } from '../../services/event.service';
 // import { Socket } from 'ng-socket-io';
 import { Observable } from 'rxjs';
@@ -83,7 +83,7 @@ export class DashboardPage implements OnInit {
     this.userName = localStorage.getItem('userName'); 
     this.pages = [
       { title: 'Profile', component: 'ProfilePage', icon: "person-outline", url:'/profile' },
-      { title: 'License', component: 'LicensePage', icon: "ribbon", url:'/profile' },
+      { title: 'License', component: 'LicensePage', icon: "ribbon", url:'/license' },
       { title: 'History', component: 'HistoryPage', icon: "time-outline" , url:'/profile'},
       { title: 'Upgrade Package', component: 'PricingPage', icon: "pricetag-outline", url:'/profile' },
     ];
