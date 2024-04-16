@@ -87,9 +87,9 @@ export class AppComponent {
 
     this.userId = localStorage.getItem('userinfo') || '';
     if(localStorage.getItem('userinfo') == '' || localStorage.getItem('userinfo') == undefined || localStorage.getItem('userinfo') == null){
-      this.rootPage = 'LoginPage';
+      this.rootPage = 'login';
     }else{
-      this.rootPage = 'DashboardPage';
+      this.rootPage = 'dashboard';
     } 
 
   };
@@ -140,15 +140,15 @@ export class AppComponent {
           {
             if(current_url.search('bidding') >= 0 || current_url.search('direct-transmittals') >= 0 || current_url.search('edit-dir-transmittal') >= 0 || current_url.search('dir-transmittal-details') >= 0){
               if(current_url.search('/0') >= 0){
-                this.nav.navigateRoot('LoginPage');
+                this.nav.navigateRoot('login');
               }
             }
             else{
-              this.nav.navigateRoot('LoginPage');
+              this.nav.navigateRoot('login');
             }
           }
           else{
-            this.nav.navigateRoot('LoginPage'); 
+            this.nav.navigateRoot('login'); 
           }
         }
         // this.events.publish('level:app_loaded', '');
@@ -170,16 +170,16 @@ export class AppComponent {
           {
             if(current_url.search('bidding') >= 0 || current_url.search('direct-transmittals') >= 0){
               if(current_url.search('/0') >= 0){
-                this.nav.navigateRoot('LoginPage');
+                this.nav.navigateRoot('login');
               }
             }
             else{
-              this.nav.navigateRoot('LoginPage');
+              this.nav.navigateRoot('login');
             }
           }
           else
           {
-            this.nav.navigateRoot('LoginPage'); 
+            this.nav.navigateRoot('login'); 
           }
         }
     });
@@ -279,7 +279,7 @@ export class AppComponent {
       localStorage.removeItem('userName');
       localStorage.removeItem('userImage');
       this.loginId = null;
-      this.nav.navigateRoot('LoginPage');   
+      this.nav.navigateRoot('login');   
   }
 
  async removeAccount(){
