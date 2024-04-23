@@ -33,6 +33,18 @@ const routes: Routes = [
     path: 'license',
     loadChildren: () => import('../pages/license/license.module').then( m => m.LicensePageModule)
   },
+  {
+    path: 'history',
+    loadChildren: () => import('../pages/history/history.module').then( m => m.HistoryPageModule)
+  },
+  {
+    path: 'managejob',
+    loadChildren: () => import('../pages/managejob/managejob.module').then( m => m.ManagejobPageModule)
+  },
+  {
+    path: 'update-license',
+    loadChildren: () => import('../pages/update-license/update-license.module').then( m => m.UpdateLicensePageModule)
+  },
 ];
 
 @NgModule({

@@ -8,7 +8,7 @@ import * as CryptoJS from 'crypto-js';
 // import * as filesize from 'filesize';
 import { EventService } from '../../services/event.service';
 // import { Socket } from 'ng-socket-io';
-import { Observable } from 'rxjs';
+import { UpdateLicensePage } from '../update-license/update-license.page';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -62,7 +62,7 @@ export class DashboardPage implements OnInit {
   alllevel:any;
   new_notis:any;
   members:any = [];
-  objData:any='';
+  objData:any = {};
   APIURL:any = localStorage.getItem('APIURL');
   @ViewChild('content', { static: false }) content: IonContent;
   constructor(
@@ -84,14 +84,14 @@ export class DashboardPage implements OnInit {
     this.pages = [
       { title: 'Profile', component: 'ProfilePage', icon: "person-outline", url:'/profile' },
       { title: 'License', component: 'LicensePage', icon: "ribbon", url:'/license' },
-      { title: 'History', component: 'HistoryPage', icon: "time-outline" , url:'/profile'},
+      { title: 'History', component: 'HistoryPage', icon: "time-outline" , url:'/history'},
       { title: 'Upgrade Package', component: 'PricingPage', icon: "pricetag-outline", url:'/profile' },
     ];
     localStorage.setItem('openedLevel', null || '');
     this.route.queryParams.subscribe(params => {
       console.log(this.route.snapshot.paramMap.get('id'));
       this.objData.id = this.route.snapshot.paramMap.get('id')
-     
+ 
     });
 
     if(this.objData.userId != ':id' && this.objData.userId != '0' && this.objData.userId != ':userId' && this.objData.userId != undefined){
@@ -129,74 +129,72 @@ export class DashboardPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.userId)
-    // this.componentService.showLoader();
-    var created_date = new Date();
-    var expiry_date, timeDiff;
-    this.APIService.getData('getUserDashboardData',this.userId).subscribe((dashboard_data:any)=>{  
-      this.componentService.dismissLoader();
-      this.dashboard_data = dashboard_data[0];
-      this.subscription = this.dashboard_data['subscription'];
-      this.stats = this.dashboard_data['stats'];
-      this.space_type = this.stats.space_type;
-      this.companyId = this.stats.companyId;
-      this.current_companyId = this.stats.companyId;
-      localStorage.setItem('switched_comp',this.companyId);
-      this.is_recurring_billing = this.stats.is_recurring_billing;
-      this.subscriptionId = this.stats.subscriptionId;
-      var space_type = this.space_type;
-      // var gbs = filesize(this.stats.actual_consumed_space, {exponent: (space_type == 'bytes' ? 0 : (space_type == 'KB' ? 1 : (space_type == 'MB' ? 2 : (space_type == 'GB' ? 3 : (space_type == 'TB' ? 4 : 5)))))}).split(' ')[0];
-      // this.consumed_percent = Math.round((gbs/this.stats.actual_consumed_space)*100);
-      if(this.subscription != '')
-      {
-        this.subscription_title = this.subscription['title'];
-        this.subscription_amount = this.subscription['amount'];
-        expiry_date = new Date(this.subscription['expiry_date']);
+    this.isBrowser = localStorage.getItem('isBrowser');
+    // get dashboard data
+     this.componentService.showLoader()
+      var created_date = new Date();
+      var expiry_date, timeDiff;
+      this.APIService.getData('getUserDashboardData',this.userId).subscribe((dashboard_data:any)=>{  
+        this.componentService.dismissLoader();
+        this.dashboard_data = dashboard_data[0];
+        this.subscription = this.dashboard_data['subscription'];
+        this.stats = this.dashboard_data['stats'];
+        this.space_type = this.stats.space_type;
+        this.companyId = this.stats.companyId;
+        this.current_companyId = this.stats.companyId;
+        localStorage.setItem('switched_comp',this.companyId);
+        this.is_recurring_billing = this.stats.is_recurring_billing;
+        this.subscriptionId = this.stats.subscriptionId;
+        var space_type = this.space_type;
+        // var gbs = filesize(this.stats.actual_consumed_space, {exponent: (space_type == 'bytes' ? 0 : (space_type == 'KB' ? 1 : (space_type == 'MB' ? 2 : (space_type == 'GB' ? 3 : (space_type == 'TB' ? 4 : 5)))))}).split(' ')[0];
+        // this.consumed_percent = Math.round((gbs/this.stats.actual_consumed_space)*100);
+        if(this.subscription != '')
+        {
+          this.subscription_title = this.subscription['title'];
+          this.subscription_amount = this.subscription['amount'];
+          expiry_date = new Date(this.subscription['expiry_date']);
 
-        timeDiff = Math.abs(expiry_date.getTime() - created_date.getTime());
-        this.subscription_expiry = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
-      }
-      else
-      {
-        this.subscription_amount = '0';
-      }
+          timeDiff = Math.abs(expiry_date.getTime() - created_date.getTime());
+          this.subscription_expiry = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+        }
+        else
+        {
+          this.subscription_amount = '0';
+        }
 
-      this.is_license_activated = this.dashboard_data['is_license_activated'];
-      if(this.is_license_activated > 0){
-        expiry_date = new Date(this.stats['license_end']);
+        this.is_license_activated = this.dashboard_data['is_license_activated'];
+        if(this.is_license_activated > 0){
+          expiry_date = new Date(this.stats['license_end']);
 
-        timeDiff = Math.abs(expiry_date.getTime() - created_date.getTime());
-        this.license_expiry = Math.ceil(timeDiff / (1000 * 3600 * 24));
-      }
-      this.total_contacts = this.dashboard_data['total_contacts'];
-      this.total_jobs_posted = this.dashboard_data['total_jobs_posted'];
-      this.total_jobs_invitation = this.dashboard_data['total_jobs_invitation'].length;
-      this.total_applied_jobs = this.dashboard_data['total_applied_jobs'];
-        //get user companies
-        this.APIService.getData('userCompaniesList',this.userId).subscribe((companies:any)=>{
-          this.companies=companies;
-          console.log(this.companies)
-     
-          if(companies != ''){
-            var self = this;
-            console.log(this.companyId)
-            this.
-            companies.forEach(function(company:any){
-              if(company._id == self.companyId){
-                localStorage.setItem('curr_comp_name',company.company_name);
-              }
-            });
-          }
-        },
-        (err:any) => {
-            this.showTechnicalError();
-        });
-     this.componentService.dismissLoader()
-    },
-    (err:any) => {
+          timeDiff = Math.abs(expiry_date.getTime() - created_date.getTime());
+          this.license_expiry = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        }
+        this.total_contacts = this.dashboard_data['total_contacts'];
+        this.total_jobs_posted = this.dashboard_data['total_jobs_posted'];
+        this.total_jobs_invitation = this.dashboard_data['total_jobs_invitation'].length;
+        this.total_applied_jobs = this.dashboard_data['total_applied_jobs'];
+          //get user companies
+          this.APIService.getData('userCompaniesList',this.userId).subscribe((companies:any)=>{
+            this.companies=companies;
+            if(companies != ''){
+              var self = this;
+             console.log(this.companyId , "this.companyId ")
+              companies.forEach(function(company:any){
+                if(company._id == self.companyId){
+                  localStorage.setItem('curr_comp_name',company.company_name);
+                }
+              });
+            }
+          },
+          (err:any) => {
+              this.showTechnicalError();
+          });
        this.componentService.dismissLoader()
-        this.showTechnicalError();
-    });
+      },
+      (err:any) => {
+         this.componentService.dismissLoader()
+          this.showTechnicalError();
+      });
   }
   async jobAlert(){
     let confirm =  await this.alertCtrl.create({
@@ -212,7 +210,7 @@ export class DashboardPage implements OnInit {
         {
           text: 'Yes',
           handler: () => {
-            this.navCtrl.navigateForward('ProfilePage');
+            this.navCtrl.navigateForward('profile');
           }
         }
       ]
@@ -455,9 +453,10 @@ export class DashboardPage implements OnInit {
   };
 
   async openJobsPage(){
+    console.log(this.is_license_activated , "this.is_license_activated ")
     if(this.is_license_activated == '0')
     {
-      let modal = await this.modalCtrl.create({ component: 'UpdateLicensePage' });
+      let modal = await this.modalCtrl.create({ component: UpdateLicensePage});
         modal.onDidDismiss().then((data:any) => {
           if(data != null && data != undefined){
             if(data == '1')
@@ -494,7 +493,8 @@ export class DashboardPage implements OnInit {
       if (!isLevelOpened) {
         this.componentService.presentToast('Please open level first.','info');
       }else{
-        this.navCtrl.navigateForward('ManagejobPage',{ state:{
+        // this.navCtrl.navigateForward('managejob')
+        this.navCtrl.navigateForward('managejob',{ state:{
           is_direct : '0'
         }
         });
@@ -652,4 +652,5 @@ export class DashboardPage implements OnInit {
    }
    });
   };
+ 
 }

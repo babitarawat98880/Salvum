@@ -1,13 +1,40 @@
-<ion-header [translucent]="true">
+<ion-header modal-white>
   <ion-toolbar>
-    <ion-title>AddEmail</ion-title>
-  </ion-toolbar>
+    <ion-title text-centers>{{isOtpSent == true ? 'Verify' : 'Add'}} Email</ion-title>
+    <ion-buttons slot="end">
+    <button  (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">AddEmail</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content padding>
+<!-- <ion-row>
+<ion-col col-12> -->
+  <ng-container *ngIf="isOtpSent == false">
+  <ion-list>
+    <ion-item>
+    <ion-input placeholder="Enter Email Address" [(ngModel)] = "email"></ion-input>
+  </ion-item>
+  <div class="add">
+    <ion-button (click)="addEmail(email)" expand="full">Add</ion-button>
+  </div>
+  </ion-list>
+  
+</ng-container>
+	 
+	<ng-container *ngIf="isOtpSent == true">
+		<p class="otp_email_line">OTP has been sent to <b>{{my_email}}</b></p>
+    <ion-list>
+      <ion-item>
+      <ion-input placeholder="Enter OTP" [(ngModel)] = "otp"></ion-input>
+    </ion-item>
+    <div class="add">
+      <ion-button (click)="verifyOTP(otp)" expand="full">Verify OTP</ion-button>
+    </div>
+    </ion-list>
+	</ng-container>
+ <!-- </ion-col>
+  </ion-row> -->
 </ion-content>

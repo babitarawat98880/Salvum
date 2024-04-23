@@ -2,6 +2,11 @@ import { Component , ViewChild, } from '@angular/core';
 import { NavController, IonContent,Platform, AlertController,ToastController, MenuController, ModalController} from '@ionic/angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen'; 
+import { APIService } from '../services/api.service';
+import { ComponentService } from '../services/component.service';
+
+import { pipe } from 'rxjs';
+
 // import { EventService } from '../services/event.service';
 
 @Component({
@@ -25,14 +30,28 @@ export class AppComponent {
   is_activated_license:any;
   API_ENDPOINT_URL:any;
   remove = {};
-  pages: Array<{title: string, component: any, icon: string}>;
+  pages: Array<{title: string, component: any, icon: string, url:string}>;
+
   removeAcc='removeAccount';
-  constructor(public nav : NavController, public platform: Platform, public alertCtrl: AlertController,public toastCtrl: ToastController, public menu: MenuController, public modalCtrl: ModalController) {
+  constructor(
+    public nav : NavController,
+     public platform: Platform, 
+     public alertCtrl: AlertController,
+     public toastCtrl: ToastController, 
+     public menu: MenuController, 
+     public modalCtrl: ModalController,
+     public APIService:APIService,
+     public componentService:ComponentService) {
 // private fcm: FCM
     // events.subscribe('is_license_activated:changed', (is_license_activated:any) => {
     //   this.getUsersubscriptions();
     // });
-
+    this.pages = [
+      { title: 'Profile', component: 'ProfilePage', icon: "person-outline", url:'/profile' },
+      { title: 'License', component: 'LicensePage', icon: "ribbon", url:'/license' },
+      { title: 'History', component: 'HistoryPage', icon: "time-outline" , url:'/history'},
+      { title: 'Upgrade Package', component: 'PricingPage', icon: "pricetag-outline", url:'/profile' },
+    ];
     var API_ENDPOINT_URI = 'https://www.serrare.com:3002';
     localStorage.setItem('API_ENDPOINT_URL',API_ENDPOINT_URI+'/'); 
     localStorage.setItem('APIURL',API_ENDPOINT_URI); 
@@ -87,9 +106,9 @@ export class AppComponent {
 
     this.userId = localStorage.getItem('userinfo') || '';
     if(localStorage.getItem('userinfo') == '' || localStorage.getItem('userinfo') == undefined || localStorage.getItem('userinfo') == null){
-      this.rootPage = 'login';
+      this.nav.navigateRoot('login')
     }else{
-      this.rootPage = 'dashboard';
+      this.nav.navigateRoot(['dashboard', '0']);
     } 
 
   };
@@ -97,14 +116,16 @@ export class AppComponent {
   ngAfterViewInit() {
     
     }
-
+    close(){
+      this.menu.close();
+    }
   getNavigations() 
   {
     this.pages = [
-        { title: 'Profile', component: 'ProfilePage', icon: "ios-person-outline" },
-        { title: 'License', component: 'LicensePage', icon: "ribbon" },
-        { title: 'History', component: 'HistoryPage', icon: "clock-outline" },
-        { title: 'Upgrade Package', component: 'PricingPage', icon: "pricetag-outline" },
+      { title: 'Profile', component: 'ProfilePage', icon: "person-outline", url:'/profile' },
+      { title: 'License', component: 'LicensePage', icon: "ribbon", url:'/license' },
+      { title: 'History', component: 'HistoryPage', icon: "time-outline" , url:'/history'},
+      { title: 'Upgrade Package', component: 'PricingPage', icon: "pricetag-outline", url:'/profile' },
         // { title: 'Transmittals', component: 'DirectTransmittalsPage', icon: "paper-plane" },
       ];
   }
@@ -209,14 +230,7 @@ export class AppComponent {
           {
             if(data == '1')
             {
-
-              // let toast = this.toastCtrl.create({
-              //   message: 'License has been updated successfully.',
-              //   duration: 3000,
-              //   position : 'top',
-              //   cssClass: 'success'
-              //  });
-              //  toast.present(); 
+              this.componentService.presentToast('License has been updated successfully.','success');
                this.getUsersubscriptions();
                this.goToPages(isLevelOpened,page);
             }
@@ -224,16 +238,10 @@ export class AppComponent {
        });
     await  modal.present();
     }
-    // else if(this.subscription_amount !== '0' && page.title == 'Upgrade Package')
-    // {
-    //   let toast = this.toastCtrl.create({
-    //       message: 'You have already upgraded your subscription.',
-    //       duration: 3000,
-    //       position: 'top',
-    //       cssClass: 'info'
-    //     });
-    //     toast.present();
-    // }
+    else if(this.subscription_amount !== '0' && page.title == 'Upgrade Package')
+    {
+      this.componentService.presentToast('You have already upgraded your subscription.','info');
+    }
     else
     {
       this.goToPages(isLevelOpened,page);
@@ -244,14 +252,8 @@ export class AppComponent {
   {
     if (!isLevelOpened) {
         if(page.title == 'Upgrade Package' || page.title == 'Manage Jobs'){
-          // let toast = this.toastCtrl.create({
-          //   message: 'Please open level first.',
-          //   duration: 3000,
-          //   position : 'top',
-          //   cssClass: 'info'
-
-          // });
-          // toast.present();
+          this.componentService.presentToast('Please open level first.','info')
+      
         }else{
            this.nav.navigateRoot(page.component,{state:{
             is_direct : '0'
@@ -267,20 +269,7 @@ export class AppComponent {
       }
   }
 
-  Logout (){
-      localStorage.removeItem('level0');
-      localStorage.removeItem('level1');
-      localStorage.removeItem('level2');
-      localStorage.removeItem('level3');
-      localStorage.removeItem('passinfo');
-      localStorage.removeItem('count');
-      localStorage.removeItem('userinfo');
-      localStorage.removeItem('alllevel');
-      localStorage.removeItem('userName');
-      localStorage.removeItem('userImage');
-      this.loginId = null;
-      this.nav.navigateRoot('login');   
-  }
+
 
  async removeAccount(){
 
@@ -301,26 +290,32 @@ export class AppComponent {
                           userId : localStorage.getItem('userinfo'),
                           status : 3
                        }
-                        //  let body = JSON.stringify(this.remove);
-                        //   let headers = new Headers({ 'Content-Type': 'application/json' });
-                        //   let options = new RequestOptions({ headers: headers });
-                        //    return this.http.put(this.API_ENDPOINT_URL+this.removeAcc, body, options)
-                        //        .map(res => res.json())
-                        //        .subscribe(data => {
-                        //         let toast = this.toastCtrl.create({
-                        //              message: 'Account Removed Successfully',
-                        //              duration: 3000,
-                        //              position : 'top',
-                        //              cssClass: 'success'
-                        //            });
-                        //           toast.present(); 
-                        //           this.Logout();
-                        //        })
-                      
+                         let body = JSON.stringify(this.remove);
+                          this.APIService.putData(this.removeAcc, body).subscribe(data => {
+                            this.componentService.presentToast('Account Removed Successfully','success')
+                            this.Logout();
+                           })
                       }
                     }
                   ]  
                 });
         await alert.present();
   }
+
+  Logout (){
+    localStorage.removeItem('level0');
+    localStorage.removeItem('level1');
+    localStorage.removeItem('level2');
+    localStorage.removeItem('level3');
+    localStorage.removeItem('passinfo');
+    localStorage.removeItem('count');
+    localStorage.removeItem('userinfo');
+    localStorage.removeItem('alllevel');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userImage');
+    this.loginId = null;
+    this.nav.navigateRoot('login');   
+}
+
+
 }
