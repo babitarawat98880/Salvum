@@ -282,8 +282,8 @@ export class LicensePage  {
           if(data.length != undefined)
           {
            this.componentService.showLoader();
-            var contacts = [];
-            var privileges = [];
+            var contacts:any = [];
+            var privileges:any= [];
             for(var i=0; i < data.length; i++){
               contacts.push(data[i].userId);
               if(data[i].privilege == '1')

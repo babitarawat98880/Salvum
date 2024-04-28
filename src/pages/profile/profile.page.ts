@@ -5,8 +5,9 @@ import * as CryptoJS from 'crypto-js';
 import { ComponentService } from '../../services/component.service';
 import { APIService } from '../../services/api.service';
 import { Http } from '@angular/http';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+// import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { AddEmailPage } from '../add-email/add-email.page';
+import { Router, NavigationExtras } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -36,10 +37,14 @@ export class ProfilePage implements OnInit {
     public modalCtrl: ModalController,
     public alertCtrl: AlertController,
     public componentService: ComponentService,
-    public events: EventService
+    public events: EventService,
+    public router:Router
   ) {
     this.isAndroid = platform.is('android');
+    this.events.subscribe('user:updated', (data) =>{
+      this.viewUser()
 
+    })
     if (localStorage.getItem('job_alert_popup') == '1') {
       this.showHelpText = true;
       localStorage.removeItem('job_alert_popup');
@@ -57,8 +62,7 @@ export class ProfilePage implements OnInit {
       this.alllevel.forEach((value: any) => {
         var decrypted = CryptoJS.AES.decrypt(value, userId || '{}');
         if (decrypted.toString(CryptoJS.enc.Utf8).split('#')[0] == 'level1') {
-
-          this.level1 = 'false';
+        this.level1 = 'false';
 
         } else if (decrypted.toString(CryptoJS.enc.Utf8).split('#')[0] == 'level2') {
 
@@ -69,7 +73,6 @@ export class ProfilePage implements OnInit {
 
         } else if (decrypted.toString(CryptoJS.enc.Utf8).split('#')[0] == 'level4') {
           this.level4 = 'false';
-
         }
       });
     }
@@ -81,7 +84,6 @@ export class ProfilePage implements OnInit {
       this.componentService.dismissLoader()
       this.data = data
       this.current_email = data.email;
-      console.log(data, "userdata")
       if (data != null) {
         localStorage.setItem('userImage', data.image);
         localStorage.setItem('userName', data.name);
@@ -91,34 +93,56 @@ export class ProfilePage implements OnInit {
       (err: any) => {
         this.componentService.dismissLoader();
         this.showTechnicalError(null);
-      });
-      this.getAllEmails()
+    });
+    this.getAllEmails()
   }
-  ionViewDidLoad() {
-    this.alllevel = JSON.parse(localStorage.getItem('alllevel') || '{}');
-    var userId = localStorage.getItem('userinfo');
-    if (this.alllevel) {
-      this.alllevel.forEach((value: any) => {
-        var decrypted = CryptoJS.AES.decrypt(value, userId || '{}');
-        if (decrypted.toString(CryptoJS.enc.Utf8).split('#')[0] == 'level1') {
+  // ionViewDidLoad() {
+  //   this.alllevel = JSON.parse(localStorage.getItem('alllevel') || '{}');
+  //   var userId = localStorage.getItem('userinfo');
+  //   if (this.alllevel) {
+  //     this.alllevel.forEach((value: any) => {
+  //       var decrypted = CryptoJS.AES.decrypt(value, userId || '{}');
+  //       if (decrypted.toString(CryptoJS.enc.Utf8).split('#')[0] == 'level1') {
 
-          this.level1 = 'false';
+  //         this.level1 = 'false';
 
-        } else if (decrypted.toString(CryptoJS.enc.Utf8).split('#')[0] == 'level2') {
+  //       } else if (decrypted.toString(CryptoJS.enc.Utf8).split('#')[0] == 'level2') {
 
-          this.level2 = 'false';
+  //         this.level2 = 'false';
 
-        } else if (decrypted.toString(CryptoJS.enc.Utf8).split('#')[0] == 'level3') {
-          this.level3 = 'false';
+  //       } else if (decrypted.toString(CryptoJS.enc.Utf8).split('#')[0] == 'level3') {
+  //         this.level3 = 'false';
 
-        } else if (decrypted.toString(CryptoJS.enc.Utf8).split('#')[0] == 'level4') {
-          this.level4 = 'false';
+  //       } else if (decrypted.toString(CryptoJS.enc.Utf8).split('#')[0] == 'level4') {
+  //         this.level4 = 'false';
 
-        }
-      });
-    }
+  //       }
+  //     });
+  //   }
 
 
+  //   var userdata = {
+  //     userId: localStorage.getItem('userinfo')
+  //   }
+  //   this.componentService.showLoader();
+  //   this.APIService.sendData('viewUser', userdata).subscribe((data: any) => {
+  //     this.componentService.dismissLoader()
+  //     this.data = data
+  //     this.current_email = data.email;
+  //     console.log(data, "userdata")
+  //     if (data != null) {
+  //       localStorage.setItem('userImage', data.image);
+  //       localStorage.setItem('userName', data.name);
+  //       this.events.publish('username:changed', data);
+  //     }
+  //   },
+  //     (err: any) => {
+  //       this.componentService.dismissLoader();
+  //       this.showTechnicalError(null);
+  //     });
+  // }
+
+  viewUser(){
     var userdata = {
       userId: localStorage.getItem('userinfo')
     }
@@ -127,7 +151,6 @@ export class ProfilePage implements OnInit {
       this.componentService.dismissLoader()
       this.data = data
       this.current_email = data.email;
-      console.log(data, "userdata")
       if (data != null) {
         localStorage.setItem('userImage', data.image);
         localStorage.setItem('userName', data.name);
@@ -137,9 +160,9 @@ export class ProfilePage implements OnInit {
       (err: any) => {
         this.componentService.dismissLoader();
         this.showTechnicalError(null);
-      });
+    });
+    this.getAllEmails()
   }
-
   showTechnicalError(type: any) {
     var msg = (type == '1') ? 'try later.' : 'reload the page.'
     this.componentService.presentToast('Technical error, Please ' + msg, 'info')
@@ -271,12 +294,12 @@ export class ProfilePage implements OnInit {
 
 
   openEditprofilePage(data: any) {
-    this.navCtrl.navigateForward('EditprofilePage', data);
+    this.navCtrl.navigateForward('editprofile',  { state: { someData:data } });
   }
 
   openChangepasswordPage() {
     localStorage.setItem('selectedLevelValue', '1');
-    this.navCtrl.navigateForward('ChangepasswordPage');
+    this.navCtrl.navigateForward('changepassword');
   };
 
   root() {

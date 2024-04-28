@@ -91,8 +91,7 @@ export class DashboardPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       console.log(this.route.snapshot.paramMap.get('id'));
       this.objData.id = this.route.snapshot.paramMap.get('id')
- 
-    });
+  });
 
     if(this.objData.userId != ':id' && this.objData.userId != '0' && this.objData.userId != ':userId' && this.objData.userId != undefined){
       localStorage.setItem('isUserId', 'true');

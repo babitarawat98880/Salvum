@@ -45,6 +45,18 @@ const routes: Routes = [
     path: 'update-license',
     loadChildren: () => import('../pages/update-license/update-license.module').then( m => m.UpdateLicensePageModule)
   },
+  {
+    path: 'editprofile',
+    loadChildren: () => import('../pages/editprofile/editprofile.module').then( m => m.EditprofilePageModule)
+  },
+  {
+    path: 'changepassword',
+    loadChildren: () => import('../pages/changepassword/changepassword.module').then( m => m.ChangepasswordPageModule)
+  },
+  {
+    path: 'bidjobs',
+    loadChildren: () => import('../pages/bidjobs/bidjobs.module').then( m => m.BidjobsPageModule)
+  },
 ];
 
 @NgModule({

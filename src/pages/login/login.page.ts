@@ -7,7 +7,7 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { ComponentService } from '../../services/component.service';
 import { APIService } from '../../services/api.service';
 import * as CryptoJS from 'crypto-js';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
+// import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { FCM } from '@ionic-native/fcm';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 @Component({
@@ -115,7 +115,7 @@ export class LoginPage   {
             }else{
              localStorage.setItem('isBrowser',  'false');
             }
-            var levels = [];
+            var levels :any= [];
             var string,encrypted;
             localStorage.setItem('levelOpened', '0');
             localStorage.setItem('userinfo',  res.data._id);
