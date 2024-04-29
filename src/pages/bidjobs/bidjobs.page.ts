@@ -178,7 +178,7 @@ export class BidjobsPage  {
   
   openBiddetailPage(bidJobId,bid_status)
   {
-  this.navCtrl.navigateForward('bidding-page', {state:{
+  this.navCtrl.navigateForward('bidding', { state: {
   bidJobId: bidJobId,
   status: bid_status,
   }
