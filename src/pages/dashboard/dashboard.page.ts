@@ -501,7 +501,7 @@ export class DashboardPage implements OnInit {
   }
 
   openContacts(){
-    this.navCtrl.navigateForward('ContactsPage');
+    this.navCtrl.navigateForward('contacts');
   };
   
  async openUpgradePack(){

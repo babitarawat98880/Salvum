@@ -61,6 +61,10 @@ const routes: Routes = [
     path: 'bidding',
     loadChildren: () => import('../pages/bidding/bidding.module').then( m => m.BiddingPageModule)
   },
+  {
+    path: 'contacts',
+    loadChildren: () => import('../pages/contacts/contacts.module').then( m => m.ContactsPageModule)
+  },
 ];
 
 @NgModule({

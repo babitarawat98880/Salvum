@@ -70,5 +70,7 @@ getData(url:any,data:any){
 putData(url:any,data:any){
 	return this.http.put(apiUrl+url, data);
  }
-
+deleteData(url:any,data:any){
+	return this.http.delete(apiUrl+url+'/', data);
+ }
 }
