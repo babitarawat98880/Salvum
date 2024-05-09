@@ -82,6 +82,6 @@ export class HistoryPage  {
   }
 
   root(){
-    this.navCtrl.navigateRoot('DashboardPage');
+    this.navCtrl.navigateRoot('dashboard');
   };
 }

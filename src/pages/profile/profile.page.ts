@@ -303,7 +303,7 @@ export class ProfilePage implements OnInit {
   };
 
   root() {
-    this.navCtrl.navigateRoot('DashboardPage');
+    this.navCtrl.navigateRoot('dashboard');
   }
 
 

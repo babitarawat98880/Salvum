@@ -714,12 +714,15 @@ API_ENDPOINT_URL : any = localStorage.getItem('API_ENDPOINT_URL');
             {
                 text: 'Yes',
                 handler: () => {
-                    return this.APIService.deleteData(this.getGroupData,  item._id) .subscribe(data => {                               
-                      for(var i=0; i < this.list.length; i++){
-                        if(this.list[i]._id == item._id){
-                          this.list.splice(i, 1);
-                        }
-                      }
+                  console.log(item)
+                  return this.http.delete(this.API_ENDPOINT_URL+this.getGroupData+'/'+item._id).subscribe(data => {  
+                    // return this.APIService.deleteData(this.getGroupData, item._id) .subscribe(data => {  
+                      // console.log(data)                             
+                      // for(var i = 0; i < this.list.length; i++){
+                      //   if(this.list[i]._id == item._id){
+                          // this.list.splice(i, 1);
+                      //   }
+                      // }
                       this.componentService.presentToast('Group has been deleted successfully.','success')
                       this.all_groups.splice(index, 1);
                       
@@ -981,14 +984,14 @@ API_ENDPOINT_URL : any = localStorage.getItem('API_ENDPOINT_URL');
   }
 
   getExternalContacts(){
-    this.navCtrl.navigateForward('ExtcontPage');
+    this.navCtrl.navigateForward('extcont');
   };
 
   goToManageGroup(){
     if(this.level1 != 'false'){
       this.componentService.presentToast( 'Please open level first.','danger');
     }else{
-      this.navCtrl.navigateForward('EditgroupPage');
+      this.navCtrl.navigateForward('add-group');
     }
   };
 
@@ -996,7 +999,7 @@ API_ENDPOINT_URL : any = localStorage.getItem('API_ENDPOINT_URL');
       if(this.level1 == 'true'){
         this.componentService.presentToast('Please open level first.' , '');
       }else{
-        this.navCtrl.navigateForward('EditgrpPage',{state:{data: item} } );
+        this.navCtrl.navigateForward('edit-group',{ state: { 'data': item} } );
       }
     }
 
@@ -1005,7 +1008,7 @@ API_ENDPOINT_URL : any = localStorage.getItem('API_ENDPOINT_URL');
       this.componentService.presentToast('Please open level first.','danger')
   
     }else{
-      this.navCtrl.navigateForward('ManagegroupPage');
+      this.navCtrl.navigateForward('managegroup');
     }
   };
 
@@ -1425,7 +1428,7 @@ API_ENDPOINT_URL : any = localStorage.getItem('API_ENDPOINT_URL');
   };
 
   root(){
-    this.navCtrl.navigateRoot('DashboardPage');
+    this.navCtrl.navigateRoot('dashboard');
   };
 
   myComposePage(){

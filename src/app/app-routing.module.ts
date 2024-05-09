@@ -65,6 +65,26 @@ const routes: Routes = [
     path: 'contacts',
     loadChildren: () => import('../pages/contacts/contacts.module').then( m => m.ContactsPageModule)
   },
+  {
+    path: 'extcont',
+    loadChildren: () => import('../pages/extcont/extcont.module').then( m => m.ExtcontPageModule)
+  },
+  {
+    path: 'edit-group',
+    loadChildren: () => import('../pages/edit-group/edit-group.module').then( m => m.EditGroupPageModule)
+  },
+  {
+    path: 'add-group',
+    loadChildren: () => import('../pages/add-group/add-group.module').then( m => m.AddGroupPageModule)
+  },
+  {
+    path: 'managegroup',
+    loadChildren: () => import('../pages/managegroup/managegroup.module').then( m => m.ManagegroupPageModule)
+  },
+  {
+    path: 'compose',
+    loadChildren: () => import('../pages/compose/compose.module').then( m => m.ComposePageModule)
+  },
 ];
 
 @NgModule({

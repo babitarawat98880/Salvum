@@ -179,7 +179,7 @@ export class LicensePage  {
   };
   
   root(){
-    this.navCtrl.navigateRoot('DashboardPage');
+    this.navCtrl.navigateRoot('dashboard');
   };
 
   parseDate(license:any, date:any){
