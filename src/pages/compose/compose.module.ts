@@ -6,6 +6,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { ComposePageRoutingModule } from './compose-routing.module';
 
+import { CKEditorModule } from 'ng2-ckeditor';
+import { TagInputModule } from 'ngx-chips';
 import { ComposePage } from './compose.page';
 
 @NgModule({
@@ -13,6 +15,8 @@ import { ComposePage } from './compose.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    CKEditorModule,
+    TagInputModule, 
     ComposePageRoutingModule
   ],
   declarations: [ComposePage]

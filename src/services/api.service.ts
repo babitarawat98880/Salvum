@@ -59,7 +59,6 @@ export class APIService {
 // Your function for making the HTTP request
 makeRequest(url:any, postParams:any) {
   return this.http.post(apiUrl+url, postParams);
-  
 }
 sendData(url:any, postParams:any){
   return this.http.post(apiUrl+url, postParams);
@@ -70,7 +69,7 @@ getData(url:any,data:any){
 putData(url:any,data:any){
 	return this.http.put(apiUrl+url, data);
  }
-deleteData(url:any,data:any){
-	return this.http.delete(apiUrl+url+'/', data);
+postData(url:any,data:any){
+	return this.http.post(apiUrl+url+'/', data);
  }
 }

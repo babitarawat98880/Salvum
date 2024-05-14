@@ -11,7 +11,7 @@ import { File } from '@ionic-native/file/ngx';
 // import { Transfer } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { Device } from '@ionic-native/device';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx'; 
 
@@ -22,7 +22,10 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    AppRoutingModule],
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    
+  ],
     providers: [
       Camera,
       File,

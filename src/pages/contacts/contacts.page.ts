@@ -4,7 +4,7 @@ import { EventService } from 'src/services/event.service';
 import { ComponentService } from 'src/services/component.service';
 import { APIService } from 'src/services/api.service';
 import { Router, ActivatedRoute } from '@angular/router';
-// import { ComposePage } from '../compose/compose';
+// import { compose } from '../compose/compose';
 import * as CryptoJS from 'crypto-js'; 
 import { HttpClient } from '@angular/common/http';
 
@@ -1342,9 +1342,9 @@ API_ENDPOINT_URL : any = localStorage.getItem('API_ENDPOINT_URL');
   };
 
   goToSmail(){
-    this.navCtrl.navigateForward('ComposePage', { state :{ data: {'selectedGroups':this.selected_groups, 'selectedContacts': this.selectedContacts}}});
+    this.navCtrl.navigateForward('compose', { state :{ data: {'selectedGroups':this.selected_groups, 'selectedContacts': this.selectedContacts}}});
     // if(this.selected_groups.length > 0 || this.selectedContacts.length > 0){
-    //   this.navCtrl.push('ComposePage', {data: {'selectedGroups':this.selected_groups, 'selectedContacts': this.selectedContacts}});
+    //   this.navCtrl.push('compose', {data: {'selectedGroups':this.selected_groups, 'selectedContacts': this.selectedContacts}});
     // }
     // else{
     //   let toast = this.toastCtrl.create({
@@ -1431,8 +1431,8 @@ API_ENDPOINT_URL : any = localStorage.getItem('API_ENDPOINT_URL');
     this.navCtrl.navigateRoot('dashboard');
   };
 
-  myComposePage(){
-    this.navCtrl.navigateRoot('ComposePage');
+  mycompose(){
+    this.navCtrl.navigateRoot('compose');
   }
 
   showTechnicalError(type:any = null){

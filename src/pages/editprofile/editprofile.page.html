@@ -27,10 +27,12 @@
                           <ion-icon name="camera"></ion-icon>
                           Select Image
                           </button> 
-              <label *ngIf="isBrowser =='true'" for="uploadImage" uploadImage>  <ion-icon name="create"></ion-icon></label>
-                          <input style="display:none" (change)="uploadImg()" mx-w-190 m-t-10  id="uploadImage" name="uploadImage" type="file" ng2FileSelect [uploader]="uploader"  *ngIf="isBrowser =='true' " [(ngModel)]="image">
+                        <label *ngIf="isBrowser =='true'" for="uploadImage" uploadImage>
+                            <ion-icon name="create"></ion-icon>
+                           </label>
+                          <input style="display:none" (change)="uploadImg()" mx-w-190 m-t-10  id="uploadImage" name="uploadImage" type="file" ng2FileSelect [uploader]="uploader" *ngIf="isBrowser =='true' " [(ngModel)]="image">
   
-                          <button ion-button color="white"  outline round  small  icon-left (click)="uploadImage()" *ngIf="correctImage != ''">
+                           <button ion-button color="white"  outline round  small  icon-left (click)="uploadImage()" *ngIf="correctImage != ''">
                              <ion-icon name="camera"></ion-icon>Update Image
                              </button>
                     </div>

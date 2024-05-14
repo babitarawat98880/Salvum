@@ -202,14 +202,17 @@ export class ProfilePage implements OnInit {
     return await modal.present();
   }
 
-  // async assignCompany(id:any,alertIds:any,companyIds:any){
-  //   let modal = await this.modalCtrl.create('AssignCompanyPage',{
-  //       id:id,
-  //       alertIds:alertIds,
-  //       companyIds:companyIds
-  //     });
-  //   await modal.present();
-  // }
+  async assignCompany(id:any,alertIds:any,companyIds:any){
+    let modal = await this.modalCtrl.create({
+      component: 'AssignCompanyPage',
+      componentProps:{
+        id:id,
+        alertIds:alertIds,
+        companyIds:companyIds
+      }
+    });
+    await modal.present();
+  }
 
   async makePrimary(id: any, email: any) {
     var userId = localStorage.getItem('userinfo');

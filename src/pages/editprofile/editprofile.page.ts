@@ -65,7 +65,6 @@ export class EditprofilePage implements OnInit {
         }); 
 
       this.uploader.onWhenAddingFileFailed = (check) => {  
-        console.log(check)
         if(check.size > 500*1024*1024){
           this.filesize_error = '1';
         }
@@ -83,7 +82,6 @@ export class EditprofilePage implements OnInit {
 
       this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
        this.componentService.dismissLoader();
-       console.log(response, "res")
         var data = JSON.parse(response);
         this.APIService.getData('updateProfile',localStorage.getItem('userinfo')+'/'+data.data.file_name).subscribe((all_files:any)=>{
           this.componentService.presentToast( 'Profile Picture has been updated successfully.','success');
@@ -91,7 +89,6 @@ export class EditprofilePage implements OnInit {
           this.navCtrl.navigateForward('profile', { state:{ filename : item.file.name} });
         },
         (err:any) => {
-          console.log(err)
           this.componentService.dismissLoader();
             this.showTechnicalError('1');
         });
@@ -161,7 +158,6 @@ export class EditprofilePage implements OnInit {
 
 
   updateUserSocialLink (){
-   
     this.componentService.showLoader()
     let body = this.data;
       return this.APIService.sendData('updateUserSocailLink',body)
@@ -244,7 +240,6 @@ export class EditprofilePage implements OnInit {
   private copyFileToLocalDir(namePath:any, currentName:any, newFileName:any) {
     this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
       this.lastImage = newFileName;
-      
     }, error => {
       this.presentToast('Error while storing file.');
     });
@@ -269,7 +264,6 @@ export class EditprofilePage implements OnInit {
     var targetPath = this.pathForImage(this.lastImage);
     // File name only
     var filename = this.lastImage;
-    console.log(filename, "file")
     this.componentService.showLoader()
     this.imagedate = {
       userId : localStorage.getItem('userinfo')
@@ -287,7 +281,6 @@ export class EditprofilePage implements OnInit {
     fileTransfer.upload(targetPath, this.updateImageURL, options).then(data => {
      this.componentService.dismissLoader();
       let imageData = data;
-      console.log(imageData, "uploadImage")
       this.componentService.presentToast('Profile has been updated successfully.','success')
       
         this.navCtrl.navigateForward('profile',{state:{imageData}});
@@ -315,7 +308,6 @@ export class EditprofilePage implements OnInit {
 }
 
   uploadImg(){ 
-    // console.log(this.uploader.queue.length,this.uploader.queue )
     if(this.uploader.queue.length > 0){
       this.uploader.queue[0].upload();
     }
