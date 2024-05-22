@@ -397,10 +397,10 @@ export class DashboardPage implements OnInit {
       // });
       // toast.present();
       localStorage.setItem('openedLevel', '0')
-      this.navCtrl.navigateForward('SmailInboxPage');
+      this.navCtrl.navigateForward('small-inbox');
     }else{
       localStorage.setItem('openedLevel','all')
-      this.navCtrl.navigateForward('SmailInboxPage');
+      this.navCtrl.navigateForward('small-inbox');
     }
   };
 

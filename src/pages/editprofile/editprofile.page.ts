@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastController, NavController ,Platform ,ActionSheetController, LoadingController} from '@ionic/angular';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { File } from '@ionic-native/file/ngx';
 // import { Transfer, TransferObject } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path/ngx';

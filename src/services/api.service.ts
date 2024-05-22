@@ -72,4 +72,18 @@ putData(url:any,data:any){
 postData(url:any,data:any){
 	return this.http.post(apiUrl+url+'/', data);
  }
+ deleteDirectoryFiles(file_path,fid :any= null,isShared:any = null,userId :any= null,toId:any = null,toLevel:any = null,from_user:any = null,show_add_folder:any = null,clicked_fid:any = null,isRoot :any= null) {
+  let data = new URLSearchParams();
+   data.append('file_path', file_path);
+   data.append('fid', fid);
+   data.append('isShared', isShared); 
+   data.append('userId', userId);
+   data.append('toId', toId);
+   data.append('toLevel', toLevel);
+   data.append('from_user', from_user);
+   data.append('show_add_folder', show_add_folder);
+   data.append('clicked_fid', clicked_fid);
+   data.append('isRoot', isRoot);
+    return this.http.post('deleteDirectoryFiles', data);
+  } 
 }

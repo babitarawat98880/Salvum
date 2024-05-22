@@ -84,6 +84,11 @@ const routes: Routes = [
   {
     path: 'compose',
     loadChildren: () => import('../pages/compose/compose.module').then( m => m.ComposePageModule)
+  }
+  ,
+  {
+    path: 'small-inbox',
+    loadChildren: () => import('../pages/small-inbox/small-inbox.module').then( m => m.SmallInboxPageModule)
   },
 ];
 
