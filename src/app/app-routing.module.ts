@@ -98,6 +98,10 @@ const routes: Routes = [
     path: 'pricing',
     loadChildren: () => import('../pages/pricing/pricing.module').then( m => m.PricingPageModule)
   },
+  {
+    path: 'extraspace',
+    loadChildren: () => import('../pages/extraspace/extraspace.module').then( m => m.ExtraspacePageModule)
+  },
 ];
 
 @NgModule({

@@ -201,7 +201,7 @@ export class PricingPage {
     };
   
     openExtraspacePage(){
-     this.navCtrl.navigateForward('ExtraspacePage');
+     this.navCtrl.navigateForward('extraspace');
     };
   
     root(){
