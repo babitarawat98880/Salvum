@@ -5,7 +5,7 @@ import {Http} from '@angular/http';
 import { EventService } from '../../services/event.service';
 import { ComponentService } from '../../services/component.service';
 import { APIService } from '../../services/api.service';
-
+import { UpdateLicensePage } from '../update-license/update-license.page';
 import * as copy from 'copy-to-clipboard';
 @Component({
   selector: 'app-license',
@@ -190,7 +190,7 @@ export class LicensePage  {
 
   async updateLicense(){
     let modal = await this.modalCtrl.create({ 
-    component: 'UpdateLicensePage',
+    component: UpdateLicensePage,
     componentProps:{   autoFilled:this.autoFilled
     }});
   

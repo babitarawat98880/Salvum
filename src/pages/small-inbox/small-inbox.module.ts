@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { IonicModule } from '@ionic/angular';
 import { SmallInboxPageRoutingModule } from './small-inbox-routing.module';
-
 import { SmallInboxPage } from './small-inbox.page';
 
 @NgModule({
@@ -15,6 +14,7 @@ import { SmallInboxPage } from './small-inbox.page';
     IonicModule,
     SmallInboxPageRoutingModule
   ],
-  declarations: [SmallInboxPage]
+  declarations: [SmallInboxPage],
+  
 })
 export class SmallInboxPageModule {}

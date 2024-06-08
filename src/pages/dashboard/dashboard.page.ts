@@ -130,7 +130,7 @@ export class DashboardPage implements OnInit {
   ngOnInit() {
     this.isBrowser = localStorage.getItem('isBrowser');
     // get dashboard data
-     this.componentService.showLoader()
+    //  this.componentService.showLoader();
       var created_date = new Date();
       var expiry_date, timeDiff;
       this.APIService.getData('getUserDashboardData',this.userId).subscribe((dashboard_data:any)=>{  

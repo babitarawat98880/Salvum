@@ -4,7 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen'; 
 import { APIService } from '../services/api.service';
 import { ComponentService } from '../services/component.service';
-
 import { pipe } from 'rxjs';
 
 // import { EventService } from '../services/event.service';
@@ -50,7 +49,7 @@ export class AppComponent {
       { title: 'Profile', component: 'ProfilePage', icon: "person-outline", url:'/profile' },
       { title: 'License', component: 'LicensePage', icon: "ribbon", url:'/license' },
       { title: 'History', component: 'HistoryPage', icon: "time-outline" , url:'/history'},
-      { title: 'Upgrade Package', component: 'PricingPage', icon: "pricetag-outline", url:'/profile' },
+      { title: 'Upgrade Package', component: 'PricingPage', icon: "pricetag-outline", url:'/pricing' },
     ];
     var API_ENDPOINT_URI = 'https://www.serrare.com:3002';
     localStorage.setItem('API_ENDPOINT_URL',API_ENDPOINT_URI+'/'); 
@@ -125,7 +124,7 @@ export class AppComponent {
       { title: 'Profile', component: 'ProfilePage', icon: "person-outline", url:'/profile' },
       { title: 'License', component: 'LicensePage', icon: "ribbon", url:'/license' },
       { title: 'History', component: 'HistoryPage', icon: "time-outline" , url:'/history'},
-      { title: 'Upgrade Package', component: 'PricingPage', icon: "pricetag-outline", url:'/profile' },
+      { title: 'Upgrade Package', component: 'PricingPage', icon: "pricetag-outline", url:'/pricing' },
         // { title: 'Transmittals', component: 'DirectTransmittalsPage', icon: "paper-plane" },
       ];
   }

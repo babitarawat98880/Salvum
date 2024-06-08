@@ -66,6 +66,9 @@ sendData(url:any, postParams:any){
 getData(url:any,data:any){
   return this.http.get(apiUrl+url+'/'+ data)
 }
+get(url:any){
+  return this.http.get(apiUrl+url)
+}
 putData(url:any,data:any){
 	return this.http.put(apiUrl+url, data);
  }

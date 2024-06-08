@@ -90,6 +90,14 @@ const routes: Routes = [
     path: 'small-inbox',
     loadChildren: () => import('../pages/small-inbox/small-inbox.module').then( m => m.SmallInboxPageModule)
   },
+  {
+    path: 'assign-company',
+    loadChildren: () => import('../pages/assign-company/assign-company.module').then( m => m.AssignCompanyPageModule)
+  },
+  {
+    path: 'pricing',
+    loadChildren: () => import('../pages/pricing/pricing.module').then( m => m.PricingPageModule)
+  },
 ];
 
 @NgModule({

@@ -6,6 +6,7 @@ import { ComponentService } from '../../services/component.service';
 import { APIService } from '../../services/api.service';
 import { Http } from '@angular/http';
 // import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { AssignCompanyPage } from '../assign-company/assign-company.page';
 import { AddEmailPage } from '../add-email/add-email.page';
 import { Router, NavigationExtras } from '@angular/router';
 @Component({
@@ -204,7 +205,7 @@ export class ProfilePage implements OnInit {
 
   async assignCompany(id:any,alertIds:any,companyIds:any){
     let modal = await this.modalCtrl.create({
-      component: 'AssignCompanyPage',
+      component: AssignCompanyPage,
       componentProps:{
         id:id,
         alertIds:alertIds,

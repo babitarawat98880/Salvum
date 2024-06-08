@@ -25,6 +25,7 @@ export class SmallInboxPage {
     date: any;
     notis_data: any;
     public displayText: any;
+    selectedAll:boolean;
     baseUrl: any = '';
     editor_tab: string = 'format';
     baseUrl_main: any = localStorage.getItem('baseUrl');
@@ -518,7 +519,7 @@ export class SmallInboxPage {
             localStorage.setItem('view', 'Inbox');
 
         }
-
+        console.log(this.preState, "preState");
         if (this.preState == 'Inbox') {
             this.inboxData('ee');
             this.filterJobSmails();
@@ -854,7 +855,7 @@ export class SmallInboxPage {
         this.items = [];
         this.componentService.showLoader();
         this.userId = localStorage.getItem('userinfo');
-        this.APIService.putData('sendMailListData',this.userId).subscribe((data:any) => {
+        this.APIService.putData('sendMailListData/'+this.userId,'').subscribe((data:any) => {
             this.has_loaded = '1';
             if (data.length > 0) {
                 if (this.selectedFolder == '') {
@@ -3871,7 +3872,8 @@ export class SmallInboxPage {
             });
     };
 
-    listCheckbox(isChecked, value) {
+    listCheckbox(isChecked, value, event) {
+        console.log(isChecked,"++++++++++");
         if (isChecked == true) {
             this.deleteSmails.push(value);
         } else {
