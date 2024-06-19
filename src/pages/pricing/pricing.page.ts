@@ -122,7 +122,8 @@ export class PricingPage {
   
     addPrice(itemprice){
      var newprices:any = []
-     var price = itemprice.split('/')
+     console.log(itemprice)
+     var price = itemprice.detail.value.split('/')
      this.newprice = Number(price[1]);
       for (var i = 0; i < this.packageArr.length; i++) {
         newprices.push(this.packageArr[1]);
@@ -197,7 +198,7 @@ export class PricingPage {
         companyArr: this.companyArr
       };
       localStorage.setItem('preState', 'pricing')
-     this.navCtrl.navigateForward('PaymentPage', {state:{ totalPrice }});
+     this.navCtrl.navigateForward('payment', { state:{ totalPrice }});
     };
   
     openExtraspacePage(){

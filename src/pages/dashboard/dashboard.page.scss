@@ -18,3 +18,22 @@ ion-item.management {
 padding: 8px;
 background: lightgray;
 }
+.notification {
+  font-size: 18px;
+}
+.notification-section {
+  position: absolute;
+  top: 0;
+  z-index: 99;
+  right: 0;
+}
+.notification-section {
+  width: 260px;
+  right: 10px;
+  position: absolute;
+  -webkit-box-shadow: 0 3px 12px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 12px 2px rgba(0, 0, 0, 0.3);
+  top: 0px;
+  background: #fafafa;
+  z-index: 9999;
+}

@@ -51,7 +51,8 @@ export class ExtraspacePage {
       {
         localStorage.setItem('preState', 'extra');
       }
-      this.navCtrl.navigateForward('PaymentPage', extra);
+      console.log(extra, "ex")
+      this.navCtrl.navigateForward('payment', { state: { extra}} );
     }
   
     root(){

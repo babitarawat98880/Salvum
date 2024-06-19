@@ -9,6 +9,7 @@ import * as CryptoJS from 'crypto-js';
 import { EventService } from '../../services/event.service';
 // import { Socket } from 'ng-socket-io';
 import { UpdateLicensePage } from '../update-license/update-license.page';
+import HandyTimeAgo from 'handy-timeago';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -26,6 +27,7 @@ export class DashboardPage implements OnInit {
   isBrowser:any;
   count :any;
   userId :any;
+  counts:any;
   dashboard_data :any;
   subscription :any;
   subscription_amount :any = '0';
@@ -63,6 +65,24 @@ export class DashboardPage implements OnInit {
   new_notis:any;
   members:any = [];
   objData:any = {};
+  displayGrid: boolean = false;
+  allNotice: boolean = false;
+  bellnotification: any = [];
+  level0Notice: boolean = false;
+  level1Notice: boolean = false;
+  level2Notice: boolean = false;
+  level3Notice: boolean = false;
+  level4Notice: boolean = false;
+  notification0: any = [];
+  notification1: any = [];
+  notification2: any = [];
+  notification3: any = [];
+  notification4: any = [];
+  smail0: any = [];
+    smail1: any = [];
+    smail2: any = [];
+    smail3: any = [];
+    smail4: any = [];
   APIURL:any = localStorage.getItem('APIURL');
   @ViewChild('content', { static: false }) content: IonContent;
   constructor(
@@ -194,6 +214,7 @@ export class DashboardPage implements OnInit {
          this.componentService.dismissLoader()
           this.showTechnicalError();
       });
+      this.getAllNotifications();
   }
   async jobAlert(){
     let confirm =  await this.alertCtrl.create({
@@ -296,7 +317,47 @@ export class DashboardPage implements OnInit {
     this.componentService.presentToast('Technical error, Please '+msg,'info' );
   }
 
+ getAllNotifications(){
+    this.APIService.sendData('notify_count', {'senderId':localStorage.getItem('userinfo'), 'level': 4}).subscribe(async (counts:any) => {
+        if(counts.status == '1'){
+            this.counts = counts;
+            this.APIService.sendData('notify', {'senderId':localStorage.getItem('userinfo'), 'level': 4}).subscribe((all_files:any) => {
+                this.notification0 = all_files.notify0;
+                this.notification1 = all_files.notify1;
+                this.notification2 = all_files.notify2;
+                this.notification3 = all_files.notify3;
+                this.notification4 = all_files.notify4;
+                this.smail0 = all_files.smail0;
+                this.smail1 = all_files.smail1;
+                this.smail2 = all_files.smail2;
+                this.smail3 = all_files.smail3;
+                this.smail4 = all_files.smail4;
+            },
+            err => {
+                this.showTechnicalError();
+            });
+        }
+        else{
+            let prompt =  this.alertCtrl.create({
+                header: "Your account has been removed.",
+                buttons: [
+                    {
+                        text: 'Ok',
+                        handler: data => {
+                            // this.Logout();
+                        }
+                    }
+                ]
+            });
+             (await prompt).present();
+        }
+    },
+    err => {
+        this.showTechnicalError();
+    });
+}
   async presentPopover1(myEvent1: Event) {
+   
     const popover = await this.popoverCtrl.create({
       component: 'AddnotificationPage',
       event: myEvent1,
@@ -646,10 +707,48 @@ export class DashboardPage implements OnInit {
   }
 
   openExtraspace(){
-   this.navCtrl.navigateForward('ExtraspacePage',{state:{
+   this.navCtrl.navigateForward('extraspace',{state:{
     page_type : '1'
    }
    });
   };
- 
+  presentPopover(myEvent1) {
+    console.log("sdfsdf")
+    this.displayGrid = false;
+    this.level4Notice = false;
+    this.level3Notice = false;
+    this.level2Notice = false;
+    this.level1Notice = false;
+    this.level0Notice = false;
+    if (this.allNotice) {
+        this.count = 0;
+        this.allNotice = false;
+    } else {
+        this.allNotice = true;  
+    }
+    console.log(this.allNotice)
+};
+timesAgo(date_time){
+  return HandyTimeAgo(new Date(date_time).getTime());
+}
+seeAllNotifications() {
+  this.onClickedOutside(null);
+  localStorage.setItem('notifyLevel', '0');
+  localStorage.setItem('notifyType', 'notify');
+  this.navCtrl.navigateForward('notification');
+};
+onClickedOutside(event){
+  if(this.count == 0){
+      this.count = 1;
+  }else{
+      this.displayGrid = false;
+      this.count = 0;
+      this.level4Notice = false;
+      this.level3Notice = false;
+      this.level2Notice = false;
+      this.level1Notice = false;
+      this.level0Notice = false;
+      this.allNotice = false;
+  }
+};
 }

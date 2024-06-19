@@ -102,6 +102,23 @@ const routes: Routes = [
     path: 'extraspace',
     loadChildren: () => import('../pages/extraspace/extraspace.module').then( m => m.ExtraspacePageModule)
   },
+  {
+    path: 'payment',
+    loadChildren: () => import('../pages/payment/payment.module').then( m => m.PaymentPageModule)
+  },
+  {
+    path: 'notification',
+    loadChildren: () => import('../pages/notification/notification.module').then( m => m.NotificationPageModule)
+  },
+  {
+    path: 'add-job',
+    loadChildren: () => import('../pages/add-job/add-job.module').then( m => m.AddJobPageModule)
+  },
+  {
+    path: 'contactslist',
+    loadChildren: () => import('../pages/contactslist/contactslist.module').then( m => m.ContactslistPageModule)
+  }
+
 ];
 
 @NgModule({

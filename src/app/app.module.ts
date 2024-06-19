@@ -27,7 +27,7 @@ import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
     BrowserAnimationsModule,
     // DragulaModule.forRoot()
   ],
-    providers: [
+  providers: [
       Camera,
       File,
       FileTransfer,
