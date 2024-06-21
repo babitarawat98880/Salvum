@@ -7,14 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { InAppBrowser } from '@ionic-native/in-app-browser/ngx/index';
-import { File } from '@ionic-native/file';
-// import { Transfer } from '@ionic-native/transfer';
+// import { File } from '@ionic-native/file';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { Device } from '@ionic-native/device';
 import { DatePipe } from '@angular/common';
-import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+// import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 // import { DragulaModule } from 'ng2-dragula';
 @NgModule({
   declarations: [AppComponent],
@@ -29,8 +28,8 @@ import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
   ],
   providers: [
       Camera,
-      File,
-      FileTransfer,
+      // File,
+      // FileTransfer,
       FilePath,
       DatePipe,
       //{provide: ErrorHandler, useClass: IonicErrorHandler},

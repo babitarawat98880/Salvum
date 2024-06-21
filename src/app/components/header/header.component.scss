@@ -1,0 +1,150 @@
+.tooltip {
+    position: absolute;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 999; /* Ensure tooltip appears on top of other elements */
+    width: auto; /* Adjust width as needed */
+    max-width: 200px; /* Limit maximum width */
+    text-align: center; /* Center-align text */
+    bottom: 100%; /* Position above the button */
+    left: 50%; /* Center align horizontally */
+    transform: translateX(-50%); /* Center align horizontally */
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 5px;
+    border-color: black transparent transparent transparent;
+    top: 100%; /* Position arrow above the tooltip */
+    left: 50%; /* Position arrow horizontally centered */
+    transform: translateX(-50%); /* Center arrow */
+}
+
+/* Tooltip display on hover */
+ion-button:hover .tooltip {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+ion-col{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+
+
+
+.nav-wrap {
+    background-color: #8f98a0;
+    padding: 0; /* Ensure no padding */
+}
+
+ion-toolbar {
+    --background: #8f98a0;
+    padding: 0; /* Ensure no padding */
+}
+
+ion-buttons {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+}
+
+ion-button {
+    height: 100%;
+    border-right: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+/***************/
+
+.icon-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon-row {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.icon-with-count {
+    position: relative;
+    margin: 0 10px; /* Adjust spacing between icons as needed */
+}
+
+.count-badge {
+    position: absolute;
+    top: -4px;
+    right: -16px;
+    background-color: red;
+    color: white !important;
+    border-radius: 50%;
+    padding: 2px 2px;
+    font-size: 10px;
+    min-width: 20px;
+    text-align: center;
+    line-height: 1;
+}
+
+.labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.labels span {
+    flex: 1;
+    text-align: center;
+    display: block;
+}
+
+.custom-button-white {
+    background-color: white;
+    color: black; /* Ensuring the text color is black for contrast */
+    border: 1px solid #ccc; /* Optional: adding a border to distinguish the button */
+}
+
+.custom-button-white ion-icon {
+    color: black; /* Ensuring the icon color is black for contrast */
+}
+
+.custom-button-white .count-badge {
+    color: white; /* Keeping the count badge text white */
+}
+
+.custom-button-primary-light {
+    background-color: #74b8f5;
+}
+
+.custom-button-primary-light .count-badge {
+    color: #74b8f5; /* Keeping the count badge text white */
+}
+
+.custom-button-primary-dark {
+    background-color: #419CEB;
+}
+
+.custom-button-primary-dark .count-badge {
+    color: #419CEB; /* Keeping the count badge text white */
+}
+
+.menu-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}

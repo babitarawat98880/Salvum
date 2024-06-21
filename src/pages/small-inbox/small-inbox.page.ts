@@ -5,8 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 // import { DragulaService } from 'ng2-dragula';
 import * as $ from 'jquery';
-import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
-import { File } from '@ionic-native/file';
+// import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+// import { File } from '@ionic-native/file';
 import { EventService } from 'src/services/event.service';
 import { ComponentService } from 'src/services/component.service';
 import { APIService } from 'src/services/api.service';
@@ -132,8 +132,8 @@ export class SmallInboxPage {
     searchTerm: any = '';
     uniqueBagId: string = 'dragula-bag-' + _uniqueId++;
     constructor(
-        private transfer: FileTransfer,
-        private file: File,
+        // private transfer: FileTransfer,
+        // private file: File,
         public events: EventService,
         public navCtrl: NavController,
         public componentService: ComponentService,
@@ -576,12 +576,12 @@ export class SmallInboxPage {
             position: 'top',
             cssClass: 'success'
         });
-        const fileTransfer: FileTransferObject = this.transfer.create();
-        fileTransfer.download(url, this.file.externalRootDirectory + name.split('____').pop()).then((entry) => {
-            this.componentService.presentToast('File downloaded.', 'success');
-        }, (error) => {
-            this.componentService.presentToast('Error', 'danger');
-        });
+        // const fileTransfer: FileTransferObject = this.transfer.create();
+        // fileTransfer.download(url, this.file.externalRootDirectory + name.split('____').pop()).then((entry) => {
+        //     this.componentService.presentToast('File downloaded.', 'success');
+        // }, (error) => {
+        //     this.componentService.presentToast('Error', 'danger');
+        // });
     }
 
     showTechnicalError(type: any = null) {

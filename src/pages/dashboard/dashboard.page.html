@@ -31,8 +31,9 @@
   </ion-content>
 
 </ion-menu> -->
+
 <div class="ion-page" id="main-content">
-  <ion-header>
+  <!--<ion-header>
     <ion-toolbar>
       <ion-title>Dashboard</ion-title>
       <ion-buttons slot="end">
@@ -40,7 +41,6 @@
           <ion-icon name="notifications"></ion-icon>
           <ion-badge badge-notification color="danger" *ngIf="notification0.length > 0"> {{counts?.notify0_count}}</ion-badge>
        </button>
-        <!-- <ion-icon name="notifications-outline" class="notification"></ion-icon> -->
         <ion-menu-button>
           <ion-icon name="close" close-icon menuToggle></ion-icon>
           <img *ngIf="userImage == '' || userImage == null || userImage == undefined"  alt="image" class="rounded-circle" src="assets/img/m7.png">
@@ -48,59 +48,71 @@
         </ion-menu-button>
       </ion-buttons>
     </ion-toolbar>
-  </ion-header>
-  <ion-content lightgrey has-header>
+  </ion-header>-->
+  <app-header></app-header>
+  
+  <ion-breadcrumbs>
+    <ion-breadcrumb href="#home">Home</ion-breadcrumb>
+  </ion-breadcrumbs>
+
+  <ion-content  has-header>
     <div breadcrumb-height></div>
-    <ion-grid>
+    <ion-grid class="pt-0 pb-0">
       <ion-row>
-        <ion-col>   
+        <ion-col class="m-box">   
           <ion-item [button]="true"  no-lines detail="false" (click)="openSmailPage()">
             <div class="unread-indicator-wrapper" slot="start">
-              <ion-icon  name="mail-outline" item-start></ion-icon> 
+              <ion-icon  name="mail-outline" class="icon-wrap" item-start></ion-icon> 
             </div>
             <ion-label>
-              <ion-text>Smail</ion-text><br />
+              <ion-text>
+                <h2 class="ion-text-title">Smail</h2>
+              </ion-text>
               <ion-note color="medium" class="ion-text-wrap">
                 Compose, Send, and Receive Internal Salvum Messages
               </ion-note>
             </ion-label> 
           </ion-item>
         </ion-col>
-        <ion-col>
+        <ion-col class="m-box">
           <ion-item [button]="true"  no-lines detail="false" (click) = "openContacts()" >
             <div class="unread-indicator-wrapper" slot="start">
-              <ion-icon name="person-circle-outline"></ion-icon>
+              <ion-icon name="person-circle-outline" class="icon-wrap"></ion-icon>
             </div>
             <ion-label>
-              <ion-text>Contacts</ion-text><br />
+              <ion-text>
+                <h2 class="ion-text-title">Contacts</h2>
+              </ion-text>
               <ion-note color="medium" class="ion-text-wrap">
                 Manage, View and Update Connected Users
               </ion-note>
             </ion-label> 
           </ion-item>
         </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>   
+        <ion-col class="m-box">   
           <ion-item [button]="true"  no-lines detail="false"  (click) = "openFilesPage()" >
             <div class="unread-indicator-wrapper" slot="start">
-              <ion-icon name="document-outline" item-start></ion-icon>
+              <ion-icon name="document-outline" class="icon-wrap" item-start></ion-icon>
             </div>
             <ion-label>
-              <ion-text>Files</ion-text><br />
+              <ion-text>
+                <h2 class="ion-text-title">Files</h2>
+              </ion-text>
               <ion-note color="medium" class="ion-text-wrap">
                 Manage Your Personal and Profession Files
               </ion-note>
             </ion-label> 
           </ion-item>
         </ion-col>
-        <ion-col>
+        <ion-col class="m-box">
           <ion-item [button]="true"  no-lines detail="false" (click) = "openBidPage()" >
             <div class="unread-indicator-wrapper" slot="start">
-              <ion-icon item-start><img style="margin-top: 8px;" src="assets/img/bid_icon_white.png"></ion-icon>
+              <span class="icon-wrap"><img style="margin-top: 8px;" src="https://www.serrare.com/userpanel/assets/img/bid_icon_white.png" width="18px"></span>
             </div>
             <ion-label>
-              <ion-text>     Bidding</ion-text><br />
+              <ion-text>
+                <h2 class="ion-text-title">Bidding</h2>
+              </ion-text>
               <ion-note color="medium" class="ion-text-wrap">
                 Bid on Invited Jobs
               </ion-note>
@@ -108,10 +120,55 @@
           </ion-item>
       
         </ion-col>
-       
       </ion-row>
     </ion-grid>
-    <ion-item (click) = "openJobsPage()" left margin0 dashboard dash-btm brhover class="management">
+    
+    <ion-grid class="bg-grey gap-1">
+      <ion-row>
+    </ion-row>
+  </ion-grid>
+
+  <ion-row>
+
+    <ion-col class="m-box">   
+      <ion-item [button]="true"  no-lines detail="false"  (click) = "openJobsPage()" >
+        <div class="unread-indicator-wrapper" slot="start">
+          <ion-icon name="briefcase-outline" class="icon-wrap" item-start></ion-icon>
+        </div>
+        <ion-label>
+          <ion-text>
+            <h2 class="ion-text-title">Job Management</h2>
+          </ion-text>
+          <ion-note color="medium" class="ion-text-wrap">
+            Create Jobs, View Posted Jobs, Submit Proposal
+          </ion-note>
+        </ion-label> 
+      </ion-item>
+    </ion-col>
+    
+    <ion-col class="m-box">   
+      <div class="white-box activity-widget switchcompany" *ngIf="companies != ''">
+        <ion-item>
+          <ion-label>Switch Company</ion-label>
+          <ion-select [(ngModel)]="companyId"  >
+            <ion-select-option *ngFor="let company of companies"value="{{company._id}}" selected="{{companyId == company._id}}">{{company.company_name}}</ion-select-option>
+
+        </ion-select>
+         
+        </ion-item>
+        <ion-button size="small" color="primary" (click)="switchCompany()">Switch company</ion-button>
+      </div>
+    </ion-col>
+
+  </ion-row>
+
+  <ion-grid class="bg-grey gap-1">
+    <ion-row>
+  </ion-row>
+</ion-grid>
+
+
+    <!--<ion-item (click) = "openJobsPage()" left margin0 dashboard dash-btm brhover class="management">
         <div class="unread-indicator-wrapper" slot="start">
           <ion-icon name="briefcase-outline" item-start></ion-icon> 
         </div>
@@ -121,19 +178,9 @@
             Create Jobs, View Posted Jobs, Submit Proposal
           </ion-note>
         </ion-label> 
-      </ion-item >
+      </ion-item >-->
   
-        <div class="white-box activity-widget switchcompany" *ngIf="companies != ''">
-          <ion-item>
-            <ion-label>Switch Company</ion-label>
-            <ion-select [(ngModel)]="companyId"  >
-              <ion-select-option *ngFor="let company of companies"value="{{company._id}}" selected="{{companyId == company._id}}">{{company.company_name}}</ion-select-option>
-
-          </ion-select>
-           
-          </ion-item>
-          <button small color="blue" ion-button (click)="switchCompany()">Switch company</button>
-        </div>
+        
         <div class="white-box activity-widget min-h-382">
           <h4 class="box-title">Friend Request Log</h4>
           <div class="steamline">
