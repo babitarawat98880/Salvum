@@ -117,6 +117,22 @@ const routes: Routes = [
   {
     path: 'contactslist',
     loadChildren: () => import('../pages/contactslist/contactslist.module').then( m => m.ContactslistPageModule)
+  },
+  {
+    path: 'trade-dashboard',
+    loadChildren: () => import('../pages/trade-dashboard/trade-dashboard.module').then( m => m.TradeDashboardPageModule)
+  },
+  {
+    path: 'trade',
+    loadChildren: () => import('../pages/trade/trade.module').then( m => m.TradePageModule)
+  },
+  {
+    path: 'edit-job',
+    loadChildren: () => import('../pages/edit-job/edit-job.module').then( m => m.EditJobPageModule)
+  },
+  {
+    path: 'share-job-contacts',
+    loadChildren: () => import('../pages/share-job-contacts/share-job-contacts.module').then( m => m.ShareJobContactsPageModule)
   }
 
 ];

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, ModalController, AlertController, ToastController, LoadingController } from '@ionic/angular';
 import { APIService } from 'src/services/api.service';
 import { ComponentService } from 'src/services/component.service';
-
+import { EditJobPage } from '../edit-job/edit-job.page';
+import { ShareJobContactsPage } from '../share-job-contacts/share-job-contacts.page';
 @Component({
   selector: 'app-managejob',
   templateUrl: './managejob.page.html',
@@ -115,9 +116,7 @@ async showAlert(){
   }
 
   getJobs() {
-    this.componentService.dismissLoader();
-
-
+    this.componentService.showLoader();
     // this.companyProvider.getAllJobs(this.userId).subscribe((jobs)=>{
     this.APIService.getData('myJobsList',this.userId+'/'+this.ses_companyId ).subscribe((jobs) => {
       this.componentService.dismissLoader();
@@ -277,19 +276,19 @@ async showAlert(){
 
   tradeDashboard(jobId, job_title) {
     localStorage.setItem('active_job_breadcrumb', job_title);
-    this.navCtrl.navigateForward('TradeDashboardPage', { state: { jobId: jobId } });
+    this.navCtrl.navigateForward('trade-dashboard', { state: { jobId: jobId } });
   }
 
   async editJobPage(myEvent11, job_id) {
     let modal = await this.modalCtrl.create({
-      component: 'EditjobPage',
+      component: EditJobPage,
       componentProps: {
         job_id: job_id,
         ev: myEvent11
       },
     });
     modal.onDidDismiss().then((data: any) => {
-      if (data == '1') {
+      if (data.data == '1') {
         this.getJobs();
       }
     });
@@ -347,7 +346,7 @@ async showAlert(){
       already.push(share.user_email);
     })
     let modal = await this.modalCtrl.create({
-      component: 'ShareJobContactsPage',
+      component: ShareJobContactsPage,
       componentProps: {
         already: already,
         companyId: companyId
