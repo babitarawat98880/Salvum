@@ -133,6 +133,14 @@ const routes: Routes = [
   {
     path: 'share-job-contacts',
     loadChildren: () => import('../pages/share-job-contacts/share-job-contacts.module').then( m => m.ShareJobContactsPageModule)
+  },
+  {
+    path: 'job-calendar',
+    loadChildren: () => import('../pages/job-calendar/job-calendar.module').then( m => m.JobCalendarPageModule)
+  },
+  {
+    path: 'rfis',
+    loadChildren: () => import('../pages/rfis/rfis.module').then( m => m.RfisPageModule)
   }
 
 ];

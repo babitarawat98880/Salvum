@@ -267,7 +267,7 @@ async showAlert(){
   }
 
   jobCalendar(jobId) {
-    this.navCtrl.navigateForward('JobcalendarPage', {
+    this.navCtrl.navigateForward('job-calendar', {
       state: {
         job_id: jobId
       }

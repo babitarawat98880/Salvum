@@ -45,7 +45,7 @@
          <ion-badge color="light"><i class="{{job.trade_icon}}"></i> Trade  : {{job.trade_name}}</ion-badge> 
          <ion-badge color="light"><ion-icon name="time"></ion-icon> Posted By :  {{job.posted_by}}</ion-badge> 
       </ion-item>
-      <ion-item-options side="right" *ngIf="isBrowser == 'false'">
+      <ion-item-options side="end" *ngIf="isBrowser == 'false'">
           <!-- <button ion-button color="danger"><ion-icon name="trash"></ion-icon> Delete</button> -->
           <button ion-button color="secondary" (click)="openBiddetailPage(job._id,job.bid_status)"><ion-icon name="eye"></ion-icon> View</button>
           <button ion-button color="danger" (click)="deleteBids(job._id)"><ion-icon name="trash"></ion-icon> Delete</button>
@@ -77,7 +77,7 @@
          <ion-badge color="light"><i class="{{job.trade_icon}}"></i> Trade  : {{job.trade_name}}</ion-badge> 
          <ion-badge color="light"><ion-icon name="time"></ion-icon> Posted By :  {{job.posted_by}}</ion-badge> 
       </ion-item>
-      <ion-item-options side="right" *ngIf="isBrowser == 'false'">
+      <ion-item-options side="end" *ngIf="isBrowser == 'false'">
           <!-- <button ion-button color="danger"><ion-icon name="trash"></ion-icon> Delete</button> -->
           <button ion-button color="secondary" (click)="openBiddetailPage(job._id,job.bid_status)"><ion-icon name="eye"></ion-icon> View</button>
           <button ion-button color="danger" (click)="deleteBids(job._id)"><ion-icon name="trash"></ion-icon> Delete</button>

@@ -164,7 +164,7 @@
                              Delete
                           </button>
                        </ion-item-options>
-                       <ion-item-options side="right" *ngIf="isAssociate == '1' || job.privileges.indexOf(userId) == -1 && isBrowser == 'false'">
+                       <ion-item-options side="start" *ngIf="isAssociate == '1' || job.privileges.indexOf(userId) == -1 && isBrowser == 'false'">
                           <button ion-button color="secondary" (click) = "editJob(job._id)">
                              <ion-icon name="eye"></ion-icon>
                              View

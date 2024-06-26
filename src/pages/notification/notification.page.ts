@@ -226,7 +226,7 @@ export class NotificationPage {
         localStorage.removeItem('saved_filter_trade_names');
       }
       localStorage.setItem('currentJobId', info.jobId);
-      this.navCtrl.navigateForward('RfisPage', { state: { jobId: info.jobId } });
+      this.navCtrl.navigateForward('rfis', { state: { jobId: info.jobId } });
     }
     else {
       this.componentService.presentToast('Please switch to company ' + info.companyName + ' to access the RFI page.', 'danger');
