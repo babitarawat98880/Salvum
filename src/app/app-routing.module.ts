@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+
 const routes: Routes = [
   {
     path: 'home',
@@ -117,7 +118,28 @@ const routes: Routes = [
   {
     path: 'contactslist',
     loadChildren: () => import('../pages/contactslist/contactslist.module').then( m => m.ContactslistPageModule)
-  },  {
+  },
+  {
+    path: 'trade-dashboard',
+    loadChildren: () => import('../pages/trade-dashboard/trade-dashboard.module').then( m => m.TradeDashboardPageModule)
+  },
+  {
+    path: 'trade',
+    loadChildren: () => import('../pages/trade/trade.module').then( m => m.TradePageModule)
+  },
+  {
+    path: 'edit-job',
+    loadChildren: () => import('../pages/edit-job/edit-job.module').then( m => m.EditJobPageModule)
+  },
+  {
+    path: 'share-job-contacts',
+    loadChildren: () => import('../pages/share-job-contacts/share-job-contacts.module').then( m => m.ShareJobContactsPageModule)
+  },
+  {
+    path: 'job-calendar',
+    loadChildren: () => import('../pages/job-calendar/job-calendar.module').then( m => m.JobCalendarPageModule)
+  },
+  {
     path: 'file-manager',
     loadChildren: () => import('./pages/file-manager/file-manager.module').then( m => m.FileManagerPageModule)
   },
@@ -144,10 +166,7 @@ const routes: Routes = [
   {
     path: 'wallet',
     loadChildren: () => import('./pages/wallet/wallet.module').then( m => m.WalletPageModule)
-  },
-
-
-
+  }
 ];
 
 @NgModule({

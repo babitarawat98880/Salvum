@@ -1,15 +1,29 @@
+<app-header></app-header>
+
+<ion-row main-breadcrumb ion-fixed style="top:60px">
+   <ion-col>
+      <ol class="breadcrumb">
+         <li (click)="root()"><a>Home</a></li>
+         <li class="active"><a>Profile</a></li> 
+      </ol>
+   </ion-col>
+</ion-row>
 
 <ion-content lightgrey has-header>
    <div breadcrumb-height></div>
+<ion-row>
+   <ion-col size="6">
+
+   
 <ion-card>
    <ion-list  br-lt-grey group-head head-profile>
-      <ion-list-header margin0 no-border profile-image br-btm>
-         <ion-item fnt14 no-border text-center>
+      <ion-list-header margin0 no-border profile-image br-btm class="bg-primary text-center">
+         <ion-item fnt14 no-border text-center color="primary">
             <div text-center profile-top  profile-div float-left>
                <ion-avatar>
                   <img alt="image" class="rounded-circle" src="assets/img/user-dummy.png" *ngIf="!data?.image">
                   <img alt="image" class="rounded-circle" src="{{API_ENDPOINT_URL}}images/{{data?.image}}"  *ngIf="data?.image">
-                  <ion-icon name="create" (click)="openEditprofilePage(data)"></ion-icon>
+                  <ion-icon name="create" (click)="openEditprofilePage(data)" class="e-icon"></ion-icon>
                </ion-avatar>
                <h2  fnt-bold fnt-white>{{data?.name}}</h2>
             </div>
@@ -62,6 +76,8 @@
       </ion-item-group>
    </ion-list>
 </ion-card>
+</ion-col>
+<ion-col size="6">
    <ion-card>
    <ion-list br-lt-grey group-head>
       <ion-card *ngIf="showHelpText == true">
@@ -72,7 +88,7 @@
       <ion-list-header color="lightgrey" margin0 br-btm >
          <ion-label>Emails</ion-label>
          <!-- Emails -->
-         <!-- <button (click)="addEmails()" class="addEmails" ion-button item-end color="blue" edit-hover><ion-icon name="add"></ion-icon>Add</button> -->
+         <!-- <button (click)="addEmails()" class="addEmails" color="primary"><ion-icon name="add"></ion-icon>Add</button> -->
          <ion-button size="small"  class="addEmails" (click)="addEmails()"  >
             <ion-icon slot="start" name="add"></ion-icon>
            Add
@@ -96,10 +112,15 @@
              <input [checked]="email.isNotify == '1' ? true : false" (change)="updateJobNotisEmail(email._id,email.isNotify)" type="checkbox" id="checkbox11{{indx}}" name="checkbox11{{indx}}" class="form-check-input">
                <label class="form-check-label"  for="checkbox11{{indx}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Job Alerts</label>
             </span> -->
-            <button (click)="assignCompany(email._id,email.alertIds,email.companyIds)" *ngIf="email.isVerified == '1'" ion-button item-end color="blue" edit-hover>Companies</button>
-            <button (click)="verifyEmail(email._id,email.email)" *ngIf="email.isVerified == '0'" ion-button item-end color="blue" edit-hover>Verify</button>
-            <button (click)="makePrimary(email._id,email.email)" *ngIf="email.isVerified == '1'" ion-button item-end color="blue" edit-hover>Make Primary</button>
-            <ion-icon (click)="deleteEmails(email._id,email.isVerified)" name="close" item-end color="blue" edit-hover></ion-icon>
+            <ion-toolbar>
+               <ion-buttons slot="end" size="small">
+                  <ion-button (click)="assignCompany(email._id,email.alertIds,email.companyIds)" *ngIf="email.isVerified == '1'" fill="solid" color="primary">Companies</ion-button>
+                  <ion-button (click)="verifyEmail(email._id,email.email)" *ngIf="email.isVerified == '0'" fill="solid" color="primary">Verify</ion-button>
+                  <ion-button (click)="makePrimary(email._id,email.email)" *ngIf="email.isVerified == '1'" fill="solid" color="primary">Make Primary</ion-button>
+                  <ion-button>
+                     <ion-icon name="close-outline"  (click)="deleteEmails(email._id,email.isVerified)"></ion-icon></ion-button>
+               </ion-buttons>
+            </ion-toolbar>
          </ion-item>
       </ion-item-group>
    </ion-list>
@@ -261,6 +282,8 @@
       </ion-item-group>
    </ion-list>
 </ion-card>
+</ion-col>
+</ion-row>
 
    <div footer-height></div>
    </ion-content>

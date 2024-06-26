@@ -1,22 +1,25 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>License</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header></app-header>
+
+<ion-row main-breadcrumb ion-fixed style="top:60px">
+   <ion-col size="6">
+      <ol class="breadcrumb">
+         <li (click)="root()"><a>Home</a></li>
+         <li class="active"><a>License</a></li> 
+      </ol>
+   </ion-col>
+   <ion-col size="6">
+      <ion-item lines="none">
+        <ion-button (click)="openAddmorelicensePage()" slot="end" color="primary">
+            Buy License
+        </ion-button>
+        <ion-button (click)="updateLicense()" slot="end" color="primary">
+            BAdd License Key
+      </ion-button>
+      </ion-item>
+   </ion-col>
+</ion-row>
 
 <ion-content padding lightgrey has-header>
-  <div ion-fixed style="width: 98%;background: #e6e6e6;">
-  <ion-row main-breadcrumb>
-     <ion-col>
-        <ol class="breadcrumb">
-           <li (click)="root()"><a>Home</a></li>
-           <li class="active">License</li>
-        </ol>
-     </ion-col>
-  </ion-row>
-  <button ion-button item-end fnt-normal small color="" m-l-5  float-right  (click)="openAddmorelicensePage()">Buy License </button>
-  <button ion-button item-end fnt-normal small (click)="updateLicense()" m-l-5 float-right>Add License Key</button>
-  </div>
   <div breadcrumb-tabs-height></div>
      <div clearboth></div>
   
@@ -24,12 +27,12 @@
         <div clearboth></div>
      <ion-list m-t-0 my-license>
         <ion-row>  
-           <ion-col col-12 col-md-6 col-lg-6  col-xl-6 license *ngFor="let license of licenses; let i = index ">
+           <ion-col size="6" *ngFor="let license of licenses; let i = index " class="m-box">
               <ion-item-sliding list-hover class="{{license.usedBy.indexOf(loginId) >= 0 ? 'active_license' : ''}}">
                  <ion-item   border-none wallet-main br-lt-grey>
                     <ion-checkbox *ngIf="currentDate < license.status && license.usedBy.indexOf(loginId) == -1" m-r-15 color="blue" [(ngModel)]="license[bb]" (click)="listCheckbox(license[bb], license)"> 1</ion-checkbox> 
                     <ion-thumbnail item-start icon-ionic >
-                       <ion-icon name="key" text-center></ion-icon>
+                       <ion-icon name="key" class="icon-wrap" text-center></ion-icon>
                     </ion-thumbnail>
                     <ion-label>
                     
@@ -111,12 +114,12 @@
      <h5 fnt-bold m-l-5 m-t-0 m-b-0>Shared By Other <button *ngIf="shared_licenses != '' && showAssigned_shared == '1'" mar-minust-5 float-right  ion-button item-end fnt-normal small (click)="assignLicenseToUsers('0')" m-l-5 >Assign</button></h5>
      <ion-list m-t-10  my-license>
         <ion-row class="row ">
-           <ion-col col-12 col-md-6 col-lg-6  col-xl-6 license *ngFor="let license of shared_licenses; let i = index " >
+           <ion-col size="6" *ngFor="let license of shared_licenses; let i = index " >
               <ion-item-sliding list-hover class="{{license.usedBy.indexOf(loginId) >= 0 ? 'active_license' : ''}}">
                  <ion-item   border-none wallet-main br-lt-grey>
                     <ion-checkbox *ngIf="currentDate < license.status && license.privileges.indexOf(loginId) >= 0 && license.usedBy.indexOf(loginId) == -1" m-r-15 color="blue" [(ngModel)]="license[bb]" (click)="listCheckbox1(license[bb], license)"> 1</ion-checkbox> 
                     <ion-thumbnail item-start icon-ionic >
-                       <ion-icon name="{{license.privileges.indexOf(loginId) >= 0 ? 'person' : 'share'}}" text-center></ion-icon>
+                       <ion-icon name="{{license.privileges.indexOf(loginId) >= 0 ? 'person' : 'share'}}"  class="icon-wrap" text-center></ion-icon>
                     </ion-thumbnail>
                     <ion-label>
                     

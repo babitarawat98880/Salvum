@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { LicensePageRoutingModule } from './license-routing.module';
 
 import { LicensePage } from './license.page';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LicensePageRoutingModule
+    LicensePageRoutingModule,
+    SharedModuleModule
   ],
   declarations: [LicensePage]
 })

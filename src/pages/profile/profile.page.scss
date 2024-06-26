@@ -7,6 +7,9 @@ ion-list-header {
     background-color: #f4f8f9;
     /* margin: 0px !important; */
 }
+.bg-primary{
+    background-color: #3880ff;
+}
 ion-list { 
     padding: 0;
 }
@@ -44,4 +47,20 @@ margin-left: 24px;
 }
 .edit-icon {
 color: #1976d2 !important ;
+}
+.e-icon {
+    position: absolute;
+    top: 32px;
+    left: 45px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #1976d2;
+    border: 2px solid #fafafa;
+    color: #fafafa;
+    line-height: 26px;
+    cursor: pointer;
+}
+ion-item-group ion-item ion-icon{
+    margin-right: 1em;
 }
