@@ -125,6 +125,7 @@ export class HeaderComponent implements OnInit {
       this.allNotice = false;
     }
   };
+  
   smailPage() {
     this.navCtrl.navigateRoot(['small-inbox']);
   }
@@ -146,5 +147,7 @@ export class HeaderComponent implements OnInit {
   walletPage() {
     this.navCtrl.navigateRoot(['wallet']);
   }
-
+  ngOnDestroy(){
+    this.popoverController.dismiss();
+  }
 }
