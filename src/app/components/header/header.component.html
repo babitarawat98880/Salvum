@@ -81,7 +81,105 @@
               </ion-content>
             </ng-template>
           </ion-popover>
-          <ion-button id="tooltip-notifications" data-tooltip="Notifications Tooltip"><ion-icon name="notifications" color="light"></ion-icon></ion-button>
+          <ion-button id="tooltip-notifications" data-tooltip="Notifications Tooltip" (click)="presentPopover($event)">
+            <ion-icon name="notifications" color="light"></ion-icon>
+            <div class="count-badge" *ngIf="notification0.length > 0">{{counts?.notify0_count}}</div> 
+          </ion-button>
+          <ion-popover trigger="tooltip-notifications" triggerAction="click">
+            <ng-template>
+              <div class="notification-section" *ngIf="allNotice == true" (clickOutside)="onClickedOutside($event)" clickOutsideEnabled="true">
+                <ion-list margin0 *ngIf="notification0?.length > 0">
+                   <ion-list-header br-btm margin0>You have {{counts?.notify0_count}} new messages</ion-list-header>
+                   <ion-item *ngFor="let notice of notification0 | slice:0:3;  let i=index ">
+                      <ion-avatar item-start>
+                      <ng-container *ngIf="notice.isAdmin == '1'">
+                      <img src="assets/img/logo-icon.png" >
+                      </ng-container>
+                      <ng-container *ngIf="notice.isAdmin != '1'">
+                      <div *ngIf="notice.senderId != notice.receiverId">
+                         <img src="assets/img/m7.png" *ngIf="notice.image == ''">
+                         <img src="{{APIURL}}/images/{{notice.image}}" *ngIf="notice.image != ''">
+                      </div>
+                      <div *ngIf="notice.senderId == notice.receiverId">
+                         <img src="assets/img/m7.png">
+                      </div>
+                      </ng-container>
+                      </ion-avatar>
+                      <!-- <h4 fnt-bold>{{notice.receiverName}}</h4> -->
+                      <h6 fnt-regular fnt12 *ngIf="notice.type == 0" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has been accepted your friend request.</h6>
+              
+                      <h6 fnt-regular fnt12 *ngIf="notice.type == 1" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} sent you friend request.</h6>
+              
+                      <h6 fnt-regular fnt12 *ngIf="notice.type == 5" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has replied on Smail.</h6>
+              
+                      <h6 fnt-regular fnt12 *ngIf="notice.type == 9" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has been rejected your friend request.</h6>
+              
+                      <h6 fnt-regular fnt12 *ngIf="notice.type == 37" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has been removed you as friend.</h6> 
+              
+                      <h6 fnt-regular fnt12 *ngIf="notice.type == 38" (click)="readNotis(notice._id)">{{notice.senderName}} has shared a job {{notice.info?.job_name}}({{notice.info?.job_number}}) under company {{notice.info?.company_name}}.</h6>  
+              
+                      <h6 fnt-regular fnt12 *ngIf="notice.type == 4" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} invited you to bid on job {{notice.others}}. </h6>
+              
+                      <h6 fnt-regular fnt12 *ngIf="notice.type == 7" (click)="readNotis(notice._id,notice.type,notice.others,notice.info)">{{notice.senderName}} has requested RFI on your trade {{notice.info?.trade_name}} of job {{notice.others}}. </h6>
+              
+                      <h6 fnt-regular fnt12 *ngIf="notice.type == 8" (click)="readNotis(notice._id,notice.type,null,notice.info)">{{notice.senderName}} has replied on your RFI for trade {{notice.info?.trade_name}} of job {{notice.others}}. </h6> 
+              
+                      <h6 fnt-regular fnt12 *ngIf="notice.type == 26" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has just bid on your job {{notice.others}}. </h6>
+              
+                      <h6 fnt-regular fnt12 *ngIf="notice.type == 101" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has been accepted your friend requset. </h6>
+              
+                      <h6 (click)="readNotis(notice._id,notice.type)" fnt-regular  *ngIf="notice.type == 15">{{notice.isAdmin == '1' ? 'Admin' : notice.senderName}} <br> <span fnt12 color-light-grey> {{notice.isAdmin == '1' ? 'has assigned your license to '+notice.others+' users' : ' has assigned a new licenses to you.'}}</span></h6>
+              
+                      <h6 (click)="readNotis(notice._id,notice.type)" fnt-regular  *ngIf="notice.type == 16"><span fnt12 color-light-grey>Your license has been used by {{notice.senderName}}  </span></h6>
+              
+                      <h6 (click)="readNotis(notice._id,notice.type)" fnt-regular  *ngIf="notice.type == 27"><span fnt12 color-light-grey>Your license key {{notice.others}} has been expired. </span></h6>
+              
+                      <h6 (click)="readNotis(notice._id,notice.type)" fnt-regular  *ngIf="notice.type == 31"><span fnt12 color-light-grey>Your license key {{notice.others}} has been renewed. </span></h6>
+              
+                      <h6 (click)="readNotis(notice._id,notice.type)" fnt-regular  *ngIf="notice.type == 150">{{notice.senderName}} <br><span fnt12 color-light-grey>has updated transmittal #{{notice.others}}.</span></h6>
+              
+                      <h6 (click)="readNotis(notice._id,notice.type,notice.others)" fnt-regular  *ngIf="notice.type == 32">{{notice.senderName}} <br><span fnt12 color-light-grey>has sent you an invitation to share a job.</span></h6>
+              
+                      <h6 (click)="readNotis(notice._id,notice.type)" fnt-regular  *ngIf="notice.type == 33">{{notice.senderName}} <br><span fnt12 color-light-grey>has been accepted your invitation to share a job.</span></h6>
+              
+                      <h6 (click)="readNotis(notice._id,notice.type)" fnt-regular  *ngIf="notice.type == 34">{{notice.senderName}} <br><span fnt12 color-light-grey>has been rejected your invitation to share a job.</span></h6>
+              
+                      <h6 (click)="readNotis(notice._id,notice.type)" fnt-regular  *ngIf="notice.type == 35">{{notice.senderName}} <br><span fnt12 color-light-grey>has requested RFI for job {{notice.others}}.</span></h6>
+              
+                      <h6 (click)="readNotis(notice._id,notice.type)" fnt-regular  *ngIf="notice.type == 200">{{notice.senderName}} <br><span fnt12 color-light-grey>has been awarded you a job {{notice.others}}.</span></h6>
+              
+                      <h6 (click)="readNotis(notice._id,notice.type)" fnt-regular  *ngIf="notice.type == 36">{{notice.senderId == notice.receiverId ? 'Engineer' : notice.senderName}} <br><span fnt12 color-light-grey>has replied on your requested RFI for job {{notice.others}}.</span></h6>
+              
+                      <h6 (click)="readNotis(notice._id,notice.type)" fnt-regular  *ngIf="notice.type == 28">{{notice.isAdmin == '1' ? 'Admin' : notice.senderName}} <br><span fnt12 color-light-grey> has extended your license ({{notice.others}}) expiry.</span></h6>
+              
+                      <h6 (click)="readNotis(notice._id,notice.type,null,notice.info)" fnt-regular  *ngIf="notice.type == 30">{{notice.isAdmin == '1' ? 'Admin' : notice.senderName}} <br><span fnt12 color-light-grey> has sent transmittal on job {{notice.info?.job_title}}.</span></h6>
+              
+                      <h6 (click)="readNotis(notice._id,notice.type)" fnt-regular  *ngIf="notice.type == 29"><span fnt12 color-light-grey>Your license has been activated. </span></h6>
+              
+                      <h6 (click)="readNotis(notice._id,notice.type)" fnt-regular  *ngIf="notice.type == 17">{{notice.isAdmin == '1' ? 'Admin' : notice.senderName}} <br><span fnt12 color-light-grey> has removed {{notice.isAdmin == '1' ? notice.senderName+' used license key assigned by you.' : 'your license key.'}}</span></h6>
+              
+                      <h6 (click)="readNotis(notice._id,notice.type)" fnt-regular  *ngIf="notice.type == 18">{{notice.isAdmin == '1' ? 'Admin' : notice.senderName}} <br><span fnt12 color-light-grey> {{notice.isAdmin == '1' ? 'Assigned license key to '+notice.senderName+' has been removed.' : 'Assigned license key has been removed.'}}</span></h6>
+              
+                      <p fnt-regular fnt12>{{timesAgo(notice.created_on)}}</p>
+                      <!-- <p fnt-regular fnt12>{{notice.created_on|timeAgo}}</p> -->
+                   </ion-item>
+                   <ion-list-header br-btm margin0 (click)="seeAllNotifications()">
+                      <button bg-transparent>
+                      See All Notifications 
+                      </button>
+                   </ion-list-header>
+                </ion-list>
+                <ion-list *ngIf="notification0.length == 0" margin0 text-center   bg-white>
+                 <div padding>  No Notifications Yet! </div>
+                   <ion-list-header br-btm margin0 (click)="seeAllNotifications()">
+                      <button bg-transparent>
+                      See All Notifications 
+                      </button>
+                   </ion-list-header>
+                </ion-list>
+              </div>
+            </ng-template>
+          </ion-popover>
           <ion-button id="tooltip-help" data-tooltip="Help Tooltip"><ion-icon name="help" color="light"></ion-icon></ion-button>
           <ion-button id="tooltip-level" class="custom-button-white" data-tooltip="Level Tooltip">
             <div class="icon-text">
@@ -149,6 +247,7 @@
                 </div>
                 <div class="icon-with-count">
                   <ion-icon name="notifications"></ion-icon>
+                  
                   <div class="count-badge">12</div> <!-- Example count for notifications -->
                 </div>
               </div>

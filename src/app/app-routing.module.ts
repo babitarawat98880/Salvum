@@ -141,31 +141,31 @@ const routes: Routes = [
   },
   {
     path: 'file-manager',
-    loadChildren: () => import('./pages/file-manager/file-manager.module').then( m => m.FileManagerPageModule)
+    loadChildren: () => import('../pages/file-manager/file-manager.module').then( m => m.FileManagerPageModule)
   },
   {
     path: 'members',
-    loadChildren: () => import('./pages/members/members.module').then( m => m.MembersPageModule)
+    loadChildren: () => import('../pages/members/members.module').then( m => m.MembersPageModule)
   },
   {
     path: 'invite',
-    loadChildren: () => import('./pages/invite/invite.module').then( m => m.InvitePageModule)
+    loadChildren: () => import('../pages/invite/invite.module').then( m => m.InvitePageModule)
   },
   {
     path: 'wallets',
-    loadChildren: () => import('./pages/wallets/wallets.module').then( m => m.WalletsPageModule)
+    loadChildren: () => import('../pages/wallets/wallets.module').then( m => m.WalletsPageModule)
   },
   {
     path: 'sites',
-    loadChildren: () => import('./pages/sites/sites.module').then( m => m.SitesPageModule)
+    loadChildren: () => import('../pages/sites/sites.module').then( m => m.SitesPageModule)
   },
   {
     path: 'passwords',
-    loadChildren: () => import('./pages/passwords/passwords.module').then( m => m.PasswordsPageModule)
+    loadChildren: () => import('../pages/passwords/passwords.module').then( m => m.PasswordsPageModule)
   },
   {
     path: 'wallet',
-    loadChildren: () => import('./pages/wallet/wallet.module').then( m => m.WalletPageModule)
+    loadChildren: () => import('../pages/wallet/wallet.module').then( m => m.WalletPageModule)
   }
 ];
 

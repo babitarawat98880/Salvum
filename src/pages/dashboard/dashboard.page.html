@@ -347,7 +347,7 @@
           </ion-row>
     </ion-grid>
     <div footer-height></div> 
-    <div class="notification-section" *ngIf="allNotice == true" (clickOutside)="onClickedOutside($event)" clickOutsideEnabled="true">
+    <!-- <div class="notification-section" *ngIf="allNotice == true" (clickOutside)="onClickedOutside($event)" clickOutsideEnabled="true">
       <ion-list margin0 *ngIf="notification0?.length > 0">
          <ion-list-header br-btm margin0>You have {{counts?.notify0_count}} new messages</ion-list-header>
          <ion-item *ngFor="let notice of notification0 | slice:0:3;  let i=index ">
@@ -365,7 +365,6 @@
             </div>
             </ng-container>
             </ion-avatar>
-            <!-- <h4 fnt-bold>{{notice.receiverName}}</h4> -->
             <h6 fnt-regular fnt12 *ngIf="notice.type == 0" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has been accepted your friend request.</h6>
     
             <h6 fnt-regular fnt12 *ngIf="notice.type == 1" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} sent you friend request.</h6>
@@ -421,8 +420,7 @@
             <h6 (click)="readNotis(notice._id,notice.type)" fnt-regular  *ngIf="notice.type == 18">{{notice.isAdmin == '1' ? 'Admin' : notice.senderName}} <br><span fnt12 color-light-grey> {{notice.isAdmin == '1' ? 'Assigned license key to '+notice.senderName+' has been removed.' : 'Assigned license key has been removed.'}}</span></h6>
     
             <p fnt-regular fnt12>{{timesAgo(notice.created_on)}}</p>
-            <!-- <p fnt-regular fnt12>{{notice.created_on|timeAgo}}</p> -->
-         </ion-item>
+            </ion-item>
          <ion-list-header br-btm margin0 (click)="seeAllNotifications()">
             <button bg-transparent>
             See All Notifications 
@@ -437,7 +435,7 @@
             </button>
          </ion-list-header>
       </ion-list>
-    </div>
+    </div> -->
     </ion-content>
     
     
