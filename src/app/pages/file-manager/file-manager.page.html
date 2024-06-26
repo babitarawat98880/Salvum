@@ -1,0 +1,50 @@
+<app-header></app-header>
+
+<ion-row main-breadcrumb ion-fixed style="top:60px">
+   <ion-col>
+      <ol class="breadcrumb">
+         <li (click)="root()"><a>Home</a></li>
+         <li class="active"><a>File Manager</a></li> 
+      </ol>
+   </ion-col>
+</ion-row>
+
+<ion-content>
+   <ion-grid>
+     <ion-row>
+       <!-- Sidebar -->
+       <ion-col size="3">
+         <ion-card>
+            <ion-card-content>
+               <ion-button color="primary" size="small"><ion-icon name="add-outline"></ion-icon></ion-button>
+               <ion-button color="danger" size="small"><ion-icon name="remove-outline"></ion-icon></ion-button>
+               <ion-button color="success" size="small"><ion-icon name="share-social-outline"></ion-icon></ion-button>
+               <ion-list>
+               <ion-item>
+                  <ion-label><ion-icon name="folder-open" color="primary"></ion-icon> Shared</ion-label>
+               </ion-item>
+               <ion-item>
+                  <ion-label><ion-icon name="chevron-down"></ion-icon> Level 1</ion-label>
+               </ion-item>
+               </ion-list>
+            </ion-card-content>
+         </ion-card>
+       </ion-col>
+ 
+       <!-- Main Content Area -->
+       <ion-col size="9">
+        <ion-row>
+          <ion-col size="2">
+            <ion-card class="icon-mid">
+              <ion-icon name="folder-open" color="primary"></ion-icon>
+            </ion-card>
+            <div class="text-center">
+              Level 1
+            </div>
+          </ion-col>
+        </ion-row>
+         
+       </ion-col>
+     </ion-row>
+   </ion-grid>
+ </ion-content>

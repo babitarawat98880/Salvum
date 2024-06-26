@@ -131,6 +131,12 @@ export class SmallInboxPage {
     dragObj: any;
     searchTerm: any = '';
     uniqueBagId: string = 'dragula-bag-' + _uniqueId++;
+    messages = [
+        { title: 'Level2 Contact Update', time: '6:16 AM 14 May' },
+        { title: 'Unconnected User', time: '3:17 AM 14 May' },
+        { title: 'Level2 Contact Update', time: '10:36 AM 11 May' },
+        // Add more messages as needed
+      ];
     constructor(
         // private transfer: FileTransfer,
         // private file: File,

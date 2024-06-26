@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { BidjobsPageRoutingModule } from './bidjobs-routing.module';
 
 import { BidjobsPage } from './bidjobs.page';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    BidjobsPageRoutingModule
+    BidjobsPageRoutingModule,
+    SharedModuleModule
   ],
   declarations: [BidjobsPage]
 })

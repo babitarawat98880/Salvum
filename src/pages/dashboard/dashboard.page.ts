@@ -10,6 +10,7 @@ import { EventService } from '../../services/event.service';
 // import { Socket } from 'ng-socket-io';
 import { UpdateLicensePage } from '../update-license/update-license.page';
 import HandyTimeAgo from 'handy-timeago';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -507,7 +508,7 @@ export class DashboardPage implements OnInit {
     if (!isLevelOpened) {
       this.componentService.presentToast( 'Please open level first.','info' )
     }else{
-      this.navCtrl.navigateForward('FilemanagerPage');
+      this.navCtrl.navigateForward('file-manager');
     }
     
   };

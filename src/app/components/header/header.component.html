@@ -1,19 +1,86 @@
 <div class="nav-wrap">
   <ion-row>
     <ion-col col-md-6>  
-      <img src="https://www.serrare.com/userpanel/assets/img/logo.png" height="50px">
+      <img src="https://www.serrare.com/userpanel/assets/img/logo.png" height="50px" (click)="root()">
     </ion-col>
     <ion-col col-md-6>  
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-button id="tooltip-mail" data-tooltip="Mail Tooltip">
+          <ion-button id="tooltip-mail" data-tooltip="Mail Tooltip" (click)="smailPage()">
             <ion-icon name="mail" color="light"></ion-icon>
           </ion-button>
-          <ion-button id="tooltip-people" data-tooltip="People Tooltip"><ion-icon name="people" color="light"></ion-icon></ion-button>
-          <ion-button id="tooltip-document" data-tooltip="Document Tooltip"><ion-icon name="document" color="light"></ion-icon></ion-button>
-          <ion-button id="tooltip-card" data-tooltip="Card Tooltip"><img src="assets/img/bid_icon_white.png" style="width: 21px; margin-top: 7px;"></ion-button>
-          <ion-button id="tooltip-briefcase" data-tooltip="Briefcase Tooltip"><ion-icon name="briefcase" color="light"></ion-icon></ion-button>
+          <ion-button id="tooltip-people" data-tooltip="People Tooltip" (click)="contactsPage()"><ion-icon name="people" color="light"></ion-icon></ion-button>
+          <ion-button id="tooltip-document" data-tooltip="Document Tooltip" (click)="fileManagerPage()"><ion-icon name="document" color="light"></ion-icon></ion-button>
+          <ion-button id="tooltip-card" data-tooltip="Card Tooltip" (click)="bidJobsPage()"><img src="assets/img/bid_icon_white.png" style="width: 21px; margin-top: 7px;"></ion-button>
+          <ion-button id="tooltip-briefcase" data-tooltip="Briefcase Tooltip" (click)="membersPage()"><ion-icon name="briefcase" color="light"></ion-icon></ion-button>
           <ion-button id="tooltip-apps" data-tooltip="Apps Tooltip"><ion-icon name="apps" color="light"></ion-icon></ion-button>
+          <!-- (click)="invitePage()"?>-->
+          <ion-popover trigger="tooltip-apps" triggerAction="click">
+            <ng-template>
+              <ion-content class="ion-padding">
+                <ion-row>
+                  <ion-col size="4" class="text-center">
+                    <ion-text (click)="root()">
+                      <div class="menu-icon-text"><ion-icon name="home-outline" color="primary"></ion-icon></div>
+                      <div class="font-10">Dashboard</div>
+                    </ion-text>
+                  </ion-col>
+                  <ion-col size="4" class="text-center">
+                    <ion-text (click)="smailPage()">
+                      <div class="menu-icon-text"><ion-icon name="mail-outline" color="success"></ion-icon></div>
+                      <div class="font-10">Smail</div>
+                    </ion-text>
+                  </ion-col>
+                  <ion-col size="4" class="text-center">
+                    <ion-text (click)="fileManagerPage()">
+                      <div class="menu-icon-text"><ion-icon name="document-outline" color="danger"></ion-icon></div>
+                      <div class="font-10">Files</div>
+                    </ion-text>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size="4" class="text-center">
+                    <ion-text (click)="contactsPage()">
+                      <div class="menu-icon-text"><ion-icon name="phone-portrait-outline" color="primary"></ion-icon></div>
+                      <div class="font-10">Contacts</div>
+                    </ion-text>
+                  </ion-col>
+                  <ion-col size="4" class="text-center">
+                    <ion-text (click)="membersPage()">
+                      <div class="menu-icon-text"><ion-icon name="people-outline" color="success"></ion-icon></div>
+                      <div class="font-10">Members</div>
+                    </ion-text>
+                  </ion-col>
+                  <ion-col size="4" class="text-center">
+                    <ion-text (click)="invitePage()">
+                      <div class="menu-icon-text"><ion-icon name="paper-plane-outline" color="danger"></ion-icon></div>
+                      <div class="font-10">Invites</div>
+                    </ion-text>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size="4" class="text-center">
+                    <ion-text (click)="walletPage()">
+                      <div class="menu-icon-text"><ion-icon name="wallet-outline" color="primary"></ion-icon></div>
+                      <div class="font-10">Wallet</div>
+                    </ion-text>
+                  </ion-col>
+                  <ion-col size="4" class="text-center">
+                    <ion-text (click)="invitePage()">
+                      <div class="menu-icon-text"><ion-icon name="briefcase-outline" color="success"></ion-icon></div>
+                      <div class="font-10">Jobs</div>
+                    </ion-text>
+                  </ion-col>
+                  <ion-col size="4" class="text-center">
+                    <ion-text (click)="bidJobsPage()">
+                      <div class="menu-icon-text"><img src="assets/img/bid_icon_red.png" width="25"></div>
+                      <div class="font-10">Bidding</div>
+                    </ion-text>
+                  </ion-col>
+                </ion-row>
+              </ion-content>
+            </ng-template>
+          </ion-popover>
           <ion-button id="tooltip-notifications" data-tooltip="Notifications Tooltip"><ion-icon name="notifications" color="light"></ion-icon></ion-button>
           <ion-button id="tooltip-help" data-tooltip="Help Tooltip"><ion-icon name="help" color="light"></ion-icon></ion-button>
           <ion-button id="tooltip-level" class="custom-button-white" data-tooltip="Level Tooltip">

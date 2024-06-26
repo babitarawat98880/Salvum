@@ -87,3 +87,82 @@ $padding24-16:24px 16px;
 $padding13-16:13px 16px;
 $padding30-20:   30px 20px;
 $radius12:12px;
+
+/********** EDITS START **************/
+
+.breadcrumb {
+    list-style: none;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0px;
+    margin: 0px;
+  }
+.breadcrumb li {
+    padding: 5px 15px 6px 12px;
+    border-radius: 0px 15px 15px 0px;
+    -webkit-transform: translateX(10px);
+    transform: translateX(10px);
+    background: #e6e6e6;
+    position: relative;
+    z-index: 1;
+    border-right: 1px solid #999;
+  }
+  .breadcrumb li.active {
+    background: #1976d2;
+    color: #fafafa;
+    border-radius: 0px 15px 15px 0px;
+    -webkit-transform: initial;
+    transform: initial;
+    z-index: unset;
+    padding-left: 20px;
+  }
+  .breadcrumb li.active a {
+    color: #fff;
+  }
+
+  .icon-wrap{
+  background-color: #1976d2;
+  padding: 10px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 20px 3px 20px 20px;
+  font-size: 24px;
+}
+.icon-wrap-light{
+  background-color: #f4f8f9;
+  color: #1976d2;
+  font-weight: bold;
+  border-radius: 50%;
+  border: 1px solid #e5ebec;
+  width: 30px;
+  height: 30px;
+  padding: 1.5em;
+}
+.ion-text-title{
+  font-size: 20px;
+  margin-bottom: 0;
+}
+.m-box {
+  padding-top: 10px;
+  padding-bottom: 18px;
+  border-right: 1px solid #ccc;
+  margin-bottom: 1em;
+  background: #fff;
+}
+.text-center{
+  text-align: center;
+}
+.icon-box{
+  padding: 0em 0 1.2em 0;
+  font-size: 22px;
+  text-align: center;
+}
+.icon-box ion-icon{
+  padding: 1em 0 0.3em 0;
+  font-size: 36px;
+}
+.icon-box ion-text{
+  display: block;
+}
