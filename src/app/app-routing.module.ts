@@ -137,12 +137,7 @@ const routes: Routes = [
   {
     path: 'job-calendar',
     loadChildren: () => import('../pages/job-calendar/job-calendar.module').then( m => m.JobCalendarPageModule)
-  },
-  {
-    path: 'rfis',
-    loadChildren: () => import('../pages/rfis/rfis.module').then( m => m.RfisPageModule)
   }
-
 ];
 
 @NgModule({
