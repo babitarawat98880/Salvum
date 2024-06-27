@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <ion-content padding lightgrey has-header>
   <ion-row main-breadcrumb ion-fixed>
      <ion-col>
@@ -8,95 +10,114 @@
      </ion-col>
   </ion-row>
   <div breadcrumb-height></div>
-  <ion-grid >
-     <div class="cd-pricing-switcher">
-        <p class="fieldset">
-           <input type="radio" name="duration-1" value="monthly" id="monthly-1" (click)="changePrice(0, 30)" checked> 
-           <label for="monthly-1">Monthly</label>
-           <input type="radio" name="duration-1" value="yearly" id="yearly-1" (click) ="changePrice(1 , 90)">
-           <label for="yearly-1">Quarterly</label>
-           <input type="radio" name="duration-1" value="yearly" id="yearly-2" (click) ="changePrice(2 , 180)">
-           <label for="yearly-2">Half Yearly</label>
-           <input type="radio" name="duration-1" value="yearly" id="yearly-3" (click) ="changePrice(3, 360)">
-           <label for="yearly-3">Yearly</label>
-           <!--span class="cd-switch"></span-->
-        </p>
-     </div>
-     <ion-row>
-       <ion-col col-12 col-xl-4 offset-xl-4  offset-md-3 col-sm-12  col-md-6 >
-       <ion-item border-none br-lt-grey >
-         <ion-label fnt-regular selected="true">Select license</ion-label>
-         <ion-select  cancelText="Cancel" okText="Okay!" [(ngModel)]="licenses" ngDefaultControl (ionChange)="addPrice($event)">
-         <ion-select-option value="{{item.start}}/{{item.price}}" *ngFor="let item of lincesArr" >{{item.start}}(+${{item.price}})</ion-select-option>
-         </ion-select>
-       </ion-item>
-       </ion-col>
 
-       <ion-col col-12 p-lr-0>
-       <ion-list radio-group [(ngModel)]="check_value" ngDefaultControl *ngIf="isVisible == true">
-       <ion-row>
-         <ion-col col-6>
-           <ion-item>
-             <ion-label>Under existing company</ion-label>
-             <ion-radio checked value="0"></ion-radio>
-           </ion-item>
-         </ion-col>
-         <ion-col col-6>
-           <ion-item>
-             <ion-label>Under new company</ion-label>
-             <ion-radio value="1"></ion-radio>
-           </ion-item>
-         </ion-col>
+      <ion-row>
+        <ion-col size="12" size-md="4"></ion-col>
+        <ion-col size="12" size-md="4">
+          <div class="cd-pricing-switcher">
+            <div class="custom-segment fieldset">
+              
+                <input type="radio" name="duration-1" id="monthly" value="monthly" id="monthly-1" (click)="changePrice(0, 30)" checked> 
+                <label for="monthly-1">Monthly</label>
+                <input type="radio" name="duration-1" id="quarterly" value="yearly" id="yearly-1" (click) ="changePrice(1 , 90)">
+                <label for="yearly-1">Quarterly</label>
+                <input type="radio" name="duration-1" id="half-yearly" value="yearly" id="yearly-2" (click) ="changePrice(2 , 180)">
+                <label for="yearly-2">Half Yearly</label>
+                <input type="radio" name="duration-1" id="yearly" value="yearly" id="yearly-3" (click) ="changePrice(3, 360)">
+                <label for="yearly-3">Yearly</label>
+                <!--span class="cd-switch"></span-->
+              
+            </div>
+         </div>
+        </ion-col>
+        <ion-col size="12" size-md="4"></ion-col>
+      </ion-row>
+     
+      <ion-row>
+        <ion-col size="12" size-md="4"></ion-col>
+        <ion-col size="12" size-md="4">
+        <ion-item border-none br-lt-grey >
+          <ion-label fnt-regular selected="true">Select license</ion-label>
+          <ion-select  cancelText="Cancel" okText="Okay!" [(ngModel)]="licenses" ngDefaultControl (ionChange)="addPrice($event)">
+          <ion-select-option value="{{item.start}}/{{item.price}}" *ngFor="let item of lincesArr" >{{item.start}}(+${{item.price}})</ion-select-option>
+          </ion-select>
+        </ion-item>
+       </ion-col>
+       <ion-col size="12" size-md="4"></ion-col>
        </ion-row>
-       </ion-list>
+       <ion-row>
 
-       <ion-item *ngIf="check_value == '0'">
-         <ion-label>Select Company</ion-label>
-         <ion-select  cancelText="Cancel" okText="Okay!" [(ngModel)]="companyId" ngDefaultControl>
-           <ion-select-option value="{{company._id}}" *ngFor="let company of companies" >{{company.company_name}}</ion-select-option>
-         </ion-select>
-       </ion-item>
+       <ion-col size="12">
+          <ion-list radio-group [(ngModel)]="check_value" ngDefaultControl *ngIf="isVisible == true">
+            <ion-row>
+              <ion-col size="12" size-md="6">
+                <ion-item>
+                  <ion-label>Under existing company</ion-label>
+                  <ion-radio checked value="0"></ion-radio>
+                </ion-item>
+              </ion-col>
+              <ion-col size="12" size-md="6">
+                <ion-item>
+                  <ion-label>Under new company</ion-label>
+                  <ion-radio value="1"></ion-radio>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-list>
 
-       <ion-item *ngIf="check_value == '1'">
-        <ion-label floating fnt-light fnt-regular>Company Name*</ion-label>
-         <ion-input type="text" [(ngModel)] = "company_name" ngDefaultControl></ion-input>
-       </ion-item>
+          <ion-item *ngIf="check_value == '0'">
+            <ion-label>Select Company</ion-label>
+            <ion-select  cancelText="Cancel" okText="Okay!" [(ngModel)]="companyId" ngDefaultControl>
+              <ion-select-option value="{{company._id}}" *ngFor="let company of companies" >{{company.company_name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item *ngIf="check_value == '1'">
+            <ion-label floating fnt-light fnt-regular>Company Name*</ion-label>
+            <ion-input type="text" [(ngModel)] = "company_name" ngDefaultControl></ion-input>
+          </ion-item>
        </ion-col>
 
 
-      <ion-col col-12 p-lr-0>
-       <div *ngFor="let item of packageArr;" w-100>
-           <ion-row>
-         <ion-col col-12 col-xl-4 offset-xl-4  offset-md-3 col-sm-12  col-md-6  *ngIf="item.price != 0 && item.price1 != 0 && item.price2 != 0 && item.price3 != 0">
-           <div class="pricing-box" >
-              <div class="pricing-head ">
-                 <ion-icon name="pricetag"></ion-icon>
-                 <h4 fnt-regular>{{item.title}}</h4>
-                 <div class="underline"></div>
-                 <h3 fnt-regular ><sup>$</sup>{{finalprice}}</h3>
-              </div>
-              <ion-list>
-                 <ion-item fnt-regular *ngFor="let feature of item.feature_arr;" >{{feature}}</ion-item>
-              </ion-list>
+       <ion-col size="12">
+        <ion-row>
+          <ion-col size="12" size-md="4"></ion-col>
+          <ion-col size="12" size-md="4">
+            <div *ngFor="let item of packageArr;" w-100>
+              <ion-row>
+                <ion-col col-12 col-xl-4 offset-xl-4  offset-md-3 col-sm-12  col-md-6  *ngIf="item.price != 0 && item.price1 != 0 && item.price2 != 0 && item.price3 != 0">
+                  <div class="pricing-box" >
+                      <div class="pricing-head ">
+                        <ion-icon name="pricetag"></ion-icon>
+                        <h4 fnt-regular>{{item.title}}</h4>
+                        <div class="underline"></div>
+                        <h3 fnt-regular ><sup>$</sup>{{finalprice}}</h3>
+                      </div>
+                      <ion-list>
+                        <ion-item *ngFor="let feature of item.feature_arr;" class="text-center">{{feature}}</ion-item>
+                      </ion-list>
 
-              
-               <ion-item  check-package>
+                      
+                      <ion-item class="bg-color">
 
-                 <ion-label>Make Recurring Billing</ion-label>
-                 <ion-checkbox [(ngModel)]="is_recurring_billing" ngDefaultControl></ion-checkbox>
-               
-               </ion-item>
-              
-              <button ion-button color="white" round fnt-bold (click) = "Purchase(item,is_recurring_billing)">{{subscription_amount > '0' ? 'Renew' : 'Purchase'}}</button>
-           </div>
-         </ion-col>
-    </ion-row>
-       </div>
-             </ion-col>
-         <ion-col col-12 text-center p-lr-0>
-           <button ion-button color="green" fnt-normal (click)="openExtraspacePage()">Buy Extra Space</button>
+                        <ion-label>Make Recurring Billing</ion-label>
+                        <ion-checkbox [(ngModel)]="is_recurring_billing" ngDefaultControl></ion-checkbox>
+                      
+                      </ion-item>
+                      
+                      <ion-button color="light" (click) = "Purchase(item,is_recurring_billing)">{{subscription_amount > '0' ? 'Renew' : 'Purchase'}}</ion-button>
+                  </div>
+                </ion-col>
+            </ion-row>
+          </div>
+          </ion-col>
+          <ion-col size="12" size-md="4"></ion-col>
+        </ion-row>
+      </ion-col>
+         <ion-col size="12" class="text-center">
+           <ion-button color="success" (click)="openExtraspacePage()">Buy Extra Space</ion-button>
          </ion-col>
      </ion-row>
-  </ion-grid>
+ 
 <div footer-height></div> 
 </ion-content>

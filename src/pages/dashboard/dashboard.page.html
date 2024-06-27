@@ -59,7 +59,7 @@
     <div breadcrumb-height></div>
     <ion-grid class="pt-0 pb-0">
       <ion-row>
-        <ion-col class="m-box">   
+        <ion-col size="12" size-md="3" class="m-box">   
           <ion-item [button]="true"  no-lines detail="false" (click)="openSmailPage()">
             <div class="unread-indicator-wrapper" slot="start">
               <ion-icon  name="mail-outline" class="icon-wrap" item-start></ion-icon> 
@@ -74,7 +74,7 @@
             </ion-label> 
           </ion-item>
         </ion-col>
-        <ion-col class="m-box">
+        <ion-col size="12" size-md="3" class="m-box">
           <ion-item [button]="true"  no-lines detail="false" (click) = "openContacts()" >
             <div class="unread-indicator-wrapper" slot="start">
               <ion-icon name="person-circle-outline" class="icon-wrap"></ion-icon>
@@ -89,7 +89,7 @@
             </ion-label> 
           </ion-item>
         </ion-col>
-        <ion-col class="m-box">   
+        <ion-col size="12" size-md="3" class="m-box">   
           <ion-item [button]="true"  no-lines detail="false"  (click) = "openFilesPage()" >
             <div class="unread-indicator-wrapper" slot="start">
               <ion-icon name="document-outline" class="icon-wrap" item-start></ion-icon>
@@ -104,7 +104,7 @@
             </ion-label> 
           </ion-item>
         </ion-col>
-        <ion-col class="m-box">
+        <ion-col size="12" size-md="3" class="m-box">
           <ion-item [button]="true"  no-lines detail="false" (click) = "openBidPage()" >
             <div class="unread-indicator-wrapper" slot="start">
               <span class="icon-wrap"><img style="margin-top: 8px;" src="https://www.serrare.com/userpanel/assets/img/bid_icon_white.png" width="18px"></span>
@@ -130,7 +130,7 @@
 
   <ion-row>
 
-    <ion-col class="m-box">   
+    <ion-col size="12" size-md="6" class="m-box">   
       <ion-item [button]="true"  no-lines detail="false"  (click) = "openJobsPage()" >
         <div class="unread-indicator-wrapper" slot="start">
           <ion-icon name="briefcase-outline" class="icon-wrap" item-start></ion-icon>
@@ -146,7 +146,7 @@
       </ion-item>
     </ion-col>
     
-    <ion-col class="m-box">   
+    <ion-col size="12" size-md="6" class="m-box">   
       <div class="white-box activity-widget switchcompany" *ngIf="companies != ''">
         <ion-item>
           <ion-label>Switch Company</ion-label>
@@ -181,7 +181,7 @@
       </ion-item >-->
   
       <ion-row>
-        <ion-col class="m-box">
+        <ion-col size="12" size-md="6" class="m-box">
             <div class="white-box activity-widget min-h-382">
               <h4 class="box-title">Friend Request Log</h4>
               <div class="steamline">
@@ -209,10 +209,10 @@
                 </div>
             </div>
           </ion-col>
-          <ion-col class="m-box">
+          <ion-col size="12" size-md="6" class="m-box">
             <ion-row>
-              <ion-col (click)="openUpgradePack()" cursor-enb>
-                
+              <ion-col size="12" size-md="6">
+                <div (click)="openUpgradePack()">
                     Current Membership
       
                     <p style="min-height : auto" fnt-light *ngIf="subscription_amount == '0'">
@@ -240,93 +240,91 @@
                        <ion-icon class="icon-right" name="arrow-dropup-circle" item-end margin0></ion-icon>
                        </ion-col>
                     </ion-row>
+
+                  </div>
+                    <ion-item [button]="true"  no-lines detail="false" (click)="openContacts()" class="m-box">
+                      <div class="unread-indicator-wrapper" slot="start">
+                        <ion-icon  name="phone-portrait" class="icon-wrap-light" item-start></ion-icon> 
+                      </div>
+                      <ion-label>
+                        <ion-text>
+                          <h2 class="ion-text-title">Total Contacts</h2>
+                        </ion-text>
+                        <ion-note color="medium" class="ion-text-wrap">
+                          {{total_contacts}}
+                        </ion-note>
+                      </ion-label> 
+                    </ion-item>
+
+                    <ion-item [button]="true"  no-lines detail="false" (click)="openBidPage()" class="m-box">
+                      <div class="unread-indicator-wrapper" slot="start">
+                        <ion-icon  name="paper-plane-outline" class="icon-wrap-light" item-start></ion-icon> 
+                      </div>
+                      <ion-label>
+                        <ion-text>
+                          <h2 class="ion-text-title">Job Invitations</h2>
+                        </ion-text>
+                        <ion-note color="medium" class="ion-text-wrap">
+                          {{total_jobs_invitation}}
+                        </ion-note>
+                      </ion-label> 
+                    </ion-item>
+
+                  
                 
               </ion-col>
 
-              <ion-col (click)="openExtraspace()">
-                Space Stats
-                <p fnt-light m-b-3em>
-                  {{stats?.consumed_space}} ({{consumed_percent}}%) of {{stats?.total_space > 1000 ? (stats?.total_space/1000).toFixed(2) : stats?.total_space}} {{stats?.total_space > 1000 ? 'TB' : stats?.space_type}} used
-                </p>
-                <ion-row>
-                  <ion-col col-10 col-xl-9 col-lg-9 col-md-8> 
-                    <h2 fnt-regular>
-                    <sup>
-                    <small><ion-icon class="icon-dashboard" name="arrow-up"></ion-icon></small></sup>
-                    <span upgrade-now>Buy More Space</span>
-                    </h2>
-                    </ion-col>
-                      <ion-col col-2 col-xl-3 col-lg-3 col-md-4 text-right> 
-                        <ion-icon class="icon-right" name="pie" item-end margin0></ion-icon>
-                    </ion-col>
-                  </ion-row>
+              <ion-col size="12" size-md="6">
+                <div (click)="openExtraspace()">
+                  Space Stats
+                  <p fnt-light m-b-3em>
+                    {{stats?.consumed_space}} ({{consumed_percent}}%) of {{stats?.total_space > 1000 ? (stats?.total_space/1000).toFixed(2) : stats?.total_space}} {{stats?.total_space > 1000 ? 'TB' : stats?.space_type}} used
+                  </p>
+                  <ion-row>
+                    <ion-col col-10 col-xl-9 col-lg-9 col-md-8> 
+                      <h2 fnt-regular>
+                      <sup>
+                      <small><ion-icon class="icon-dashboard" name="arrow-up"></ion-icon></small></sup>
+                      <span upgrade-now>Buy More Space</span>
+                      </h2>
+                      </ion-col>
+                        <ion-col col-2 col-xl-3 col-lg-3 col-md-4 text-right> 
+                          <ion-icon class="icon-right" name="pie" item-end margin0></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                    <ion-item [button]="true"  no-lines detail="false" (click)="openJobsPage()" class="m-box">
+                      <div class="unread-indicator-wrapper" slot="start">
+                        <ion-icon  name="mail-outline" class="icon-wrap-light" item-start></ion-icon> 
+                      </div>
+                      <ion-label>
+                        <ion-text>
+                          <h2 class="ion-text-title">Total Job Posted</h2>
+                        </ion-text>
+                        <ion-note color="medium" class="ion-text-wrap">
+                          {{total_jobs_posted}}
+                        </ion-note>
+                      </ion-label> 
+                    </ion-item>
+
+                    <ion-item [button]="true"  no-lines detail="false" (click)="openBidPage()" class="m-box">
+                      <div class="unread-indicator-wrapper" slot="start">
+                        <ion-icon  name="checkbox-outline" class="icon-wrap-light" item-start></ion-icon> 
+                      </div>
+                      <ion-label>
+                        <ion-text>
+                          <h2 class="ion-text-title">Total Applied Jobs</h2>
+                        </ion-text>
+                        <ion-note color="medium" class="ion-text-wrap">
+                          {{total_applied_jobs}}
+                        </ion-note>
+                      </ion-label> 
+                    </ion-item>
+                  
                 </ion-col>
 
             </ion-row>
-            <ion-row>
-              <ion-col class="m-box">   
-                <ion-item [button]="true"  no-lines detail="false" (click)="openContacts()">
-                  <div class="unread-indicator-wrapper" slot="start">
-                    <ion-icon  name="phone-portrait" class="icon-wrap-light" item-start></ion-icon> 
-                  </div>
-                  <ion-label>
-                    <ion-text>
-                      <h2 class="ion-text-title">Total Contacts</h2>
-                    </ion-text>
-                    <ion-note color="medium" class="ion-text-wrap">
-                      {{total_contacts}}
-                    </ion-note>
-                  </ion-label> 
-                </ion-item>
-              </ion-col>
-              <ion-col class="m-box">   
-                <ion-item [button]="true"  no-lines detail="false" (click)="openJobsPage()">
-                  <div class="unread-indicator-wrapper" slot="start">
-                    <ion-icon  name="mail-outline" class="icon-wrap-light" item-start></ion-icon> 
-                  </div>
-                  <ion-label>
-                    <ion-text>
-                      <h2 class="ion-text-title">Total Job Posted</h2>
-                    </ion-text>
-                    <ion-note color="medium" class="ion-text-wrap">
-                      {{total_jobs_posted}}
-                    </ion-note>
-                  </ion-label> 
-                </ion-item>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col class="m-box">   
-                <ion-item [button]="true"  no-lines detail="false" (click)="openBidPage()">
-                  <div class="unread-indicator-wrapper" slot="start">
-                    <ion-icon  name="paper-plane-outline" class="icon-wrap-light" item-start></ion-icon> 
-                  </div>
-                  <ion-label>
-                    <ion-text>
-                      <h2 class="ion-text-title">Job Invitations</h2>
-                    </ion-text>
-                    <ion-note color="medium" class="ion-text-wrap">
-                      {{total_jobs_invitation}}
-                    </ion-note>
-                  </ion-label> 
-                </ion-item>
-              </ion-col>
-              <ion-col class="m-box">   
-                <ion-item [button]="true"  no-lines detail="false" (click)="openBidPage()">
-                  <div class="unread-indicator-wrapper" slot="start">
-                    <ion-icon  name="checkbox-outline" class="icon-wrap-light" item-start></ion-icon> 
-                  </div>
-                  <ion-label>
-                    <ion-text>
-                      <h2 class="ion-text-title">Total Applied Jobs</h2>
-                    </ion-text>
-                    <ion-note color="medium" class="ion-text-wrap">
-                      {{total_applied_jobs}}
-                    </ion-note>
-                  </ion-label> 
-                </ion-item>
-              </ion-col>
-            </ion-row>
+
           </ion-col>
         </ion-row>
 

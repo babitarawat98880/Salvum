@@ -27,7 +27,7 @@
         <div clearboth></div>
      <ion-list m-t-0 my-license>
         <ion-row>  
-           <ion-col size="6" *ngFor="let license of licenses; let i = index " class="m-box">
+           <ion-col size="12" size-md="6" *ngFor="let license of licenses; let i = index " class="m-box">
               <ion-item-sliding list-hover class="{{license.usedBy.indexOf(loginId) >= 0 ? 'active_license' : ''}}">
                  <ion-item   border-none wallet-main br-lt-grey>
                     <ion-checkbox *ngIf="currentDate < license.status && license.usedBy.indexOf(loginId) == -1" m-r-15 color="blue" [(ngModel)]="license[bb]" (click)="listCheckbox(license[bb], license)"> 1</ion-checkbox> 

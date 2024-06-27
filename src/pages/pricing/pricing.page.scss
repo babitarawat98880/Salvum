@@ -1,3 +1,98 @@
-ion-col {
-    min-width: 100%;
-}
+
+.custom-segment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    border: 1px solid #007aff;
+    border-radius: 50px;
+    overflow: hidden;
+  
+    input[type="radio"] {
+      display: none;
+    }
+  
+    label {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 20px;
+      border-right: 1px solid #007aff;
+      cursor: pointer;
+      color: black;
+      background-color: transparent;
+      transition: background-color 0.3s, color 0.3s;
+  
+      &:last-child {
+        border-right: none;
+      }
+  
+      &:first-child {
+        border-top-left-radius: 50px;
+        border-bottom-left-radius: 50px;
+      }
+  
+      &:last-child {
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+      }
+    }
+  
+    input[type="radio"]:checked + label {
+      background-color: #007aff;
+      color: white;
+    }
+  }
+
+
+  .pricing-box {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+    background-color: #00a9f1;
+    height: 100%;
+  }
+  .pricing-box {
+    text-align: center;
+  }
+  .pricing-box ion-list ion-item, .bg-color {
+    padding-left: 0px;
+    --background: #00a9f1;
+    --text-align: center!important;
+    color: #fafafa;
+  }
+  .pricing-box ion-list ion-item:nth-child(2n) {
+    --background: #00a0e4;
+  }
+  .pricing-box .pricing-head h3 {
+    color: #fafafa;
+    font-size: 40px;
+    text-align: center;
+  }
+  .underline {
+    background-color: #fafafa;
+    height: 1px;
+    display: inline-block;
+    vertical-align: top;
+    width: 9rem;
+    height: 1px;
+    text-align: center;
+    line-height: 0px;
+    margin: 1rem 0px 0px;
+  }
+  .pricing-box .pricing-head h4 {
+    color: #fafafa;
+    font-size: 20px;
+    text-align: center;
+  }
+  .pricing-box .pricing-head ion-icon {
+    font-size: 40px;
+    text-align: center;
+    width: 100%;
+    color: #fafafa;
+  }
+
+  .label {
+    font-size: 14px !important;
+  }
+  

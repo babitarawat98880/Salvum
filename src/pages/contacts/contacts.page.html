@@ -82,7 +82,7 @@
      <ion-list *ngSwitchCase="'contacts'">
         <div class="clearfix"></div>
         <ion-row class="contact-main"   style=" ">
-           <ion-col size="4" *ngFor="let item of data; let i = index  ">
+           <ion-col size="12" size-md="4" *ngFor="let item of data; let i = index  ">
               <div *ngIf="item.memberstatus == 2">
                  <ion-card  list-hover br-lt-grey class="card card-md" padding="" text-right="" margin0  *ngIf="item.senderId == userId" [ngClass]="selectedConIds.indexOf(item.member_id) >= 0 ? 'active_border' : ''">
                     <!--ion-row no-padding>
@@ -749,7 +749,7 @@
      <ion-list *ngSwitchCase="'groups'">
         <ion-grid>
            <ion-row>
-               <ion-col size="4" *ngFor="let x of all_groups; let i = index " class="m-box">
+               <ion-col size="12" size-md="4" *ngFor="let x of all_groups; let i = index " class="m-box">
                   <ion-card>
                  <ion-item-sliding>
                     <ion-item border-none  wallet-main [ngClass]="selected_Ids.indexOf(x._id) >= 0 ? 'active_border' : ''">

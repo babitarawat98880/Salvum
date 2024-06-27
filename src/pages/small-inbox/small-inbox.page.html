@@ -17,11 +17,43 @@
    </ion-col>
 </ion-row>
 
-<ion-content>
+<ion-toolbar class="hide-pc">
+   <ion-buttons slot="start">
+     <ion-menu-button menu="leftMenu" autoHide="false"></ion-menu-button>
+   </ion-buttons>
+ </ion-toolbar>
+
+<ion-menu side="start" menuId="leftMenu" contentId="main-content">
+   <ion-header>
+     <ion-toolbar>
+       <ion-title>Smail Menu</ion-title>
+     </ion-toolbar>
+   </ion-header>
+   <ion-content>
+      <ion-button color="primary" size="small"><ion-icon name="add-outline"></ion-icon></ion-button> 
+      <ion-button color="danger" size="small"><ion-icon name="remove-outline"></ion-icon></ion-button>
+      <ion-list>
+         <ion-item>
+            <ion-label><ion-icon name="pencil-outline" color="primary"></ion-icon> Compose</ion-label>
+         </ion-item>
+         <ion-item>
+            <ion-label><ion-icon name="mail-outline" color="primary"></ion-icon> Inbox</ion-label>
+         </ion-item>
+         <ion-item>
+            <ion-label><ion-icon name="mail-open-outline" color="primary"></ion-icon> Sent</ion-label>
+         </ion-item>
+         <ion-item>
+            <ion-label><ion-icon name="folder-open-outline" color="primary"></ion-icon> Level1</ion-label>
+         </ion-item>
+      </ion-list>
+   </ion-content>
+ </ion-menu>
+
+<ion-content  id="main-content">
    <ion-grid>
      <ion-row>
        <!-- Sidebar -->
-       <ion-col size="3">
+       <ion-col size="12" size-md="3" class="hide-mob">
          <ion-card>
             <ion-card-content>
                <ion-button color="primary" size="small"><ion-icon name="add-outline"></ion-icon></ion-button> 
@@ -45,11 +77,11 @@
        </ion-col>
  
        <!-- Main Content Area -->
-       <ion-col size="9">
+       <ion-col size="12" size-md="9">
  
          <ion-row>
            <!-- List of Messages -->
-           <ion-col size="4">
+           <ion-col size="12" size-md="4">
             <ion-searchbar></ion-searchbar>
 
             <ion-row>
@@ -109,7 +141,7 @@
            </ion-col>
  
            <!-- Message Details -->
-           <ion-col size="8">
+           <ion-col size="12" size-md="8">
             <ion-row>
                <ion-col size="12">
                  <div class="advertisement">
