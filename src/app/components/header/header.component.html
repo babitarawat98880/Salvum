@@ -13,9 +13,9 @@
           <ion-button id="tooltip-document" data-tooltip="Document Tooltip" (click)="fileManagerPage()"><ion-icon name="document" color="light"></ion-icon></ion-button>
           <ion-button id="tooltip-card" data-tooltip="Card Tooltip" (click)="bidJobsPage()"><img src="assets/img/bid_icon_white.png" style="width: 21px; margin-top: 7px;"></ion-button>
           <ion-button id="tooltip-briefcase" data-tooltip="Briefcase Tooltip" (click)="membersPage()"><ion-icon name="briefcase" color="light"></ion-icon></ion-button>
-          <ion-button id="tooltip-apps" data-tooltip="Apps Tooltip"><ion-icon name="apps" color="light"></ion-icon></ion-button>
+          <ion-button  (click)="presentPopover($event)" ><ion-icon name="apps" color="light"></ion-icon></ion-button>
           <!-- (click)="invitePage()"?>-->
-          <ion-popover trigger="tooltip-apps" triggerAction="click">
+          <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
             <ng-template>
               <ion-content class="ion-padding">
                 <ion-row>
@@ -81,13 +81,13 @@
               </ion-content>
             </ng-template>
           </ion-popover>
-          <ion-button id="tooltip-notifications" data-tooltip="Notifications Tooltip" (click)="presentPopover($event)">
+          <ion-button  (click)="presentNotificationPopover($event)">
             <ion-icon name="notifications" color="light"></ion-icon>
             <div class="count-badge" *ngIf="notification0.length > 0">{{counts?.notify0_count}}</div> 
           </ion-button>
-          <ion-popover trigger="tooltip-notifications" triggerAction="click">
+          <ion-popover #popover [isOpen]="isNotiOpen" (didDismiss)="isNotiOpen = false">
             <ng-template>
-              <div class="notification-section" *ngIf="allNotice == true" (clickOutside)="onClickedOutside($event)" clickOutsideEnabled="true">
+              <div class="notification-section"  (clickOutside)="onClickedOutside($event)" clickOutsideEnabled="true">
                 <ion-list margin0 *ngIf="notification0?.length > 0">
                    <ion-list-header br-btm margin0>You have {{counts?.notify0_count}} new messages</ion-list-header>
                    <ion-item *ngFor="let notice of notification0 | slice:0:3;  let i=index ">

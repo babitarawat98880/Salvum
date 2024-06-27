@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, AlertController, PopoverController } from '@ionic/angular';
 import { APIService } from 'src/services/api.service';
 import { ComponentService } from 'src/services/component.service';
@@ -8,6 +8,11 @@ import { ComponentService } from 'src/services/component.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild('popover') popover;
+  @ViewChild('notipopover') notipopover;
+  isOpen = false;
+  isNotiOpen = false;
+  isPopoverOpen:any
   counts: any;
   count: any;
   displayGrid: boolean = false;
@@ -40,8 +45,13 @@ export class HeaderComponent implements OnInit {
     this.getAllNotifications();
   }
 
-  presentPopover(myEvent1) {
-    console.log("sdfsdf")
+  presentPopover(e: Event) {
+    this.popover.event = e;
+    this.isOpen = true;
+  }
+  presentNotificationPopover(e: Event) {
+    this.isNotiOpen = true;
+    this.isPopoverOpen =true;
     this.displayGrid = false;
     this.level4Notice = false;
     this.level3Notice = false;
@@ -148,6 +158,7 @@ export class HeaderComponent implements OnInit {
     this.navCtrl.navigateRoot(['wallet']);
   }
   ngOnDestroy(){
+   
     this.popoverController.dismiss();
   }
 }
