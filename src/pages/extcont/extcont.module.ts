@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ExtcontPageRoutingModule } from './extcont-routing.module';
 
 import { ExtcontPage } from './extcont.page';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ExtcontPageRoutingModule
+    ExtcontPageRoutingModule,
+    SharedModuleModule
   ],
   declarations: [ExtcontPage]
 })

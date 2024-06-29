@@ -56,20 +56,20 @@
               <ion-badge color="light"><ion-icon name="time"></ion-icon> Posted By :  {{job.posted_by}}</ion-badge> 
           </ion-col>
           <ion-col size="3">
-            <button *ngIf="isBrowser == 'true'" ion-button clear item-end margin0 (click)="openBiddetailPage(job._id,job.bid_status)"><ion-icon name="eye" fnt20></ion-icon></button>
-              <button *ngIf="isBrowser == 'true'" ion-button clear item-end margin0 (click)="deleteBids(job._id)"><ion-icon name="trash" fnt20></ion-icon></button>
+            <ion-buttom *ngIf="isBrowser == 'true'" size="small" (click)="openBiddetailPage(job._id,job.bid_status)"><ion-icon name="eye" fnt20></ion-icon></ion-buttom>
+              <ion-buttom *ngIf="isBrowser == 'true'" size="small" (click)="deleteBids(job._id)"><ion-icon name="trash" fnt20></ion-icon></ion-buttom>
             <ion-item-options side="right" *ngIf="isBrowser == 'false'">
               <!-- <button ion-button color="danger"><ion-icon name="trash"></ion-icon> Delete</button> -->
-              <button ion-button color="secondary" (click)="openBiddetailPage(job._id,job.bid_status)"><ion-icon name="eye"></ion-icon> View</button>
-              <button ion-button color="danger" (click)="deleteBids(job._id)"><ion-icon name="trash"></ion-icon> Delete</button>
+              <ion-buttom size="small" color="secondary" (click)="openBiddetailPage(job._id,job.bid_status)"><ion-icon name="eye"></ion-icon> View</ion-buttom>
+              <ion-buttom size="small" color="danger" (click)="deleteBids(job._id)"><ion-icon name="trash"></ion-icon> Delete</ion-buttom>
             </ion-item-options>
           </ion-col>
         </ion-row>
       </ion-item>
       <ion-item-options side="end" *ngIf="isBrowser == 'false'">
           <!-- <button ion-button color="danger"><ion-icon name="trash"></ion-icon> Delete</button> -->
-          <button ion-button color="secondary" (click)="openBiddetailPage(job._id,job.bid_status)"><ion-icon name="eye"></ion-icon> View</button>
-          <button ion-button color="danger" (click)="deleteBids(job._id)"><ion-icon name="trash"></ion-icon> Delete</button>
+          <ion-buttom size="small" color="secondary" (click)="openBiddetailPage(job._id,job.bid_status)"><ion-icon name="eye"></ion-icon> View</ion-buttom>
+          <ion-buttom size="small" color="danger" (click)="deleteBids(job._id)"><ion-icon name="trash"></ion-icon> Delete</ion-buttom>
         </ion-item-options>
     </ion-item-sliding>	
   </ion-item-group> 
@@ -106,12 +106,14 @@
                 <ion-badge color="light"><ion-icon name="time"></ion-icon> Posted By :  {{job.posted_by}}</ion-badge>
             </ion-col>
             <ion-col size="3">
-              <button *ngIf="isBrowser == 'true'" ion-button clear item-end margin0 (click)="openBiddetailPage(job._id,job.bid_status)"><ion-icon name="eye" fnt20></ion-icon></button>
-              <button *ngIf="isBrowser == 'true'" ion-button clear item-end margin0 (click)="deleteBids(job._id)"><ion-icon name="trash" fnt20></ion-icon></button>
+              <ion-buttom *ngIf="isBrowser == 'true'" size="small" (click)="openBiddetailPage(job._id,job.bid_status)">
+                <ion-icon name="eye" fnt20></ion-icon>
+              </ion-buttom>
+              <ion-buttom *ngIf="isBrowser == 'true'" size="small" color="danger" (click)="deleteBids(job._id)"><ion-icon name="trash" fnt20></ion-icon></ion-buttom>
               <ion-item-options side="right" *ngIf="isBrowser == 'false'">
                 <!-- <button ion-button color="danger"><ion-icon name="trash"></ion-icon> Delete</button> -->
-                <button ion-button color="secondary" (click)="openBiddetailPage(job._id,job.bid_status)"><ion-icon name="eye"></ion-icon> View</button>
-                <button ion-button color="danger" (click)="deleteBids(job._id)"><ion-icon name="trash"></ion-icon> Delete</button>
+                <ion-buttom size="small" color="secondary" (click)="openBiddetailPage(job._id,job.bid_status)"><ion-icon name="eye"></ion-icon> View</ion-buttom>
+                <ion-buttom size="small" color="danger" (click)="deleteBids(job._id)"><ion-icon name="trash"></ion-icon> Delete</ion-buttom>
               </ion-item-options>
             </ion-col>
           </ion-row>
@@ -119,8 +121,8 @@
       </ion-item>
       <ion-item-options side="end" *ngIf="isBrowser == 'false'">
           <!-- <button ion-button color="danger"><ion-icon name="trash"></ion-icon> Delete</button> -->
-          <button ion-button color="secondary" (click)="openBiddetailPage(job._id,job.bid_status)"><ion-icon name="eye"></ion-icon> View</button>
-          <button ion-button color="danger" (click)="deleteBids(job._id)"><ion-icon name="trash"></ion-icon> Delete</button>
+          <ion-buttom size="small" color="secondary" (click)="openBiddetailPage(job._id,job.bid_status)"><ion-icon name="eye"></ion-icon> View</ion-buttom>
+          <ion-buttom size="small" color="danger" (click)="deleteBids(job._id)"><ion-icon name="trash"></ion-icon> Delete</ion-buttom>
         </ion-item-options>
     </ion-item-sliding>	
   </ion-item-group> 

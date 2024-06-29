@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <ion-content lightgrey padding has-header>
   <ion-row main-breadcrumb ion-fixed>
     <ion-col>
@@ -9,22 +11,24 @@
     </ion-col>
   </ion-row>
   <div breadcrumb-height></div>
-  <button ion-button (click)= "Add()">Add</button>
-  <button ion-button (click) = "Import()">Import</button>
-  <button ion-button (click) = "Invitation()">Invite</button>
+  <ion-button color="primary" (click)= "Add()">Add</ion-button>
+  <ion-button color="primary" (click) = "Import()">Import</ion-button>
+  <ion-button color="primary" (click) = "Invitation()">Invite</ion-button>
    
   <ion-list box-shdw list-external m-t-10 p-b-10>
   <ion-grid no-padding>
   <ion-row no-padding>
-      <ion-col col-xl-4 col-md-4 col-12 *ngFor="let item of data; let i = index ">
-      <ion-item external-contact> 
-                
-       <input type="checkbox" (change)="sendmail(item)"  [(ngModel)] = "item.checked" />   {{item.externalContacts}}  <button  margin0 ion-button item-end color="blue" (click)="deleteContact(item, i)">
-    <!-- Delete-->
-     <ion-icon name="close"></ion-icon>
-     </button>
-  
-      </ion-item>    
+      <ion-col size="12" size-md="4" *ngFor="let item of data; let i = index ">
+        <ion-card>
+          <ion-row>
+            <ion-col size="10">
+              <input type="checkbox" (change)="sendmail(item)"  [(ngModel)] = "item.checked" />   {{item.externalContacts}}
+            </ion-col>
+            <ion-col size="2">
+              <ion-button size="small" color="primary" (click)="deleteContact(item, i)"><ion-icon name="close"></ion-icon></ion-button>
+            </ion-col>
+          </ion-row>
+      </ion-card>
       </ion-col>
       <ion-col *ngIf="data?.length == 0">
   <div white-bg padding br-lt-grey>   

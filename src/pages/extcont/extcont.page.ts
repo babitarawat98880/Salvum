@@ -88,7 +88,8 @@ export class ExtcontPage {
    }
  
    Import(){
-    this.navCtrl.navigateForward('InvitePage');
+    //this.navCtrl.navigateForward('InvitePage');
+    this.navCtrl.navigateForward('invite');
  
    }
  
