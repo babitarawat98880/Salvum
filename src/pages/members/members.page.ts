@@ -10,6 +10,7 @@ import { ComponentService } from 'src/services/component.service';
   styleUrls: ['./members.page.scss'],
 })
 export class MembersPage implements OnInit {
+  dialCode:any = "1";
   items: any;
   level: any;
   sendData = {};
@@ -50,6 +51,9 @@ export class MembersPage implements OnInit {
     this.APIService.getData('getUserList',this.userId).subscribe((data) => {
       this.componentService.dismissLoader();
       this.items = data;
+      this.items.forEach((element, index) => {
+        element[index] = "1"
+      });
       this.allMembers = data;
     },
       err => {
@@ -68,7 +72,7 @@ export class MembersPage implements OnInit {
   }
 
   chanegLevel(selectedValue: any) {
-    this.level = selectedValue
+    this.level = selectedValue;
   };
 
   sendInvitation(items, index) {

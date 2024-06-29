@@ -1,60 +1,72 @@
 <app-header></app-header>
 <ion-row main-breadcrumb ion-fixed style="top:60px">
   <ion-col>
-     <ol class="breadcrumb">
-        <li (click)="root()"><a>Home</a></li>
-        <li class="active"><a>Members</a></li> 
-     </ol>
+    <ol class="breadcrumb">
+      <li (click)="root()"><a>Home</a></li>
+      <li class="active"><a>Members</a></li>
+    </ol>
   </ion-col>
 </ion-row>
 <ion-content>
-  <ion-searchbar></ion-searchbar>
+  <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems(searchTerm)" p-lr-5 padding-top0 *ngIf="allMembers?.length > 0"></ion-searchbar>
   <ion-row>
-    <ion-col size="12" size-md="4" class="m-box" *ngFor="let message of messages">
+    <ion-col size="12" size-md="4" class="m-box" *ngFor="let item of items; let i = index ">
       <ion-card>
         <ion-row>
           <ion-col size="3">
-                  <ion-avatar  class="card-img">
-                    <img alt="image" class="" src="https://www.serrare.com/userpanel/assets/img/user-dummy.png">
-                </ion-avatar>
-                </ion-col>
-                <ion-col size="9">
-                
-                  <ion-row>
-                    <ion-col size="4">
-                          <span>Contact Name : </span> 
-                    </ion-col>
-                    <ion-col size="8">
-                      {{ message.name }}
-                    </ion-col>
-                </ion-row> 
-                <ion-row>
-                  <ion-col size="4">
-                        <span>Contact Email : </span> 
-                  </ion-col>
-                  <ion-col size="8">
-                    {{ message.email }}
-                  </ion-col>
-              </ion-row> 
-              <ion-row>
-                <ion-col size="4">
-                      <span>Current Level : </span> 
-                </ion-col>
-                <ion-col size="8">
-                  Level 1
-                </ion-col>
-              </ion-row> 
-              <div *ngIf="message.sent==1">
-                <ion-button color="primary" size="small" [disabled]="true">INVITATION SENT</ion-button>
-                <ion-button color="success" size="small">RESENT</ion-button>
-              </div>
-              <div *ngIf="message.sent==0">
-                <ion-button color="primary" size="small">CONNECT</ion-button>
-              </div>
+            <ion-avatar class="card-img">
+              <img src="assets/img/user-dummy.png" *ngIf="item.image == ''">
+              <img src="{{APIURL}}/images/{{item.image}}" *ngIf="item.image !== ''">
+            </ion-avatar>
+          </ion-col>
+          <ion-col size="9">
 
+            <ion-row>
+              <ion-col size="4">
+                <span>Contact Name : </span>
+              </ion-col>
+              <ion-col size="8">
+                {{item.name}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="4">
+                <span>Contact Email : </span>
+              </ion-col>
+              <ion-col size="8">
+                {{item.email}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="4">
+                <span>Current Level : </span>
+              </ion-col>
+              <ion-col size="8">
+                <ion-select cancelText="Cancel" okText="Okay!" [(ngModel)]="item[i]"
+                  (ionChange)="chanegLevel($event)" float-right >
+                  <ion-select-option value="1">Level 1</ion-select-option>
+                  <ion-select-option value="2">Level 2</ion-select-option>
+                  <ion-select-option value="3">Level 3</ion-select-option>
+                  <ion-select-option value="4">Level 4</ion-select-option>
+                </ion-select>
+              </ion-col>
+            </ion-row>
+
+            <div>
+              <ion-button size="small" (click)="sendInvitation(item, i)"
+                *ngIf="item.memberstatus == 0 || item.memberstatus == 3 || !item.memberstatus">Connect</ion-button>
+              <ion-button [disabled]="true" size="small"
+                *ngIf="item.memberstatus == '1' && item.senderId == userId ">Invitation Sent</ion-button>
+              <ion-button size="small" color="success" (click)="resendInvitation(item)"
+                *ngIf="item.memberstatus == 1 && item.senderId == userId ">Resend</ion-button>
+              <ion-button size="small" color="secondary" (click)="acceptContact(item)"
+                *ngIf="item.memberstatus == '1' && item.reciverId == userId ">Accept</ion-button>
+              <ion-button size="small" color="danger" (click)="rejectContact(item)"
+                *ngIf="item.memberstatus == 1 && item.reciverId == userId ">Reject</ion-button>
+            </div>
           </ion-col>
         </ion-row>
-        
+
 
       </ion-card>
     </ion-col>
