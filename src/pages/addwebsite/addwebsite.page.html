@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title>Add Websites</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()"><ion-icon name="close-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div *ngIf="filetype_error == '1'">
+    <p error-file>Only txt,docx,xls,xlsx,zip,doc,odt,png,jpg,jpeg,gif,pdf,csv files are allowed.<button small (click)="closeError()" ion-button><ion-icon name="close"></ion-icon></button></p>
+  </div>
+  <div  *ngIf="filesize_error == '1'">
+    <p error-file>File size exceeded.please upload files upto 500 MB.<button small type="button" (click)="closeErrorS()" ion-button><ion-icon name="close"></ion-icon></button></p>
+  </div>
+  <ion-item>
+    <button ion-button icon-left (click)="presentActionSheet()" *ngIf="isBrowser == 'false'">
+      <ion-icon name="camera"></ion-icon>Select Image
+    </button>
+    <input type="file" ng2FileSelect [uploader]="uploader" *ngIf="isBrowser =='true'" (onFileSelected)="onFileSelected($event)"  [(ngModel)]="image">
+   </ion-item>
+  <ion-item>
+    <ion-select label="Select Category" [(ngModel)]="selectCategory">
+      <ion-select-option value="Social">Social</ion-select-option>
+      <ion-select-option value="Marketing">Marketing</ion-select-option>
+      <ion-select-option value="Store">Store</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Website Link" labelPlacement="stacked" type="url" [(ngModel)]="weblink"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Username/Email" labelPlacement="stacked" type="email" [(ngModel)]="username"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Password" labelPlacement="stacked" type="passwrod" [(ngModel)]="password"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-select label="Select Level" [(ngModel)]="weblevel">
+      <ion-select-option value="{{level}}" *ngFor="let level of allowed_levels">Level {{level}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button color="primary" expand="block" (click)="uploadImage()">Submit</ion-button>
+</ion-content>

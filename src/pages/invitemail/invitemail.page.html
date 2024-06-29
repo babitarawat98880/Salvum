@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title>Inivitation Mails</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()"><ion-icon name="close-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-list margin0>
+	  <ion-item p-lr-0 brdr-none>
+	  <ion-label stacked tags-main>
+
+	  <span tags-text *ngFor="let email of sendArray; let i = index ">
+          {{email}} 
+          <a tags-icon (click)="removeEmailAddress(i)">
+		
+			  <ion-icon class="ion-ios-close-outline" ></ion-icon>
+		  </a>
+    </span>  </ion-label>
+	   <!-- <ion-input fnt-12 type="text" placeholder="Add Emails"></ion-input> -->
+	  </ion-item>
+  </ion-list>
+  <form (submit)="validateEmail(tags)">
+  <ion-item>
+    <ion-input label="Add Emails" labelPlacement="stacked" type="text" (input)="onInput()" name="tags" [(ngModel)] = "tags" (ionBlur)="validateEmail(tags)" ></ion-input>
+  </ion-item>
+  <p validation-msg *ngIf="isEmailValid == false">Invalid email address.</p>
+  <p validation-msg *ngIf="isEmailAlreadyExist == true"> Email already added.</p>
+</form>
+  <ion-button class="primary" expand="block" (click) = "submit(tags)">SUBMIT</ion-button>
+</ion-content>

@@ -166,6 +166,22 @@ const routes: Routes = [
   {
     path: 'wallet',
     loadChildren: () => import('../pages/wallet/wallet.module').then( m => m.WalletPageModule)
+  },
+  {
+    path: 'invitemail',
+    loadChildren: () => import('../pages/invitemail/invitemail.module').then( m => m.InvitemailPageModule)
+  },
+  {
+    path: 'addwebsite',
+    loadChildren: () => import('../pages/addwebsite/addwebsite.module').then( m => m.AddwebsitePageModule)
+  },
+  {
+    path: 'sitesdetail',
+    loadChildren: () => import('../pages/sitesdetail/sitesdetail.module').then( m => m.SitesdetailPageModule)
+  },
+  {
+    path: 'editsite',
+    loadChildren: () => import('../pages/editsite/editsite.module').then( m => m.EditsitePageModule)
   }
 ];
 
