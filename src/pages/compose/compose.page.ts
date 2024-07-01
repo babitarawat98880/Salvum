@@ -198,6 +198,8 @@ export class ComposePage {
     });
   };
 
+  
+
   ionViewWillUnload() {
     this.events.unsubscribe('openLevel:changed');
   }
@@ -2760,6 +2762,14 @@ export class ComposePage {
     this.navCtrl.navigateRoot(['dashboard', '0']);
   };
 
+  smailPage() {
+    this.navCtrl.navigateRoot(['small-inbox']);
+  }
+
+  composePage() {
+    this.navCtrl.navigateRoot(['compose']);
+  }
+
   jobListingModal() {
     this.APIService.getData('jobs',this.userId).subscribe((data) => {
       this.jobListingResult = data;
@@ -3072,6 +3082,7 @@ export class ComposePage {
     localStorage.setItem('view', 'Inbox');
     this.navCtrl.navigateRoot('SmailInboxPage');
   }
+  
 
   myInboxPage() {
     localStorage.setItem('view', 'Inbox');

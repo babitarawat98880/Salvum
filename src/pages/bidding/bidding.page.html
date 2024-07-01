@@ -1,3 +1,4 @@
+<app-header></app-header>
 <ion-content lightgrey padding big-detail has-header [ngClass]="errors.indexOf(userId) >= 0 ? 'no-header' : ''">
   <ion-row main-breadcrumb ion-fixed *ngIf="isVisible == '1' && userId != undefined && userId != '' && userId != null"> 
       <ion-col>
@@ -9,65 +10,142 @@
       </ion-col>
   </ion-row>
   <div breadcrumb-height></div>
-      <ion-row class="row" *ngIf="isVisible == '1'">
-          <ion-col  padd-mob-0 col-12 col-md-12 col-lg-8 col-xl-9>
+      <ion-row *ngIf="isVisible == '1'">
+        <ion-col size="12" size-md="8">
               <ion-row>
-                  <ion-col padd-mob-0 col-12 col-md-6 col-lg-4>
-                      <ion-list br-lt-grey margintop0 company-detail>
+                  <ion-col size="12" size-md="6">
+                      <ion-list>
                           <ion-list-header margin0 no-border br-btm color="light">
                               Main Contacts
                           </ion-list-header>
-                          <ion-item fnt14 no-border>
-                              <ion-avatar item-start>
-                                  <ion-icon *ngIf="posted_image == ''"  circle-pic name="person" text-center></ion-icon>
-                                  <img circle-pic *ngIf="posted_image !== ''" src="{{APIURL}}/images/{{posted_image}}">
-                              </ion-avatar>
-                              <h2>{{posted_by}}</h2>
-                              <p>{{posted_email}}</p>
+                          <ion-item lines="none">
+                            <div class="unread-indicator-wrapper" slot="start">
+                                <ion-icon *ngIf="posted_image == ''" name="person" class="icon-wrap"></ion-icon>
+                                <img circle-pic *ngIf="posted_image !== ''" src="{{APIURL}}/images/{{posted_image}}">
+                            </div>
+                            <ion-label>
+                              <ion-text>
+                                <h2 class="ion-text-title">{{posted_by}}</h2>
+                              </ion-text>
+                              <ion-note color="medium" class="ion-text-wrap">
+                                {{posted_email}}
+                              </ion-note>
+                            </ion-label> 
                           </ion-item>
                       </ion-list>
-                      <ion-list br-lt-grey margintop0 company-detail>
+                      <ion-list>
                           <ion-list-header margin0 no-border br-btm color="light">
                               Project Manager
                           </ion-list-header>
                           <ion-item fnt14>
-                              Name
-                              <ion-note  item-end fnt14>{{pm_name}}</ion-note>
+                            <ion-label>
+                                <ion-row>
+                                    <ion-col>
+                                        <ion-note color="dark" class="ion-text-wrap">
+                                            Name
+                                        </ion-note>
+                                    </ion-col>
+                                    <ion-col class="text-right">
+                                        <ion-note color="medium" class="ion-text-wrap">
+                                            {{pm_name}}
+                                        </ion-note>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-label> 
                           </ion-item>
-                          <ion-item fnt14>
-                              Contact
-                              <ion-note  item-end fnt14>{{pm_contact}}</ion-note>
+                          <ion-item>
+                            <ion-label>
+                                <ion-row>
+                                    <ion-col>
+                                        <ion-note color="dark" class="ion-text-wrap">
+                                            Contact
+                                        </ion-note>
+                                    </ion-col>
+                                    <ion-col class="text-right">
+                                        <ion-note color="medium" class="ion-text-wrap">
+                                            {{pm_contact}}
+                                        </ion-note>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-label> 
                           </ion-item>
                       </ion-list>
-                      <ion-list br-lt-grey margintop0 company-detail>
-                          <ion-list-header margin0 no-border br-btm color="light">
+                      <ion-list>
+                          <ion-list-header color="light">
                               Job Info
                           </ion-list-header>
-                          <ion-item fnt14>
-                              PO/Job
-                              <ion-note  item-end fnt14>{{job_number}}</ion-note>
+                          <ion-item>
+                            <ion-label>
+                                <ion-row>
+                                    <ion-col>
+                                        <ion-note color="dark" class="ion-text-wrap">
+                                            PO/Job
+                                        </ion-note>
+                                    </ion-col>
+                                    <ion-col class="text-right">
+                                        <ion-note color="medium" class="ion-text-wrap">
+                                            {{job_number}}
+                                        </ion-note>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-label> 
                           </ion-item>
-                          <ion-item fnt14>
-                              Job Title
-                              <ion-note  item-end fnt14>{{job_name}}</ion-note>
+                          <ion-item>
+                            <ion-label>
+                                <ion-row>
+                                    <ion-col>
+                                        <ion-note color="dark" class="ion-text-wrap">
+                                            Job Title
+                                        </ion-note>
+                                    </ion-col>
+                                    <ion-col class="text-right">
+                                        <ion-note color="medium" class="ion-text-wrap">
+                                            {{job_name}}
+                                        </ion-note>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-label> 
                           </ion-item>
-                          <ion-item fnt14>
-                              Trade
-                              <ion-note  item-end fnt14>{{trade_name}}</ion-note>
+                          <ion-item>
+                            <ion-label>
+                                <ion-row>
+                                    <ion-col>
+                                        <ion-note color="dark" class="ion-text-wrap">
+                                            Trade
+                                        </ion-note>
+                                    </ion-col>
+                                    <ion-col class="text-right">
+                                        <ion-note color="medium" class="ion-text-wrap">
+                                            {{trade_name}}
+                                        </ion-note>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-label> 
                           </ion-item>
-                          <ion-item fnt14>
-                              Site Location
-                              <ion-note  item-end fnt14>{{site_address}}</ion-note>
+                          <ion-item>
+                            <ion-label>
+                                <ion-row>
+                                    <ion-col>
+                                        <ion-note color="dark" class="ion-text-wrap">
+                                            Site Location
+                                        </ion-note>
+                                    </ion-col>
+                                    <ion-col class="text-right">
+                                        <ion-note color="medium" class="ion-text-wrap">
+                                            {{site_address}}
+                                        </ion-note>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-label>
                           </ion-item>
                       </ion-list>
                   </ion-col>
-                  <ion-col padd-mob-0 col-12 col-md-6 col-lg-8>
+                  <ion-col size="12" size-md="6">
                       <div class="white-box" m-b-15 centerbox>
-                          <h6 fnt-bold>Trade Task</h6>
-                          <p fnt-light>{{trade_task}}</p>
-                          <h6 fnt-bold>Job Description</h6>
-                          <p fnt-light>{{job_description}}
-                          </p>
+                          <h6><strong>Trade Task</strong></h6>
+                          <p>{{trade_task}}</p>
+                          <h6><strong>Job Description</strong></h6>
+                          <p>{{job_description}}</p>
                       </div>
                       <ion-list br-lt-grey  company-detail *ngIf="all_attachments != ''">
                           <ion-list-header margin0 no-border br-btm color="light">
@@ -106,9 +184,9 @@
                   </ion-col>
               </ion-row>
           </ion-col>
-          <ion-col padd-mob-0 col-12  col-md-12 col-lg-4 col-xl-3>
+          <ion-col size="12" size-md="4">
               <ion-row>
-                  <ion-col padd-mob-0 col-12 col-md-4 col-lg-12 p-b-15 right-dashboard *ngFor="let event of all_events">
+                  <ion-col size="12" *ngFor="let event of all_events">
                       <ion-item left margin0 dashboard dashboard-right1>
                           {{event.event_tagline}}
                           <p fnt-light>
@@ -130,7 +208,7 @@
                       </ion-item >
                   </ion-col>
   
-                  <ion-col padd-mob-0 col-12 *ngIf="isAwarded != '1'">
+                  <ion-col size="12" *ngIf="isAwarded != '1'">
                       <ng-container *ngIf="isBidExpired == false">
                           <ion-item  border-none br-lt-grey color="white" m-b-15 br-lt-grey>
                               <ion-label>Your Status</ion-label>
@@ -143,46 +221,46 @@
                               </ion-select>
                           </ion-item>
                       </ng-container>
-                      <button *ngIf="errors.indexOf(userId) == -1" (click)="myRFIs()" m-t-0  ion-button block fnt-regular m-b-15 color="blue">
+                      <ion-button *ngIf="errors.indexOf(userId) == -1" (click)="myRFIs()" color="primary" expand="block">
                           <ion-icon name="help"></ion-icon>
                           &nbsp;&nbsp; RFI (Request For Information)
-                      </button>
-                      <button (click)="downloadAll()" ion-button block fnt-regular m-b-15 color="blue" >
+                      </ion-button>
+                      <ion-button (click)="downloadAll()" color="primary" expand="block">
                           <ion-icon name="download"></ion-icon>
                           &nbsp;&nbsp; Download Attachments
-                      </button>
-                      <button (click)="myTransmittals()" m-t-0 ion-button block fnt-regular m-b-15 color="blue">
+                      </ion-button>
+                      <ion-button (click)="myTransmittals()" m-t-0  color="primary" expand="block">
                           <ion-icon name="paper-plane"></ion-icon>
                           &nbsp;&nbsp; Transmittals
-                      </button>
+                      </ion-button>
                       <ng-container *ngIf="isBidExpired == false">
-                          <button ion-button block fnt-regular color="blue" (click)="openSubmitbidPage(bid_original_status)">
+                          <ion-button color="primary" expand="block" (click)="openSubmitbidPage(bid_original_status)">
                               <ion-icon name="arrow-up"></ion-icon>
                               &nbsp;&nbsp;{{applied_bids?.length > 0 ? 'Re-submit Bid' : 'Submit Bid'}}
-                          </button>
+                          </ion-button>
                       </ng-container>
                   </ion-col>
-                  <ion-col padd-mob-0 col-12 *ngIf="isAwarded == '1'">
-            <button *ngIf="errors.indexOf(userId) == -1" (click)="myRFIs()" m-t-0 ion-button block fnt-regular m-b-15 color="blue">
+                  <ion-col size="12" *ngIf="isAwarded == '1'">
+                        <ion-button *ngIf="errors.indexOf(userId) == -1" (click)="myRFIs()" color="primary" expand="block">
                           <ion-icon name="help"></ion-icon>
                           &nbsp;&nbsp; RFI (Request For Information)
-                      </button>
-                      <button (click)="downloadAll()" ion-button block fnt-regular m-b-15 color="blue" >
+                      </ion-button>
+                      <ion-button (click)="downloadAll()" color="primary" expand="block" >
                           <ion-icon name="download"></ion-icon>
                           &nbsp;&nbsp; Download Attachments
-                      </button>
-                      <button (click)="myTransmittals()" m-t-0 ion-button block fnt-regular m-b-15 color="blue">
+                      </ion-button>
+                      <ion-button (click)="myTransmittals()" color="primary" expand="block">
                           <ion-icon name="paper-plane"></ion-icon>
                           &nbsp;&nbsp; Transmittals
-                      </button>
-                      <button *ngIf="errors.indexOf(userId) == -1" (click)="viewContract()" ion-button block fnt-regular m-b-15 color="blue" >
+                      </ion-button>
+                      <ion-button *ngIf="errors.indexOf(userId) == -1" (click)="viewContract()" color="primary" expand="block" >
                           <ion-icon name="eye"></ion-icon>
                           &nbsp;&nbsp; View Contract
-                      </button>
-                      <button *ngIf="errors.indexOf(userId) == -1" (click)="downloadPdf()" ion-button block fnt-regular m-b-15 color="blue" >
+                      </ion-button>
+                      <ion-button *ngIf="errors.indexOf(userId) == -1" (click)="downloadPdf()" color="primary" expand="block" >
                           <ion-icon name="download"></ion-icon>
                           &nbsp;&nbsp; Download Contract
-                      </button>
+                      </ion-button>
                   </ion-col>			
               </ion-row>
           </ion-col>

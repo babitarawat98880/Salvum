@@ -5,10 +5,11 @@ import { HeaderComponent } from '../components/header/header.component';
 // import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 import { FileUploadModule } from 'ng2-file-upload';
 import { TimeAgoPipe } from 'time-ago-pipe';
+import { EmailMenuComponent } from '../email-menu/email-menu.component';
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, EmailMenuComponent],
   imports: [CommonModule, IonicModule],
-  exports: [HeaderComponent, IonicModule,FileUploadModule]
+  exports: [HeaderComponent, IonicModule,FileUploadModule, EmailMenuComponent]
 })
 export class SharedModuleModule { }

@@ -19,35 +19,10 @@
 
 <ion-toolbar class="hide-pc">
    <ion-buttons slot="start">
-     <ion-menu-button menu="leftMenu" autoHide="false"></ion-menu-button>
+     <ion-menu-button menu="emailMenu" autoHide="false"></ion-menu-button>
    </ion-buttons>
  </ion-toolbar>
-
-<ion-menu side="start" menuId="leftMenu" contentId="main-content">
-   <ion-header>
-     <ion-toolbar>
-       <ion-title>Smail Menu</ion-title>
-     </ion-toolbar>
-   </ion-header>
-   <ion-content>
-      <ion-button color="primary" size="small"><ion-icon name="add-outline"></ion-icon></ion-button> 
-      <ion-button color="danger" size="small"><ion-icon name="remove-outline"></ion-icon></ion-button>
-      <ion-list>
-         <ion-item>
-            <ion-label><ion-icon name="pencil-outline" color="primary"></ion-icon> Compose</ion-label>
-         </ion-item>
-         <ion-item>
-            <ion-label><ion-icon name="mail-outline" color="primary"></ion-icon> Inbox</ion-label>
-         </ion-item>
-         <ion-item>
-            <ion-label><ion-icon name="mail-open-outline" color="primary"></ion-icon> Sent</ion-label>
-         </ion-item>
-         <ion-item>
-            <ion-label><ion-icon name="folder-open-outline" color="primary"></ion-icon> Level1</ion-label>
-         </ion-item>
-      </ion-list>
-   </ion-content>
- </ion-menu>
+ <app-email-menu></app-email-menu>
 
 <ion-content  id="main-content">
    <ion-grid>
@@ -59,18 +34,18 @@
                <ion-button color="primary" size="small"><ion-icon name="add-outline"></ion-icon></ion-button> 
                <ion-button color="danger" size="small"><ion-icon name="remove-outline"></ion-icon></ion-button>
                <ion-list>
-               <ion-item>
-                  <ion-label><ion-icon name="pencil-outline" color="primary"></ion-icon> Compose</ion-label>
-               </ion-item>
-               <ion-item>
-                  <ion-label><ion-icon name="mail-outline" color="primary"></ion-icon> Inbox</ion-label>
-               </ion-item>
-               <ion-item>
-                  <ion-label><ion-icon name="mail-open-outline" color="primary"></ion-icon> Sent</ion-label>
-               </ion-item>
-               <ion-item>
-                  <ion-label><ion-icon name="folder-open-outline" color="primary"></ion-icon> Level1</ion-label>
-               </ion-item>
+                  <ion-item (click)="composePage()">
+                     <ion-label><ion-icon name="pencil-outline" color="primary"></ion-icon> Compose</ion-label>
+                  </ion-item>
+                  <ion-item (click)="smailPage()">
+                     <ion-label><ion-icon name="mail-outline" color="primary"></ion-icon> Inbox</ion-label>
+                  </ion-item>
+                  <ion-item>
+                     <ion-label><ion-icon name="mail-open-outline" color="primary"></ion-icon> Sent</ion-label>
+                  </ion-item>
+                  <ion-item>
+                     <ion-label><ion-icon name="folder-open-outline" color="primary"></ion-icon> Level1</ion-label>
+                  </ion-item>
                </ion-list>
             </ion-card-content>
          </ion-card>

@@ -9,6 +9,7 @@ import { ComposePageRoutingModule } from './compose-routing.module';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { TagInputModule } from 'ngx-chips';
 import { ComposePage } from './compose.page';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { ComposePage } from './compose.page';
     IonicModule,
     CKEditorModule,
     TagInputModule, 
-    ComposePageRoutingModule
+    ComposePageRoutingModule,
+    SharedModuleModule
   ],
   declarations: [ComposePage]
 })

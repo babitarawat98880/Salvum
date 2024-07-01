@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<ion-row main-breadcrumb ion-fixed style="top:60px">
+<ion-row style="top:60px">
    <ion-col>
       <ol class="breadcrumb">
          <li (click)="root()"><a>Home</a></li>
@@ -194,7 +194,7 @@
                               </div>
                               <div *ngIf="buttonClicked[item._id]">
                                  <div class="clearfix"></div>
-                                 <ion-card select-dropdown margin0 none-border>
+                                 <ion-text>
                                        <ion-item border-none p-lr-0> 
                    
                    
@@ -210,7 +210,7 @@
                
                  
                                     </ion-item>
-                                 </ion-card>
+                                 </ion-text>
                                  <div class="clearfix"></div>
                                  
                       <ion-grid no-padding>
@@ -527,17 +527,17 @@
                                        </div>
                                        <div class="clearfix"></div>
                                        <div *ngIf="buttonClicked[item._id]">
-                                          <ion-card select-dropdown margin0 none-border>
+                                          <ion-text>
                                               <ion-item border-none p-lr-0> 
                                                 <ion-label col-md-4 col-6 text-right p-r-7 m-r-0>Info :</ion-label>
-                                                <ion-select  (ionChange)="levelChanged(reciverSetLevel,isActive,item.reciverSetLevel,'rec')" [(ngModel)]="reciverSetLevel" col-md-8 col-6 p-lr-0>
+                                                <ion-select  (ionChange)="levelChanged(reciverSetLevel,isActive,item.reciverSetLevel,'rec')" [(ngModel)]="reciverSetLevel">
                                                 <ion-option value="1" *ngIf="selectedFirst1 == 1">Level 1</ion-option>
                                                 <ion-option value="2" *ngIf="selectedSecond1 == 2">Level 2</ion-option>
                                                 <ion-option value="3" *ngIf="selectedthird1 == 3">Level 3</ion-option>
                                                 <ion-option value="4" *ngIf="selectedForth1 == 4">Level 4</ion-option>
                                                 </ion-select>
                                              </ion-item>
-                                          </ion-card> 
+                                          </ion-text> 
                                           <div class="clearfix"></div>
                                         
                             <ion-grid no-padding>

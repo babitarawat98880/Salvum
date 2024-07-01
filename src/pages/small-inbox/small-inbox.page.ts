@@ -3970,6 +3970,14 @@ export class SmallInboxPage {
         this.navCtrl.navigateRoot(['dashboard', 0]);
     };
 
+    smailPage() {
+        this.navCtrl.navigateRoot(['small-inbox']);
+      }
+    
+      composePage() {
+        this.navCtrl.navigateRoot(['compose']);
+      }
+
     acceptInvite(link) {
         if (localStorage.getItem('view') == 'sent' || localStorage.getItem('view') == 'Sent') {
             this.navCtrl.navigateRoot('contacts');
