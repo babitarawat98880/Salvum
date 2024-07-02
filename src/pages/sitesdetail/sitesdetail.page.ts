@@ -112,7 +112,7 @@ export class SitesdetailPage {
   };
 
 wallet(){
-  this.navCtrl.navigateRoot('wallets');
+  this.navCtrl.navigateRoot('wallet');
 };
 
 root(){

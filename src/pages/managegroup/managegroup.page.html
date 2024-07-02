@@ -1,3 +1,4 @@
+<app-header></app-header>
 <ion-content padding lightgrey (window:resize)="caclHeight()" has-header>
   <div ion-fixed id="calc_height_mnggrp{{timestamp}}" fixed-top-div>
   <ion-row main-breadcrumb>
@@ -24,19 +25,19 @@
         <ion-checkbox [(ngModel)]="selectedForth" (ionChange)="updateCbValue('4', $event)" [checked]="selectedForth"></ion-checkbox>4
      </div>
   </div>
-    <button btn-hide m-l-5 ion-button (click) = "goToSmail()" >
+    <ion-button color="primary" (click) = "goToSmail()" >
     <ion-icon name="checkbox"></ion-icon>
     <span btn-text>Select</span>
-    </button>
-    <button btn-hide  m-l-5  ion-button (click) = "groupListing()" >
+    </ion-button>
+    <ion-button color="primary" (click) = "groupListing()" >
       <ion-icon name="person"></ion-icon>
     <span btn-text>Select Group</span>
     
-    </button>
-     <button btn-hide  m-l-5  ion-button (click) = "goToManageGroup()" >
+    </ion-button>
+     <ion-button color="primary" (click) = "goToManageGroup()" >
        <ion-icon name="people"></ion-icon>
      <span btn-text>Create Group</span>
-     </button>
+     </ion-button>
   </div>
   <div clearfix id="fixed_height_mnggrp{{timestamp}}"></div>
     <!-- <button btn-hide m-l-5  ion-button (click) = "goToeditGroup()" >
@@ -48,36 +49,42 @@
     <ion-list list-top>
       <ion-grid>
         <ion-row>
-          <ng-container *ngFor="let x of items; let i = index ">
-           <ion-col col-12 col-md-6 col-lg-4 >
-              <ion-item-sliding #item br-lt-grey  >
-                 <ion-item   border-none  wallet-main>
-                    <ion-thumbnail item-start icon-ionic >
-                       <ion-icon name="people" text-center></ion-icon>
-                    </ion-thumbnail>
-                    <h2 fnt-bold>{{x.name}}</h2>
-                    <p fnt-light>{{x.created_on | date : 'short'}}</p>
-                    <p fnt-light>
-                       <ion-badge fnt-light color="light">Level {{x.userLevel}}</ion-badge>
-                    </p>
-                    <button ion-button clear item-end margin0 (click)="editgroup(x)" *ngIf="isBrowser ==  'true' ">
-                       <ion-icon name="create" fnt20></ion-icon>
-                    </button>
-                    <button ion-button clear item-end margin0 (click)="showConfirm(x, i)" *ngIf="isBrowser ==  'true' ">
-                       <ion-icon name="trash" fnt20></ion-icon>
-                    </button>
-                 </ion-item>
-                 <ion-item-options side="right" *ngIf="isBrowser ==  'false' ">
-                    <button ion-button color="danger" (click)="showConfirm(x, i)">
-                       <ion-icon name="trash"></ion-icon>
-                       Delete
-                    </button>
-                    <button ion-button color="secondary"  (click)="editgroup(x)">
-                       <ion-icon name="create"></ion-icon>
-                       Edit
-                    </button>
-                 </ion-item-options>
-              </ion-item-sliding>
+          <ng-container>
+           <ion-col size="12" size-md="4" *ngFor="let x of items; let i = index ">
+               <ion-card class="m-box">
+                     <ion-item lines="none">
+                        <ion-thumbnail item-start icon-ionic >
+                           <ion-icon name="people" class="icon-wrap"></ion-icon>
+                        </ion-thumbnail>
+                        <ion-label>
+                           <ion-text>
+                           <h2 class="ion-text-title">{{x.name}}</h2>
+                           </ion-text>
+                           <ion-note color="medium" class="ion-text-wrap">
+                              {{x.created_on | date : 'short'}}
+                           </ion-note>
+                           <p>
+                              <ion-badge color="medium">Level {{x.userLevel}}</ion-badge>
+                           </p>
+                        </ion-label>
+                        <ion-button size="small" color="secondary" (click)="editgroup(x)" *ngIf="isBrowser ==  'true' ">
+                           <ion-icon name="create" fnt20></ion-icon>
+                        </ion-button>
+                        <ion-button size="small" color="danger" (click)="showConfirm(x, i)" *ngIf="isBrowser ==  'true' ">
+                           <ion-icon name="trash" fnt20></ion-icon>
+                        </ion-button>
+                     </ion-item>
+                     <ion-item-options side="right" *ngIf="isBrowser ==  'false' ">
+                        <ion-button size="small" color="danger" (click)="showConfirm(x, i)">
+                           <ion-icon name="trash"></ion-icon>
+                           Delete
+                        </ion-button>
+                        <ion-button size="small" color="secondary"  (click)="editgroup(x)">
+                           <ion-icon name="create"></ion-icon>
+                           Edit
+                        </ion-button>
+                     </ion-item-options>
+               </ion-card>
            </ion-col>
            </ng-container>
            <!-- <div *ngIf="items.length == 0" white-bg br-lt-grey padding> No Group Found.</div> -->

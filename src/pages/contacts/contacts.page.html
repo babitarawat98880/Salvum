@@ -99,9 +99,9 @@
                               </div>
                            </ion-col>
                            <ion-col size="6">
-                              <button pending float-left small ion-button *ngIf="item.memberstatus == 2 && (item.senderSetLevelStatus == 1 && item.recevierSetLevelStatus == 0 )" >Pending</button>
+                              <ion-button small="size" color="light" *ngIf="item.memberstatus == 2 && (item.senderSetLevelStatus == 1 && item.recevierSetLevelStatus == 0 )" >Pending</ion-button>
   
-                              <button pending float-left small ion-button *ngIf="item.memberstatus == 2 && (item.senderSetLevelStatus == 0 && item.recevierSetLevelStatus == 0 )" >Pending</button>
+                              <ion-button small="size" color="light" *ngIf="item.memberstatus == 2 && (item.senderSetLevelStatus == 0 && item.recevierSetLevelStatus == 0 )" >Pending</ion-button>
                               
                                  <!--div  fnt-16 *ngIf="item.senderSetLevelStatus == 1 && item.recevierSetLevelStatus == 1 "> 
                                     select
@@ -367,24 +367,24 @@
                                  <p card-body-text fnt-light *ngIf="item.senderSetLevelStatus == 1 && item.recevierSetLevelStatus == 0 ">*You can't communicate with this person until he will set your level.</p>
                               </div>
                               <a href="{{item.facebook.search('http') >= 0 ? item.facebook : 'http://'+item.facebook}}" target="_blank" *ngIf="item.facebook && item.facebook != ''" a_deco_none>
-                              <button  title="Facebook" small btn-social color="blue" >
+                              <ion-button  title="Facebook" size="small" color="medium" >
                                  <ion-icon name="logo-facebook"></ion-icon>
-                              </button>
+                              </ion-button>
                               </a>
                               <a   title="Twitter" href="{{item.twitter.search('http') >= 0 ? item.twitter : 'http://'+item.twitter}}" target="_blank" *ngIf="item.twitter && item.twitter != ''" a_deco_none>
-                              <button small btn-social color="blue"  >
-                                 <ion-icon color="white" name="logo-twitter"></ion-icon>
-                              </button>
+                              <ion-button size="small" color="medium"  >
+                                 <ion-icon name="logo-twitter"></ion-icon>
+                              </ion-button>
                               </a>
                               <a title="Google Plus"  href="{{item.gplus.search('http') >= 0 ? item.gplus : 'http://'+item.gplus}}" target="_blank" *ngIf="item.gplus && item.gplus != ''" a_deco_none>
-                              <button small  btn-social color="blue" >
-                                 <ion-icon  color="white" name="logo-googleplus"></ion-icon>
-                              </button>
+                              <ion-button size="small" color="medium" >
+                                 <ion-icon name="logo-google"></ion-icon>
+                              </ion-button>
                               </a>
                               <a  title="Linkedin" href="{{item.linkdin.search('http') >= 0 ? item.linkdin : 'http://'+item.linkdin}}" target="_blank" *ngIf="item.linkdin && item.linkdin != ''" a_deco_none>
-                              <button small btn-social color="blue" > 
-                                 <ion-icon color="white" name="logo-linkedin"></ion-icon>
-                              </button>
+                              <ion-button size="small" color="medium" > 
+                                 <ion-icon name="logo-linkedin"></ion-icon>
+                              </ion-button>
                               </a>
                               <div *ngIf = "done[item._id]" >
                                  <ion-button size="small"  title="Done" color="primary"  (click)="update(item, senderSetLevel, i)" >  
@@ -437,7 +437,7 @@
                                              select
                                              <ion-checkbox [(ngModel)]="item.isChecked" (ionChange)="checkBoxClicked(item.isChecked, item)"></ion-checkbox>
                                              </div-->
-                                          <button  pending float-left small  ion-button *ngIf="item.memberstatus == 2 && (item.senderSetLevelStatus == 0 && item.recevierSetLevelStatus == 1 )" >Pending</button>
+                                          <ion-button  size="small" color="light" *ngIf="item.memberstatus == 2 && (item.senderSetLevelStatus == 0 && item.recevierSetLevelStatus == 1 )" >Pending</ion-button>
                                           
 
                                              <ion-row>
@@ -768,22 +768,22 @@
                           <label class="form-check-label"  for="checkbox{{i}}{{timestamp}}"></label>
                        </span>
   
-                       <button ion-button clear item-end margin0 (click)="editgroup(x)" *ngIf="isBrowser ==  'true' ">
+                       <ion-button (click)="editgroup(x)" *ngIf="isBrowser ==  'true' ">
                           <ion-icon name="create" fnt20></ion-icon>
-                       </button>
-                       <button ion-button clear item-end margin0 (click)="showConfirmGroup(x, i)" *ngIf="isBrowser ==  'true' ">
+                       </ion-button>
+                       <ion-button (click)="showConfirmGroup(x, i)" *ngIf="isBrowser ==  'true' ">
                           <ion-icon name="trash" fnt20></ion-icon>
-                       </button>
+                       </ion-button>
                     </ion-item>
                     <ion-item-options side="right" *ngIf="isBrowser ==  'false' ">
-                       <button ion-button color="danger" (click)="showConfirmGroup(x, i)">
+                       <ion-button color="danger" (click)="showConfirmGroup(x, i)">
                           <ion-icon name="trash"></ion-icon>
                           Delete
-                       </button>
-                       <button ion-button color="secondary"  (click)="editgroup(x)">
+                       </ion-button>
+                       <ion-button color="secondary"  (click)="editgroup(x)">
                           <ion-icon name="create"></ion-icon>
                           Edit
-                       </button>
+                       </ion-button>
                     </ion-item-options>
                  </ion-item-sliding>
                </ion-card>

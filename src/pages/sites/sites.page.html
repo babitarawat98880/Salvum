@@ -30,7 +30,7 @@
                  <img alt="image" class="rounded-circle" src="{{API_ENDPOINT_URL}}images/{{site.logo}}" style="   " *ngIf="site.logo">
                  <!-- <ion-icon name="key" text-center></ion-icon> -->
               </ion-thumbnail>
-              <h2 fnt-bold>{{site.selectCategory}}</h2>
+              <h2 fnt-bold> &nbsp;&nbsp; {{site.selectCategory}}</h2>
               <h3 fnt-regular>Hidden</h3>
               <p fnt-light fnt-regular>Hidden</p>
               <p rec-p (click)="recipts(site._id)" margin0> Receipts</p>
@@ -71,8 +71,8 @@
 
         <ion-item-sliding #item br-lt-grey list-hover>
 
-             <ion-item box-shadow  wallet-main>
-                <ion-thumbnail item-start icon-ionic >
+             <ion-item>
+                <ion-thumbnail slot="start">
                    <img alt="image" class="rounded-circle" src="assets/img/m7.png" style=""  *ngIf="!market.logo">
                    <img alt="image" class="rounded-circle" src="{{API_ENDPOINT_URL}}images/{{market.logo}}" style="  "  *ngIf="market.logo">
                    <!-- <ion-icon name="key" text-center></ion-icon> -->
@@ -93,20 +93,20 @@
                    <ion-icon name="trash" fnt20></ion-icon>
                 </button>
              </ion-item>
-             <ion-item-options side="start" *ngIf="isBrowser == 'false'">
-                <button  ion-button color="secondary" (click)="edit(market)">
+             <ion-item side="start" *ngIf="isBrowser == 'false'">
+                <ion-button  color="secondary" (click)="edit(market)">
                    <ion-icon name="create" ></ion-icon>
                    Edit
-                </button>
-                <button   ion-button color="danger" (click)="showConfirm(market ,i)">
+                  </ion-button>
+                <ion-button  color="danger" (click)="showConfirm(market ,i)">
                    <ion-icon name="trash"></ion-icon>
                    Delete
-                </button>
-                <button  ion-button color="primary" (click)="openWebsitePage(market)">
+                </ion-button>
+                <ion-button  color="primary" (click)="openWebsitePage(market)">
                    <ion-icon name="eye"></ion-icon>
                    View
-                </button>
-             </ion-item-options>
+                </ion-button>
+             </ion-item>
         </ion-item-sliding>
       </ion-col>
       <p *ngIf="marketing.length == 0 ">No Marketing Media Added Yet!</p>
@@ -120,7 +120,7 @@
     
         <ion-item-sliding #item br-lt-grey list-hover *ngFor="let store of others; let i = index ">
            <ion-item box-shadow  wallet-main>
-              <ion-thumbnail item-start icon-ionic >
+              <ion-thumbnail slot="start">
                  <img alt="image" class="rounded-circle" src="assets/img/m7.png" style="  "  *ngIf="!store.logo">
                  <img alt="image" class="rounded-circle" src="{{API_ENDPOINT_URL}}images/{{store.logo}}" style="  "  *ngIf="store.logo">
                  <!-- <ion-icon name="key" text-center></ion-icon> -->
@@ -141,20 +141,20 @@
                  <ion-icon name="trash" fnt20></ion-icon>
               </button>
            </ion-item>
-           <ion-item-options side="start" *ngIf="isBrowser == 'false'">
-              <button ion-button color="secondary" (click)="edit(store)">
+           <ion-item side="start" *ngIf="isBrowser == 'false'">
+              <ion-button color="secondary" (click)="edit(store)">
                  <ion-icon name="create"></ion-icon>
                  Edit
-              </button>
-              <button ion-button color="danger" (click)="showConfirm(store ,i)">
+              </ion-button>
+              <ion-button color="danger" (click)="showConfirm(store ,i)">
                  <ion-icon name="trash"></ion-icon>
                  Delete
-              </button>
-              <button ion-button color="primary" (click)="openWebsitePage(store)">
+              </ion-button>
+              <ion-button color="primary" (click)="openWebsitePage(store)">
                  <ion-icon name="eye"></ion-icon>
                  View
-              </button>
-           </ion-item-options>
+              </ion-button>
+           </ion-item>
         </ion-item-sliding>
      
      <p  *ngIf="others.length == 0 "> No Store Added Yet!</p> 

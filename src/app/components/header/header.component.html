@@ -6,13 +6,11 @@
     <ion-col col-md-6>  
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-button id="tooltip-mail" data-tooltip="Mail Tooltip" (click)="smailPage()">
-            <ion-icon name="mail" color="light"></ion-icon>
-          </ion-button>
-          <ion-button id="tooltip-people" data-tooltip="People Tooltip" (click)="contactsPage()"><ion-icon name="people" color="light"></ion-icon></ion-button>
-          <ion-button id="tooltip-document" data-tooltip="Document Tooltip" (click)="fileManagerPage()"><ion-icon name="document" color="light"></ion-icon></ion-button>
-          <ion-button id="tooltip-card" data-tooltip="Card Tooltip" (click)="bidJobsPage()"><img src="assets/img/bid_icon_white.png" style="width: 21px; margin-top: 7px;"></ion-button>
-          <ion-button id="tooltip-briefcase" data-tooltip="Briefcase Tooltip" (click)="membersPage()"><ion-icon name="briefcase" color="light"></ion-icon></ion-button>
+          <ion-button id="tooltip-mail" data-tooltip="Mail Tooltip" (click)="smailPage()" class="hide-mob"><ion-icon name="mail" color="light"></ion-icon></ion-button>
+          <ion-button id="tooltip-people" data-tooltip="People Tooltip" (click)="contactsPage()" class="hide-mob"><ion-icon name="people" color="light"></ion-icon></ion-button>
+          <ion-button id="tooltip-document" data-tooltip="Document Tooltip" (click)="fileManagerPage()" class="hide-mob"><ion-icon name="document" color="light"></ion-icon></ion-button>
+          <ion-button id="tooltip-card" data-tooltip="Card Tooltip" (click)="bidJobsPage()" class="hide-mob"><img src="assets/img/bid_icon_white.png" style="width: 21px; margin-top: 7px;"></ion-button>
+          <ion-button id="tooltip-briefcase" data-tooltip="Briefcase Tooltip" (click)="membersPage()" class="hide-mob"><ion-icon name="briefcase" color="light"></ion-icon></ion-button>
           <ion-button  (click)="presentPopover($event)" ><ion-icon name="apps" color="light"></ion-icon></ion-button>
           <!-- (click)="invitePage()"?>-->
           <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
@@ -81,7 +79,7 @@
               </ion-content>
             </ng-template>
           </ion-popover>
-          <ion-button  (click)="presentNotificationPopover($event)">
+          <ion-button  (click)="presentNotificationPopover($event)" class="hide-mob">
             <ion-icon name="notifications" color="light"></ion-icon>
             <div class="count-badge" *ngIf="notification0.length > 0">{{counts?.notify0_count}}</div> 
           </ion-button>
@@ -180,8 +178,8 @@
               </div>
             </ng-template>
           </ion-popover>
-          <ion-button id="tooltip-help" data-tooltip="Help Tooltip"><ion-icon name="help" color="light"></ion-icon></ion-button>
-          <ion-button id="tooltip-level" class="custom-button-white" data-tooltip="Level Tooltip">
+          <ion-button id="tooltip-help" data-tooltip="Help Tooltip"><ion-icon name="help" color="light" class="hide-mob"></ion-icon></ion-button>
+          <ion-button id="tooltip-level" class="custom-button-white" data-tooltip="Level Tooltip" class="hide-mob">
             <div class="icon-text">
               <div class="icon-row">
                 <div class="icon-with-count">
@@ -199,7 +197,7 @@
               </div>
             </div>
           </ion-button>
-          <ion-button id="tooltip-primary-light" class="custom-button-primary-light" data-tooltip="Primary Light Tooltip">
+          <ion-button id="tooltip-primary-light" class="custom-button-primary-light" data-tooltip="Primary Light Tooltip" class="hide-mob">
             <div class="icon-text">
               <div class="icon-row">
                 <div class="icon-with-count">
@@ -217,7 +215,7 @@
               </div>
             </div>
           </ion-button>
-          <ion-button id="tooltip-primary-dark" class="custom-button-primary-dark" data-tooltip="Primary Dark Tooltip">
+          <ion-button id="tooltip-primary-dark" class="custom-button-primary-dark" data-tooltip="Primary Dark Tooltip" class="hide-mob">
             <div class="icon-text">
               <div class="icon-row">
                 <div class="icon-with-count">
@@ -238,7 +236,7 @@
               </div>
             </div>
           </ion-button>
-          <ion-button id="tooltip-primary-dark-2" class="custom-button-primary-dark" data-tooltip="Primary Dark 2 Tooltip">
+          <ion-button id="tooltip-primary-dark-2" class="custom-button-primary-dark" data-tooltip="Primary Dark 2 Tooltip" class="hide-mob">
             <div class="icon-text">
               <div class="icon-row">
                 <div class="icon-with-count">

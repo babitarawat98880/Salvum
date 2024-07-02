@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { EditGroupPageRoutingModule } from './edit-group-routing.module';
 
 import { EditGroupPage } from './edit-group.page';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    EditGroupPageRoutingModule
+    EditGroupPageRoutingModule,
+    SharedModuleModule
   ],
   declarations: [EditGroupPage]
 })

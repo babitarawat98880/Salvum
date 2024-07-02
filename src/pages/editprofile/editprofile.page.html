@@ -1,3 +1,4 @@
+<app-header></app-header>
 <ion-content lightgrey has-header>
   <ion-row main-breadcrumb ion-fixed>
      <ion-col>
@@ -11,7 +12,7 @@
   <div breadcrumb-height></div>
      <ion-grid edit-group main-profile>
         <ion-row>
-           <ion-col col-12 col-xl-4 profile-left>
+           <ion-col size="12" size-md="4">
               <ion-list  br-lt-grey group-head head-profile>
                  <ion-list-header text-center  margin0 no-border profile-image br-btm>
                     <ion-item fnt14 no-border text-center>
@@ -52,10 +53,11 @@
                 <p error-file>File size exceeded.please upload files upto 500 MB.<button small type="button" (click)="closeErrorS()" ion-button><ion-icon name="close"></ion-icon></button></p>
               </ion-col>
            </ion-col>
-           <ion-col col-xl-8 col-12 profile-right>
-              <ion-list  br-lt-grey group-head>
-                 <ion-list-header color="lightgrey" margin0 br-btm>
-           General Info 
+           <ion-col size="12" size-md="8">
+               <ion-card>
+              <ion-list>
+                 <ion-list-header  color="lightgrey">
+                  General Info 
                  </ion-list-header>
                  <ion-item-group>
                     <ion-item >
@@ -83,7 +85,11 @@
                     </ion-item>
                  </ion-item-group>
               </ion-list>
-              <button ion-button float-right m-t-0 m-b-15 (click)="updateGernalInfo(data)">Save</button>
+            </ion-card>
+               <div class="text-right">
+                  <ion-button color="primary" (click)="updateGernalInfo(data)">Save</ion-button>
+               </div>
+              <ion-card>
               <ion-list  br-lt-grey group-head clearboth>
                  <ion-list-header color="lightgrey" margin0 br-btm>Social Info 
                  </ion-list-header>
@@ -94,7 +100,10 @@
                     <ion-item ><ion-input type="text" placeholder="www.linkedin.com" fnt14 [(ngModel)]="data.linkdin"></ion-input></ion-item>
                  </ion-item-group>
               </ion-list>
-              <button ion-button m-t-0 float-right (click) ="updateUserSocialLink()">Save</button>
+            </ion-card>
+            <div class="text-right">
+              <ion-button color="primary" (click) ="updateUserSocialLink()">Save</ion-button>
+            </div>
            </ion-col>
         </ion-row>
      </ion-grid>

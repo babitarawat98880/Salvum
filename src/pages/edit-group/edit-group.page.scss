@@ -1,0 +1,66 @@
+ion-card{
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+ion-list-header {
+    color: #000;
+    background-color: #f4f8f9;
+    /* margin: 0px !important; */
+}
+.bg-primary{
+    background-color: #3880ff;
+}
+ion-list { 
+    padding: 0;
+}
+ion-list ion-item p {
+    color: #afafaf !important;
+}
+.addEmails {
+        background: #1976d2;
+        color: white;
+        position: absolute;
+        right: 4px;
+        font-size: x-small;
+        ion-icon{
+            color: #fff !important;
+        }
+}
+ion-list-header ion-label {
+    font-family: "OpenSans-Bold";
+    font-weight: 700;
+  }
+  ion-icon {
+    font-size: 20px;
+    color: #1976d2;
+    line-height: 28px;
+}
+.mailcontent {
+    margin-left: 24px;
+}
+.success_mark {
+    font-size: 23px !important;
+    color: green !important;
+  }
+ion-item-group ion-item p {
+margin-left: 24px;
+}
+.edit-icon {
+color: #1976d2 !important ;
+}
+.e-icon {
+    position: absolute;
+    top: 32px;
+    left: 45px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #1976d2;
+    border: 2px solid #fafafa;
+    color: #fafafa;
+    line-height: 26px;
+    cursor: pointer;
+}
+ion-item-group ion-item ion-icon{
+    margin-right: 1em;
+}
