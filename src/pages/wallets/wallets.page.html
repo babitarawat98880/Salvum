@@ -10,64 +10,50 @@
    </ion-col>
    <ion-col size="6">
       <ion-item lines="none">
-        <ion-button id="add-card" slot="end" color="primary">
+        <ion-button slot="end" color="primary" (click)="presentModal($event)">
           <ion-icon name="add-outline"></ion-icon>
         </ion-button>
       </ion-item>
    </ion-col>
 </ion-row>
 
-<ion-modal trigger="add-card" (willDismiss)="onWillDismiss($event)">
-  <ng-template>
-    <ion-header>
-      <ion-toolbar>
-        <ion-buttons slot="start">
-        </ion-buttons>
-        <ion-title>Add Level 1 Cards</ion-title>
-        <ion-buttons slot="end">
-          <ion-button (click)="cancel()"><ion-icon name="close-outline"></ion-icon></ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding">
-      <ion-item>
-        <ion-input label="Card Holder Name" labelPlacement="stacked" type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input label="Card No." labelPlacement="stacked" type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input label="CVV" labelPlacement="stacked" type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input label="Expiry Date" labelPlacement="stacked" type="date"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-select label="Card Type">
-          <ion-select-option value="Visa">Visa</ion-select-option>
-          <ion-select-option value="Master Card">Master Card</ion-select-option>
-          <ion-select-option value="AMEX">AMEX</ion-select-option>
-          <ion-select-option value="Discover">Discover</ion-select-option>
-          <ion-select-option value="Diners Club">Diners Club</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-select label="Select Level">
-          <ion-select-option value="Level 1">Level 1</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-button color="primary" expand="block">Submit</ion-button>
-    </ion-content>
-  </ng-template>
-</ion-modal>
 
 
 <ion-content>
-  
+  <ion-list margin0>
+    <ion-row class="row ">
+  <ion-col col-12 col-md-6 col-lg-4  *ngFor="let item of items; let i = index ">
+  <ion-item-sliding br-lt-grey list-hover>
+      <ion-item   wallet-main >
+       <ion-thumbnail item-start icon-ionic >
+        <ion-icon name="card-outline" text-center></ion-icon>
+        </ion-thumbnail>
+
+        <!-- <h2 fnt-bold>{{item.cardName}} </h2>   -->
+       <ion-badge fnt-light>{{item.cardType}}</ion-badge>
+        <h3 fnt-regular>{{item.cardHolderName}}</h3>
+        <p fnt-light>Hidden</p>
+        <p fnt-light>Hidden</p>
+        <ion-note my-date item-end fnt12 fnt-light margin0>{{item.expiryDate}}</ion-note>
+          <button btn-hides ion-button clear item-end margin0 (click)="openWalletdetailPage(item)" *ngIf="isBrowser == 'true'"><ion-icon name="eye" fnt20></ion-icon></button>
+            <button btn-hides ion-button clear item-end margin0 (click)="showConfirm(item ,i)" *ngIf="isBrowser == 'true'"><ion-icon name="trash" fnt20></ion-icon></button>
+        </ion-item>
+      
+
+      <ion-item-options side="right" *ngIf="isBrowser != 'true'">
+        <button ion-button color="danger" (click)="showConfirm(item ,i)"><ion-icon name="trash"></ion-icon> Delete</button>
+        <button ion-button color="secondary" (click)="openWalletdetailPage(item)"><ion-icon name="eye"></ion-icon> View</button>
+      </ion-item-options>
+
+  </ion-item-sliding>
+ </ion-col>
+ 
+    </ion-row>
+
+</ion-list>
   <ion-card>
-    <ion-card-content>
+    <ion-card-content *ngIf="items == ''">
       No Data Found!
     </ion-card-content>
   </ion-card>
-
 </ion-content>

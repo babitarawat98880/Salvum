@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title>Add Level 1 Cards</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()"><ion-icon name="close-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-item style="display: none;">
+    <ion-input label="Card Name" labelPlacement="stacked" type="text" [(ngModel)]="cardName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Card Holder Name" labelPlacement="stacked" type="text" [(ngModel)]="cardHolderName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Card No." labelPlacement="stacked" type="tel" [(ngModel)]="cardNumber" maxlength="16"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="CVV" labelPlacement="stacked" type="tel" [(ngModel)]="cvv" maxlength="6"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="date" displayFormat="MMM DD YYYY"  [(ngModel)]="expiryDate"></ion-input>
+    
+    <!-- <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="expiryDate"></ion-datetime>   -->
+  </ion-item>
+  <ion-select label="Card Type" cancelText="Cancel" okText="Okay!" [(ngModel)]="cardType" >
+        <ion-select-option value="Visa" >Visa</ion-select-option>
+        <ion-select-option value="Master Card">Master Card</ion-select-option>
+        <ion-select-option value="AMEX">AMEX</ion-select-option>
+        <ion-select-option value="Discover">Discover</ion-select-option>
+        <ion-select-option value="Diners Club">Diners Club</ion-select-option>
+      </ion-select>
+  <ion-item>
+    <ion-select label="Select Level" cancelText="Cancel" okText="Okay!" [(ngModel)]="level">
+        <ion-select-option value="{{level}}" *ngFor="let level of allowed_levels">Level {{level}}</ion-select-option>
+       </ion-select>
+  </ion-item>
+  <ion-button color="primary" expand="block" (click)="login()">Submit</ion-button>
+</ion-content>

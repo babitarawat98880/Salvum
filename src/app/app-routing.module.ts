@@ -182,6 +182,26 @@ const routes: Routes = [
   {
     path: 'editsite',
     loadChildren: () => import('../pages/editsite/editsite.module').then( m => m.EditsitePageModule)
+  },
+  {
+    path: 'walletdetail',
+    loadChildren: () => import('../pages/walletdetail/walletdetail.module').then( m => m.WalletdetailPageModule)
+  },
+  {
+    path: 'modals',
+    loadChildren: () => import('../pages/modals/modals.module').then( m => m.ModalsPageModule)
+  },
+  {
+    path: 'addpassword',
+    loadChildren: () => import('../pages/addpassword/addpassword.module').then( m => m.AddpasswordPageModule)
+  },
+  {
+    path: 'passworddetail',
+    loadChildren: () => import('../pages/passworddetail/passworddetail.module').then( m => m.PassworddetailPageModule)
+  },
+  {
+    path: 'editpass',
+    loadChildren: () => import('../pages/editpass/editpass.module').then( m => m.EditpassPageModule)
   }
 ];
 
