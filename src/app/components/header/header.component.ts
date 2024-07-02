@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NavController, AlertController, PopoverController } from '@ionic/angular';
+import { NavController,IonApp, AlertController, PopoverController } from '@ionic/angular';
 import { APIService } from 'src/services/api.service';
 import { ComponentService } from 'src/services/component.service';
 @Component({
@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit {
   smail3: any = [];
   smail4: any = [];
   constructor(
+    private app: IonApp,
     public navCtrl: NavController,
     public APIService: APIService,
     public componentService: ComponentService,
@@ -157,6 +158,19 @@ export class HeaderComponent implements OnInit {
   walletPage() {
     this.navCtrl.navigateRoot(['wallet']);
   }
+  goToJobs(){
+    // this.checkNavExist();
+    this.onClickedOutside(null);
+    this.navCtrl.navigateRoot('managejob');
+  }
+  
+//   checkNavExist(){
+//     if(this.app.getActiveNav() == undefined){
+//         let nav = this.app.getActiveNav();
+//         // this.app.getActiveNav() = nav;
+//     } 
+// }
+
   ngOnDestroy(){
    
     this.popoverController.dismiss();

@@ -56,7 +56,7 @@ export class ManagejobPage {
         if (subscription.amount == '0' && subscription.is_activated_license == '0') {
           this.componentService.presentToast('Access denied, Please upgrade your subscription or add license.', 'info')
           this.componentService.dismissLoader();
-          this.navCtrl.navigateRoot('dashboard');
+          this.navCtrl.navigateRoot(['dashboard', 0]);
         }
         else {
           this.componentService.dismissLoader();
