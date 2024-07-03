@@ -1,11 +1,12 @@
 <ion-header modal-white>
-  <!-- <ion-navbar> -->
-    <ion-title text-centers>Activate License</ion-title><ion-buttons end>
-    <button btn-grid  (click)="dismiss(null)">
-        <ion-icon name="close"></ion-icon>
-    </button>
-  </ion-buttons>
-  <!-- </ion-navbar> -->
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title>Activate License</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss(null)"><ion-icon name="close"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 <ion-content padding>
 <ion-row>
@@ -16,10 +17,10 @@
 	<ion-input type="text" [(ngModel)] = "license_key" name="license_key" fnt14></ion-input>
   <ion-icon item-end name="close" (click)="clearVal()" class="cross_lk"></ion-icon>
 	</ion-item>
-	<button ion-button type="submit" color="blue" fnt-regular m-b-10 m-t-10 fnt-normal left >
+	<ion-button type="submit" color="primary" expand="block" >
       <ion-icon name="checkmark" m-r-5></ion-icon>
       <span>Save</span>
-   </button>
+   </ion-button>
 </form>
 </ion-col>
 </ion-row>

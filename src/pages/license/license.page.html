@@ -1,17 +1,21 @@
 <app-header></app-header>
 
 <ion-row main-breadcrumb ion-fixed style="top:60px">
-   <ion-col size="6">
+   <ion-col size="12" size-md="6">
       <ol class="breadcrumb">
          <li (click)="root()"><a>Home</a></li>
          <li class="active"><a>License</a></li> 
       </ol>
    </ion-col>
-   <ion-col size="6">
+   <ion-col size="6" size-md="3">
       <ion-item lines="none">
         <ion-button (click)="openAddmorelicensePage()" slot="end" color="primary">
             Buy License
         </ion-button>
+      </ion-item>
+   </ion-col>
+   <ion-col size="6" size-md="3">
+      <ion-item lines="none">
         <ion-button (click)="updateLicense()" slot="end" color="primary">
             BAdd License Key
       </ion-button>

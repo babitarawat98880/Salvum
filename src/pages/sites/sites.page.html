@@ -18,45 +18,65 @@
 </ion-row>
 <ion-content *ngIf="isVisible == true">
   <ion-card>
+   <ion-card-header>
+      <ion-card-title color="primary">Social Media</ion-card-title>
+    </ion-card-header>
     <ion-card-content>
-      <ion-card-header>
-        <ion-card-title color="primary">Social Media</ion-card-title>
-      </ion-card-header>
+      
        <ion-item-sliding #item br-lt-grey list-hover *ngFor="let site of social; let i = index ">
            <ion-item box-shadow  wallet-main>
 
-              <ion-thumbnail item-start icon-ionic >
+              <ion-thumbnail>
                  <img alt="image" class="rounded-circle" src="assets/img/m7.png" style=" " *ngIf="!site.logo">
                  <img alt="image" class="rounded-circle" src="{{API_ENDPOINT_URL}}images/{{site.logo}}" style="   " *ngIf="site.logo">
                  <!-- <ion-icon name="key" text-center></ion-icon> -->
               </ion-thumbnail>
-              <h2 fnt-bold> &nbsp;&nbsp; {{site.selectCategory}}</h2>
-              <h3 fnt-regular>Hidden</h3>
-              <p fnt-light fnt-regular>Hidden</p>
-              <p rec-p (click)="recipts(site._id)" margin0> Receipts</p>
-              <button btn-hides ion-button clear item-end margin0 (click)="openWebsitePage(site)" *ngIf="isBrowser == 'true'">
-                 <ion-icon name="eye" fnt20></ion-icon>
-              </button>
-              <button btn-hides ion-button clear item-end margin0  (click)="edit(site)" *ngIf="isBrowser == 'true'">
-                 <ion-icon name="create" fnt20></ion-icon>
-              </button>
-              <button  btn-hides ion-button clear item-end margin0 (click)="showConfirm(site ,i)" *ngIf="isBrowser == 'true'">
-                 <ion-icon name="trash" fnt20></ion-icon>
-              </button>
+
+              <ion-label>
+               <ion-row>
+                  <ion-col size="12" size-md="7">
+                     <ion-text>
+                        <h2 class="ion-text-title">{{site.selectCategory}}</h2>
+                      </ion-text>
+                      <ion-note color="medium" class="ion-text-wrap">
+                         Hidden
+                      </ion-note>
+                      <ion-note color="medium" class="ion-text-wrap">
+                         Hidden
+                      </ion-note>
+                      <ion-note color="medium" class="ion-text-wrap" (click)="recipts(site._id)">
+                         Receipts
+                      </ion-note>
+                  </ion-col>
+                  <ion-col size="12" size-md="5">
+                     <ion-note color="medium" class="ion-text-wrap">
+                        <p class="text-right"><ion-button size="small" color="primary" (click)="openWebsitePage(site)" *ngIf="isBrowser == 'true'">
+                           <ion-icon name="eye" fnt20></ion-icon>
+                        </ion-button>
+                        <ion-button size="small" color="secondary"  (click)="edit(site)" *ngIf="isBrowser == 'true'">
+                           <ion-icon name="create" fnt20></ion-icon>
+                        </ion-button>
+                        <ion-button  size="small" color="danger" (click)="showConfirm(site ,i)" *ngIf="isBrowser == 'true'">
+                           <ion-icon name="trash" fnt20></ion-icon>
+                        </ion-button></p>
+                     </ion-note>
+                  </ion-col>
+               </ion-row>
+             </ion-label> 
            </ion-item>
-           <ion-item-options side="end" *ngIf="isBrowser == 'false'">
-              <button btn-hides  ion-button color="secondary" (click)="edit(site)" *ngIf="isBrowser == 'false'">
+           <ion-item-options slot="end" *ngIf="isBrowser == 'false'">
+              <ion-button size="small" color="secondary" (click)="edit(site)" *ngIf="isBrowser == 'false'">
                  <ion-icon name="create" ></ion-icon>
                  Edit
-              </button>
-              <button btn-hides ion-button color="danger" (click)="showConfirm(site ,i)" *ngIf="isBrowser == 'false'">
+              </ion-button>
+              <ion-button size="small" color="danger" (click)="showConfirm(site ,i)" *ngIf="isBrowser == 'false'">
                  <ion-icon name="trash"></ion-icon>
                  Delete
-              </button>
-              <button  btn-hides ion-button color="primary" (click)="openWebsitePage(site)" *ngIf="isBrowser == 'false'">
+              </ion-button>
+              <ion-button  size="small" color="primary" (click)="openWebsitePage(site)" *ngIf="isBrowser == 'false'">
                  <ion-icon name="eye"></ion-icon>
                  View
-              </button>
+              </ion-button>
            </ion-item-options>
         </ion-item-sliding>
      <p *ngIf="social.length == 0"> No Social Media Added Yet!</p>
@@ -77,35 +97,52 @@
                    <img alt="image" class="rounded-circle" src="{{API_ENDPOINT_URL}}images/{{market.logo}}" style="  "  *ngIf="market.logo">
                    <!-- <ion-icon name="key" text-center></ion-icon> -->
                 </ion-thumbnail>
-                <h2 fnt-bold>{{market.selectCategory}}</h2>
-                <h3 fnt-regular>Hidden</h3>
-                <p fnt-light margin0>Hidden</p>
-                <p fnt-light margin0> Receipts</p>
-                <button btn-hides  ion-button clear item-end margin0 (click)="openWebsitePage(market)" *ngIf="isBrowser == 'true'">
-                   <ion-icon name="eye" fnt20></ion-icon>
-                </button>
-
-                <button btn-hides  ion-button clear item-end margin0  (click)="edit(market)" *ngIf="isBrowser == 'true'">
-
-                   <ion-icon name="create" fnt20></ion-icon>
-                </button>
-                <button btn-hides  ion-button clear item-end margin0 (click)="showConfirm(market, i)" *ngIf="isBrowser == 'true'">
-                   <ion-icon name="trash" fnt20></ion-icon>
-                </button>
+                <ion-label>
+                  <ion-row>
+                     <ion-col size="12" size-md="7">
+                        <ion-text>
+                           <h2 class="ion-text-title">{{market.selectCategory}}</h2>
+                         </ion-text>
+                         <ion-note color="medium" class="ion-text-wrap">
+                            Hidden
+                         </ion-note>
+                         <ion-note color="medium" class="ion-text-wrap">
+                            Hidden
+                         </ion-note>
+                         <ion-note color="medium" class="ion-text-wrap">
+                            Receipts
+                         </ion-note>
+                     </ion-col>
+                     <ion-col size="12" size-md="5">
+                        <p class="text-right">
+                           <ion-button size="small" color="primary" (click)="openWebsitePage(market)" *ngIf="isBrowser == 'true'">
+                              <ion-icon name="eye" fnt20></ion-icon>
+                           </ion-button>
+           
+                           <ion-button size="small" color="secondary"  (click)="edit(market)" *ngIf="isBrowser == 'true'">
+                              <ion-icon name="create" fnt20></ion-icon>
+                           </ion-button>
+                           <ion-button size="small" color="danger" (click)="showConfirm(market, i)" *ngIf="isBrowser == 'true'">
+                              <ion-icon name="trash" fnt20></ion-icon>
+                           </ion-button>
+                        </p>
+                     </ion-col>
+                  </ion-row>
+                </ion-label>
              </ion-item>
              <ion-item side="start" *ngIf="isBrowser == 'false'">
                 <ion-button  color="secondary" (click)="edit(market)">
                   <!--<ion-item-options side="end" *ngIf="isBrowser == 'false'">-->
-                     <button  ion-button color="secondary" (click)="edit(market)">
+                     <ion-button  size="small" color="secondary" (click)="edit(market)">
                         <ion-icon name="create" ></ion-icon>
                               Edit
-                     </button>
+                     </ion-button>
                   </ion-button>
-                <ion-button  color="danger" (click)="showConfirm(market ,i)">
+                <ion-button  size="small" color="danger" (click)="showConfirm(market ,i)">
                    <ion-icon name="trash"></ion-icon>
                    Delete
                 </ion-button>
-                <ion-button  color="primary" (click)="openWebsitePage(market)">
+                <ion-button  size="small" color="primary" (click)="openWebsitePage(market)">
                    <ion-icon name="eye"></ion-icon>
                    View
                 </ion-button>
@@ -128,21 +165,37 @@
                  <img alt="image" class="rounded-circle" src="{{API_ENDPOINT_URL}}images/{{store.logo}}" style="  "  *ngIf="store.logo">
                  <!-- <ion-icon name="key" text-center></ion-icon> -->
               </ion-thumbnail>
-              <h2 fnt-bold>{{store.selectCategory}}</h2>
-              <h3 fnt-regular>Hidden</h3>
-              <p fnt-light margin0>Hidden</p>
-              <p fnt-light margin0> Receipts</p>
-              <button  btn-hides  ion-button clear item-end margin0 (click)="openWebsitePage(store)" *ngIf="isBrowser == 'true'">
-                 <ion-icon name="eye" fnt20></ion-icon>
-              </button>
-
-              <button btn-hides   ion-button clear item-end margin0 *ngIf="isBrowser == 'true'" (click)="edit(store)">
-                 <ion-icon name="create" fnt20 ></ion-icon>
-
-              </button>
-              <button  btn-hides  ion-button clear item-end margin0 (click)="showConfirm(store, i)" *ngIf="isBrowser == 'true'">
-                 <ion-icon name="trash" fnt20></ion-icon>
-              </button>
+              <ion-label>
+                  <ion-row>
+                     <ion-col size="12" size="7">
+                           <ion-text>
+                              <h2 class="ion-text-title">{{store.selectCategory}}</h2>
+                           </ion-text>
+                           <ion-note color="medium" class="ion-text-wrap">
+                              Hidden
+                           </ion-note>
+                           <ion-note color="medium" class="ion-text-wrap">
+                              Hidden
+                           </ion-note>
+                           <ion-note color="medium" class="ion-text-wrap">
+                              Receipts
+                           </ion-note>
+                     </ion-col>
+                     <ion-col size="12" size="5">
+                        <p class="text-right">
+                           <ion-button  size="small" color="primary" (click)="openWebsitePage(store)" *ngIf="isBrowser == 'true'">
+                              <ion-icon name="eye" fnt20></ion-icon>
+                           </ion-button>
+                           <ion-button size="small" color="secondary" *ngIf="isBrowser == 'true'" (click)="edit(store)">
+                              <ion-icon name="create" fnt20 ></ion-icon>
+                           </ion-button>
+                           <ion-button  size="small" color="danger" (click)="showConfirm(store, i)" *ngIf="isBrowser == 'true'">
+                              <ion-icon name="trash" fnt20></ion-icon>
+                           </ion-button>
+                        </p>
+                     </ion-col>
+                  </ion-row>
+               </ion-label>
            </ion-item>
            <ion-item side="start" *ngIf="isBrowser == 'false'">
               <ion-button color="secondary" (click)="edit(store)">

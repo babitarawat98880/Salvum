@@ -1,3 +1,4 @@
+<app-header></app-header>
 <ion-content padding lightgrey has-header overflow-scroll="true">
   <ion-row main-breadcrumb ion-fixed>
     <ion-col>
@@ -10,61 +11,100 @@
     </ion-col>
   </ion-row>
   <div breadcrumb-height></div>
-  <ion-row class="row ">
-  <ion-col col-12 col-md-6 col-lg-4  offset-lg-4>
-  <ion-list box-shadow *ngFor="let item of new; let i = index ">   
-  <ion-item fnt14>
-  <div text-center>
-        <img circle-pic src="assets/img/credit-card.png">
-      </div>
-      
-    </ion-item>
-    <ion-item fnt14 style="display: none;">
-   
-        Card Name:
-      <ion-note  item-end fnt14>{{item.cardName}}</ion-note>
-    </ion-item>
-     <ion-item fnt14>
-     
-        Cardholder Name
-      <ion-note  item-end fnt14>{{item.cardHolderName}}</ion-note>
-    </ion-item>
-     <ion-item fnt14>
-     
-        Card Number
-      <ion-note  item-end fnt14 [hidden]= "toggoleShowHide" >{{item.cardNumber}}</ion-note>
-  
-      <ion-note  item-end fnt14 [hidden]= "!toggoleShowHide">Hidden</ion-note>
-    </ion-item>
-    <ion-item fnt14>
-     
-      Expiry Date
-      <ion-note  item-end fnt14>{{item.expiryDate}}</ion-note>
-    </ion-item>
-    <ion-item fnt14 >
-     
-      CVV
-      <ion-note  item-end fnt14 [hidden]= "toggoleShowHide" >{{item.cvv}}</ion-note>
-  
-      <ion-note  item-end fnt14 [hidden]= "!toggoleShowHide">Hidden</ion-note>
-  
-    </ion-item>
-    <ion-item fnt14>
-     
-        Card Type
-      <ion-note  item-end fnt14>{{item.cardType}}</ion-note>
-    </ion-item>
+  <ion-row class="row">
+  <ion-col size="12" size-md="6" *ngFor="let item of new; let i = index ">
+    <ion-card>
+      <ion-list>
         <ion-item fnt14>
-     
-        Action
-      <ion-note margin0 item-end fnt14> <button ion-button clear padding0 (click)="showConfirm(item ,i)"><ion-icon name="trash"></ion-icon> </button>
-       </ion-note>
-    </ion-item> 
-     <ion-item fnt14>
-   <ion-label>  Show/Hide</ion-label> 
-    <ion-toggle [(ngModel)]="itemCompleted"  (ionChange)="itemClicked(itemCompleted)" data-tap-disabled="true"></ion-toggle>
-  </ion-item>
-  </ion-list>
+          <div text-center>
+              <img circle-pic src="assets/img/credit-card.png">
+          </div>
+        </ion-item>
+        <ion-text style="display: none;">
+          <ion-row>
+             <ion-col size="12" size-md="4">
+              Card Name:
+             </ion-col>
+             <ion-col size="12" size-md="8">
+                <ion-text color="medium">{{item.cardName}}</ion-text>
+             </ion-col>
+          </ion-row>
+        </ion-text>
+        <ion-text>
+          <ion-row>
+             <ion-col size="12" size-md="4">
+              Cardholder Name:
+             </ion-col>
+             <ion-col size="12" size-md="8">
+                <ion-text color="medium">{{item.cardHolderName}}</ion-text>
+             </ion-col>
+          </ion-row>
+        </ion-text>
+        <ion-text>
+          <ion-row>
+             <ion-col size="12" size-md="4">
+              Card Number:
+             </ion-col>
+             <ion-col size="12" size-md="8">
+                <ion-text color="medium" [hidden]= "toggoleShowHide">{{item.cardNumber}}</ion-text>
+                <ion-text color="medium" [hidden]= "!toggoleShowHide">Hidden</ion-text>
+             </ion-col>
+          </ion-row>
+        </ion-text>
+        <ion-text>
+          <ion-row>
+             <ion-col size="12" size-md="4">
+              Expiry Date:
+             </ion-col>
+             <ion-col size="12" size-md="8">
+                <ion-text color="medium">{{item.expiryDate}}</ion-text>
+             </ion-col>
+          </ion-row>
+        </ion-text>
+        <ion-text>
+          <ion-row>
+             <ion-col size="12" size-md="4">
+              CVV:
+             </ion-col>
+             <ion-col size="12" size-md="8">
+                <ion-text color="medium" [hidden]= "toggoleShowHide">{{item.cvv}}</ion-text>
+                <ion-text color="medium" [hidden]= "!toggoleShowHide">Hidden</ion-text>
+             </ion-col>
+          </ion-row>
+        </ion-text>
+        <ion-text>
+          <ion-row>
+             <ion-col size="12" size-md="4">
+              Card Type:
+             </ion-col>
+             <ion-col size="12" size-md="8">
+                <ion-text color="medium">{{item.cardType}}</ion-text>
+             </ion-col>
+          </ion-row>
+        </ion-text>
+        <ion-text>
+          <ion-row>
+             <ion-col size="12" size-md="4">
+              Action:
+             </ion-col>
+             <ion-col size="12" size-md="8">
+              <ion-button size="small" color="danger" (click)="showConfirm(item ,i)"><ion-icon name="trash"></ion-icon> </ion-button>
+             </ion-col>
+          </ion-row>
+        </ion-text>
+        <ion-text>
+          <ion-row>
+             <ion-col size="12" size-md="4">
+              Show/Hide:
+             </ion-col>
+             <ion-col size="12" size-md="8">
+              <ion-toggle [(ngModel)]="itemCompleted"  (ionChange)="itemClicked(itemCompleted)" data-tap-disabled="true"></ion-toggle>
+             </ion-col>
+          </ion-row>
+        </ion-text>
+
+      </ion-list>
+    </ion-card>
     </ion-col>
     </ion-row>
   <div footer-height></div> 

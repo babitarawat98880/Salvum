@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { PassworddetailPageRoutingModule } from './passworddetail-routing.module';
 
 import { PassworddetailPage } from './passworddetail.page';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PassworddetailPageRoutingModule
+    PassworddetailPageRoutingModule,
+    SharedModuleModule
   ],
   declarations: [PassworddetailPage]
 })

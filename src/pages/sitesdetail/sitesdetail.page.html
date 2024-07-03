@@ -13,80 +13,82 @@
   <div breadcrumb-height></div>
      <ion-row class="row ">
         <ion-col size="12" size-md="6" *ngFor="let siteDetail of newSiteArr;">
-           <ion-list>
-              <ion-item>
-                 <div *ngIf="siteDetail.logo">
-                    <!--ion-avatar item-start *ngIf="siteDetail.logo"-->
-                     <img width="100px" height="100px"  class="rounded-circle" src="{{APIURL}}/images/{{siteDetail.logo}}" >
-                     <!-- <img src="{{notice.image}}" *ngIf="notice.imag"> -->
-                    <!--/ion-avatar-->
-                    <ion-icon circle-pic name="key" text-center *ngIf="!siteDetail.logo"></ion-icon>
-                 </div>
-              </ion-item>
-              <ion-text>
-                  <ion-row>
-                     <ion-col size="12" size-md="4">
-                        Company Name:
-                     </ion-col>
-                     <ion-col size="12" size-md="8">
-                        <ion-text color="medium">{{siteDetail.weblink}}</ion-text>
-                     </ion-col>
-                  </ion-row>
-              </ion-text>
-              <ion-text>
-                  <ion-row>
-                     <ion-col size="12" size-md="4">
-                        Username:
-                     </ion-col>
-                     <ion-col size="12" size-md="8">
-                        <ion-text color="medium" [hidden]= "toggoleShowHide">{{siteDetail.username}}</ion-text>
-                        <ion-text color="medium" [hidden]= "!toggoleShowHide">Hidden</ion-text>
-                     </ion-col>
-                  </ion-row>
-              </ion-text>
-              <ion-text>
-               <ion-row>
-                  <ion-col size="12" size-md="4">
-                     Password:
-                  </ion-col>
-                  <ion-col size="12" size-md="8">
-                     <ion-text color="medium" [hidden]= "toggoleShowHide">{{siteDetail.password}}</ion-text>
-                     <ion-text color="medium" [hidden]= "!toggoleShowHide">Hidden</ion-text>
-                  </ion-col>
-               </ion-row>
-              </ion-text>
-              <ion-text>
-               <ion-row>
-                  <ion-col size="12" size-md="4">
-                     Orders:
-                  </ion-col>
-                  <ion-col size="12" size-md="8">
-                     <ion-text color="medium" [hidden]= "toggoleShowHide">Receipts</ion-text>
-                  </ion-col>
-               </ion-row>
-              </ion-text>
-              <ion-text>
-               <ion-row>
-                  <ion-col size="12" size-md="4">
-                     Action:
-                  </ion-col>
-                  <ion-col size="12" size-md="8">
-                     <ion-button color="medium" size="small" (click) = "showConfirm(siteDetail)"><ion-icon name="trash"></ion-icon></ion-button>
-                     <ion-button color="medium" size="small" (click) = "edit(siteDetail)"><ion-icon name="create"></ion-icon></ion-button>
-                  </ion-col>
-               </ion-row>
-              </ion-text>
-              <ion-text>
-               <ion-row>
-                  <ion-col size="12" size-md="4">
-                     Show/Hide:
-                  </ion-col>
-                  <ion-col size="12" size-md="8">
-                     <ion-text color="medium" [hidden]= "toggoleShowHide"><ion-toggle [(ngModel)]="itemCompleted"  (ionChange)="itemClicked(itemCompleted)"  checked="true"></ion-toggle></ion-text>
-                  </ion-col>
-               </ion-row>
-              </ion-text>
-           </ion-list>
+            <ion-card>
+               <ion-list>
+                  <ion-item>
+                     <div *ngIf="siteDetail.logo">
+                        <!--ion-avatar item-start *ngIf="siteDetail.logo"-->
+                           <img width="100px" height="100px"  class="rounded-circle" src="{{APIURL}}/images/{{siteDetail.logo}}" >
+                           <!-- <img src="{{notice.image}}" *ngIf="notice.imag"> -->
+                        <!--/ion-avatar-->
+                        <ion-icon circle-pic name="key" text-center *ngIf="!siteDetail.logo"></ion-icon>
+                     </div>
+                  </ion-item>
+                  <ion-text>
+                        <ion-row>
+                           <ion-col size="12" size-md="4">
+                              Company Name:
+                           </ion-col>
+                           <ion-col size="12" size-md="8">
+                              <ion-text color="medium">{{siteDetail.weblink}}</ion-text>
+                           </ion-col>
+                        </ion-row>
+                  </ion-text>
+                  <ion-text>
+                        <ion-row>
+                           <ion-col size="12" size-md="4">
+                              Username:
+                           </ion-col>
+                           <ion-col size="12" size-md="8">
+                              <ion-text color="medium" [hidden]= "toggoleShowHide">{{siteDetail.username}}</ion-text>
+                              <ion-text color="medium" [hidden]= "!toggoleShowHide">Hidden</ion-text>
+                           </ion-col>
+                        </ion-row>
+                  </ion-text>
+                  <ion-text>
+                     <ion-row>
+                        <ion-col size="12" size-md="4">
+                           Password:
+                        </ion-col>
+                        <ion-col size="12" size-md="8">
+                           <ion-text color="medium" [hidden]= "toggoleShowHide">{{siteDetail.password}}</ion-text>
+                           <ion-text color="medium" [hidden]= "!toggoleShowHide">Hidden</ion-text>
+                        </ion-col>
+                     </ion-row>
+                  </ion-text>
+                  <ion-text>
+                     <ion-row>
+                        <ion-col size="12" size-md="4">
+                           Orders:
+                        </ion-col>
+                        <ion-col size="12" size-md="8">
+                           <ion-text color="medium" [hidden]= "toggoleShowHide">Receipts</ion-text>
+                        </ion-col>
+                     </ion-row>
+                  </ion-text>
+                  <ion-text>
+                     <ion-row>
+                        <ion-col size="12" size-md="4">
+                           Action:
+                        </ion-col>
+                        <ion-col size="12" size-md="8">
+                           <ion-button color="medium" size="small" (click) = "showConfirm(siteDetail)"><ion-icon name="trash"></ion-icon></ion-button>
+                           <ion-button color="medium" size="small" (click) = "edit(siteDetail)"><ion-icon name="create"></ion-icon></ion-button>
+                        </ion-col>
+                     </ion-row>
+                  </ion-text>
+                  <ion-text>
+                     <ion-row>
+                        <ion-col size="12" size-md="4">
+                           Show/Hide:
+                        </ion-col>
+                        <ion-col size="12" size-md="8">
+                           <ion-text color="medium" [hidden]= "toggoleShowHide"><ion-toggle [(ngModel)]="itemCompleted"  (ionChange)="itemClicked(itemCompleted)"  checked="true"></ion-toggle></ion-text>
+                        </ion-col>
+                     </ion-row>
+                  </ion-text>
+               </ion-list>
+            </ion-card>
         </ion-col>
      </ion-row>
   <div footer-height></div>
