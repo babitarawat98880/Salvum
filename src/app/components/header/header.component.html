@@ -79,11 +79,11 @@
               </ion-content>
             </ng-template>
           </ion-popover>
-          <ion-button  (click)="presentNotificationPopover($event)" class="hide-mob">
+          <ion-button  (click)="presentNotificationPopover($event)">
             <ion-icon name="notifications" color="light"></ion-icon>
             <div class="count-badge" *ngIf="notification0.length > 0">{{counts?.notify0_count}}</div> 
           </ion-button>
-          <ion-popover #popover [isOpen]="isNotiOpen" (didDismiss)="isNotiOpen = false">
+          <ion-popover #motificationPopover [isOpen]="isNotiOpen" (didDismiss)="isNotiOpen = false">
             <ng-template>
               <div class="notification-section"  (clickOutside)="onClickedOutside($event)" clickOutsideEnabled="true">
                 <ion-list margin0 *ngIf="notification0?.length > 0">
@@ -162,17 +162,17 @@
                       <!-- <p fnt-regular fnt12>{{notice.created_on|timeAgo}}</p> -->
                    </ion-item>
                    <ion-list-header br-btm margin0 (click)="seeAllNotifications()">
-                      <button bg-transparent>
-                      See All Notifications 
-                      </button>
+                      <ion-button size="small" color="medium">
+                          See All Notifications 
+                      </ion-button>
                    </ion-list-header>
                 </ion-list>
                 <ion-list *ngIf="notification0.length == 0" margin0 text-center   bg-white>
                  <div padding>  No Notifications Yet! </div>
                    <ion-list-header br-btm margin0 (click)="seeAllNotifications()">
-                      <button bg-transparent>
+                    <ion-button size="small" color="medium">
                       See All Notifications 
-                      </button>
+                  </ion-button>
                    </ion-list-header>
                 </ion-list>
               </div>

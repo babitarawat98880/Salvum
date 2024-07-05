@@ -16,12 +16,61 @@
   
   <ion-row>
     <ion-col size="12" size-md="6">
+      <ion-card>
       <ion-item p-lr-0>
         <ion-label>Group  Name</ion-label>
         <ion-input type="text" [(ngModel)]="name"></ion-input>
       </ion-item>
+      <ion-list  br-lt-grey group-head >
+        <ion-list-header color="lightgrey" margin0>
+      GROUP MEMBERS  <div float-right>
+      
+      </div>
+      </ion-list-header>
+        <div contact-top>
+      <span float-left>
+        Members
+        </span>
+               <div *ngIf="level0 == 'false' " class="check" float-left>
+              <ion-checkbox [(ngModel)]="mselected" (ionChange)="updateCb1Value('1', $event)" checked="true"></ion-checkbox>1
+              </div>
+      
+              <div *ngIf="level1 == 'false' " class="check" float-left>
+              <ion-checkbox [(ngModel)]="mselected1" (ionChange)="updateCb1Value('2', $event)" checked="true"></ion-checkbox>2
+              </div>
+              <div *ngIf="level2 == 'false' " class="check" float-left>
+              <ion-checkbox [(ngModel)]="mselected2" (ionChange)="updateCb1Value('3', $event)" checked="true"></ion-checkbox>3
+              </div>
+      
+              <div *ngIf="level3 == 'false' " class="check" float-left>
+              <ion-checkbox [(ngModel)]="mselected3" (ionChange)="updateCb1Value('4', $event)" checked="true"></ion-checkbox>4
+              </div>
+            </div>
+            <ion-item-group reorder="true" *ngFor="let x of groupMembers; let i = index " reorder="false" > 
+              <!-- <div  > -->
+                   <!--  <ion-item>{{x.name}} <ion-badge color="blue" item-end fnt-bold><span>Level</span> {{x.level}}</ion-badge></ion-item> -->
+      
+                    <ion-item *ngIf=" (x.reciverSetLevel == selectedForth1 || x.reciverSetLevel == selectedthird1 || x.reciverSetLevel == selectedSecond1 || x.reciverSetLevel == selectedFirst1) && x.reciverId == userId " (click)="memberChange(x , i)">{{x.name}} <{{x.email}} >  <ion-badge color="primary" slot="end"><span>Level</span> {{x.reciverSetLevel}}</ion-badge></ion-item>
+      
+                    <ion-item *ngIf=" (x.senderSetLevel == selectedForth1 || x.senderSetLevel == selectedthird1 || x.senderSetLevel == selectedSecond1 || x.senderSetLevel == selectedFirst1) && x.senderId == userId " (click)="memberChange(x , i)">{{x.name}} <{{x.email}}>   <ion-badge color="primary" slot="end"><span>Level</span> {{x.senderSetLevel}}</ion-badge></ion-item>
+              <!-- </div> -->
+            </ion-item-group>
+      <!--   <ion-item-group reorder="true" *ngFor="let x of groupMembers; let i = index " reorder="false"> 
+        <div (click)="memberChange(x , i)" *ngIf="(x.memberstatus == 2 && x.senderId == userId && (x.senderSetLevel == selectedForth1 || x.senderSetLevel == selectedthird1 || x.senderSetLevel == selectedSecond1 || x.senderSetLevel == selectedFirst1) ) || ((x.reciverSetLevel == selectedForth1 || x.reciverSetLevel == selectedthird1 || x.reciverSetLevel == selectedSecond1 || x.reciverSetLevel == selectedFirst1) && x.memberstatus == 2 && x.reciverId == userId ) ">
+      
+              <ion-item *ngIf="x.memberstatus == 2 && x.senderId == userId">{{x.name}} <div bothclear style="display: none;"></div>  <{{x.email}}>  <ion-badge color="blue" item-end fnt-bold><span>Level</span> {{x.senderSetLevel}}</ion-badge>
+              </ion-item>
+      
+              <ion-item *ngIf="x.memberstatus == 2 && x.reciverId == userId">{{x.name}}  <div bothclear style="display: none;"></div>  <{{x.email}}>   <ion-badge color="blue" item-end fnt-bold><span>Level</span> {{x.reciverSetLevel}}</ion-badge>
+              </ion-item>
+        </div>
+        </ion-item-group> -->
+      
+      </ion-list>
+    </ion-card>
     </ion-col>
     <ion-col size="12" size-md="6">
+      <ion-card>
       <ion-item p-lr-0>
         <ion-label>Select Level</ion-label>
           <ion-select [(ngModel)]="level">
@@ -31,105 +80,53 @@
             <ion-select-option value="4" *ngIf="level3 == 'false' ">Level 4</ion-select-option>
           </ion-select>
         </ion-item>
+        <ion-list  br-lt-grey group-head>
+          <ion-list-header color="lightgrey" margin0>CONTACTS 
+          <div float-right>
+         
+        
+        
+        </div>
+        </ion-list-header>
+        <div contact-top>
+        <span float-left>
+          Contacts
+          </span>
+                  <div *ngIf="level0 == 'false' " class="check" float-left>
+                  <ion-checkbox [(ngModel)]="selectedFirst" (ionChange)="updateCbValue('1', $event)" [checked]="selectedFirst"></ion-checkbox>1
+                  </div>
+        
+                   <div *ngIf="level1 == 'false' " class="check" float-left>
+                  <ion-checkbox [(ngModel)]="selectedSecond" (ionChange)="updateCbValue('2', $event)" [checked]="selectedSecond"></ion-checkbox>2
+                  </div>
+                  <div *ngIf="level2 == 'false' " class="check" float-left>
+                    <ion-checkbox [(ngModel)]="selectedthird" (ionChange)="updateCbValue('3', $event)" [checked]="selectedthird"></ion-checkbox>3
+                  </div>
+         
+                   <div *ngIf="level3 == 'false' " class="check" float-left>
+                  <ion-checkbox [(ngModel)]="selectedForth" (ionChange)="updateCbValue('4', $event)" [checked]="selectedForth"></ion-checkbox>4
+                  </div>
+        </div>
+          <ion-item-group reorder="true"  *ngFor="let item of data; let i = index " reorder="false">
+              <div (click)="contactChange(item , i)" *ngIf="(item.memberstatus == 2 && item.senderId == userId && (item.senderSetLevel == selectedForth || item.senderSetLevel == selectedthird || item.senderSetLevel == selectedSecond || item.senderSetLevel == selectedFirst) ) || ((item.reciverSetLevel == selectedForth || item.reciverSetLevel == selectedthird || item.reciverSetLevel == selectedSecond || item.reciverSetLevel == selectedFirst) && item.memberstatus == 2 && item.reciverId == userId ) ">
+                <ion-item *ngIf="item.memberstatus == 2 && item.senderId == userId">{{item.name}}  <div bothclear style="display: none;"></div>   <{{item.email}}>  <ion-badge color="primary" slot="end"><span>Level</span> {{item.senderSetLevel}}</ion-badge>
+                </ion-item>
+        
+                <ion-item *ngIf="item.memberstatus == 2 && item.reciverId == userId">{{item.name}}  <div bothclear style="display: none;"></div> <{{item.email}}> <ion-badge color="primary" slot="end"><span>Level</span> {{item.reciverSetLevel}}</ion-badge>
+                </ion-item>
+              </div>
+              
+          </ion-item-group>
+        </ion-list>
+      </ion-card>
       </ion-col>
   </ion-row>
-  
-  
-  <ion-row>
-  <ion-col size="12" size-md="6">
-  <ion-list  br-lt-grey group-head >
-    <ion-list-header color="lightgrey" margin0>
-  GROUP MEMBERS  <div float-right>
-  
-  </div>
-  </ion-list-header>
-    <div contact-top>
-  <span float-left>
-    Members
-    </span>
-           <div *ngIf="level0 == 'false' " class="check" float-left>
-          <ion-checkbox [(ngModel)]="mselected" (ionChange)="updateCb1Value('1', $event)" checked="true"></ion-checkbox>1
-          </div>
-  
-          <div *ngIf="level1 == 'false' " class="check" float-left>
-          <ion-checkbox [(ngModel)]="mselected1" (ionChange)="updateCb1Value('2', $event)" checked="true"></ion-checkbox>2
-          </div>
-          <div *ngIf="level2 == 'false' " class="check" float-left>
-          <ion-checkbox [(ngModel)]="mselected2" (ionChange)="updateCb1Value('3', $event)" checked="true"></ion-checkbox>3
-          </div>
-  
-          <div *ngIf="level3 == 'false' " class="check" float-left>
-          <ion-checkbox [(ngModel)]="mselected3" (ionChange)="updateCb1Value('4', $event)" checked="true"></ion-checkbox>4
-          </div>
-        </div>
-        <ion-item-group reorder="true" *ngFor="let x of groupMembers; let i = index " reorder="false" > 
-          <!-- <div  > -->
-               <!--  <ion-item>{{x.name}} <ion-badge color="blue" item-end fnt-bold><span>Level</span> {{x.level}}</ion-badge></ion-item> -->
-  
-                <ion-item *ngIf=" (x.reciverSetLevel == selectedForth1 || x.reciverSetLevel == selectedthird1 || x.reciverSetLevel == selectedSecond1 || x.reciverSetLevel == selectedFirst1) && x.reciverId == userId " (click)="memberChange(x , i)">{{x.name}} <{{x.email}} >  <ion-badge color="blue" item-end fnt-bold><span>Level</span> {{x.reciverSetLevel}}</ion-badge></ion-item>
-  
-                <ion-item *ngIf=" (x.senderSetLevel == selectedForth1 || x.senderSetLevel == selectedthird1 || x.senderSetLevel == selectedSecond1 || x.senderSetLevel == selectedFirst1) && x.senderId == userId " (click)="memberChange(x , i)">{{x.name}} <{{x.email}}>   <ion-badge color="blue" item-end fnt-bold><span>Level</span> {{x.senderSetLevel}}</ion-badge></ion-item>
-          <!-- </div> -->
-        </ion-item-group>
-  <!--   <ion-item-group reorder="true" *ngFor="let x of groupMembers; let i = index " reorder="false"> 
-    <div (click)="memberChange(x , i)" *ngIf="(x.memberstatus == 2 && x.senderId == userId && (x.senderSetLevel == selectedForth1 || x.senderSetLevel == selectedthird1 || x.senderSetLevel == selectedSecond1 || x.senderSetLevel == selectedFirst1) ) || ((x.reciverSetLevel == selectedForth1 || x.reciverSetLevel == selectedthird1 || x.reciverSetLevel == selectedSecond1 || x.reciverSetLevel == selectedFirst1) && x.memberstatus == 2 && x.reciverId == userId ) ">
-  
-          <ion-item *ngIf="x.memberstatus == 2 && x.senderId == userId">{{x.name}} <div bothclear style="display: none;"></div>  <{{x.email}}>  <ion-badge color="blue" item-end fnt-bold><span>Level</span> {{x.senderSetLevel}}</ion-badge>
-          </ion-item>
-  
-          <ion-item *ngIf="x.memberstatus == 2 && x.reciverId == userId">{{x.name}}  <div bothclear style="display: none;"></div>  <{{x.email}}>   <ion-badge color="blue" item-end fnt-bold><span>Level</span> {{x.reciverSetLevel}}</ion-badge>
-          </ion-item>
-    </div>
-    </ion-item-group> -->
-  
-  </ion-list>
-  </ion-col>
-  <ion-col  size="12" size-md="6">
-  <ion-list  br-lt-grey group-head>
-    <ion-list-header color="lightgrey" margin0>CONTACTS 
-    <div float-right>
-   
-  
-  
-  </div>
-  </ion-list-header>
-  <div contact-top>
-  <span float-left>
-    Contacts
-    </span>
-            <div *ngIf="level0 == 'false' " class="check" float-left>
-            <ion-checkbox [(ngModel)]="selectedFirst" (ionChange)="updateCbValue('1', $event)" [checked]="selectedFirst"></ion-checkbox>1
-            </div>
-  
-             <div *ngIf="level1 == 'false' " class="check" float-left>
-            <ion-checkbox [(ngModel)]="selectedSecond" (ionChange)="updateCbValue('2', $event)" [checked]="selectedSecond"></ion-checkbox>2
-            </div>
-            <div *ngIf="level2 == 'false' " class="check" float-left>
-              <ion-checkbox [(ngModel)]="selectedthird" (ionChange)="updateCbValue('3', $event)" [checked]="selectedthird"></ion-checkbox>3
-            </div>
-   
-             <div *ngIf="level3 == 'false' " class="check" float-left>
-            <ion-checkbox [(ngModel)]="selectedForth" (ionChange)="updateCbValue('4', $event)" [checked]="selectedForth"></ion-checkbox>4
-            </div>
-  </div>
-    <ion-item-group reorder="true"  *ngFor="let item of data; let i = index " reorder="false">
-        <div (click)="contactChange(item , i)" *ngIf="(item.memberstatus == 2 && item.senderId == userId && (item.senderSetLevel == selectedForth || item.senderSetLevel == selectedthird || item.senderSetLevel == selectedSecond || item.senderSetLevel == selectedFirst) ) || ((item.reciverSetLevel == selectedForth || item.reciverSetLevel == selectedthird || item.reciverSetLevel == selectedSecond || item.reciverSetLevel == selectedFirst) && item.memberstatus == 2 && item.reciverId == userId ) ">
-          <ion-item *ngIf="item.memberstatus == 2 && item.senderId == userId">{{item.name}}  <div bothclear style="display: none;"></div>   <{{item.email}}>  <ion-badge color="blue" item-end fnt-bold><span>Level</span> {{item.senderSetLevel}}</ion-badge>
-          </ion-item>
-  
-          <ion-item *ngIf="item.memberstatus == 2 && item.reciverId == userId">{{item.name}}  <div bothclear style="display: none;"></div> <{{item.email}}> <ion-badge color="blue" item-end fnt-bold><span>Level</span> {{item.reciverSetLevel}}</ion-badge>
-          </ion-item>
-        </div>
-        
-    </ion-item-group>
-  </ion-list>
-  </ion-col>
-  </ion-row>
+
   
   
   <ion-row>
   <ion-col>
-      <ion-button color="primary" (click)="contact()">
+      <ion-button color="medium" (click)="contact()">
     Cancel 
   </ion-button><ion-button  color="success" (click)="saveGroup()">
     Save</ion-button>

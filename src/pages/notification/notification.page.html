@@ -1,4 +1,5 @@
-<ion-content lightgrey has-header>
+<app-header></app-header>
+<ion-content>
     <ion-row main-breadcrumb ion-fixed>
         <ion-col>
           <ol class="breadcrumb">
@@ -10,18 +11,19 @@
     <div breadcrumb-height></div>
     <ion-grid>
       <ion-row>
-        <ion-col col-12 col-sm-12  col-md-12 col-xl-12>
+        <ion-col size="12">
         
         <div class="white-box activity-widget" all-notification>
             <h4 *ngIf="notifications != ''" class="box-title">All Notifications <button  btn-remove ion-button color="blue" (click)="removeAll()">Remove All</button></h4>
             <div class="steamline" *ngIf="notifications != ''">
             <ng-container *ngFor="let notification of notifications; let index = index ">
-                <ion-row col-12>
-                    <ion-col col-10>
+                <ion-row>
+                    <ion-col size="1"></ion-col>
+                    <ion-col size="9">
                     <div class="sl-item" *ngIf="notification.type == '1'" (click)="readNotification(notification)" [ngClass]="(notification.read == 0) ? 'read-msg': ''">
                         <div class="sl-left">
                             <div>
-                                <ion-avatar item-start>
+                                <ion-avatar slot="start">
                                     <img src="assets/img/m7.png" *ngIf="notification.image == ''">
                                     <img src="{{imageUrl + notification.image}}" *ngIf="notification.image != ''">
                                 </ion-avatar>
@@ -578,8 +580,8 @@
                         </div>
                     </div>
                     </ion-col>
-                    <ion-col col-2>
-                    <button (click)="delete(notification._id,index)" btn-close ion-button color="blue"><ion-icon name="close"></ion-icon></button>  
+                    <ion-col size="2">
+                    <ion-button (click)="delete(notification._id,index)" size="small" color="primary"><ion-icon name="close"></ion-icon></ion-button>  
                     </ion-col>
                 </ion-row>
             </ng-container>        

@@ -5,13 +5,15 @@ import { IonicModule } from '@ionic/angular';
 import { TimeAgoPipe } from 'time-ago-pipe';
 import { NotificationPageRoutingModule } from './notification-routing.module';
 import { NotificationPage } from './notification.page';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NotificationPageRoutingModule
+    NotificationPageRoutingModule,
+    SharedModuleModule
   ],
   declarations: [NotificationPage]
 })
