@@ -1,11 +1,11 @@
-<!-- <app-header></app-header> -->
+<app-header></app-header>
 <ion-split-pane file-split when="xs"  [class.actives]="isParaActive">
    <ion-menu contentId="content" side="start" class="show-menu">
-      <ion-header>
+      <!--<ion-header>
          <ion-toolbar>
             <ion-title>Smail</ion-title>
          </ion-toolbar>
-      </ion-header>
+      </ion-header>-->
       <ion-content>
          <ion-list>
             <div class="outer-filter " w-100 padding p-b-0>
@@ -15,35 +15,35 @@
                   {{ n.level}}
                   </button> -->
                            <ion-grid m-t-10 no-padding w-100> 
-                           <ion-row no-padding w-100> 
-    <ion-col col-12>
-               <div class="checkbox-inline">
-                   <div class="checkbox-button" *ngIf="enable_level1 == 'false'">
-                    <label>
-                     <input type="checkbox" name="chk[]" id="hl1" (change)="filterLevel($event,'level1')" checked="{{this.shown_levels.indexOf('level1') >= 0 ? 'checked' : ''}}" class="ldi"><span>1</span>
-                    </label>
-                 </div>
-                  <div class="checkbox-button" *ngIf="enable_level2 == 'false'">
-                    <label>
-                     <input type="checkbox" name="chk[]" id="hl2"  (change)="filterLevel($event,'level2')" checked="{{this.shown_levels.indexOf('level2') >= 0 ? 'checked' : ''}}" class="ldi"><span>2</span>
-                    </label>
-                 </div>
-                  <div class="checkbox-button" *ngIf="enable_level3 == 'false'">
-                    <label>
-                     <input type="checkbox" name="chk[]" id="hl3" (change)="filterLevel($event,'level3')" checked="{{this.shown_levels.indexOf('level3') >= 0 ? 'checked' : ''}}" class="ldi"><span>3</span>
-                    </label>
-                 </div>
-                  <div class="checkbox-button" *ngIf="enable_level4 == 'false'">
-                    <label>
-                     <input type="checkbox" name="chk[]" id="hl4" (change)="filterLevel($event,'level4')" checked="{{this.shown_levels.indexOf('level4') >= 0 ? 'checked' : ''}}" class="ldi"><span>4</span>
-                    </label>
-                 </div>
-             </div>
+            <ion-row no-padding w-100> 
+                     <ion-col col-12>
+                        <div class="checkbox-inline">
+                           <div class="checkbox-button" *ngIf="enable_level1 == 'false'">
+                              <label>
+                                 <input type="checkbox" name="chk[]" id="hl1" (change)="filterLevel($event,'level1')" checked="{{this.shown_levels.indexOf('level1') >= 0 ? 'checked' : ''}}" class="ldi"><span>1</span>
+                              </label>
+                           </div>
+                              <div class="checkbox-button" *ngIf="enable_level2 == 'false'">
+                              <label>
+                                 <input type="checkbox" name="chk[]" id="hl2"  (change)="filterLevel($event,'level2')" checked="{{this.shown_levels.indexOf('level2') >= 0 ? 'checked' : ''}}" class="ldi"><span>2</span>
+                              </label>
+                           </div>
+                              <div class="checkbox-button" *ngIf="enable_level3 == 'false'">
+                              <label>
+                                 <input type="checkbox" name="chk[]" id="hl3" (change)="filterLevel($event,'level3')" checked="{{this.shown_levels.indexOf('level3') >= 0 ? 'checked' : ''}}" class="ldi"><span>3</span>
+                              </label>
+                           </div>
+                              <div class="checkbox-button" *ngIf="enable_level4 == 'false'">
+                              <label>
+                                 <input type="checkbox" name="chk[]" id="hl4" (change)="filterLevel($event,'level4')" checked="{{this.shown_levels.indexOf('level4') >= 0 ? 'checked' : ''}}" class="ldi"><span>4</span>
+                              </label>
+                           </div>
+                        </div>
                      </ion-col>
-                           <ion-col style="display:none" col-2 *ngIf="enable_level1 == 'false'">1 <ion-checkbox (ionChange)="filterLevel($event,'level1')" checked="{{this.shown_levels.indexOf('level1') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
-                           <ion-col  style="display:none"  col-2 *ngIf="enable_level2 == 'false'">2 <ion-checkbox (ionChange)="filterLevel($event,'level2')" checked="{{this.shown_levels.indexOf('level2') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
-                           <ion-col  style="display:none"  col-2 *ngIf="enable_level3 == 'false'">3 <ion-checkbox (ionChange)="filterLevel($event,'level3')" checked="{{this.shown_levels.indexOf('level3') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
-                           <ion-col style="display:none"  col-2 *ngIf="enable_level4 == 'false'">4 <ion-checkbox (ionChange)="filterLevel($event,'level4')" checked="{{this.shown_levels.indexOf('level4') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
+                     <ion-col style="display:none" col-2 *ngIf="enable_level1 == 'false'">1 <ion-checkbox (ionChange)="filterLevel($event,'level1')" checked="{{this.shown_levels.indexOf('level1') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
+                     <ion-col  style="display:none"  col-2 *ngIf="enable_level2 == 'false'">2 <ion-checkbox (ionChange)="filterLevel($event,'level2')" checked="{{this.shown_levels.indexOf('level2') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
+                     <ion-col  style="display:none"  col-2 *ngIf="enable_level3 == 'false'">3 <ion-checkbox (ionChange)="filterLevel($event,'level3')" checked="{{this.shown_levels.indexOf('level3') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
+                     <ion-col style="display:none"  col-2 *ngIf="enable_level4 == 'false'">4 <ion-checkbox (ionChange)="filterLevel($event,'level4')" checked="{{this.shown_levels.indexOf('level4') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
    
    
                            <!-- <ion-col col-2> -->
@@ -52,8 +52,8 @@
                              </button> -->
                              <!-- <ion-checkbox (ionChange)="filterLevel(i+1,$event)" checked="{{this.opened_levels.indexOf('level' + (i + 1)) >= 0 ? 'true' : 'false'}}"></ion-checkbox> -->
                              <!-- </ion-col> -->
-                           </ion-row>
-                        </ion-grid>  
+               </ion-row>
+            </ion-grid>  
                <!-- </div> -->
             </div> 
             <div menuClose ion-item>

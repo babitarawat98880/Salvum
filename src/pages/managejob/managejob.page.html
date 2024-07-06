@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <ion-content padding lightgrey manage-job (window:resize)="ionViewDidLoad()" has-header> 
   <div ion-fixed id="calc_height{{timestamp}}" fixed-top-div>
   <ion-row main-breadcrumb>
@@ -10,37 +12,37 @@
   </ion-row>
         <ion-searchbar  searchmob (ionInput)="getItems($event)" p-5></ion-searchbar>	  
         <div button-hide *ngIf="isAssociate != '1'" p-0-3 w-100>
-           <button ion-button    color="blue" fnt-regular m-b-10 fnt-normal left (click)="addJob()">
+           <ion-button color="primary" (click)="addJob()">
               <ion-icon name="add" mar-mob-0 m-r-5></ion-icon>
               <span class="hidden-xs">Add Job </span>
-           </button>
+           </ion-button>
            <ng-container *ngIf="jobs != ''">
-              <button ion-button (click)="openCloseJobs('1')" color="blue" fnt-regular m-b-10 fnt-normal left>
+              <ion-button (click)="openCloseJobs('1')" color="primary">
                  <ion-icon name="open" mar-mob-0 m-r-5></ion-icon>
                  <span class="hidden-xs">Open </span>
-              </button>
-              <button ion-button (click)="openCloseJobs('2')" color="blue" fnt-regular m-b-10 fnt-normal left>
+              </ion-button>
+              <ion-button ion-button (click)="openCloseJobs('2')" color="primary">
                  <ion-icon name="close" mar-mob-0 m-r-5></ion-icon>
                  <span class="hidden-xs"> Close </span>
-              </button>
-              <button ion-button (click)="deleteMultipleJobs()" color="blue" fnt-regular m-b-10 fnt-normal left>
+              </ion-button>
+              <ion-button ion-button (click)="deleteMultipleJobs()" color="primary">
                  <ion-icon name="trash" mar-mob-0 m-r-5></ion-icon>
                  <span class="hidden-xs">Delete</span>
-              </button>
+              </ion-button>
            </ng-container>
-           <button ion-button (click) = "openManageCompanyPage()"   color="blue" fnt-regular m-b-10 fnt-normal left>
+           <ion-button ion-button (click) = "openManageCompanyPage()"   color="primary">
               <ion-icon name="settings" mar-mob-0 m-r-5></ion-icon>
               <span class="hidden-xs">Manage Company</span>
-           </button>
-           <button ion-button m-b-10 color="blue"fnt-regular  fnt-normal left (click)="openBidjobsPage()">
+           </ion-button>
+           <ion-button color="primary" (click)="openBidjobsPage()">
               <ion-icon mar-mob-0 m-r-5><img style="width: 16px;margin-top: 5px;" src="assets/img/bid_icon_white.png"></ion-icon>
               <span class="hidden-xs">Bid Jobs</span>
-           </button> 
+           </ion-button> 
         </div>
         <div *ngIf="isAssociate != '1'">
            <ion-list>
-              <ion-row col-12>
-                 <ion-col col-12 col-md-6 col-lg-6 col-xl-6 *ngIf="jobs != ''">
+              <ion-row>
+                 <ion-col size="12" size-md="6" *ngIf="jobs != ''">
                    <ion-item>
                      <ion-label>Filter by:</ion-label>
                      <ion-select [(ngModel)]="filter_by" (ionChange)="jobFilter(filter_by,'1')">
@@ -74,7 +76,7 @@
                      </ion-select> 
                    </ion-item>
                  </ion-col> -->
-                 <ion-col col-12 col-md-6 col-lg-6 col-xl-6>
+                 <ion-col size="12" size-md="6">
                    <ion-item>
                      <ion-label>Filter by Status:</ion-label>
                      <ion-select [(ngModel)]="filter_by_status" (ionChange)="jobFilter(filter_by_status,'status')">
@@ -89,90 +91,93 @@
            </ion-list>
         </div>   
      </div>
-      <div class="clearfix" id="custom_height{{timestamp}}"></div>
+      <!--<div class="clearfix" id="custom_height{{timestamp}}"></div>-->
      
   
   
            <ion-list list-contact margin0 clearboth >
               <ion-row no-padding>
   
-                 <ion-col col-12 col-md-6 col-lg-6 col-xl-6 *ngFor="let job of jobs , let indx = index "> 
-                    <ion-item-sliding #item br-lt-grey  list-hover>
-                       <ion-item border-none  manage-job>
+                 <ion-col size="12" size-md="6" *ngFor="let job of jobs , let indx = index "> 
+                  <ion-card>
+                    <ion-item-sliding #item>
+                       <ion-item>
                           <ion-thumbnail item-start icon-ionic >
-                             <ion-icon name="briefcase-outline" text-center></ion-icon>
+                             <ion-icon name="briefcase-outline" class="icon-wrap"></ion-icon>
                           </ion-thumbnail>
-              
-                          <h2 fnt-bold fnt14>
-                             {{job.job_title}} 	
-                          
-                          </h2>    
-                          <h3 fnt-regular m-t-5>
-                             PO No - 
-                             <ion-badge color="light"> #{{job.job_number}}</ion-badge>
-                          </h3>
-                 <ion-badge color="blue" m-t-5 fnt-normal> {{job.status == '0' ? 'Pending' : (job.status == '1' ? 'Open' : 'Closed')}}</ion-badge>
-                          <ion-note  my-date  fnt12  item-end  margin0 fnt-light>{{job.date_created | date:'short'}}</ion-note>
-                          <button btn-hides *ngIf="isAssociate != '1' && job.privileges.indexOf(userId) >= 0 && isBrowser == 'true'" ion-button clear item-end margin0 button-none (click) = "tradeDashboard(job._id,job.job_title)">
-                             <ion-icon name="eye" fnt20></ion-icon>
-                          </button>
-                          <button btn-hides *ngIf="isAssociate != '1' && job.privileges.indexOf(userId) >= 0 && isBrowser == 'true'" ion-button clear item-end margin0 button-none (click)="editJobPage($event,job._id)">
-                             <ion-icon name="create" fnt20></ion-icon>
-                          </button>
-                          <button  btn-hides *ngIf="isAssociate != '1' && job.privileges.indexOf(userId) >= 0 && isBrowser == 'true'" (click)="shareJobs(job._id,job.job_number,job.job_title,job.companyId)" ion-button clear item-end margin0 button-none>
-                             <ion-icon name="share" fnt20></ion-icon>
-                          </button>
-                          <button  btn-hides *ngIf="isAssociate != '1' && job.privileges.indexOf(userId) >= 0 && isBrowser == 'true'" ion-button clear item-end margin0 button-none (click) = "jobCalendar(job._id)">
-                             <ion-icon name="calendar" fnt20></ion-icon>
-                          </button>
-                          <button btn-hides  *ngIf="isAssociate != '1' && job.privileges.indexOf(userId) >= 0 && isBrowser == 'true'" (click) = "deleteJob(job._id)" ion-button clear item-end margin0 button-none>
-                             <ion-icon name="trash" fnt20></ion-icon>
-                          </button>
-                          <button btn-hides *ngIf="isAssociate == '1' || job.privileges.indexOf(userId) == -1 && isBrowser == 'true'" ion-button clear item-end margin0 button-none (click) = "editJob(job._id)">
-                             <ion-icon name="eye" fnt20></ion-icon>
-                          </button>
+
+                          <ion-label>
+                           <ion-text>
+                             <h2 class="ion-text-title">{{job.job_title}} </h2>
+                           </ion-text>
+                           <ion-note>{{job.date_created | date:'short'}}</ion-note>
+                           <ion-note color="dark" class="ion-text-wrap">
+                              <p>PO No - #{{job.job_number}}</p>
+                           </ion-note>
+                           <ion-note color="medium" class="ion-text-wrap">
+                              <p><ion-badge color="primary"> {{job.status == '0' ? 'Pending' : (job.status == '1' ? 'Open' : 'Closed')}}</ion-badge></p>
+                           </ion-note>
+                           <p><ion-button size="small" *ngIf="isAssociate != '1' && job.privileges.indexOf(userId) >= 0 && isBrowser == 'true'" color="primary" (click) = "tradeDashboard(job._id,job.job_title)">
+                              <ion-icon name="eye" fnt20></ion-icon>
+                           </ion-button>
+                           <ion-button btn-hides *ngIf="isAssociate != '1' && job.privileges.indexOf(userId) >= 0 && isBrowser == 'true'" size="small" primary="secondary" (click)="editJobPage($event,job._id)">
+                              <ion-icon name="create" fnt20></ion-icon>
+                           </ion-button>
+                           <ion-button  btn-hides *ngIf="isAssociate != '1' && job.privileges.indexOf(userId) >= 0 && isBrowser == 'true'" (click)="shareJobs(job._id,job.job_number,job.job_title,job.companyId)" size="small" color="medium">
+                              <ion-icon name="share" fnt20></ion-icon>
+                           </ion-button>
+                           <ion-button  btn-hides *ngIf="isAssociate != '1' && job.privileges.indexOf(userId) >= 0 && isBrowser == 'true'" size="small" color="medium" (click) = "jobCalendar(job._id)">
+                              <ion-icon name="calendar" fnt20></ion-icon>
+                           </ion-button>
+                           <ion-button btn-hides  *ngIf="isAssociate != '1' && job.privileges.indexOf(userId) >= 0 && isBrowser == 'true'" (click) = "deleteJob(job._id)" size="small" color="danger">
+                              <ion-icon name="trash" fnt20></ion-icon>
+                           </ion-button>
+                           <ion-button btn-hides *ngIf="isAssociate == '1' || job.privileges.indexOf(userId) == -1 && isBrowser == 'true'" size="small" color="primary" (click) = "editJob(job._id)">
+                              <ion-icon name="eye" fnt20></ion-icon>
+                           </ion-button></p>
+                           <span *ngIf="isAssociate != '1' && job.privileges.indexOf(userId) >= 0" class="form-custom-check"   item-end  checkbox-responsive>
+                              <input [ngModel]="" (change)="insertToArray($event,job._id)"  type="checkbox"  id="checkbox{{indx}}{{timestamp}}"  name="checkbox{{indx}}" class="form-check-input">
+                                     <label class="form-check-label"  for="checkbox{{indx}}{{timestamp}}">    </label>
+                             </span>  
+                         </ion-label> 
                           <!-- </ng-container> -->
-               
-                    <span *ngIf="isAssociate != '1' && job.privileges.indexOf(userId) >= 0" class="form-custom-check"   item-end  checkbox-responsive>
-                      <input [ngModel]="" (change)="insertToArray($event,job._id)"  type="checkbox"  id="checkbox{{indx}}{{timestamp}}"  name="checkbox{{indx}}" class="form-check-input">
-                             <label class="form-check-label"  for="checkbox{{indx}}{{timestamp}}">    </label>
-                     </span>     
                        </ion-item>
                        <ion-item-options side="start" *ngIf="isAssociate != '1' && job.privileges.indexOf(userId) >= 0 && isBrowser == 'false'">
                        
-                        <button (click)="shareJobs(job._id,job.job_number,job.job_title)" ion-button color="secondary">
+                        <ion-button (click)="shareJobs(job._id,job.job_number,job.job_title)" color="secondary">
                              <ion-icon name="share"></ion-icon>
                              Share
-                          </button>
+                          </ion-button>
                           
-                          <button ion-button color="info" (click) = "jobCalendar(job._id)">
+                          <ion-button olor="primary" (click) = "jobCalendar(job._id)">
                              <ion-icon name="calendar"></ion-icon>
                              Calendar
-                          </button>
+                          </ion-button>
                        </ion-item-options>
                        <ion-item-options side="end" *ngIf="isAssociate != '1' && job.privileges.indexOf(userId) >= 0 && isBrowser == 'false'">
-                          <button ion-button color="secondary" (click) = "tradeDashboard(job._id,job.job_title)">
+                          <ion-button color="secondary" (click) = "tradeDashboard(job._id,job.job_title)">
                              <ion-icon name="eye"></ion-icon>
                              View
-                          </button>
-                          <button ion-button color="primary" (click)="editJobPage($event,job._id)">
+                          </ion-button>
+                          <ion-button color="primary" (click)="editJobPage($event,job._id)">
                              <ion-icon name="create"></ion-icon>
                              Edit
-                          </button>
-                          <button (click) = "deleteJob(job._id)" ion-button color="danger">
+                          </ion-button>
+                          <ion-button (click) = "deleteJob(job._id)" color="danger">
                              <ion-icon name="trash"></ion-icon>
                              Delete
-                          </button>
+                          </ion-button>
                        </ion-item-options>
                        <ion-item-options side="start" *ngIf="isAssociate == '1' || job.privileges.indexOf(userId) == -1 && isBrowser == 'false'">
-                          <button ion-button color="secondary" (click) = "editJob(job._id)">
+                          <ion-button color="secondary" (click) = "editJob(job._id)">
                              <ion-icon name="eye"></ion-icon>
                              View
-                          </button>
+                          </ion-button>
                        </ion-item-options>
                     </ion-item-sliding>
+                  </ion-card>
                  </ion-col>
-                 <ion-col col-12 col-md-12 col-lg-12 col-xl-12 *ngIf="jobs == ''">
+                 <ion-col size="12" *ngIf="jobs == ''">
                  <ion-item  br-lt-grey border-none>No Jobs Found.</ion-item>
                  </ion-col>
                  

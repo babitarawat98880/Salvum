@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { TradeDashboardPageRoutingModule } from './trade-dashboard-routing.module';
 
 import { TradeDashboardPage } from './trade-dashboard.page';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TradeDashboardPageRoutingModule
+    TradeDashboardPageRoutingModule,
+    SharedModuleModule
   ],
   declarations: [TradeDashboardPage]
 })

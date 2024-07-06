@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AddJobPageRoutingModule } from './add-job-routing.module';
 import { TagInputModule } from 'ngx-chips';
 import { AddJobPage } from './add-job.page';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { AddJobPage } from './add-job.page';
     IonicModule,
     AddJobPageRoutingModule,
     TagInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModuleModule
   ],
   declarations: [AddJobPage]
 })

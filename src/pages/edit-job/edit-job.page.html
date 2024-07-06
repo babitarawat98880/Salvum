@@ -1,10 +1,12 @@
-<ion-header modal-white>
- 
-    <ion-title text-centers>Edit Job</ion-title><ion-buttons end>
-    <button btn-grid  (click)="dismiss()">
-        <ion-icon name="close"></ion-icon>
-    </button>
-  </ion-buttons>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title>Edit Job</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()"><ion-icon name="close"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
@@ -12,14 +14,13 @@
 <ion-col col-12>
 <form [formGroup]="form" (ngSubmit)="editJob()">
   <ion-item p-lr-0>
-    <ion-label floating fnt-regular>Job/PO No*</ion-label>
-    <ion-input type="text" [(ngModel)] = "job_number" name="job_number" formControlName="job_number"></ion-input>
+    <ion-input label="Job/PO No*" labelPlacement="stacked" type="text" [(ngModel)]="job_number" formControlName="job_number"></ion-input>
   </ion-item>
   <ion-item *ngIf="f['job_number'].touched && f['job_number'].invalid  && f['job_number'].hasError('required')" class="error-text-danger">Please enter a valid Job/PO number</ion-item>
 
   <ion-item p-lr-0>
-    <ion-label floating fnt-light fnt-regular>Job Name</ion-label>
-    <ion-input type="text" [(ngModel)] = "job_title" name="job_title" formControlName="job_title"></ion-input>
+    
+    <ion-input label="Job Name*" labelPlacement="stacked" type="text" [(ngModel)] = "job_title" name="job_title" formControlName="job_title"></ion-input>
   </ion-item>
   <ion-item *ngIf="f['job_title'].touched && f['job_title'].invalid  && f['job_title'].hasError('required')" class="error-text-danger">Please enter a valid job title</ion-item>
 	<ion-item p-lr-0>
@@ -41,7 +42,7 @@
   <ion-item  *ngIf="f['companyId'].touched && f['companyId'].invalid  && f['companyId'].hasError('required')"  class="error-text-danger">Please select a valid company</ion-item>
 
   <div padding p-b-0 p-lr-0>
-    <button ion-button color="darkblue" block  fnt-regular type="submit">Save</button>
+    <ion-button color="primary" expand="block" type="submit">Save</ion-button>
   </div>
 </form>
  </ion-col>

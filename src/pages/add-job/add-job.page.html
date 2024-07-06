@@ -1,3 +1,4 @@
+<app-header></app-header>
 <ion-content padding lightgrey manage-job (window:resize)="ionViewDidLoad()" has-header> 
   <div ion-fixed id="calc_height{{timestamp}}" fixed-top-div>
   <ion-row main-breadcrumb>
@@ -12,54 +13,74 @@
   </div>
    <div class="clearfix" id="custom_height{{timestamp}}"></div>
    <ion-row> 
-  <ion-col col-lg-8 offset-lg-2>
+  <ion-col>
   <div stepwizard-form>
    
   <div stepwizard>
      <div stepwizard-row setup-panel>
-            <div stepwizard-step [ngClass]="step > '0' ? 'active' : ''">
-            <a href="javascript:void(0)"  btn btn-default   btn-circle>
-              <ion-icon name="newspaper-outline"></ion-icon>
-            </a>
-            <p>Step 1</p>
-            </div>
-            <div stepwizard-step [ngClass]="step > '1' ? 'active' : ''">
-            <a href="javascript:void(0)" btn btn-default btn-circle disabled="disabled">
-              <ion-icon name="briefcase-outline"></ion-icon>
-            </a>
-            <p>Step 2</p>
-            </div>
-            <div stepwizard-step [ngClass]="step > '2' ? 'active' : ''">
-            <a href="javascript:void(0)" btn btn-default btn-circle disabled="disabled">
-              <ion-icon name="people-outline"></ion-icon>
-            </a>
-            <p>Step 3</p>
-            </div> 
-            <div stepwizard-step [ngClass]="step > '3' ? 'active' : ''">
-            <a href="javascript:void(0)" btn btn-default btn-circle disabled="disabled">
-              <ion-icon name="settings-outline"></ion-icon>
-            </a>
-            <p>Step 4</p>
-            </div> 
-              <div stepwizard-step [ngClass]="step > '4' ? 'active' : ''">
-            <a href="javascript:void(0)" btn btn-default btn-circle disabled="disabled">
-              <ion-icon name="pricetag-outline"></ion-icon>
-            </a>
-            <p>Step 5 </p>
-            </div> 
+          <ion-row>
+            <ion-col size="12" size-md="3">
+              <ion-card class="m-box text-center">
+                <div stepwizard-step [ngClass]="step > '0' ? 'active' : ''">
+                  <a href="javascript:void(0)"  btn btn-default   btn-circle>
+                    <ion-icon name="newspaper-outline" class="icon-wrap"></ion-icon>
+                  </a>
+                  <p>Step 1</p>
+                </div>
+              </ion-card>
+            </ion-col>
+            <ion-col size="12" size-md="3">
+              <ion-card class="m-box text-center">
+                <div stepwizard-step [ngClass]="step > '1' ? 'active' : ''">
+                  <a href="javascript:void(0)" disabled="disabled">
+                    <ion-icon name="briefcase-outline" class="icon-wrap"></ion-icon>
+                  </a>
+                  <p>Step 2</p>
+                </div>
+              </ion-card>
+            </ion-col>
+            <ion-col size="12" size-md="3">
+              <ion-card class="m-box text-center">
+                <div stepwizard-step [ngClass]="step > '2' ? 'active' : ''">
+                  <a href="javascript:void(0)" disabled="disabled">
+                    <ion-icon name="people-outline" class="icon-wrap"></ion-icon>
+                  </a>
+                  <p>Step 3</p>
+                </div> 
+              </ion-card>
+            </ion-col>
+            <ion-col size="12" size-md="3">
+              <ion-card class="m-box text-center">
+                <div stepwizard-step [ngClass]="step > '3' ? 'active' : ''">
+                  <a href="javascript:void(0)" btn btn-default btn-circle disabled="disabled">
+                    <ion-icon name="settings-outline" class="icon-wrap"></ion-icon>
+                  </a>
+                  <p>Step 4</p>
+                </div> 
+              </ion-card>
+            </ion-col>
+            <ion-col size="12" size-md="3">
+              <ion-card class="m-box text-center">
+                <div stepwizard-step [ngClass]="step > '4' ? 'active' : ''">
+                  <a href="javascript:void(0)" btn btn-default btn-circle disabled="disabled">
+                    <ion-icon name="pricetag-outline" class="icon-wrap"></ion-icon>
+                  </a>
+                  <p>Step 5 </p>
+                </div> 
+              </ion-card>
+            </ion-col>
+          </ion-row>  
       </div>
     </div>
   <div step-main>
     <div class="step1 job_steps" >
       <ion-item p-lr-0> 
-        <ion-label stacked fnt-regular>Enter Job/PO No*</ion-label>
-        <ion-input type="text" [(ngModel)] = "job_number"></ion-input>
+        <ion-input label="Enter Job/PO No*" labelPlacement="stacked" type="text" [(ngModel)] = "job_number"></ion-input>
       </ion-item>
     </div>
     <div class="step2 job_steps" style="display: none;">
       <ion-item  p-lr-0>
-        <ion-label stacked fnt-regular>Enter Job Name*</ion-label>
-        <ion-input type="text" [(ngModel)] = "job_title"></ion-input>
+        <ion-input label="Enter Job Name*" labelPlacement="stacked" type="text" [(ngModel)] = "job_title"></ion-input>
       </ion-item>
     </div>
     <div class="step3 job_steps" style="display: none;">
@@ -111,9 +132,9 @@
     </div>
     <div class="step5 job_steps" style="display: none;">
       <p>Would you like to add trade under this job?</p>
-      <button ion-button color="darkblue" fnt-regular type="button" (click)="goToTrade()">Yes, Sure</button>
+      <ion-button color="primary" type="button" (click)="goToTrade()">Yes, Sure</ion-button>
   
-      <button ion-button color="darkblue" fnt-regular type="button" (click)="jobPage()">No, Take me to jobs</button>
+      <ion-button color="primary" type="button" (click)="jobPage()">No, Take me to jobs</ion-button>
     </div>
    <!--  <ion-item *ngIf="form.get('job_number').touched && form.get('job_number').errors && form.get('job_number').hasError('required')" class="error-text-danger">Please enter a valid Job/PO number</ion-item>
   
@@ -133,9 +154,9 @@
    </div> 
     <div padding p-b-0 p-lr-0>
       <!-- <button *ngIf="first_step == false" ion-button color="darkblue" fnt-regular type="button" (click)="prev()">Prev</button> -->
-      <button ion-button color="darkblue" fnt-regular type="button" *ngIf="isSkip == true && isLast == false" (click)="next('0')">Skip</button>
-      <button *ngIf="isLast == false" ion-button color="darkblue" fnt-regular type="button" (click)="next('1')">Next</button>
-      <button *ngIf="isLast == true && step != 5" ion-button color="darkblue" fnt-regular type="button" (click)="finish()">Finish</button>
+      <ion-button color="primary" type="button" *ngIf="isSkip == true && isLast == false" (click)="next('0')">Skip</ion-button>
+      <ion-button *ngIf="isLast == false" color="primary" type="button" (click)="next('1')">Next</ion-button>
+      <ion-button *ngIf="isLast == true && step != 5" color="primary" type="button" (click)="finish()">Finish</ion-button>
     </div>
     </div> 
    </ion-col>

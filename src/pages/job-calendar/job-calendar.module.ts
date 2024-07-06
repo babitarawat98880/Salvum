@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { JobCalendarPageRoutingModule } from './job-calendar-routing.module';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { JobCalendarPage } from './job-calendar.page';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { JobCalendarPage } from './job-calendar.page';
     FormsModule,
     IonicModule,
     NgCalendarModule,
-    JobCalendarPageRoutingModule
+    JobCalendarPageRoutingModule,
+    SharedModuleModule
   ],
   declarations: [JobCalendarPage]
 })

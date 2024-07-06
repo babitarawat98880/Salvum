@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { TradePageRoutingModule } from './trade-routing.module';
 
 import { TradePage } from './trade.page';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TradePageRoutingModule
+    TradePageRoutingModule,
+    SharedModuleModule
   ],
   declarations: [TradePage]
 })
