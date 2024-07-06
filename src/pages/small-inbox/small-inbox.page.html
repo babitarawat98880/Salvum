@@ -1,33 +1,210 @@
-<app-header></app-header>
-      <ion-row main-breadcrumb ion-fixed style="top:60px">
-         <ion-col>
-            <ol class="breadcrumb">
-               <li (click)="root()"><a>Home</a></li>
-               <li (click)="smail()"><a>Smail</a></li>
-               <li class="{{bread_level == '' ? 'active' : ''}}"  *ngIf="preState == 'Inbox'"><a>Inbox</a></li>
-               <li class="{{bread_level == '' ? 'active' : ''}}" *ngIf="preState == 'Sent'"><a>Sent</a></li>
-               <!-- <li class="active" *ngIf="preState == 'Folder' || preState == 'null'">{{selectedLevel}}</li> -->
-               <li class="text-capital" (click)="clickNode(bread_level_node)" *ngIf="bread_level != '' && bread_folder != ''"><a>{{bread_level}}</a></li>
-               <li class="active text-capital" *ngIf="bread_level != '' && bread_folder == ''">{{bread_level}}</li>
-               <li (click)="clickNodeChild(bread_folder_node)" *ngIf="bread_folder != '' && bread_static != ''"><a>{{bread_folder}}</a></li> 
-               <li class="active" *ngIf="bread_folder != '' && bread_static == ''">{{bread_folder}}</li> 
-               <li class="active" *ngIf="bread_static != ''">{{bread_static}}</li>  
-            </ol>
-         </ion-col>
-      </ion-row>
-
-   <ion-content file-content has-header [class.actives]="isParaActive" lightgrey>
+<!-- <app-header></app-header> -->
+<ion-split-pane file-split when="xs"  [class.actives]="isParaActive">
+   <ion-menu contentId="content" side="start" class="show-menu">
+      <ion-header>
+         <ion-toolbar>
+            <ion-title>Smail</ion-title>
+         </ion-toolbar>
+      </ion-header>
+      <ion-content>
+         <ion-list>
+            <div class="outer-filter " w-100 padding p-b-0>
+               <div>Filter Levels</div>
+               <!-- <div *ngFor="let n of levelArray; let i = index "> -->
+                 <!--  <button menuClose ion-item  (click)="filterLevel(i)" class="filter" [ngClass]="(n.checked == true) ? 'checked' : ' '" >
+                  {{ n.level}}
+                  </button> -->
+                           <ion-grid m-t-10 no-padding w-100> 
+                           <ion-row no-padding w-100> 
+    <ion-col col-12>
+               <div class="checkbox-inline">
+                   <div class="checkbox-button" *ngIf="enable_level1 == 'false'">
+                    <label>
+                     <input type="checkbox" name="chk[]" id="hl1" (change)="filterLevel($event,'level1')" checked="{{this.shown_levels.indexOf('level1') >= 0 ? 'checked' : ''}}" class="ldi"><span>1</span>
+                    </label>
+                 </div>
+                  <div class="checkbox-button" *ngIf="enable_level2 == 'false'">
+                    <label>
+                     <input type="checkbox" name="chk[]" id="hl2"  (change)="filterLevel($event,'level2')" checked="{{this.shown_levels.indexOf('level2') >= 0 ? 'checked' : ''}}" class="ldi"><span>2</span>
+                    </label>
+                 </div>
+                  <div class="checkbox-button" *ngIf="enable_level3 == 'false'">
+                    <label>
+                     <input type="checkbox" name="chk[]" id="hl3" (change)="filterLevel($event,'level3')" checked="{{this.shown_levels.indexOf('level3') >= 0 ? 'checked' : ''}}" class="ldi"><span>3</span>
+                    </label>
+                 </div>
+                  <div class="checkbox-button" *ngIf="enable_level4 == 'false'">
+                    <label>
+                     <input type="checkbox" name="chk[]" id="hl4" (change)="filterLevel($event,'level4')" checked="{{this.shown_levels.indexOf('level4') >= 0 ? 'checked' : ''}}" class="ldi"><span>4</span>
+                    </label>
+                 </div>
+             </div>
+                     </ion-col>
+                           <ion-col style="display:none" col-2 *ngIf="enable_level1 == 'false'">1 <ion-checkbox (ionChange)="filterLevel($event,'level1')" checked="{{this.shown_levels.indexOf('level1') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
+                           <ion-col  style="display:none"  col-2 *ngIf="enable_level2 == 'false'">2 <ion-checkbox (ionChange)="filterLevel($event,'level2')" checked="{{this.shown_levels.indexOf('level2') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
+                           <ion-col  style="display:none"  col-2 *ngIf="enable_level3 == 'false'">3 <ion-checkbox (ionChange)="filterLevel($event,'level3')" checked="{{this.shown_levels.indexOf('level3') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
+                           <ion-col style="display:none"  col-2 *ngIf="enable_level4 == 'false'">4 <ion-checkbox (ionChange)="filterLevel($event,'level4')" checked="{{this.shown_levels.indexOf('level4') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
+   
+   
+                           <!-- <ion-col col-2> -->
+                             <!-- <button menuClose ion-item  (click)="filterLevel(i)" class="filter"  [ngClass]="(n.checked == true) ? 'checked' : ' '" >
+                             {{ n.level}}
+                             </button> -->
+                             <!-- <ion-checkbox (ionChange)="filterLevel(i+1,$event)" checked="{{this.opened_levels.indexOf('level' + (i + 1)) >= 0 ? 'true' : 'false'}}"></ion-checkbox> -->
+                             <!-- </ion-col> -->
+                           </ion-row>
+                        </ion-grid>  
+               <!-- </div> -->
+            </div> 
+            <div menuClose ion-item>
+               <button   color="blue" add-share-btn ion-button (click)="presentPrompt()">
+                  <ion-icon name="md-add" ></ion-icon>
+               </button>
+               <button  color="danger"  remove-share-btn  ion-button (click)="presentConfirm()">
+                  <ion-icon name="md-remove" ></ion-icon>
+               </button>
+            </div>
+   
+   
+            <button menuClose ion-item *ngFor="let p of pages " (click)="openPage(p)" [ngClass]="(preState == p.title && is_main == '1') ? 'checked' : ' '">
+            <ion-icon color="blue" [name]="p.icon" item-left></ion-icon>
+            {{p.title}}
+            </button>
+            <div *ngFor="let n of directory , let i = index " class="divitem" >
+               <div >
+               <div class="divitem_drop" id="{{n.name}}" (mouseover)="mouseOverDrop($event, n.name)">
+                  <button id="click_{{n.name}}" ion-item detail-none no-lines  (click)="clickNode(n)" 
+                  [ngClass]="(selectedNode == n.name) ? ' checked' : ''"  icon-left >
+                  <ion-grid >
+                     <ion-row width-100>
+                        <ion-col col-1 no-padding>
+                           <ion-icon name="folder" color="blue"></ion-icon>
+                        </ion-col>
+                        <ion-col col-10 no-padding p-l-10 style="text-transform: capitalize;">
+                           {{n.name}}
+                        </ion-col>
+                        <ion-col col-1 no-padding>
+                           <span item-left *ngIf="n.children.length > 0" margin0>
+                           <ion-icon [color]="isSelected(n) ? 'primary' : 'blue'" [name]="isSelected(n) ? 'ios-arrow-down' : 'ios-arrow-forward'"></ion-icon>
+                           </span> 
+                           <span item-left *ngIf="n.children.length == 0" >
+                              <ion-icon ></ion-icon>
+                           </span>
+                        </ion-col>
+                     </ion-row>
+                  </ion-grid>
+                  </button>
+                  </div>
+                  <!-- <smail-child-node [nodes]="n.children"  *ngIf="n.children && n.type == 'directory'" [hidden]="!isSelected(n)" ></smail-child-node> reorder="true" 
+                     (ionItemReorder)="reorderItems($event);"  [hidden]="!isSelected(n)"-->
+                  <ion-list *ngIf="n.children" [hidden]="!isSelected(n)">
+                  <div *ngFor="let n of n.children; let i = index " class="divitem level-folder" >
+                  <div [dragula]='"uniqueBagId"' id="{{n.level}}##{{n.name}}##{{n.userId}}##{{n._id}}" (mouseover)="dropSmails(n._id)">
+                     <div ion-item detail-none no-lines  
+                        [ngClass]="{nodeactive:  selectedNode == n.name}" icon-left  id="0{{n._id}}">
+                        <ion-row w-100>
+                           <ion-col col-9>
+                              <ion-grid tree-view>
+                                 <ion-row  w-100  (click)="clickNodeChild(n)">
+                                    <ion-col col-2>
+                                       <ion-icon name="folder" color="blue"></ion-icon>
+                                    </ion-col>
+                                    <ion-col col-10 p-l-10 >
+                                       {{n.name}}
+                                    </ion-col>
+                                 </ion-row>
+                              </ion-grid>
+                           </ion-col >
+                           <ion-col col-3 edit-folder>
+                              <span float-right  (click)="editFolder(n, n._id)" >
+                                 <ion-icon name="md-create" color="blue"></ion-icon>
+                              </span>
+                              <span  float-right (click)="clickNodeChild(n)" >
+                              <ion-icon [color]="isSelected(n) ? 'primary' : 'blue'" [name]="isSelectedChild(n) ? 'ios-arrow-down' : 'ios-arrow-forward'"></ion-icon>
+                              </span> 
+                           </ion-col>
+                        </ion-row>
+                     </div>
+                     <div ion-item detail-none no-lines id="{{n._id}}" style="display:none;">
+                        <ion-row>
+                           <ion-col col-8>
+                              <input type="text" w-100 id="val_{{n._id}}">
+                           </ion-col>
+                           <ion-col col-4 text-right>
+                              <ion-icon  btn-check color="danger" name="close" (click)="cancelFolder(i, n._id)"></ion-icon>
+                              <ion-icon btn-check name="checkmark" color="green" (click)="renameFolder(i, n._id)"></ion-icon>
+                           </ion-col>
+                        </ion-row>
+                     </div>
+                     </div>
+                     <!-- <smail-static-node  [nodes]="static"  *ngIf="static" [hidden]="!isSelected(n)" ></smail-static-node> -->
+                     <ion-item  (click)="clickNodeStatic('inbox')" [hidden]="!isSelectedChild(n)" padd-inner-0>
+                        <div ion-item detail-none no-lines  
+                           [ngClass]="{nodeactive: isSelectedStatic('inbox')}" icon-left  id="000" p-l-40>
+                           <ion-grid tree-view>
+                              <ion-row>
+                                 <ion-col col-4>
+                                    <ion-icon name="folder" color="blue"></ion-icon>
+                                 </ion-col>
+                                 <ion-col col-8 >
+                                    Inbox
+                                 </ion-col>
+                              </ion-row>
+                           </ion-grid>
+                        </div>
+                     </ion-item>
+                     <ion-item  (click)="clickNodeStatic('sent')" class="divitem" [hidden]="!isSelectedChild(n)" padd-inner-0>
+                        <div ion-item detail-none no-lines  
+                           [ngClass]="{nodeactive: isSelectedStatic('sent')}" icon-left  id="111" p-l-40>
+                           <ion-grid tree-view>
+                              <ion-row>
+                                 <ion-col col-4>
+                                    <ion-icon name="folder" color="blue"></ion-icon>
+                                 </ion-col>
+                                 <ion-col col-8 >
+                                    Sent
+                                 </ion-col>
+                              </ion-row>
+                           </ion-grid>
+                        </div>
+                     </ion-item>
+                  </div>
+         </ion-list>
+         </div>
+         </div>
+         </ion-list>
+      </ion-content>
+   </ion-menu>
+</ion-split-pane>
+   <!-- <ion-nav [root]="rootPage" #content swipeBackEnabled="false" main></ion-nav> -->
+   <ion-row main-breadcrumb ion-fixed style="top:60px">
+      <ion-col>
+         <ol class="breadcrumb">
+            <li (click)="root()"><a>Home</a></li>
+            <li (click)="smail()"><a>Smail</a></li>
+            <li class="{{bread_level == '' ? 'active' : ''}}"  *ngIf="preState == 'Inbox'"><a>Inbox</a></li>
+            <li class="{{bread_level == '' ? 'active' : ''}}" *ngIf="preState == 'Sent'"><a>Sent</a></li>
+            <!-- <li class="active" *ngIf="preState == 'Folder' || preState == 'null'">{{selectedLevel}}</li> -->
+            <li class="text-capital" (click)="clickNode(bread_level_node)" *ngIf="bread_level != '' && bread_folder != ''"><a>{{bread_level}}</a></li>
+            <li class="active text-capital" *ngIf="bread_level != '' && bread_folder == ''">{{bread_level}}</li>
+            <li (click)="clickNodeChild(bread_folder_node)" *ngIf="bread_folder != '' && bread_static != ''"><a>{{bread_folder}}</a></li> 
+            <li class="active" *ngIf="bread_folder != '' && bread_static == ''">{{bread_folder}}</li> 
+            <li class="active" *ngIf="bread_static != ''">{{bread_static}}</li>  
+         </ol>
+      </ion-col>
+   </ion-row>
+   <ion-content [ngClass]="{'actives':isParaActive}" >
    <div breadcrumb-height></div>
       <ion-grid>
          <ion-row no-padding w-100>
             <ion-col col-12 col-xl-4 col-lg-5>
              <ion-grid no-padding>
                 <ion-row w-100>
-                  <ion-col col-1 hide-side style="display:none">
+                  <ion-col col-1 hide-side >
                <ion-buttons text-center  header-icon hide-icon  btn-tree btn-smail-splitp>
-                  <button btn-grid btn-side    [class.actives]="isBtnActive" (click)="toggleClass()">
-                  <ion-icon class="ion-md-arrow-dropleft-circle" hide-t-icon r ></ion-icon>
-                  <ion-icon class="ion-md-arrow-dropright-circle" show-t-icon  style=""></ion-icon>
+                  <button btn-grid btn-side [class.actives]="isBtnActive" (click)="toggleClass()">
+                  <ion-icon name="chevron-back-outline"></ion-icon>
+                  <ion-icon name="caret-forward-outline"></ion-icon>
                   </button>
                </ion-buttons>
                </ion-col>

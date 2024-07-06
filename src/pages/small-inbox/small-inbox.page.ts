@@ -130,6 +130,7 @@ export class SmallInboxPage {
     desc: any;
     dragObj: any;
     searchTerm: any = '';
+    ac:any='';
     uniqueBagId: string = 'dragula-bag-' + _uniqueId++;
     messages = [
         { title: 'Level2 Contact Update', time: '6:16 AM 14 May' },
@@ -4115,8 +4116,10 @@ export class SmallInboxPage {
 
     //ToggleClass function functionality
     toggleClass() {
+        this.ac = "actives"
         this.isParaActive = !this.isParaActive;
         this.isBtnActive = !this.isBtnActive;
+        console.log(this.isParaActive, this.isBtnActive)
     };
 
     smail() {
