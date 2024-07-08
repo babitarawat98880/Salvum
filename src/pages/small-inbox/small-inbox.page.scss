@@ -54,3 +54,13 @@
   //   -webkit-transition: all 0.4s ease 0s;
   //   transition: all 0.4s ease 0s;
   // }
+
+  ion-split-pane {
+    --side-width: 350px;
+    --side-max-width: 350px;
+  
+    --border: 1px dashed #b3baff;
+  }
+  .border-1{
+    border: 1px solid #222;
+  }

@@ -1,6 +1,5 @@
-<app-header></app-header>
-<ion-split-pane file-split when="xs"  [class.actives]="isParaActive">
-   <ion-menu contentId="content" side="start" class="show-menu">
+<ion-split-pane file-split when="md"  [class.actives]="isParaActive" contentId="main-content">
+   <ion-menu contentId="main-content" side="start" class="show-menu">
       <!--<ion-header>
          <ion-toolbar>
             <ion-title>Smail</ion-title>
@@ -57,19 +56,26 @@
                <!-- </div> -->
             </div> 
             <div menuClose ion-item>
-               <button   color="blue" add-share-btn ion-button (click)="presentPrompt()">
-                  <ion-icon name="md-add" ></ion-icon>
-               </button>
-               <button  color="danger"  remove-share-btn  ion-button (click)="presentConfirm()">
-                  <ion-icon name="md-remove" ></ion-icon>
-               </button>
+               <ion-button   color="primary" size="small" (click)="presentPrompt()">
+                  <ion-icon name="add-outline"></ion-icon>
+               </ion-button>
+               <ion-button  color="danger" size="small" (click)="presentConfirm()">
+                  <ion-icon name="remove-outline"></ion-icon>
+               </ion-button>
             </div>
-   
-   
-            <button menuClose ion-item *ngFor="let p of pages " (click)="openPage(p)" [ngClass]="(preState == p.title && is_main == '1') ? 'checked' : ' '">
-            <ion-icon color="blue" [name]="p.icon" item-left></ion-icon>
-            {{p.title}}
-            </button>
+            <ion-list>
+               <ion-item *ngFor="let p of pages">
+                 
+                  <ion-button menuClose ion-item (click)="openPage(p)" color="dark" fill="clear" expand="block" [ngClass]="(preState == p.title && is_main == '1') ? 'checked' : ' '">
+                     <ion-icon color="blue" [name]="p.icon" item-left></ion-icon> 
+                     {{p.title}}
+                     </ion-button>
+                  
+               </ion-item>
+            </ion-list>
+
+            
+
             <div *ngFor="let n of directory , let i = index " class="divitem" >
                <div >
                <div class="divitem_drop" id="{{n.name}}" (mouseover)="mouseOverDrop($event, n.name)">
@@ -175,8 +181,11 @@
          </ion-list>
       </ion-content>
    </ion-menu>
-</ion-split-pane>
+
+   <div class="ion-page" id="main-content">
+   <app-header></app-header>
    <!-- <ion-nav [root]="rootPage" #content swipeBackEnabled="false" main></ion-nav> -->
+    
    <ion-row main-breadcrumb ion-fixed style="top:60px">
       <ion-col>
          <ol class="breadcrumb">
@@ -197,30 +206,31 @@
    <div breadcrumb-height></div>
       <ion-grid>
          <ion-row no-padding w-100>
-            <ion-col col-12 col-xl-4 col-lg-5>
-             <ion-grid no-padding>
-                <ion-row w-100>
-                  <ion-col col-1 hide-side >
-               <ion-buttons text-center  header-icon hide-icon  btn-tree btn-smail-splitp>
-                  <button btn-grid btn-side [class.actives]="isBtnActive" (click)="toggleClass()">
-                  <ion-icon name="chevron-back-outline"></ion-icon>
-                  <ion-icon name="caret-forward-outline"></ion-icon>
-                  </button>
-               </ion-buttons>
-               </ion-col>
-                   <ion-col col-xl-12 col-lg-12>
-               <ion-searchbar paddingtop0 p-lr-0  [(ngModel)]="searchTerm" (ionInput)="searchFn(searchTerm, selectedJob, gaming, selectedTrade, false, selectedType)"></ion-searchbar>
-               </ion-col>
-               </ion-row>
-                </ion-grid>
+            <ion-col size="12" size-md="5">
+               <ion-grid no-padding>
+                  <ion-row>
+                     <ion-col size="12">
+                        <ion-buttons text-center  header-icon hide-icon  btn-tree btn-smail-splitp>
+                           <button btn-grid btn-side [class.actives]="isBtnActive" (click)="toggleClass()">
+                           <ion-icon name="chevron-back-outline"></ion-icon>
+                           <ion-icon name="caret-forward-outline"></ion-icon>
+                           </button>
+                        </ion-buttons>
+                     </ion-col>
+                     <ion-col size="12">
+                        <ion-searchbar paddingtop0 p-lr-0  [(ngModel)]="searchTerm" (ionInput)="searchFn(searchTerm, selectedJob, gaming, selectedTrade, false, selectedType)"></ion-searchbar>
+                     </ion-col>
+                  </ion-row>
+               </ion-grid>
             <!-- <ion-col>
                <ion-searchbar  paddingtop0 p-lr-0  [(ngModel)]="searchTerm" (ionInput)="searchFn(searchTerm, selectedJob, gaming, selectedTrade, false, selectedType)"></ion-searchbar>
             </ion-col> -->
                <div class="white-box" m-b-0 padding0>
                   <ion-row>
-                     <ion-col col-xl-12 col-md-12 col-md-12 col-12 m-b-10 top-smail>
-                        <ion-list margintop0 >
-                           <ion-item col-3 col-md-3  col-lg-3 col-xl-3 left p-l-5>
+                     <ion-col size="12">
+                        <ion-row>
+                           
+                           <ion-col size="12" size-md="3">
                               <ion-label stacked>Jobs</ion-label>
                               <ion-select [(ngModel)]="selectedJob" (ionChange)="searchFn(searchTerm, selectedJob, gaming, selectedTrade, true, selectedType)">
                               <ion-select-option [disabled]="true" *ngIf="jobListingResult == ''" value="">No jobs</ion-select-option>
@@ -228,9 +238,15 @@
                               <ion-select-option value="{{job._id}}" *ngFor="let job of jobListingResult"> {{job.job_title}}</ion-select-option>
                               <!-- <ion-select-option value="Renovate Bathroom">Renovate Bathroom</ion-select-option> -->
                               </ion-select>
-                           </ion-item>
-                           <div class="icon-outer-abs">
-                           <ion-item col-3 col-md-3  col-lg-3  col-xl-3  left p-l-5 (click)="tradesFilter()">
+                           </ion-col>
+                           
+                           <ion-col size="12" size-md="3" (click)="tradesFilter()">
+                              <div class="icon-outer-abs">
+
+                                 <div class="icon-inner-abs">
+                                    <i *ngIf="selected_trade_icon != null" class="{{selected_trade_icon}}"></i>
+                                 </div>
+                                 </div>
                               <ion-label stacked>Trades</ion-label>
                               <ion-select [disabled]="true" [(ngModel)]="selectedTrade"></ion-select>
    
@@ -238,58 +254,58 @@
                               <ion-select-option [disabled]="true" *ngIf="trades == ''" value="">No trades</ion-select-option>
                               <ion-select-option value="{{trade._id}}" *ngFor="let trade of trades">{{trade.trade_name}}</ion-select-option>
                               </ion-select> -->
-                           </ion-item>
-                           <div class="icon-inner-abs">
-                              <i *ngIf="selected_trade_icon != null" class="{{selected_trade_icon}}"></i>
-                           </div>
-                           </div>
+                           </ion-col>
+                           
                      
-                           <ion-item col-3 col-md-3  col-lg-3  col-xl-3  left p-l-5>
+                           <ion-col size="12" size-md="3">
                               <ion-label stacked>Type</ion-label>
                               <ion-select [(ngModel)]="selectedType" (ionChange)="searchFn(searchTerm, selectedJob, gaming, selectedTrade, false, selectedType)">
                               <ion-select-option value="addendum"> Addendum</ion-select-option>
                               <ion-select-option value="rfi"> RFI</ion-select-option>
                               <ion-select-option value="change_order"> Change Order</ion-select-option>
                               </ion-select>
-                           </ion-item>
+                           </ion-col>
    
-                           <ion-item col-3 col-md-3   col-lg-3 col-xl-3  left  p-l-5>
+                           <ion-col size="12" size-md="3">
                               <ion-label stacked>Status</ion-label>
                               <ion-select [(ngModel)]="gaming" (ionChange)="searchFn(searchTerm, selectedJob, gaming, selectedTrade, false, selectedType)">
                               <ion-select-option value="1" >Read</ion-select-option>
                               <ion-select-option value="0" >Unread</ion-select-option>
                               </ion-select>
-                           </ion-item>      
-                     </ion-list></ion-col>
+                           </ion-col>      
+                        
+                     </ion-row>
+                  </ion-col>
    
-                     <ion-col col-6 col-xl-6 col-md-6 col-md-6 m-b-10 top-smail >
-                     <div m-b-10 smail-header >
-                        <ng-container *ngIf="items?.length > 0 && selectedFolder == ''">
-                        <ion-badge color="white">
-                         <ion-checkbox  [(ngModel)]="ischecked" (click)="allChecked(ischecked)" ></ion-checkbox>
-                        </ion-badge>
-                        <ion-badge color="blue" (click)="trash()">
-                           <ion-icon title="Delete" name="trash" color="" ></ion-icon>
-                        </ion-badge>
-                        <ion-badge color="blue" (click)="reload()">
-                           <img ref_svg src="assets/img/refresh.svg" title="Refresh" >
-                        </ion-badge>
-                        </ng-container>
-                        <ion-badge *ngIf="(selectedJob != undefined && selectedJob != null && selectedJob != '') || (selectedType != '' && selectedType != undefined) || (gaming != '' && gaming != undefined) " color="blue" (click)="resetFilters()"> 
-                           <ion-icon title="Reset Filters" name="refresh"></ion-icon>
-                        </ion-badge>
-                        <ion-badge color="blue"   (click)="goToJobs()" *ngIf="selectedJob != undefined && selectedJob != null && selectedJob != ''">
-                           <ion-icon title="Go to Job" icon name="briefcase"></ion-icon>
-                        </ion-badge>
-                        <div style="display: none;" class="go_to_reset" id="go_to_reset{{timestamp}}"> 
-                           <ion-badge color="blue" (click)="goToJob()">
-                              <ion-icon title="Go to" name="open"></ion-icon>
+                     <ion-col size="6">
+                        <div m-b-10 smail-header >
+                           <ng-container *ngIf="items?.length > 0 && selectedFolder == ''">
+                           <ion-badge color="white">
+                           <ion-checkbox  [(ngModel)]="ischecked" (click)="allChecked(ischecked)" ></ion-checkbox>
+                           </ion-badge>&nbsp;&nbsp;
+                           <ion-button color="primary" size="small" (click)="trash()">
+                              <ion-icon title="Delete" name="trash" color="" ></ion-icon>
+                           </ion-button>&nbsp;
+                           <ion-button color="primary" size="small" (click)="reload()">
+                              <ion-icon name="reload-outline"></ion-icon>
+                              <!--<img ref_svg src="assets/img/refresh.svg" title="Refresh">-->
+                           </ion-button>
+                           </ng-container>
+                           <ion-badge *ngIf="(selectedJob != undefined && selectedJob != null && selectedJob != '') || (selectedType != '' && selectedType != undefined) || (gaming != '' && gaming != undefined) " color="primary" (click)="resetFilters()"> 
+                              <ion-icon title="Reset Filters" name="refresh"></ion-icon>
                            </ion-badge>
+                           <ion-badge color="primary"   (click)="goToJobs()" *ngIf="selectedJob != undefined && selectedJob != null && selectedJob != ''">
+                              <ion-icon title="Go to Job" icon name="briefcase"></ion-icon>
+                           </ion-badge>
+                           <div style="display: none;" class="go_to_reset" id="go_to_reset{{timestamp}}"> 
+                              <ion-badge color="primary" (click)="goToJob()">
+                                 <ion-icon title="Go to" name="open"></ion-icon>
+                              </ion-badge>
+                           </div>
                         </div>
-                     </div>
                      </ion-col>
    
-                     <ion-col col-xl-6 col-md-6 col-md-6 col-6 m-b-10 top-smail>   <ion-item  p-l-0 smail-checkox>
+                     <ion-col size="6">   <ion-item  p-l-0 smail-checkox>
                            <ion-label>
                    <!--            <div float-left *ngFor="let n of openedLevel; let i = index " >
                                  <ion-checkbox  float-left color="blue" checked="{{n.checked}}" [(ngModel)]="n.checked" m-r-0 (click)="filterList(n.checked, n.level)" ></ion-checkbox>
@@ -321,7 +337,7 @@
                         </div>
                        
                      </ion-col> -->
-                     <ion-col col-xl-12 col-md-12 col-12 border-smail *ngIf="selectedFolder == ''">
+                     <ion-col size="12" *ngIf="selectedFolder == ''">
                         <ion-list smail-main margin0>
                            <!-- <div m-b-10 smail-header *ngIf="items?.length > 0">
                               <ion-badge color="white">
@@ -337,8 +353,8 @@
                            <!-- <ion-scroll smail-left scrollY="true" style="width: 100%;  height: 44vh"> -->
                               <ion-item-sliding  *ngFor="let x of items ; let index = index ;"> 
    
-                                 <ion-item smail-list advertise *ngIf="index == 0">
-                                    <p>I am <br>advertisement.</p>
+                                 <ion-item *ngIf="index == 0" class="border-1 text-center">
+                                    <p class="text-center">I am <br>advertisement.</p>
                                  </ion-item>
    
                                  <ion-item smail-list [ngClass]="{unread: x.read == false}">
@@ -707,10 +723,10 @@
                   </ion-row>
                </div>
             </ion-col>
-            <ion-col col-12 col-xl-8 col-lg-7 right-smail>
+            <ion-col size="12" size-md="7">
                <!-- <ion-scroll  #scroll scroll-smail scrollY="true" style="width: 100%;  height: 82vh" id="scroll_rep_forwd">  -->
-                  <ion-item advertise>
-                   <p> I am <br> advertisement</p>
+                  <ion-item advertise class="border-1 text-center">
+                   <p class="text-center"> I am <br> advertisement</p>
                   </ion-item>
                   <ion-grid class="white-box" margin0 padding0 paddingtop0 *ngIf="details != ''">
                      <ion-list margin0 smail-detail *ngIf="replyMail.thread.length == 0">
@@ -1380,3 +1396,5 @@
       </ion-grid>
    <div footer-height></div>
    </ion-content>
+</div>
+</ion-split-pane>
