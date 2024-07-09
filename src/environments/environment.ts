@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   baseUrl:'https://www.serrare.com:3002/'
+  
 };
 
 /*

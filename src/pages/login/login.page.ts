@@ -111,9 +111,9 @@ export class LoginPage   {
             localStorage.clear();
             localStorage.setItem('APIURL',this.APIURL);
             if(this.platform.is('mobileweb')){
-              localStorage.setItem('isBrowser',  'true');
+              localStorage.setItem('isBrowser',  'false');
             }else{
-             localStorage.setItem('isBrowser',  'false');
+             localStorage.setItem('isBrowser',  'true');
             }
             var levels :any= [];
             var string,encrypted;

@@ -90,7 +90,7 @@ export class TradeDashboardPage {
   }
 
   loadStats() {
-    this.componentService.showLoader();
+    // this.componentService.showLoader();
     this.APIService.getData('jobDashboard', this.jobId + '/' + this.userId).subscribe((dashboard) => {
       this.componentService.dismissLoader();
       this.is_any_trade_posted = dashboard[0].is_any_trade_posted;

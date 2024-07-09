@@ -89,10 +89,10 @@ export class AppComponent {
     this.getNavigations();
 
     if(this.platform.is('mobileweb')){
-      localStorage.setItem('isBrowser',  'true');
+      localStorage.setItem('isBrowser',  'false');
         //console.log("Run on browser");
     }else{
-      localStorage.setItem('isBrowser',  'false');
+      localStorage.setItem('isBrowser',  'true');
         //console.log("Run on device");
         // this.fcm.onNotification().subscribe(data => {
         //   if(data.wasTapped){

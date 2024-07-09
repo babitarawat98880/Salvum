@@ -6,11 +6,11 @@
     <ion-col col-md-6>  
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-button id="tooltip-mail" data-tooltip="Mail Tooltip" (click)="smailPage()" class="hide-mob"><ion-icon name="mail" color="light"></ion-icon></ion-button>
-          <ion-button id="tooltip-people" data-tooltip="People Tooltip" (click)="contactsPage()" class="hide-mob"><ion-icon name="people" color="light"></ion-icon></ion-button>
-          <ion-button id="tooltip-document" data-tooltip="Document Tooltip" (click)="fileManagerPage()" class="hide-mob"><ion-icon name="document" color="light"></ion-icon></ion-button>
-          <ion-button id="tooltip-card" data-tooltip="Card Tooltip" (click)="bidJobsPage()" class="hide-mob"><img src="assets/img/bid_icon_white.png" style="width: 21px; margin-top: 7px;"></ion-button>
-          <ion-button id="tooltip-briefcase" data-tooltip="Briefcase Tooltip" (click)="membersPage()" class="hide-mob"><ion-icon name="briefcase" color="light"></ion-icon></ion-button>
+          <ion-button  *ngIf="isBrowser ==  'true'"  id="tooltip-mail" data-tooltip="Mail Tooltip" (click)="smailPage()" class="hide-mob"><ion-icon name="mail" color="light"></ion-icon></ion-button>
+          <ion-button id="tooltip-people"  *ngIf="isBrowser ==  'true'"   data-tooltip="People Tooltip" (click)="contactsPage()" class="hide-mob"><ion-icon name="people" color="light"></ion-icon></ion-button>
+          <ion-button   *ngIf="isBrowser ==  'true'" id="tooltip-document" data-tooltip="Document Tooltip" (click)="fileManagerPage()" class="hide-mob"><ion-icon name="document" color="light"></ion-icon></ion-button>
+          <ion-button   *ngIf="isBrowser ==  'true'" id="tooltip-card" data-tooltip="Card Tooltip" (click)="bidJobsPage()" class="hide-mob"><img src="assets/img/bid_icon_white.png" style="width: 21px; min-width:21px; margin-top: 7px;"></ion-button>
+          <ion-button   *ngIf="isBrowser ==  'true'" id="tooltip-briefcase" data-tooltip="Briefcase Tooltip" (click)="goToJobs()" class="hide-mob"><ion-icon name="briefcase" color="light"></ion-icon></ion-button>
           <ion-button  (click)="presentPopover($event)" ><ion-icon name="apps" color="light"></ion-icon></ion-button>
           <!-- (click)="invitePage()"?>-->
           <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
@@ -178,87 +178,352 @@
               </div>
             </ng-template>
           </ion-popover>
-          <ion-button id="tooltip-help" data-tooltip="Help Tooltip"><ion-icon name="help" color="light" class="hide-mob"></ion-icon></ion-button>
+          <ion-button id="tooltip-help"   *ngIf="isBrowser ==  'true'" data-tooltip="Help Tooltip" (click)="SupportLoginUser()"><ion-icon name="help" color="light" class="hide-mob"></ion-icon></ion-button>
           <ion-button id="tooltip-level" class="custom-button-white" data-tooltip="Level Tooltip" class="hide-mob">
             <div class="icon-text">
               <div class="icon-row">
-                <div class="icon-with-count">
+                <div class="icon-with-count" (click)="mails(0)">
                   <ion-icon name="mail"></ion-icon>
-                  <div class="count-badge">5</div> <!-- Example count for mail -->
+                  <div class="count-badge" *ngIf="smail0.length > 0">{{counts?.smail0_count}}</div> <!-- Example count for mail -->
                 </div>
-                <div class="icon-with-count">
+                <div class="icon-with-count" (click)="opennotification(0)">
                   <ion-icon name="notifications"></ion-icon>
-                  <div class="count-badge">2</div> <!-- Example count for notifications -->
+                  <div class="count-badge" *ngIf="zeroLevelCount > 0">{{zeroLevelCount}}</div> <!-- Example count for notifications -->
                 </div>
               </div>
-              <div class="labels">
+              <div class="labels" (click) = "lockAllLevel(0)">
                 <span>Level</span>
                 <span>0</span>
               </div>
             </div>
           </ion-button>
-          <ion-button id="tooltip-primary-light" class="custom-button-primary-light" data-tooltip="Primary Light Tooltip" class="hide-mob">
-            <div class="icon-text">
-              <div class="icon-row">
-                <div class="icon-with-count">
-                  <ion-icon name="mail"></ion-icon>
-                  <div class="count-badge">16</div> <!-- Example count for mail -->
-                </div>
-                <div class="icon-with-count">
-                  <ion-icon name="notifications"></ion-icon>
-                  <div class="count-badge">3</div> <!-- Example count for notifications -->
-                </div>
-              </div>
-              <div class="labels">
-                <span>Level</span>
-                <span>0</span>
-              </div>
+          <div level-1  [ngClass]="(level1 == 'true') ? 'new-icon icon-lock' : 'new-icon'" col left *ngIf="level1 == 'true'"  (click)="goToAddPassWordPage(1)"> 
+            <ion-row>
+               <ion-col text-left p-b-0  (click)="mails(1)">
+                  <button bg-trans-p0 >
+                     <ion-icon name="mail" ></ion-icon>
+                     <ion-badge color="danger" *ngIf="smail1.length > 0">{{counts?.notify0_count}}</ion-badge>
+                  </button>
+               </ion-col>
+               <ion-col text-right p-b-0 >
+                  <button bg-trans-p0 >
+                     <ion-icon name="notifications" ></ion-icon>
+                     <ion-badge color="danger" *ngIf="notification1.length > 0">{{counts?.notify1_count}}</ion-badge>
+                  </button>
+               </ion-col>
+            </ion-row>
+            <ion-row  >
+               <ion-col col-10 text-left>
+                  Level
+               </ion-col>
+               <ion-col col-2 text-right>
+                  1
+               </ion-col>
+            </ion-row>
             </div>
-          </ion-button>
-          <ion-button id="tooltip-primary-dark" class="custom-button-primary-dark" data-tooltip="Primary Dark Tooltip" class="hide-mob">
-            <div class="icon-text">
-              <div class="icon-row">
-                <div class="icon-with-count">
-                  <ion-icon name="mail"></ion-icon>
-                  <div class="count-badge">5</div> <!-- Example count for mail -->
-                </div>
-                <div class="icon-with-count">
-                  <ion-icon name="notifications"></ion-icon>
-                  <div class="count-badge">12</div> <!-- Example count for notifications -->
-                </div>
-              </div>
-              <div class="bag-label">
-                <ion-icon name="bag"></ion-icon>
-                <div class="labels">
-                  <span>Label</span>
-                  <span>0</span>
-                </div>
-              </div>
+            <div  level-1   [ngClass]="(level1 == 'true') ? 'new-icon icon-lock' : 'new-icon'" col left  *ngIf="level1 != 'true'" > 
+            <ion-row>
+               <ion-col text-left p-b-0  (click)="mails(1)">
+                  <button bg-trans-p0 >
+                     <ion-icon name="mail" ></ion-icon>
+                     <ion-badge color="danger" *ngIf="smail1.length > 0">{{counts?.smail1_count}}</ion-badge>
+                  </button>
+               </ion-col> 
+               <ion-col text-right p-b-0 (click)="opennotification(1)">
+                  <button bg-trans-p0 >
+                     <!-- (click)="showMessages()" -->
+                     <ion-icon name="notifications" ></ion-icon>
+                     <ion-badge color="danger" *ngIf="notification1.length > 0">{{counts?.notify1_count}}</ion-badge>
+                  </button>
+                     <div class="notification-dropdown header_1" *ngIf="level1Notice == true && notificationType != 'smail' " (clickOutside)="onClickedOutside($event)" clickOutsideEnabled="true">
+                     <ion-list margin0 *ngIf="notification1?.length > 0">
+                        <ion-list-header br-btm margin0>You have {{counts?.notify1_count}} new messages</ion-list-header>
+                        <ion-item *ngFor="let notice of notification1 | slice:0:3; let i=index ">
+                           <ion-avatar item-start>
+                              <img src="assets/img/m7.png" *ngIf="notice.image == ''">
+                              <img src="{{APIURL}}/images/{{notice.image}}" *ngIf="notice.image != ''">
+                           </ion-avatar>
+      
+                           <h6 fnt-regular fnt12 (click)="readNotis(notice._id,notice.type)" *ngIf="notice.type == 2">You get smail from {{notice.senderName}}</h6>
+      
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 3" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} shared a file with you. </h6>
+      
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 6" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has rejected a share file request of you. </h6>
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 19" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has accepted a share file request of you. </h6>
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 20" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has added new folder in shared files. </h6>
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 21" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has added new file in shared files. </h6>
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 22" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has deleted a folder from shared files. </h6>
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 23" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has deleted a file from shared files. </h6>
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 24" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has renamed a folder in shared files. </h6>
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 25" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} is no longer participating on the file share for shared folder {{notice.others}}. </h6>
+      
+                           <!-- <p fnt-regular fnt12>{{notice.created_on|timeAgo}}</p> -->
+                           <p fnt-regular fnt12>{{timesAgo(notice.created_on)}}</p>
+                        </ion-item>
+                        <ion-list-header br-btm margin0 (click)="seeAllLevelNotifications(2)">
+                           <button bg-transparent>
+                           See All Notifications 
+                           </button>
+                        </ion-list-header>
+                     </ion-list>
+                     <ion-list *ngIf="notification1.length == 0" margin0 text-center padding  bg-white>
+                        No Notifications Yet!
+                     </ion-list>
+                     </div>
+               </ion-col>
+            </ion-row>
+            <ion-row  (click)="goToAddPassWordPage(1)">
+               <ion-col col-10 text-left>
+                  Level
+               </ion-col>
+               <ion-col col-2 text-right>
+                  1
+               </ion-col>
+            </ion-row>
             </div>
-          </ion-button>
-          <ion-button id="tooltip-primary-dark-2" class="custom-button-primary-dark" data-tooltip="Primary Dark 2 Tooltip" class="hide-mob">
-            <div class="icon-text">
-              <div class="icon-row">
-                <div class="icon-with-count">
-                  <ion-icon name="mail"></ion-icon>
-                  <div class="count-badge">5</div> <!-- Example count for mail -->
-                </div>
-                <div class="icon-with-count">
-                  <ion-icon name="notifications"></ion-icon>
-                  
-                  <div class="count-badge">12</div> <!-- Example count for notifications -->
-                </div>
-              </div>
-              <div class="bag-label">
-                <ion-icon name="bag"></ion-icon>
-                <div class="labels">
-                  <span>Label</span>
-                  <span>0</span>
-                </div>
-              </div>
+            <div   level-2  [ngClass]="(level2 == 'true') ? ((level1 == 'true') ? 'noclick new-icon icon-lock' : 'new-icon icon-lock') : ((level1 == 'true') ? 'noclick new-icon' : 'new-icon')" col left *ngIf="level2 == 'true'" (click)="goToAddPassWordPage(2)">
+            <ion-row>
+               <ion-col text-left p-b-0 (click)="mails(2)">
+                  <button bg-trans-p0>
+                     <ion-icon name="mail" ></ion-icon>
+                     <ion-badge color="danger" *ngIf="smail2.length > 0">{{counts?.smail2_count}}</ion-badge>
+                  </button>
+               </ion-col>
+               <ion-col text-right p-b-0 >
+                  <button bg-trans-p0 >
+                     <ion-icon name="notifications" ></ion-icon>
+                     <ion-badge color="danger" *ngIf="notification2.length > 0">{{counts?.notify2_count}}</ion-badge>
+                  </button>
+               </ion-col>
+            </ion-row>
+            <ion-row >
+               <ion-col col-10 text-left>
+                  Level
+               </ion-col>
+               <ion-col col-2 text-right>
+                  2
+               </ion-col>
+            </ion-row>
             </div>
-          </ion-button>
-          <ion-button id="tooltip-menu" data-tooltip="Menu Tooltip"><ion-menu-button><img src="https://www.serrare.com:3002/images/154123840571921_img.jpg" class="menu-img"></ion-menu-button></ion-button>
+            <div    level-2  class="new-icon" [ngClass]="(level1 == 'true') ? 'noclick' : ''" col left *ngIf="level2 != 'true'"> 
+               <ion-row>
+                  <ion-col text-left p-b-0 (click)="mails(2)">
+                     <button bg-trans-p0>
+                        <ion-icon name="mail" ></ion-icon>
+                        <ion-badge color="danger" *ngIf="smail2.length > 0">{{counts?.smail2_count}}</ion-badge>
+                     </button>
+                  </ion-col>    
+                  <ion-col text-right p-b-0 (click)="opennotification(2)">
+                     <button bg-trans-p0 >
+                        <ion-icon name="notifications" ></ion-icon>
+                        <ion-badge color="danger" *ngIf="notification2.length > 0">{{counts?.notify2_count}}</ion-badge>
+                     </button>
+                     <div class="notification-dropdown header_1" *ngIf="level2Notice == true && notificationType != 'smail' " (clickOutside)="onClickedOutside($event)" clickOutsideEnabled="true">
+                        <ion-list margin0 *ngIf="notification2?.length > 0">
+                           <ion-list-header br-btm margin0>You have {{counts?.notify2_count}} new messages</ion-list-header>
+                           <ion-item *ngFor="let notice of notification2 | slice:0:3; let i=index ">
+                           <ion-avatar item-start>
+                           <img src="assets/img/m7.png" *ngIf="notice.image == ''">
+                           <img src="{{APIURL}}/images/{{notice.image}}" *ngIf="notice.image != ''">
+                           </ion-avatar>
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 2" (click)="readNotis(notice._id,notice.type)">You get smail from {{notice.senderName}}</h6>
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 3" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} shared a file with you. </h6>
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 6" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has rejected a share file request of you. </h6>
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 19" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has accepted a share file request of you. </h6>
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 20" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has added new folder in shared files. </h6>
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 21" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has added new file in shared files. </h6>
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 22" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has deleted a folder from shared files. </h6>
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 23" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has deleted a file from shared files. </h6>
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 24" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has renamed a folder in shared files. </h6>
+                           <h6 fnt-regular fnt12 *ngIf="notice.type == 25" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} is no longer participating on the file share for shared folder {{notice.others}}. </h6>
+                           <!-- <p fnt-regular fnt12>{{notice.created_on|timeAgo}}</p> -->
+                           <p fnt-regular fnt12>{{timesAgo(notice.created_on)}}</p>
+                           </ion-item>
+                           <ion-list-header br-btm margin0 (click)="seeAllLevelNotifications(2)">
+                           <button bg-transparent>
+                           See All Notifications 
+                           </button>
+                           </ion-list-header>
+                        </ion-list>
+                     <ion-list *ngIf="notification2.length == 0" margin0 text-center padding  bg-white>
+                     No Notifications Yet!
+                     </ion-list>
+                     </div>
+                  </ion-col>
+               </ion-row>
+               <ion-row (click)="goToAddPassWordPage(2)">
+                  <ion-col col-10 text-left>
+                     Level
+                  </ion-col>
+                  <ion-col col-2 text-right>
+                     2
+                  </ion-col>
+               </ion-row>
+            </div>
+            <div  level-3  [ngClass]="(level3 == 'true') ? ((level2 == 'true') ? 'noclick new-icon icon-lock' : 'new-icon icon-lock') : ((level2 == 'true') ? 'noclick new-icon' : 'new-icon')"  *ngIf="level3 == 'true'" (click) = "goToAddPassWordPage(3)"  col left >
+            <ion-row>
+               <ion-col text-left p-b-0 (click)="mails(3)">
+                  <button bg-trans-p0>
+                     <ion-icon name="mail"></ion-icon>
+                     <ion-badge color="danger" *ngIf="smail3.length > 0">{{counts?.smail3_count}}</ion-badge>
+                  </button>
+               </ion-col>
+               <ion-col text-right p-b-0>
+                  <button bg-trans-p0 >
+                     <ion-icon name="notifications" (click)="opennotification(3)"></ion-icon>
+                     <ion-badge color="danger" *ngIf="notification3.length > 0">{{counts?.notify3_count}}</ion-badge>
+                  </button>
+               </ion-col>
+            </ion-row>
+            <ion-row >
+               <ion-col col-10 text-left>
+                  Level
+               </ion-col>
+               <ion-col col-2 text-right>
+                  3
+               </ion-col>
+            </ion-row>
+            </div>
+            <div   level-3 class="new-icon" col left *ngIf="level3 != 'true'" [ngClass]="(level2 == 'true') ? 'noclick' : ''">
+               <ion-row>
+                  <ion-col text-left p-b-0 (click)="mails(3)">
+                     <button bg-trans-p0>
+                        <ion-icon name="mail" (click)="mails(3)"></ion-icon>
+                        <ion-badge color="danger" *ngIf="smail3.length > 0">{{counts?.smail3_count}}</ion-badge>
+                     </button>
+                  </ion-col>
+                  <ion-col text-right p-b-0>
+                     <button bg-trans-p0 (click)="opennotification(3)">
+                        <ion-icon name="notifications" ></ion-icon>
+                        <ion-badge color="danger" *ngIf="notification3.length > 0">{{counts?.notify3_count}}</ion-badge>
+                     </button>
+                     <div class="notification-dropdown header_1" *ngIf="level3Notice == true && notificationType != 'smail'" (clickOutside)="onClickedOutside($event)" clickOutsideEnabled="true">
+                        <ion-list margin0 *ngIf="notification3?.length > 0">
+                           <ion-list-header br-btm margin0>You have {{counts?.notify3_count}} new messages</ion-list-header>
+                           <ion-item *ngFor="let notice of notification3 | slice:0:3; let i=index ">
+                              <ion-avatar item-start>
+                                 <img src="assets/img/m7.png" *ngIf="notice.image == ''">
+                                 <img src="{{APIURL}}/images/{{notice.image}}" *ngIf="notice.image != ''">
+                              </ion-avatar>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 2" (click)="readNotis(notice._id,notice.type)">You get smail from {{notice.senderName}}</h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 3" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} shared a file with you. </h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 6" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has rejected a share file request of you. </h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 19" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has accepted a share file request of you. </h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 20" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has added new folder in shared files. </h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 21" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has added new file in shared files. </h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 22" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has deleted a folder from shared files. </h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 23" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has deleted a file from shared files. </h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 24" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has renamed a folder in shared files. </h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 25" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} is no longer participating on the file share for shared folder {{notice.others}}. </h6>
+                              <p fnt-regular fnt12>{{timesAgo(notice.created_on)}}</p>
+                              <!-- <p fnt-regular fnt12>{{notice.created_on|timeAgo}}</p> -->
+                           </ion-item>
+                           <ion-list-header br-btm margin0 (click)="seeAllLevelNotifications(3)">
+                              <button bg-transparent>
+                              See All Notifications 
+                              </button>
+                           </ion-list-header>
+                        </ion-list>
+                        <ion-list *ngIf="notification3.length == 0" margin0 text-center padding  bg-white>
+                           No Notifications Yet!
+                        </ion-list>
+                     </div>
+                  </ion-col>
+               </ion-row>
+               <ion-row (click) = "goToAddPassWordPage(3)">
+                  <ion-col col-10 text-left>
+                     Level
+                  </ion-col>
+                  <ion-col col-3 text-right>
+                     3
+                  </ion-col>
+               </ion-row>
+            </div>
+            <div  level-4  [ngClass]="(level4 == 'true') ? ((level3 == 'true') ? 'noclick new-icon icon-lock' : 'new-icon icon-lock') : ((level3 == 'true') ? 'noclick new-icon' : 'new-icon') " col left  (click) = "goToAddPassWordPage(4)"  *ngIf="level4 == 'true'">
+            <ion-row>
+               <ion-col text-left p-b-0 (click)="mails(4)">
+                  <button bg-trans-p0>
+                     <ion-icon name="mail"></ion-icon>
+                     <ion-badge color="danger" *ngIf="smail4.length > 0">{{counts?.smail4_count}}</ion-badge>
+                  </button>
+               </ion-col>
+               <ion-col text-right p-b-0>
+                  <button bg-trans-p0 >
+                     <ion-icon name="notifications" ></ion-icon>
+                     <ion-badge color="danger" *ngIf="notification4.length > 0">{{counts?.notify4_count}}</ion-badge>
+                  </button>
+               </ion-col>
+            </ion-row>
+            <ion-row>
+               <ion-col col-10 text-left>
+                  Level
+               </ion-col>
+               <ion-col col-2 text-right>
+                  4
+               </ion-col>
+            </ion-row>
+            </div>
+            <div  level-4 [ngClass]="(level3 == 'true') ? 'noclick' : ''" class="new-icon" col left *ngIf="level4 != 'true'">
+               <ion-row>
+                  <ion-col text-left p-b-0 (click)="mails(4)">
+                     <button bg-trans-p0>
+                        <ion-icon name="mail" (click)="mails(4)"></ion-icon>
+                        <ion-badge color="danger" *ngIf="smail4.length > 0">{{counts?.smail4_count}}</ion-badge>
+                     </button>
+                  </ion-col>
+                  <ion-col text-right p-b-0>
+                     <button bg-trans-p0 (click)="opennotification(4)">
+                        <ion-icon name="notifications" ></ion-icon>
+                        <ion-badge color="danger" *ngIf="notification4.length > 0">{{counts?.notify4_count}}</ion-badge>
+                     </button>
+                     <div class="notification-dropdown header_1" *ngIf="level4Notice == true && notificationType != 'smail' " (clickOutside)="onClickedOutside($event)" clickOutsideEnabled="true">
+                        <ion-list margin0 *ngIf="notification4?.length > 0">
+                           <ion-list-header br-btm margin0>You have {{counts?.notify4_count}} new messages</ion-list-header>
+                           <ion-item *ngFor="let notice of notification4 | slice:0:3; let i=index ">
+                              <ion-avatar item-start>
+                                 <img src="assets/img/m7.png" *ngIf="notice.image == ''">
+                                 <img src="{{APIURL}}/images/{{notice.image}}" *ngIf="notice.image != ''">
+                              </ion-avatar>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 2" (click)="readNotis(notice._id,notice.type)">You get smail from {{notice.senderName}}</h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 3" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} shared a file with you. </h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 6" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has rejected a share file request of you. </h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 19" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has accepted a share file request of you. </h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 20" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has added new folder in shared files. </h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 21" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has added new file in shared files. </h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 22" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has deleted a folder from shared files. </h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 23" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has deleted a file from shared files. </h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 24" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} has renamed a folder in shared files. </h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 25" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} is no longer participating on the file share for shared folder {{notice.others}}. </h6>
+                              <h6 fnt-regular fnt12 *ngIf="notice.type == 25" (click)="readNotis(notice._id,notice.type)">{{notice.senderName}} is no longer participating on the file share for shared folder {{timesAgo(notice.others)}}. </h6>
+                              <!-- <p fnt-regular fnt12>{{notice.created_on|timeAgo}}</p> -->
+                              <p fnt-regular fnt12>{{notice.created_on}}</p>
+                           </ion-item>
+                           <ion-list-header br-btm margin0 (click)="seeAllLevelNotifications(4)">
+                              <button bg-transparent>
+                              See All Notifications 
+                              </button>
+                           </ion-list-header>
+                        </ion-list>
+                        <ion-list *ngIf="notification4.length == 0" margin0 text-center padding  bg-white>
+                           No Notifications Yet!
+                        </ion-list>
+                     </div>
+                  </ion-col>
+               </ion-row>
+               <ion-row (click) = "goToAddPassWordPage(4)">
+                  <ion-col col-10 text-left>
+                     Level
+                  </ion-col>
+                  <ion-col col-2 text-right>
+                     4
+                  </ion-col>
+               </ion-row>
+            </div>
+          <ion-button id="tooltip-menu" data-tooltip="Menu Tooltip"><ion-menu-button>
+            <img tooltip="Menu" positionV="bottom" arrow (click)="toggleMenu()" *ngIf="userImage == '' || userImage == null" src="assets/img/m7.png" alt="image" class="menu-img">
+            <img tooltip="Menu" positionV="bottom" arrow (click)="toggleMenu()" *ngIf="userImage != '' && userImage != null" alt="image" src="{{APIURL}}/images/{{userImage}}" class="menu-img">
+          </ion-menu-button>
+        </ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-col>

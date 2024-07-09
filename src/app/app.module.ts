@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 // import { DragulaModule } from 'ng2-dragula';
+import { PushNotificationModule } from 'ng-push-notification';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule,
@@ -24,6 +26,16 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    PushNotificationModule.forRoot({
+      dir: 'auto',
+      lang: 'en-US',
+      renotify: false,
+      sticky: false,
+      noscreen: false,
+      silent: true,
+      closeDelay: 6000,
+      icon: 'assets/img/logo-icon.png'
+  }),
     // DragulaModule.forRoot()
   ],
   providers: [
