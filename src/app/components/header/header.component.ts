@@ -309,7 +309,7 @@ export class HeaderComponent implements OnInit {
     this.popoverController.dismiss();
     localStorage.setItem('notifyLevel', '0');
     localStorage.setItem('notifyType', 'notify');
-    this.navCtrl.navigateForward('notification');
+    this.navController.navigateForward('notification');
   };
 
 
