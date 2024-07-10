@@ -139,10 +139,10 @@ const routes: Routes = [
     path: 'job-calendar',
     loadChildren: () => import('../pages/job-calendar/job-calendar.module').then( m => m.JobCalendarPageModule)
   },
-  {
-    path: 'file-manager',
-    loadChildren: () => import('../pages/file-manager/file-manager.module').then( m => m.FileManagerPageModule)
-  },
+  // {
+  //   path: 'file-manager',
+  //   loadChildren: () => import('../pages/file-manager/file-manager.module').then( m => m.FileManagerPageModule)
+  // },
   {
     path: 'members',
     loadChildren: () => import('../pages/members/members.module').then( m => m.MembersPageModule)

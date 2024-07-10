@@ -3080,7 +3080,7 @@ export class ComposePage {
 
   inboxPage() {
     localStorage.setItem('view', 'Inbox');
-    this.navCtrl.navigateRoot('SmailInboxPage');
+    this.navCtrl.navigateRoot('small-inbox');
   }
   
 
