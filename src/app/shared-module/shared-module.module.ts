@@ -9,7 +9,7 @@ import { EmailMenuComponent } from '../../pages/email-menu/email-menu.component'
 
 @NgModule({
   declarations: [HeaderComponent, EmailMenuComponent],
-  imports: [CommonModule, IonicModule],
+  imports: [CommonModule, IonicModule, FileUploadModule],
   exports: [HeaderComponent, IonicModule, FileUploadModule, EmailMenuComponent]
 })
 export class SharedModuleModule { }
