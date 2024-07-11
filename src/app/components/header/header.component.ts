@@ -42,7 +42,6 @@ export class HeaderComponent implements OnInit {
   smail2: any = [];
   smail3: any = [];
   smail4: any = [];
-  @ViewChild('content') navCtrl: NavController;
   level0: string = 'false';
   level1: string = 'true';
   level2: string = 'true';
@@ -258,7 +257,7 @@ export class HeaderComponent implements OnInit {
     console.log(this.allNotice)
   };
   root() {
-    this.navCtrl.navigateRoot(['dashboard', 0]);
+    this.navController.navigateRoot(['dashboard', 0]);
   }
 
   getAllNotifications() {
@@ -1310,7 +1309,7 @@ export class HeaderComponent implements OnInit {
       this.componentService.presentToast('Please open level first.', 'danger');
     } else {
       this.checkNavExist();
-      this.navCtrl.navigateForward('FilemanagerPage');
+      this.navController.navigateForward('FilemanagerPage');
     }
 
   };

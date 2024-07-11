@@ -139,10 +139,10 @@ const routes: Routes = [
     path: 'job-calendar',
     loadChildren: () => import('../pages/job-calendar/job-calendar.module').then( m => m.JobCalendarPageModule)
   },
-  // {
-  //   path: 'file-manager',
-  //   loadChildren: () => import('../pages/file-manager/file-manager.module').then( m => m.FileManagerPageModule)
-  // },
+  {
+    path: 'file-manager',
+    loadChildren: () => import('../pages/file-manager/file-manager.module').then( m => m.FileManagerPageModule)
+  },
   {
     path: 'members',
     loadChildren: () => import('../pages/members/members.module').then( m => m.MembersPageModule)
@@ -202,6 +202,14 @@ const routes: Routes = [
   {
     path: 'editpass',
     loadChildren: () => import('../pages/editpass/editpass.module').then( m => m.EditpassPageModule)
+  },
+  {
+    path: 'uploadfile',
+    loadChildren: () => import('../pages/uploadfile/uploadfile.module').then( m => m.UploadfilePageModule)
+  },
+  {
+    path: 'smailfiles',
+    loadChildren: () => import('../pages/smailfiles/smailfiles.module').then( m => m.SmailfilesPageModule)
   }
 ];
 
