@@ -74,14 +74,14 @@
                                  <label class="form-check-label" for="checkbox{{indx}}{{timestamp}}"></label>
                               </span>
                            </ion-item>
-                           <ion-item-options side="left" *ngIf="isBrowser == 'false'">
+                           <ion-item-options side="start" *ngIf="isBrowser == 'false'">
                               
                               <button (click) = "tradeCalendar(trade._id)" ion-button color="info">
                                  <ion-icon name="calendar"></ion-icon>
                                  Calendar
                               </button>
                            </ion-item-options>
-                           <ion-item-options side="right" *ngIf="isBrowser == 'false'">
+                           <ion-item-options side="end" *ngIf="isBrowser == 'false'">
                               <button ion-button color="primary" (click) = "EditTrade(trade._id)">
                                  <ion-icon name="create"></ion-icon>
                                  Edit

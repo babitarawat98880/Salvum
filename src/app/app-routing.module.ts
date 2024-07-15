@@ -210,6 +210,18 @@ const routes: Routes = [
   {
     path: 'smailfiles',
     loadChildren: () => import('../pages/smailfiles/smailfiles.module').then( m => m.SmailfilesPageModule)
+  },
+  {
+    path: 'jobfile',
+    loadChildren: () => import('../pages/jobfile/jobfile.module').then( m => m.JobfilePageModule)
+  },
+  {
+    path: 'addtrade',
+    loadChildren: () => import('../pages/addtrade/addtrade.module').then( m => m.AddtradePageModule)
+  },
+  {
+    path: 'groupslist',
+    loadChildren: () => import('../pages/groupslist/groupslist.module').then( m => m.GroupslistPageModule)
   }
 ];
 

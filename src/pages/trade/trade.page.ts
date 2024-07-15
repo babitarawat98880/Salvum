@@ -95,7 +95,7 @@ export class TradePage  {
     }
   
   addTradePage(job_id) {
-      this.navCtrl.navigateForward('AddtradePage',{ state : {
+      this.navCtrl.navigateForward('addtrade',{ state : {
       job_id: job_id
     }});
     }

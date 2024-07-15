@@ -11,6 +11,7 @@ import { ComponentService } from 'src/services/component.service';
 import { APIService } from 'src/services/api.service';
 import { UploadfilePage } from '../uploadfile/uploadfile.page';
 import { SmailfilesPage } from '../smailfiles/smailfiles.page';
+import { JobfilePage } from '../jobfile/jobfile.page';
 @Component({
   selector: 'app-file-manager',
   templateUrl: './file-manager.page.html',
@@ -1225,13 +1226,15 @@ export class FileManagerPage implements OnInit {
   async addFilesJobs(isShared) {
     this.file_path = localStorage.getItem('current_file_path');
     let modal = await this.modalCtrl.create({
-      component: 'JobfilesPage',
+      component: JobfilePage,
       componentProps: {
         isShared: isShared,
         jobId: '0'
       }
     });
-    modal.onDidDismiss().then(((data: any) => {
+    modal.onDidDismiss().then(((rdata: any) => {
+      var data = rdata.data;
+      console.log(data, "sd")
       if (data != '' && data != undefined && data != null) {
         var onLevel: any = '1';
         var toLevel = localStorage.getItem('clicked_whichLevel');

@@ -89,4 +89,8 @@ postData(url:any,data:any){
    data.append('isRoot', isRoot);
     return this.http.post('deleteDirectoryFiles', data);
   } 
+  getTradesList(baseUrl){ 
+    var base = baseUrl.replace(':3002','');
+   return this.http.get(base+'/userpanel/assets/json/trades_list.json');
+  } 
 }
