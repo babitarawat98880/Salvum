@@ -64,3 +64,56 @@
   .border-1{
     border: 1px solid #222;
   }
+  ion-menu-button{
+    display: block;
+  }
+
+  /********** New Edits *************/
+  ion-split-pane {
+    --side-max-width: 250px; /* Adjust as needed */
+  }
+  
+  ion-menu {
+    --width: 250px; /* Adjust as needed */
+  }
+  
+  .main-content-wrapper {
+    padding: 16px;
+    width: 100%;
+  }
+  
+  ion-content {
+    --padding-top: 56px; /* Adjust to account for header */
+  }
+
+  .pl-2 {
+    padding-left: 12px;
+  }
+
+  .edit-folder {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .ion-float-right {
+    margin-left: 8px;
+  }
+  ion-checkbox, ion-avatar{
+    margin-right: 10px;
+  }
+ 
+  
+  @media (max-width: 767px) {
+    ion-split-pane {
+      display: block;
+    }
+  
+    .main-content-wrapper {
+      padding: 16px;
+      width: 100%;
+    }
+    .ion-content-mob {
+      height: 100vh;
+    }
+  }

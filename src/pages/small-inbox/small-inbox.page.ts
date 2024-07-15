@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NavController, NavParams, ModalController, LoadingController, AlertController, ToastController, IonContent } from '@ionic/angular';
+import { NavController, NavParams, ModalController, LoadingController, AlertController, ToastController, IonContent, MenuController } from '@ionic/angular';
 import { DatePipe } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
@@ -151,6 +151,7 @@ export class SmallInboxPage {
         private alertCtrl: AlertController,
         public toastCtrl: ToastController,
         public route: ActivatedRoute,
+        private menu: MenuController
         // private dragulaService: DragulaService
         ) {
         this.timestamp = new Date().getTime();
@@ -158,6 +159,9 @@ export class SmallInboxPage {
         if (history.state.from_compose == '1') {
             this.reverse = false;
         }
+
+        
+
         localStorage.removeItem('smail_path');
         this.alllevel = JSON.parse(localStorage.getItem('alllevel') || '');
         var userId = localStorage.getItem('userinfo');
@@ -4244,5 +4248,9 @@ export class SmallInboxPage {
                 this.componentService.dismissLoader();
                 this.showTechnicalError('1');
             });
+    }
+
+    toggleSplitPaneMenu() {
+        this.menu.toggle('splitPaneMenu');
     }
 }
