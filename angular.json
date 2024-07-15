@@ -111,7 +111,7 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/global.scss", "src/theme/variables.scss"],
+            "styles": ["src/global.scss", "src/theme/variables.scss","~angular-tree-component-amphinicy/css/angular-tree-component.css"],
             "scripts": []
           },
           "configurations": {

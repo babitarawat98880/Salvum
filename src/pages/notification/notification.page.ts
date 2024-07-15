@@ -155,7 +155,7 @@ export class NotificationPage {
   };
 
   root() {
-    this.navCtrl.navigateRoot('dashboard');
+    this.navCtrl.navigateRoot(['dashboard','0']);
   }
 
   goToDash(nid) {

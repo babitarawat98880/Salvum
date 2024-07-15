@@ -16,7 +16,14 @@ import { DatePipe } from '@angular/common';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 // import { DragulaModule } from 'ng2-dragula';
 import { PushNotificationModule } from 'ng-push-notification';
-
+// import { TreeViewModule } from "ionic-tree-view";
+// import { TreeModule } from 'angular-tree-component';
+// import { TreeModule } from '@circlon/angular-tree-component';
+// import { TreeModule } from '@ali-hm/angular-tree-component';
+// import { NgDragDropModule } from 'ng-drag-drop';
+// import { DragulaModule } from 'ng2-dragula';
+// import { DndModule } from 'ng2-dnd';
+// import { TreeModule } from 'angular-tree-component-amphinicy';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule,
@@ -36,6 +43,10 @@ import { PushNotificationModule } from 'ng-push-notification';
       closeDelay: 6000,
       icon: 'assets/img/logo-icon.png'
   }),
+  // TreeViewModule
+  // DragulaModule,
+  // DndModule.forRoot(),
+  // NgDragDropModule.forRoot()
     // DragulaModule.forRoot()
   ],
   providers: [

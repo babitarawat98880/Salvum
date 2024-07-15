@@ -424,7 +424,7 @@ export class AddJobPage implements OnInit {
   }
 
   jobPage() {
-    this.navCtrl.navigateForward('manage-job');
+    this.navCtrl.navigateForward('managejob');
   }
   root(){
     this.navCtrl.navigateRoot(['dashboard', 0])
