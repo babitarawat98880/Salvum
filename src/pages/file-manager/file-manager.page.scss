@@ -96,3 +96,146 @@
   transition: background-color .15s,box-shadow .15s;
 }
 .node-wrapper {display: flex; align-items: flex-start;}
+
+  /********** New Edits *************/
+  ion-split-pane {
+    --side-max-width: 250px; /* Adjust as needed */
+  }
+  
+  ion-menu {
+    --width: 250px; /* Adjust as needed */
+  }
+  
+  .main-content-wrapper {
+    padding: 16px;
+    width: 100%;
+  }
+  
+  ion-content {
+    --padding-top: 56px; /* Adjust to account for header */
+  }
+
+  .pl-2 {
+    padding-left: 12px;
+  }
+
+  .edit-folder {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .ion-float-right {
+    margin-left: 8px;
+  }
+  ion-checkbox, ion-avatar{
+    margin-right: 10px;
+  }
+
+  .white-box {
+    cursor: pointer;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 134px;
+    position: relative;
+    border-radius: 0px;
+    padding: 0px;
+    background: #fafafa;
+    padding: 25px;
+    margin-bottom: 30px;
+    border: 1px solid #e5ebec;
+  }
+  .drag_handle {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    color: #488aff;
+    font-size: 18px;
+    z-index: 999;
+  }
+  .fab-icon {
+    position: absolute;
+    z-index: 999;
+    right: 10px;
+    top: 10px;
+  }
+  .fab-icon button {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 50%;
+  }
+  .fab-icon button ion-icon {
+    line-height: 28px;
+    font-size: 14px;
+  }
+  .fab-icon ion-icon{
+    left: 0;
+    right: 0;
+    top: 0;
+    position: absolute;
+    line-height: 56px;
+    opacity: 0;
+    -webkit-transform: scale(0.4) rotateZ(-45deg);
+    transform: scale(0.4) rotateZ(-45deg);
+    -webkit-transition: all ease-in-out 300ms;
+    transition: all ease-in-out 300ms;
+      transition-property: all;
+    -webkit-transition-property: opacity, -webkit-transform;
+    transition-property: opacity, -webkit-transform;
+    transition-property: transform, opacity;
+    transition-property: transform, opacity, -webkit-transform;
+  }
+  .fab-icon button {
+    -webkit-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+    -webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1), background-color 300ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1), background-color 300ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .white-box img {
+    max-width: 100%;
+    -o-object-fit: contain;
+    object-fit: contain;
+    max-height: 100%;
+  }
+
+  .level1_border > .tree-file {
+    text-transform: capitalize;
+    border-left: 5px solid #74B8F5;
+  }
+  .tree-file {
+    position: relative;
+    padding: 8px 15px;
+  }
+  .angular-tree-component {
+    cursor: pointer;
+  }
+  .icon-btns{
+    text-align: right;
+  }
+  .btn-small{
+    float: right;
+  }
+ 
+  
+  @media (max-width: 767px) {
+    ion-split-pane {
+      display: block;
+    }
+  
+    .main-content-wrapper {
+      padding: 16px;
+      width: 100%;
+    }
+    .ion-content-mob {
+      height: 100vh;
+    }
+  }

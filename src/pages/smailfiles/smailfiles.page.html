@@ -1,9 +1,13 @@
 <ion-header modal-white>
-    <ion-title text-centers>{{modal_title}}</ion-title><ion-buttons end>
-    <button btn-grid  (click)="dismiss()">
-        <ion-icon name="close"></ion-icon>
-    </button>
-  </ion-buttons> 
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title>{{modal_title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()"><ion-icon name="close"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
 </ion-header>
 <div breadcrumd-popup ion-fixed>
 	<ion-row>

@@ -1,13 +1,21 @@
 <ion-header modal-white>
-  <ion-title text-centers>Job Files</ion-title><ion-buttons end>
-    <button btn-grid (click)="dismiss()">
-      <ion-icon name="close"></ion-icon>
-    </button>
-  </ion-buttons>
+
+
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title>Job Files</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()"><ion-icon name="close"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+
 </ion-header>
 <div breadcrumd-popup ion-fixed>
   <ion-row>
-    <ion-col col-9 col-md-9 col-lg-9 col-xl-9>
+    <ion-col size="9">
       <ion-item border-none br-lt-grey>
         <ng-container *ngFor="let bread of breadcrums; let last = last; let index = index ">
           <a *ngIf="bread == 'jobs_data' && bread != 'directory'" (click)="getAllFiles()">Files</a>
@@ -16,8 +24,8 @@
         </ng-container>
       </ion-item>
     </ion-col>
-    <ion-col col-3 col-md-3 col-lg-3 col-xl-3>
-      <button ion-button color="darkblue" block fnt-regular type="button" (click)="addFiles()">Submit</button>
+    <ion-col size="3">
+      <ion-button color="primary" expand="block" (click)="addFiles()">Submit</ion-button>
     </ion-col>
     <ion-col col-4 col-md-4 col-lg-4 col-xl-4>
       <ion-item p-lr-0 *ngIf="folders == '0'">
@@ -67,7 +75,7 @@
       <ion-col col-12>
         <ion-list margin0>
           <ion-row *ngIf="folders == '0'">
-            <ion-col col-6 col-md-3 col-lg-3 col-xl-3 text-center file-manager
+            <ion-col size="6" size-md="4" size-lg="3" class="text-center" file-manager
               *ngFor="let photo of sorted_photos; let i = index ">
               <div class="white-box job-files-list" margin0 (click)="clickFolder(photo.file_name)">
                 <div>
@@ -85,7 +93,7 @@
                     src="assets/img/{{this.file_types.indexOf(photo.file_name.split('.').pop().toLowerCase()) >= 0 ? photo.file_name.split('.').pop().toLowerCase() : 'txt'}}.png" />
 
                   <img *ngIf="photo.file_name.indexOf('.') == -1" text-center src="assets/img/folder.png" />
-                   <ion-checkbox (ionChange)="insertFilesToArray($event.target, photo)"></ion-checkbox>
+                   <ion-checkbox (ionChange)="insertFilesToArray($event.target, photo)" class="check-abs"></ion-checkbox>
                    <!-- *ngIf="file_types.indexOf(photo.file_name.split('.').pop().toLowerCase()) >= 0" -->
                   <i class="iconfile {{photo.trade_icon == null ? 'arrow-dropdown' : photo.trade_icon}}"></i>
                   <!-- <h2  fnt-regular>File</h2> -->
@@ -98,13 +106,13 @@
               <!-- <p>{{photo.date_created | date : 'medium'}}</p> -->
               <!-- <ion-badge>{{photo.status == '0' ? 'Pending' : ''}}</ion-badge> -->
             </ion-col>
-            <ion-col col-12 *ngIf="sorted_photos == ''">
+            <ion-col size="12" *ngIf="sorted_photos == ''">
               <ion-item border-none br-lt-grey>No Files Found</ion-item>
             </ion-col>
           </ion-row>
 
           <ion-row *ngIf="folders == '1'">
-            <ion-col col-6 col-md-3 col-lg-3 col-xl-2 text-center file-manager
+            <ion-col size="6" size-md="4" size-lg="3" class="text-center" file-manager
               *ngFor="let related_file of related_files; let i = index ">
               <div class="white-box job-files-list" margin0 (click)="openIt(related_file.path,related_file.type)">
                 <div>
@@ -136,7 +144,7 @@
               </div>
 
             </ion-col>
-            <ion-col col-12 *ngIf="related_files == ''">
+            <ion-col size="12" *ngIf="related_files == ''">
               <ion-item border-none br-lt-grey>No Files Found In This Folder.</ion-item>
             </ion-col>
           </ion-row>

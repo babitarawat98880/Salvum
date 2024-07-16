@@ -4,12 +4,13 @@
     <span></span>
     <span></span>
 </div> -->
-  <ion-menu side="start" menuId="second"  contentId="content" >
-    <ion-header>
+<ion-split-pane contentId="main-content" when="md">
+  <ion-menu side="start" menuId="customMenu"  contentId="main-content" >
+    <!--<ion-header>
       <ion-toolbar>
         <ion-title>Files</ion-title>
       </ion-toolbar>
-    </ion-header>
+    </ion-header>-->
     <ion-content >
       <ion-list>
         <div class="outer-filter " padding p-b-0 w-100>
@@ -33,19 +34,19 @@
         </div>
 
         <ion-item *ngIf="related_files_data != 'shared_data'" no-border>
-          <button (click)="addFolders('0')" ion-button add-share-btn><ion-icon name="add"></ion-icon></button>
-          <button (click)="removeFolders()" ion-button color="danger" remove-share-btn><ion-icon
-              name="remove"></ion-icon></button>
-          <button (click)="shareFolders()" ion-button color="secondary" share-btn><ion-icon
-              name="share"></ion-icon></button>
+          <ion-button (click)="addFolders('0')" color="primary" size="small" add-share-btn><ion-icon name="add"></ion-icon></ion-button>
+          <ion-button (click)="removeFolders()" size="small" color="danger" remove-share-btn><ion-icon
+              name="remove"></ion-icon></ion-button>
+          <ion-button (click)="shareFolders()" color="success" size="small" share-btn><ion-icon
+              name="share"></ion-icon></ion-button>
         </ion-item>
         <div height_15 *ngIf="related_files_data == 'shared_data'"></div>
 
 
         <!-- share folder start -->
         <div share-div>
-
-          <button ion-item detail-none no-lines (click)="getSharedFolders()" icon-left
+          <ion-buttons>
+          <ion-button ion-item detail-none no-lines expand="block" (click)="getSharedFolders()" icon-left
             [ngClass]="{active: related_files_data=='shared_data'}">
             <ion-grid no-padding>
               <ion-row>
@@ -62,7 +63,8 @@
                 </ion-col>
               </ion-row>
             </ion-grid>
-          </button>
+          </ion-button>
+        </ion-buttons>
 
         </div>
         <!-- share folder end -->
@@ -110,12 +112,12 @@
                   <ion-grid id="editpanel{{node.data.path.split('/').join('_')}}" style="display: none;"
                     class="edit_grids" no-padding>
                     <ion-row>
-                      <ion-col col-8>
+                      <ion-col size="8">
                         <input type="text" w-100 id="input{{node.data.path.split('/').join('_')}}" value=""
                           class="no_clicks_avail">
                       </ion-col>
 
-                      <ion-col col-4 text-right dis-flex>
+                      <ion-col size="4" dis-flex>
                         <ion-icon btn-check name="close"
                           (click)="editFolders(node.data,node.data.children.every(checkDir))"></ion-icon>
                         <ion-icon btn-check name="checkmark"
@@ -149,7 +151,8 @@
 	      <ion-icon class="ion-md-arrow-dropright-circle" show-t-icon white-color style=""></ion-icon>
       </button>
    </ion-buttons-->
-
+<div id="main-content">
+  <app-header></app-header>
 <ion-row main-breadcrumb ion-fixed style="top:60px">
   <ion-col>
     <ol class="breadcrumb">
@@ -174,25 +177,26 @@
 </ion-row>
 
 
-<ion-content file-content has-header [class.actives]="isParaActive" [ngClass]="{showBack: navBack}" lightgrey file-list style="">
+<ion-content file-content has-header [class.actives]="isParaActive" [ngClass]="{showBack: navBack}" class="ion-content-mob" lightgrey file-list style="">
   <div breadcrumb-height></div>
 
   <ion-grid>
     <ion-row>
       <ion-col col-12 col-md-12 col-lg-12 col-xl-12>
         <ion-row>
-          <ion-col col-1>
-            <ion-button (click)="openMenu()">
+          <ion-col size="2" size-md="12" class="hide-pc">
+            <!--<ion-button (click)="openMenu()">
               <ion-icon name="menu" slot="icon-only"></ion-icon>
-            </ion-button>
+            </ion-button>-->
             <ion-buttons header-icon hide-icon btn-tree >
+              <ion-menu-button autoHide="false" menu="customMenu"><ion-icon name="caret-back-circle" color="primary"></ion-icon></ion-menu-button>
               <button btn-grid fnt-white [class.actives]="isBtnActive" (click)="toggleClass()">
                 <ion-icon class="ion-md-arrow-dropleft-circle" hide-t-icon color="blue"></ion-icon>
                 <ion-icon class="ion-md-arrow-dropright-circle" show-t-icon color="blue" style=""></ion-icon>
               </button>
             </ion-buttons>
           </ion-col>
-          <ion-col col-11 col-md-12 col-lg-12 col-xl-12
+          <ion-col size="10" size-md="12"
             *ngIf="file_path != 'nopath' && related_files_data != 'shared_data'">
             <ion-item border-none br-lt-grey filemanager_top>
               <ng-container *ngIf="isBrowser ==  'false' ">
@@ -211,16 +215,19 @@
                 </ng-container>
               </ng-container>
 
-              <ng-container *ngIf="related_files != 'shared_data' && related_files_data != 'shared_data'">
+              <ng-container *ngIf="related_files != 'shared_data' && related_files_data != 'shared_data'" class="white-box">
                 <!-- <button class="pull-right" (click) = "modalupload()" ion-button color="secondary" *ngIf="isBrowser == 'false'">Upload</button > -->
-                <div width100 text-right>
-
-                  <button (click)="addFiles('0')" title="Upload from Local"><img
-                      src="assets/img/upload_local.png"></button><!-- *ngIf="isBrowser == 'true'" -->
-                  <button (click)="addFilesSmail('0')" title="Upload from Smail"><img
-                      src="assets/img/upload_smail.png"></button>
-                  <button (click)="addFilesJobs('0')" title="Upload from Jobs"><img
-                      src="assets/img/upload_jobs.png"></button>
+                <div class="text-right" style="width: 100%;">
+                  <ion-toolbar class="icon-btns">
+                  <ion-buttons size="small" slot="end" style="width: 100%;">
+                    <ion-button (click)="addFiles('0')" size="small" title="Upload from Local" class="btn-small">
+                      <img src="assets/img/upload_local.png"></ion-button><!-- *ngIf="isBrowser == 'true'" -->
+                    <ion-button (click)="addFilesSmail('0')" size="small" title="Upload from Smail">
+                      <img src="assets/img/upload_smail.png"></ion-button>
+                    <ion-button (click)="addFilesJobs('0')" size="small" title="Upload from Jobs">
+                      <img src="assets/img/upload_jobs.png"></ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
 
                 </div><!-- *ngIf="isBrowser == 'true'" -->
               </ng-container>
@@ -263,7 +270,7 @@
         </ion-row>
         <ion-row>
           <ng-container *ngIf="related_files != 'shared_data'">
-            <ion-col col-6 col-md-4 col-lg-4 col-xl-2 text-center file-manager
+            <ion-col size="6" size-md="4" size-lg="3"  class="text-center" file-manager
               *ngFor="let related_file of related_files; let i = index ">
               <ng-container *ngIf="related_file.toLevel == '' || related_file.toLevel == null">
                 <div [dragData]="related_file" dnd-draggable [dragEnabled]="true" *ngIf="related_file.type == 'file'"
@@ -336,12 +343,12 @@
 
 
                   <!-- [ngClass]="related_files_data == 'shared_data' ? 'hide_handle' : ''" -->
-                  <ion-fab right top *ngIf="all_levels.indexOf(related_file.name) == -1">
+                  <ion-fab right top *ngIf="all_levels.indexOf(related_file.name) == -1" class="fab-icon">
                     <button title="Dropdown" ion-fab color="light" mini><ion-icon name="list"></ion-icon></button>
                     <ion-fab-list side="left">
                       <button title="Delete" mini color="danger"
                         (click)="deleteFile(related_file.path,related_file.type)" ion-fab><ion-icon
-                          name="trash"></ion-icon></button>
+                          name="trash" color="primary"></ion-icon></button>
                     </ion-fab-list>
                     <ion-fab-list side="top"
                       *ngIf="related_file.type == 'file' && related_file.name.split('.').pop().toLowerCase() != 'csv' && related_file.name.split('.').pop().toLowerCase() != 'zip' && related_file.name.split('.').pop().toLowerCase() != 'xlsx' && related_file.name.split('.').pop().toLowerCase() != 'xls'">
@@ -454,7 +461,7 @@
                         draggable [treeDrag]="{data : related_file, is_panel : 1}" [treeDragEnabled]="true"></ion-icon>
                     </ng-container>
                     <!-- [ngClass]="related_files_data == 'shared_data' ? 'hide_handle' : ''" -->
-                    <ion-fab right top *ngIf="all_levels.indexOf(related_file.name) == -1">
+                    <ion-fab right top *ngIf="all_levels.indexOf(related_file.name) == -1" class="fab-icon">
                       <button title="Dropdown" ion-fab color="light" mini><ion-icon name="list"></ion-icon></button>
                       <ion-fab-list side="left">
                         <button title="Delete" mini color="danger"
@@ -509,7 +516,7 @@
                       </ion-grid>
                     </p>
                     <p id="showpanel{{i}}" fnt-regular
-                      class="{{all_levels.indexOf(related_file.name) >= 0 ? 'text-capitalize' : ''}}">
+                      class="{{all_levels.indexOf(related_file.name) >= 0 ? 'text-capitalize' : ''}} text-center">
                       {{related_file.name.search('_--_') >= 0 ? related_file.name.split('_--_').pop(-1) :
                       related_file.name.split('____').pop(-1)}}
 
@@ -581,7 +588,7 @@
                     draggable [treeDrag]="{data : related_file, is_panel : 1, shared_id: related_file._id}"
                     [treeDragEnabled]="true"></ion-icon>
                   <ion-fab right top *ngIf="related_file.type == 'file' || related_file.path.search('shared') >= 0"
-                    (click)="readThis(related_file.isRead.indexOf(userId),related_file._id)">
+                    (click)="readThis(related_file.isRead.indexOf(userId),related_file._id)" class="fab-icon">
                     <button title="Dropdown" ion-fab color="light" mini><ion-icon name="list"></ion-icon></button>
                     <ion-fab-list side="left">
                       <button
@@ -784,7 +791,7 @@
                     </ng-container>
                   </div>
 
-                  <ion-fab right top [style.z-index]="999-indx" *ngIf="shared_file.isAccept != '4'">
+                  <ion-fab right top [style.z-index]="999-indx" *ngIf="shared_file.isAccept != '4'" class="fab-icon">
                     <button ion-fab color="light" mini>
                       <ion-icon name="people"></ion-icon>
                     </button>
@@ -919,3 +926,5 @@
     style="visibility: hidden;"></a>
   <div footer-height></div>
 </ion-content>
+</div>
+</ion-split-pane>

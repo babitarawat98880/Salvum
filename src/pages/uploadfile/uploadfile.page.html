@@ -1,12 +1,15 @@
 <ion-header modal-white>
 
-  <!-- <ion-navbar> -->
-    <ion-title text-centers>{{modal_title}}</ion-title><ion-buttons end>
-    <button btn-grid  (click)="dismiss(tradeId)">
-        <ion-icon name="close"></ion-icon>
-    </button>
-  </ion-buttons>
-  <!-- </ion-navbar> -->
+
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title>{{modal_title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss(tradeId)"><ion-icon name="close"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 
 </ion-header>
 <ion-content padding>
@@ -38,20 +41,23 @@
     </ion-select>
   </ion-item>
 
-  <ion-item p-lr-0 class="linesnone">
-    <div hidden-xs ng2FileDrop [uploader]="uploader" [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
-                 (fileOver)="fileOverBase($event)" class="well my-drop-zone">
-				 <ion-icon name="ios-cloud-upload-outline"></ion-icon>
-	    <h2>Drag & drop files here</h2>
-	</div>
-	<label visible-xs for="choosefiles"  fileschoose style="display:none"> 
+  
+    
+        <div hidden-xs ng2FileDrop [uploader]="uploader" [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                  (fileOver)="fileOverBase($event)" class="well my-drop-zone">
+          <ion-icon name="ios-cloud-upload-outline"></ion-icon>
+          <h2>Drag & drop files here</h2>
+        </div>
+  
+    
+	<ion-label visible-xs for="choosefiles"  fileschoose style="display:none"> 
 					          <ion-item filetype text-center  left>
 					                <ion-icon name="cloud-upload" color="blue"></ion-icon>
                                     <h4>Choose Files</h4>
 							   </ion-item>
-	</label>
-	<input type="file" id="choosefiles" ng2FileSelect [uploader]="uploader" multiple  />
-  </ion-item>
+	</ion-label>
+	<input type="file" id="choosefiles" ng2FileSelect [uploader]="uploader" multiple class="input-img" />
+  
   <h6 class="heading-upload">Upload files queue</h6>
 <p>Queue length: {{ uploader?.queue?.length }}</p>
  <div table-responsive *ngIf="uploader?.queue?.length > 0">
@@ -59,18 +65,18 @@
   <ion-icon icon-upload name="ios-document-outline" item-start></ion-icon>
  <h2>{{ item?.file?.name }}</h2>
  
- <button item-end small type="button" class="blue" ion-button
+ <ion-button color="primary"
                     (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
               
 				
 				  <ion-icon name="cloud-upload"></ion-icon>
-            </button>
-            <button item-end small type="button" class="blue" ion-button
+            </ion-button>
+            <ion-button color="primary"
                     (click)="item.cancel()" [disabled]="!item.isUploading">
               
 				
 				 <ion-icon name="close"></ion-icon>
-            </button>
+            </ion-button>
 </ion-item>
 
             <table class="table table-queue table-queue-width" style="display:none"> 
@@ -100,18 +106,18 @@
             <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
         </td-->
         <td nowrap>
-            <button small type="button" class="blue" ion-button
+            <ion-button class="primary"
                     (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
                 <!--<span class="glyphicon glyphicon-upload"></span> Upload-->
 				
 				  <ion-icon name="cloud-upload"></ion-icon>
-            </button>
-            <button small type="button" class="blue" ion-button
+            </ion-button>
+            <ion-button class="primary"
                     (click)="item.cancel()" [disabled]="!item.isUploading">
                 <!--<span class="glyphicon glyphicon-ban-circle"></span> Cancel-->
 				
 				 <ion-icon name="close"></ion-icon>
-            </button>
+            </ion-button>
             <!-- <button  small type="button" class="blue" ion-button
                     (click)="item.remove()" [disabled]="!item.isSuccess">
 				 <ion-icon name="trash"></ion-icon>
@@ -130,14 +136,14 @@
             </div>
         </div>
     </div>
-    <button small type="button" class="blue" ion-button
+    <ion-button color="primary"
             (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
         <span class="glyphicon glyphicon-upload"></span> Upload all
-    </button>
+    </ion-button>
 
-    <button  small type="button" class="blue" ion-button (click) = "dismiss(tradeId)">
+    <ion-button  color="primary" (click) = "dismiss(tradeId)">
         <span class="glyphicon glyphicon-remove"></span> Close
-    </button>
+    </ion-button>
 </div>
 
 

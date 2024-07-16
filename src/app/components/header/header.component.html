@@ -11,9 +11,9 @@
           <ion-button   *ngIf="isBrowser ==  'true'" id="tooltip-document" data-tooltip="Document Tooltip" (click)="fileManagerPage()" class="hide-mob"><ion-icon name="document" color="light"></ion-icon></ion-button>
           <ion-button   *ngIf="isBrowser ==  'true'" id="tooltip-card" data-tooltip="Card Tooltip" (click)="bidJobsPage()" class="hide-mob"><img src="assets/img/bid_icon_white.png" style="width: 21px; min-width:21px; margin-top: 7px;"></ion-button>
           <ion-button   *ngIf="isBrowser ==  'true'" id="tooltip-briefcase" data-tooltip="Briefcase Tooltip" (click)="goToJobs()" class="hide-mob"><ion-icon name="briefcase" color="light"></ion-icon></ion-button>
-          <ion-button  (click)="presentPopover($event)" ><ion-icon name="apps" color="light"></ion-icon></ion-button>
+          <ion-button  id="tooltip-apps" (click)="presentPopover($event)" ><ion-icon name="apps" color="light"></ion-icon></ion-button>
           <!-- (click)="invitePage()"?>-->
-          <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
+          <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" trigger="tooltip-apps" triggerAction="click">
             <ng-template>
               <ion-content class="ion-padding">
                 <ion-row>

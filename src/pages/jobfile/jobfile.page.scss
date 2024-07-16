@@ -1,0 +1,76 @@
+.white-box {
+    background: #fafafa;
+    padding: 25px;
+    margin-bottom: 30px;
+    border: 1px solid #e5ebec;
+    border-radius: 4px;
+  }
+.white-box {
+    cursor: pointer;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 134px;
+    position: relative;
+    border-radius: 0px;
+    padding: 0px;
+  }
+  .job-files-list {
+    height: auto !important;
+    min-height: 148px;
+    padding: 10px 5px 7px !important;
+  }
+  .white-box div {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+  .white-box img {
+    max-width: 100%;
+    -o-object-fit: contain;
+    object-fit: contain;
+    max-height: 100%;
+  }
+  .job-files-list img {
+    height: 48px;
+    border-radius: 4px;
+  }
+  .job-files-list .check-abs {
+    top: 5px;
+    right: 5px;
+  }
+  .check-abs {
+    position: absolute;
+    top: 20px;
+    display: inline-block;
+    right: 10px;
+  }
+  .job-files-list .iconfile {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+  }
+  .job-files-list h6 {
+    margin-top: 2px;
+    word-break: break-word;
+    font-size: 12px;
+    max-height: 29px;
+  }
+  .job-files-list h6 + p {
+    font-size: 12px;
+  }
