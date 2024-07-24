@@ -3,6 +3,7 @@ import { NavController, ModalController, AlertController, ToastController, Loadi
 import { APIService } from 'src/services/api.service';
 import { ComponentService } from 'src/services/component.service';
 import { Router } from '@angular/router';
+import { AddeventPage } from '../addevent/addevent.page';
 @Component({
   selector: 'app-job-calendar',
   templateUrl: './job-calendar.page.html',
@@ -245,7 +246,7 @@ export class JobCalendarPage {
   }
   async editEvent(event, event_id) {
     let modal = await this.modalCtrl.create({
-      component: 'AddeventPage',
+      component: AddeventPage,
       componentProps: {
         event_id: event_id, isEdit: '1', eve: event, isTrade: '1', trades: this.trades, all_events: this.all_events
       }

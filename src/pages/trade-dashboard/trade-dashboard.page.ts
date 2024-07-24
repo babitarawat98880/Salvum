@@ -114,7 +114,7 @@ export class TradeDashboardPage {
   }
 
   tradeContacts() {
-    this.navCtrl.navigateForward('TradeContactsPage', { state: { jobId: this.jobId } });
+    this.navCtrl.navigateForward('trade-contacts', { state: { jobId: this.jobId } });
   }
 
   goTotrades() {

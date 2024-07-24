@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { OverlayEventDetail } from '@ionic/core/components';
+// import { OverlayEventDetail } from '@ionic/core/components';
 import { ToastController, NavController, ModalController, AlertController, LoadingController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { Pipe } from '@angular/core';
@@ -50,7 +50,7 @@ export class WalletsPage {
   }
 
   onWillDismiss(event: Event) {
-    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    // const ev = event as CustomEvent<OverlayEventDetail<string>>;
   }
 
   ionViewWillUnload() {

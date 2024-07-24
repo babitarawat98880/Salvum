@@ -153,7 +153,7 @@ export class TradePage  {
     }});
     }
     jobCalendar(jobId) {
-      this.navCtrl.navigateForward('JobcalendarPage', {state:{
+      this.navCtrl.navigateForward('job-calendar', {state:{
       job_id: jobId,
       from: 'trade'
     }});

@@ -222,6 +222,14 @@ const routes: Routes = [
   {
     path: 'groupslist',
     loadChildren: () => import('../pages/groupslist/groupslist.module').then( m => m.GroupslistPageModule)
+  },
+  {
+    path: 'addevent',
+    loadChildren: () => import('../pages/addevent/addevent.module').then( m => m.AddeventPageModule)
+  },
+  {
+    path: 'trade-contacts',
+    loadChildren: () => import('../pages/trade-contacts/trade-contacts.module').then( m => m.TradeContactsPageModule)
   }
 ];
 

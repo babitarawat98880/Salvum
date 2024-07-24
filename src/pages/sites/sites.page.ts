@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { OverlayEventDetail } from '@ionic/core/components';
+// import { OverlayEventDetail } from '@ionic/core/components';
 import { ToastController, NavController, ModalController, NavParams, AlertController, LoadingController} from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import * as CryptoJS from 'crypto-js';
@@ -204,7 +204,7 @@ export class SitesPage {
   }
 
   onWillDismiss(event: Event) {
-    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    // const ev = event as CustomEvent<OverlayEventDetail<string>>;
   }
 
 }
