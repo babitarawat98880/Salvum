@@ -1,0 +1,36 @@
+.m-box .tile-head{
+    width: 40px;
+  height: 40px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fafafa;
+  margin: 0 auto;
+    margin-bottom: 0px;
+  background: #fafafa;
+  border: 1px solid #ccc;
+  margin-bottom: -20px;
+  position: relative;
+  z-index: 9;
+}
+.icon-wrap {
+   background: transparent;
+    padding: 10px;
+    color: #1976d2;
+    font-weight: bold;
+    border-radius: 20px 3px 20px 20px;
+    font-size: 24px;
+  }
+  .m-box {
+    padding-bottom: 0;
+  }
