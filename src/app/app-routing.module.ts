@@ -230,6 +230,14 @@ const routes: Routes = [
   {
     path: 'trade-contacts',
     loadChildren: () => import('../pages/trade-contacts/trade-contacts.module').then( m => m.TradeContactsPageModule)
+  },
+  {
+    path: 'add-coworkers',
+    loadChildren: () => import('../pages/add-coworkers/add-coworkers.module').then( m => m.AddCoworkersPageModule)
+  },
+  {
+    path: 'addcontact',
+    loadChildren: () => import('../pages/addcontact/addcontact.module').then( m => m.AddcontactPageModule)
   }
 ];
 

@@ -4,6 +4,8 @@ import { APIService } from 'src/services/api.service';
 import { ComponentService } from 'src/services/component.service';
 import { ContactslistPage } from '../contactslist/contactslist.page';
 import { Router } from '@angular/router';
+import { AddCoworkersPage } from '../add-coworkers/add-coworkers.page';
+import { AddcontactPage } from '../addcontact/addcontact.page';
 @Component({
   selector: 'app-trade-contacts',
   templateUrl: './trade-contacts.page.html',
@@ -327,7 +329,7 @@ export class TradeContactsPage {
  async  addCoworkers() {
     var all_coworkers = [];
     let modal = await this.modalCtrl.create({
-      component: 'AddCoworkersPage', 
+      component: AddCoworkersPage, 
       componentProps: {
         jobId: this.jobId,
         already: all_coworkers
@@ -399,7 +401,7 @@ export class TradeContactsPage {
 
   async addContactManually() {
     let modal =await this.modalCtrl.create({
-      component: 'AddcontactPage',
+      component: AddcontactPage,
       componentProps:{ jobId: this.jobId, isEdit: 0, isMultiple: '1' }
     });
     modal.onDidDismiss().then((res:any) => {
@@ -480,7 +482,7 @@ export class TradeContactsPage {
 
   async editContact(contact) {
     let modal = await this.modalCtrl.create({
-      component:'AddcontactPage',
+      component: AddcontactPage,
       componentProps:{
         data: contact, isEdit: 1, jobId: this.jobId, isMultiple: '1' 
       }
