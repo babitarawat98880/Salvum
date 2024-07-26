@@ -8,6 +8,7 @@ import { TradeContactsPageRoutingModule } from './trade-contacts-routing.module'
 import { Ng2DropdownModule } from 'ng2-material-dropdown';
 import { OrderModule } from 'ngx-order-pipe';
 import { TradeContactsPage } from './trade-contacts.page';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { TradeContactsPage } from './trade-contacts.page';
     IonicModule,
     Ng2DropdownModule,
     OrderModule,
-    TradeContactsPageRoutingModule
+    TradeContactsPageRoutingModule,
+    SharedModuleModule
   ],
   declarations: [TradeContactsPage]
 })

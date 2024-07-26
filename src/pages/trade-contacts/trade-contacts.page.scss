@@ -1,0 +1,36 @@
+.breadcrumbs-row {
+    background: #807E7F;
+    margin-bottom: 35px;
+  }
+
+  ng2-dropdown-button {
+    max-width: 100% !important;
+    float: left;
+    width: 100%;
+  }
+  ng2-dropdown-button button{
+    width: 100%;
+    max-width: 100%;
+  }
+
+  button.ng2-dropdown-button{
+    width: 100%;
+    max-width: 100%;
+  }
+  .parent-container {
+    display: flex;
+    flex-direction: column; /* or row, depending on layout */
+}
+
+mg2-dropdown-button {
+    flex: 1; /* Takes up the available space */
+    width: 100%;
+    box-sizing: border-box;
+}
+h2{
+    font-size: 14px;
+}
+h3{
+    font-size: 12px;
+    font-weight: normal;
+}

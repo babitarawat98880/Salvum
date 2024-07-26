@@ -1,15 +1,20 @@
 <ion-header modal-white>
- <ion-title text-centers>Add Coworkers</ion-title><ion-buttons end>
-    <button btn-grid  (click)="dismiss()">
-        <ion-icon name="close"></ion-icon>
-    </button>
-  </ion-buttons>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title>Add Coworkers</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()"><ion-icon name="close"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
 </ion-header>
 
 <ion-content padding select-contact>
 <ion-grid no-padding>
 <ion-row>
-<ion-col col-12>  
+<ion-col size="12">  
 <ion-list margin0>
   <ion-item p-lr-0 *ngIf="all_employees != ''">
    <ion-label stacked fnt-light fnt-regular>Select Trade*</ion-label>
@@ -21,13 +26,13 @@
   <ng-container *ngFor="let single_contact of all_employees">
     <ion-grid no-padding>
       <ion-row br-b-btm>
-        <ion-col col-xl-7 col-lg-7 col-md-6 col-6>
+        <ion-col size="6" size-lg="7">
           <ion-item p-lr-0  border-none>
+            <ion-checkbox [(ngModel)]="single_contact._id" (ionChange)="insertContactToArray($event,single_contact)" ></ion-checkbox> &nbsp; 
             <ion-label>{{single_contact.email}}</ion-label>
-            <ion-checkbox [(ngModel)]="single_contact._id" (ionChange)="insertContactToArray($event,single_contact)" ></ion-checkbox>
           </ion-item>
         </ion-col>
-        <ion-col col-xl-5 col-lg-5 col-md-6 col-6>
+        <ion-col size="6" size-lg="5" col-xl-5 col-lg-5 col-md-6 col-6>
           <ion-item no-border>
               <ion-select cancelText="Cancel" okText="Okay!" [(ngModel)] = "single_contact.privilege" >
               <ion-select-option value="0">Linked</ion-select-option>   
@@ -48,9 +53,9 @@
 </ion-list>
 </ion-col>
 
-<ion-col col-4>
+<ion-col size="12">
   <div padding p-b-0 p-lr-0 *ngIf="all_employees != '' && selected_contacts.length > 0">
-  	 <button ion-button color="darkblue" block  fnt-regular type="button" (click) = "addCoworkers(tradeId)">Submit</button>
+  	 <ion-button color="primary" expand="block"  fnt-regular type="button" (click) = "addCoworkers(tradeId)">Submit</ion-button>
   </div>
 </ion-col>
 </ion-row>
