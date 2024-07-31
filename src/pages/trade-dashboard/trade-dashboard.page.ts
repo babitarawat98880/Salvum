@@ -155,7 +155,7 @@ export class TradeDashboardPage {
   }
 
   goToFiles(type) {
-    this.navCtrl.navigateForward('JobphotosPage', { state: { jobId: this.jobId, file_type: type } });
+    this.navCtrl.navigateForward('jobphotos', { state: { jobId: this.jobId, file_type: type } });
   }
 
   root() {

@@ -22,6 +22,9 @@ export class ComponentService {
       toast.present();
    }
    async showLoader() {
+    this.loadingCtrl.getTop().then(loader=>{
+      this.loadingCtrl.dismiss();
+    })
     const loading = await this.loadingCtrl.create({
       message: 'Loading...',
     });

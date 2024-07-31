@@ -238,6 +238,18 @@ const routes: Routes = [
   {
     path: 'addcontact',
     loadChildren: () => import('../pages/addcontact/addcontact.module').then( m => m.AddcontactPageModule)
+  },
+  {
+    path: 'jobphotos',
+    loadChildren: () => import('../pages/jobphotos/jobphotos.module').then( m => m.JobphotosPageModule)
+  },
+  {
+    path: 'filemanagerfiles',
+    loadChildren: () => import('../pages/filemanagerfiles/filemanagerfiles.module').then( m => m.FilemanagerfilesPageModule)
+  },
+  {
+    path: 'addfolder',
+    loadChildren: () => import('../pages/addfolder/addfolder.module').then( m => m.AddfolderPageModule)
   }
 ];
 

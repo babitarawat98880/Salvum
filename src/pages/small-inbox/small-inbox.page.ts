@@ -10,6 +10,7 @@ import * as $ from 'jquery';
 import { EventService } from 'src/services/event.service';
 import { ComponentService } from 'src/services/component.service';
 import { APIService } from 'src/services/api.service';
+import { AddfolderPage } from '../addfolder/addfolder.page';
 let _uniqueId = 0;
 @Component({
     selector: 'app-small-inbox',
@@ -1830,7 +1831,7 @@ export class SmallInboxPage {
             
         } else {
             let modal = await this.modalCtrl.create({
-                component: 'AddfolderPage',
+                component: AddfolderPage,
                 componentProps:{
                     is_smail_folder: '1'
                 }

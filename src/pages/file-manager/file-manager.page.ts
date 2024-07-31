@@ -12,6 +12,7 @@ import { APIService } from 'src/services/api.service';
 import { UploadfilePage } from '../uploadfile/uploadfile.page';
 import { SmailfilesPage } from '../smailfiles/smailfiles.page';
 import { JobfilePage } from '../jobfile/jobfile.page';
+import { AddfolderPage } from '../addfolder/addfolder.page';
 @Component({
   selector: 'app-file-manager',
   templateUrl: './file-manager.page.html',
@@ -851,7 +852,7 @@ export class FileManagerPage implements OnInit {
       }
     }
     let modal = await this.modalCtrl.create({
-      component: 'AddfolderPage',
+      component: AddfolderPage,
       componentProps: {
         isShared: isShared,
         show_add_folder: this.show_add_folder

@@ -28,16 +28,16 @@
   <ion-item p-lr-0 *ngIf="filterTradeId == '0'">
    <ion-label stacked fnt-light fnt-regular>Select Trade*</ion-label>
     <ion-select  cancelText="Cancel" okText="Okay!" [(ngModel)] = "tradeId">
-      <ion-option *ngFor="let trade of alltrades" value="{{trade._id}}">
-      {{trade.trade_name}} ({{trade.trade_task}})</ion-option>   
+      <ion-select-option *ngFor="let trade of alltrades" value="{{trade._id}}">
+      {{trade.trade_name}} ({{trade.trade_task}})</ion-select-option>   
     </ion-select>
   </ion-item>
 
   <ion-item p-lr-0 *ngIf="isShared == '1' && file_path == 'nopath'">
    <ion-label stacked fnt-light fnt-regular>Select level*</ion-label>
     <ion-select  cancelText="Cancel" okText="Okay!" [(ngModel)] = "onLevel">
-      <ion-option *ngFor="let level of allowed_levels" value="{{level}}">
-      Level {{level}}</ion-option>   
+      <ion-select-option *ngFor="let level of allowed_levels" value="{{level}}">
+      Level {{level}}</ion-select-option>   
     </ion-select>
   </ion-item>
 

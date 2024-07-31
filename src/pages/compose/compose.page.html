@@ -197,7 +197,7 @@
                   <ion-select [(ngModel)]="selectedJob" (ionChange)="getTrades($event, selectedJob, i)">
                       
                      <!--  -->
-                     <ion-option value="{{job._id}}" *ngFor="let job of jobListingResult; let i = index ">{{job.job_title}}</ion-option>
+                     <ion-select-option value="{{job._id}}" *ngFor="let job of jobListingResult; let i = index ">{{job.job_title}}</ion-select-option>
                   </ion-select>
                </ion-item>
        
@@ -205,8 +205,8 @@
                   <!-- <div (click)="doCheckbox()" style="white-space: initial;margin: 0px !important;">Trade : </div> -->
                   <ion-label>Trade: </ion-label>
                   <ion-select [(ngModel)]="selectedTrade" (ngModelChange)="getTradeContacts($event, selectedTrade)">
-                  <ion-option value="">Select Trade</ion-option>
-                     <ion-option value="{{trade._id}}" *ngFor="let trade of trades">{{trade.trade_name}}</ion-option>
+                  <ion-select-option value="">Select Trade</ion-select-option>
+                     <ion-select-option value="{{trade._id}}" *ngFor="let trade of trades">{{trade.trade_name}}</ion-select-option>
                   </ion-select>
                </ion-item>
        
@@ -214,10 +214,10 @@
                   <!-- <div (click)="doCheckbox()" style="white-space: initial;margin: 0px !important;">Trade : </div> -->
                   <ion-label>Type: </ion-label>
                   <ion-select [(ngModel)]="selectedType" >
-                  <ion-option value="">Select Type</ion-option>
-                     <ion-option value="addendum"> Addendum</ion-option>
-                     <ion-option value="rfi"> RFI</ion-option>
-                     <ion-option value="change_order"> Change Order</ion-option>
+                  <ion-select-option value="">Select Type</ion-select-option>
+                     <ion-select-option value="addendum"> Addendum</ion-select-option>
+                     <ion-select-option value="rfi"> RFI</ion-select-option>
+                     <ion-select-option value="change_order"> Change Order</ion-select-option>
                   </ion-select>
                </ion-item>
        
@@ -319,7 +319,7 @@
                   <ion-label floating>Bcc :</ion-label>
                   <ion-select  cancelText="Nah" okText="Okay!" multiple="true" [(ngModel)]="bcc" (ionChange)="toBccName($event)">
                   <div *ngFor="let item of data" >
-                     <ion-option value="{{item.userId}}"  *ngIf="item.memberstatus == 2">{{item.name}}</ion-option>
+                     <ion-select-option value="{{item.userId}}"  *ngIf="item.memberstatus == 2">{{item.name}}</ion-select-option>
                   </div>
                   </ion-select>
                </ion-item> -->
@@ -364,37 +364,37 @@
                <ion-col size="12" size="3">
                   <ion-item *ngIf="override == false && (testCheckboxResult.length == 1 && ccCheckboxResult.length == 0 && bccCheckboxResult.length == 0) && isJobChecked == false" >
                      <ion-select  [(ngModel)]="level" style="min-width: 100%;" disabled="true">
-                     <ion-option selected value="">Select Level</ion-option>
-                     <ion-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-option>
+                     <ion-select-option selected value="">Select Level</ion-select-option>
+                     <ion-select-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-select-option>
                      </ion-select>
                   </ion-item>
                   <ion-item *ngIf="override == false && isJobChecked == true" >
                      <ion-select  [(ngModel)]="level" style="min-width: 100%;" disabled="true">
-                     <ion-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-option>
+                     <ion-select-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-select-option>
                      </ion-select>
                   </ion-item>
                   <ion-item *ngIf="override == false && (testCheckboxResult.length > 1 || ccCheckboxResult.length > 1 || bccCheckboxResult.length > 1 || (testCheckboxResult.length > 0 && ccCheckboxResult.length > 0) || (testCheckboxResult.length > 0 && bccCheckboxResult.length > 0) || (ccCheckboxResult.length > 0 && bccCheckboxResult.length > 0)) &&isJobChecked == false " >
                      <!-- Select Level -->
                      <ion-select  [(ngModel)]="level" style="min-width: 100%;">
-                      <ion-option value="" >Select Level</ion-option> 
-                      <ion-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-option>
+                      <ion-select-option value="" >Select Level</ion-select-option> 
+                      <ion-select-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-select-option>
                       </ion-select>
                    </ion-item>
                    <ion-item *ngIf="override == false && ((testCheckboxResult.length == 0 && ccCheckboxResult.length == 1 && bccCheckboxResult.length == 0) || (testCheckboxResult.length == 0 && ccCheckboxResult.length == 0 && bccCheckboxResult.length == 1) || (testCheckboxResult.length == 0 && ccCheckboxResult.length == 0 && bccCheckboxResult.length == 0) || selectedGroups.selectedGroups?.length == 1) && isJobChecked == false">
                      <!-- <ion-label>Select Level</ion-label> -->
                      <ion-select  [(ngModel)]="level" style="min-width: 100%;" [disabled]="((selectedGroups.selectedGroups?.length > 0 && selectedGroups.selectedContacts?.length > 0) || (selectedGroups.selectedGroups?.length == 1 && selectedGroups.selectedContacts?.length == 0) || (selectedGroups.selectedGroups?.length == 0 && selectedGroups.selectedContacts?.length == 1) || (selectedGroups.selectedGroups?.length == 0 && selectedGroups.selectedContacts?.length > 1) || selectedGroups.selectedGroups?.length > 1 && selectedGroups.selectedContacts?.length == 0) ? false : true">
-                     <ion-option selected value="">Select Level</ion-option>
-                     <ion-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-option>
+                     <ion-select-option selected value="">Select Level</ion-select-option>
+                     <ion-select-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-select-option>
                      </ion-select>
                   </ion-item>
                   <ion-item *ngIf="override == true">
                      <!-- <ion-label>Select Level</ion-label> -->
                      <ion-select  [(ngModel)]="level" style="min-width: 100%;" (ionChange)="getValueOpton(level)">
-                     <ion-option selected value="">Select Level</ion-option>
-                     <ion-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-option>
-                     <!-- <ion-option value="2">Level 2</ion-option>
-                     <ion-option value="3">Level 3</ion-option>
-                     <ion-option value="4">Level 4</ion-option> -->
+                     <ion-select-option selected value="">Select Level</ion-select-option>
+                     <ion-select-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-select-option>
+                     <!-- <ion-select-option value="2">Level 2</ion-select-option>
+                     <ion-select-option value="3">Level 3</ion-select-option>
+                     <ion-select-option value="4">Level 4</ion-select-option> -->
                      </ion-select>
                   </ion-item>
                </ion-col>
@@ -481,8 +481,8 @@
            <ion-item border-none  p-lr-0 >
               <ion-label stacked>Group Level:</ion-label> 
               <ion-select  [(ngModel)]="grouplevel" style="min-width: 100%;" (ionChange)="getLevel(grouplevel)">
-                 <ion-option selected value="">Select Level</ion-option>
-                 <ion-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-option>
+                 <ion-select-option selected value="">Select Level</ion-select-option>
+                 <ion-select-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-select-option>
               </ion-select>
            </ion-item>
            

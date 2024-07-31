@@ -31,9 +31,9 @@
       <ion-item p-lr-0 *ngIf="folders == '0'">
         <ion-label floating fnt-light fnt-regular>Filter Job*</ion-label>
         <ion-select cancelText="Cancel" okText="Okay!" [(ngModel)]="job_id" (ionChange)="changeJob(job_id)">
-          <ion-option value="0">All</ion-option>
-          <ion-option *ngFor="let job of jobs" value="{{job.jobId}}">
-            {{job.job_title}}</ion-option>
+          <ion-select-option value="0">All</ion-select-option>
+          <ion-select-option *ngFor="let job of jobs" value="{{job.jobId}}">
+            {{job.job_title}}</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-col>
@@ -41,9 +41,9 @@
       <ion-item p-lr-0 *ngIf="job_id != 0 && folders == '0'">
         <ion-label floating fnt-light fnt-regular>Filter Trade*</ion-label>
         <ion-select cancelText="Cancel" okText="Okay!" [(ngModel)]="trade_id" (ionChange)="changeTrade(trade_id)">
-          <ion-option value="0">All</ion-option>
-          <ion-option *ngFor="let trade of trades" value="{{trade.tradeId}}">
-            {{trade.trade_name}} ({{trade.trade_task}})</ion-option>
+          <ion-select-option value="0">All</ion-select-option>
+          <ion-select-option *ngFor="let trade of trades" value="{{trade.tradeId}}">
+            {{trade.trade_name}} ({{trade.trade_task}})</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-col>
@@ -51,10 +51,10 @@
       <ion-item p-lr-0>
         <ion-label floating fnt-light fnt-regular>Select File Type*</ion-label>
         <ion-select cancelText="Cancel" okText="Okay!" [(ngModel)]="file_code">
-          <ion-option value="C">Contract</ion-option>
-          <ion-option value="S">Specification</ion-option>
-          <ion-option value="D">Drawing</ion-option>
-          <ion-option value="O">Other</ion-option>
+          <ion-select-option value="C">Contract</ion-select-option>
+          <ion-select-option value="S">Specification</ion-select-option>
+          <ion-select-option value="D">Drawing</ion-select-option>
+          <ion-select-option value="O">Other</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-col>
@@ -62,8 +62,8 @@
       <ion-item p-lr-0 *ngIf="isShared == '1' && file_path == 'nopath'">
         <ion-label floating fnt-light fnt-regular>Select level*</ion-label>
         <ion-select cancelText="Cancel" okText="Okay!" [(ngModel)]="onLevel">
-          <ion-option *ngFor="let level of opened_levels" value="{{level}}">
-            Level {{level}}</ion-option>
+          <ion-select-option *ngFor="let level of opened_levels" value="{{level}}">
+            Level {{level}}</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-col>

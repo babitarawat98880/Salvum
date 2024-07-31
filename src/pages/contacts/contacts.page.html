@@ -202,10 +202,10 @@
                    
                    
                                        <ion-select  [(ngModel)]="senderSetLevel" (ionChange)="levelChanged(senderSetLevel,isActive,item.senderSetLevel,'sender')" col-md-8 col-6 p-lr-0>
-                                       <ion-option value="1" selected="item.senderSetLevel == 1" *ngIf="selectedFirst1 == 1">Level 1</ion-option>
-                                       <ion-option value="2" selected="item.senderSetLevel == 2" *ngIf="selectedSecond1 == 2">Level 2</ion-option>
-                                       <ion-option value="3" selected="item.senderSetLevel == 3" *ngIf="selectedthird1 == 3">Level 3</ion-option>
-                                       <ion-option value="4" selected="item.senderSetLevel == 4" *ngIf="selectedForth1 == 4">Level 4</ion-option>
+                                       <ion-select-option value="1" selected="item.senderSetLevel == 1" *ngIf="selectedFirst1 == 1">Level 1</ion-select-option>
+                                       <ion-select-option value="2" selected="item.senderSetLevel == 2" *ngIf="selectedSecond1 == 2">Level 2</ion-select-option>
+                                       <ion-select-option value="3" selected="item.senderSetLevel == 3" *ngIf="selectedthird1 == 3">Level 3</ion-select-option>
+                                       <ion-select-option value="4" selected="item.senderSetLevel == 4" *ngIf="selectedForth1 == 4">Level 4</ion-select-option>
                                        </ion-select>
                
                  
@@ -230,10 +230,10 @@
                                     <ion-item border-none pl-r-0> 
                                        <ion-label col-md-4 col-6  text-right p-r-7 m-r-0>Folder :</ion-label>
                                        <ion-select  [(ngModel)]="item.folder" col-md-8 col-6  p-lr-0>
-                                       <ion-option value="{{f._id}}" *ngFor="let f of folders">{{f.name}}</ion-option>
-                                       <!--   <ion-option value="2">Level 2</ion-option>
-                                          <ion-option value="3">Level 3</ion-option>
-                                          <ion-option value="4">Level 4</ion-option> -->
+                                       <ion-select-option value="{{f._id}}" *ngFor="let f of folders">{{f.name}}</ion-select-option>
+                                       <!--   <ion-select-option value="2">Level 2</ion-select-option>
+                                          <ion-select-option value="3">Level 3</ion-select-option>
+                                          <ion-select-option value="4">Level 4</ion-select-option> -->
                                        </ion-select>
                                     </ion-item>
                                  </ion-card>
@@ -350,10 +350,10 @@
                                    </h3>
                                    <div *ngIf="isGroupShown(i)">
                                  Info<ion-select [(ngModel)]="item.level" >
-                                   <ion-option selected="true">Level 1</ion-option>
-                                   <ion-option>Level 2</ion-option>
-                                   <ion-option>Level 3</ion-option>
-                                   <ion-option>Level 4</ion-option>
+                                   <ion-select-option selected="true">Level 1</ion-select-option>
+                                   <ion-select-option>Level 2</ion-select-option>
+                                   <ion-select-option>Level 3</ion-select-option>
+                                   <ion-select-option>Level 4</ion-select-option>
                                  </ion-select>
                                  
                                  <h2 card-title fnt-bold>{{item.level}}</h2>
@@ -531,10 +531,10 @@
                                               <ion-item border-none p-lr-0> 
                                                 <ion-label col-md-4 col-6 text-right p-r-7 m-r-0>Info :</ion-label>
                                                 <ion-select  (ionChange)="levelChanged(reciverSetLevel,isActive,item.reciverSetLevel,'rec')" [(ngModel)]="reciverSetLevel">
-                                                <ion-option value="1" *ngIf="selectedFirst1 == 1">Level 1</ion-option>
-                                                <ion-option value="2" *ngIf="selectedSecond1 == 2">Level 2</ion-option>
-                                                <ion-option value="3" *ngIf="selectedthird1 == 3">Level 3</ion-option>
-                                                <ion-option value="4" *ngIf="selectedForth1 == 4">Level 4</ion-option>
+                                                <ion-select-option value="1" *ngIf="selectedFirst1 == 1">Level 1</ion-select-option>
+                                                <ion-select-option value="2" *ngIf="selectedSecond1 == 2">Level 2</ion-select-option>
+                                                <ion-select-option value="3" *ngIf="selectedthird1 == 3">Level 3</ion-select-option>
+                                                <ion-select-option value="4" *ngIf="selectedForth1 == 4">Level 4</ion-select-option>
                                                 </ion-select>
                                              </ion-item>
                                           </ion-text> 
@@ -557,10 +557,10 @@
                                              <ion-item border-none p-lr-0> 
                                                 <ion-label col-md-4 col-6 text-right p-r-7 m-r-0>Folder :</ion-label>
                                                 <ion-select  [(ngModel)]="item.folder" col-md-8 col-6 p-lr-0>
-                                                <ion-option value="{{foldr._id}}" *ngFor="let foldr of folders">{{foldr.name}}</ion-option>
-                                                <!--   <ion-option value="2">Level 2</ion-option>
-                                                   <ion-option value="3">Level 3</ion-option>
-                                                   <ion-option value="4">Level 4</ion-option> -->
+                                                <ion-select-option value="{{foldr._id}}" *ngFor="let foldr of folders">{{foldr.name}}</ion-select-option>
+                                                <!--   <ion-select-option value="2">Level 2</ion-select-option>
+                                                   <ion-select-option value="3">Level 3</ion-select-option>
+                                                   <ion-select-option value="4">Level 4</ion-select-option> -->
                                                 </ion-select>
                                              </ion-item>
                                           </ion-card>
@@ -680,10 +680,10 @@
                                             </h3>
                                             <div *ngIf="isGroupShown(i)">
                                           Info<ion-select [(ngModel)]="item.level" >
-                                            <ion-option selected="true">Level 1</ion-option>
-                                            <ion-option>Level 2</ion-option>
-                                            <ion-option>Level 3</ion-option>
-                                            <ion-option>Level 4</ion-option>
+                                            <ion-select-option selected="true">Level 1</ion-select-option>
+                                            <ion-select-option>Level 2</ion-select-option>
+                                            <ion-select-option>Level 3</ion-select-option>
+                                            <ion-select-option>Level 4</ion-select-option>
                                           </ion-select>
                                           
                                           <h2 card-title fnt-bold>{{item.level}}</h2>

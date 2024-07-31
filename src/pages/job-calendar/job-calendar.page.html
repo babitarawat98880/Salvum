@@ -26,7 +26,7 @@
     <ion-item year-div>
     <ion-label>Year</ion-label>
     <ion-select  cancelText="Cancel" okText="Okay!" [(ngModel)] = "curr_year" (ionChange)="goYear(curr_year)">
-    <ion-option *ngFor="let year of allYears" value="{{year}}">{{year}}</ion-option>
+    <ion-select-option *ngFor="let year of allYears" value="{{year}}">{{year}}</ion-select-option>
    </ion-select>
   </ion-item>
     </ion-list>

@@ -213,11 +213,11 @@
                           <ion-item  border-none br-lt-grey color="white" m-b-15 br-lt-grey>
                               <ion-label>Your Status</ion-label>
                               <ion-select [(ngModel)]="bid_original_status" (ionChange)="changeStatusBid(bidJobId,bid_original_status)" color="white">
-                              <ion-option [disabled]="true" value="1">Waiting</ion-option>
-                              <ion-option value="2">Bidding</ion-option>
-                              <ion-option value="3">Not Bidding</ion-option>
-                              <ion-option value="4">Undecided</ion-option>
-                              <ion-option [disabled]="true" value="5">Submitted</ion-option>
+                              <ion-select-option [disabled]="true" value="1">Waiting</ion-select-option>
+                              <ion-select-option value="2">Bidding</ion-select-option>
+                              <ion-select-option value="3">Not Bidding</ion-select-option>
+                              <ion-select-option value="4">Undecided</ion-select-option>
+                              <ion-select-option [disabled]="true" value="5">Submitted</ion-select-option>
                               </ion-select>
                           </ion-item>
                       </ng-container>

@@ -73,10 +73,10 @@
           <ion-item> 
             <ion-label>Select Level</ion-label>
             <ion-select [(ngModel)]="x.level">
-            <ion-option value="1" *ngIf="level0 == 'false' " selected="x.userLevel == 1">Level 1</ion-option>
-              <ion-option value="2" *ngIf="level1 == 'false' ">Level 2</ion-option>
-              <ion-option value="3" *ngIf="level2 == 'false' ">Level 3</ion-option>
-              <ion-option value="4" *ngIf="level3 == 'false' ">Level 4</ion-option>
+            <ion-select-option value="1" *ngIf="level0 == 'false' " selected="x.userLevel == 1">Level 1</ion-select-option>
+              <ion-select-option value="2" *ngIf="level1 == 'false' ">Level 2</ion-select-option>
+              <ion-select-option value="3" *ngIf="level2 == 'false' ">Level 3</ion-select-option>
+              <ion-select-option value="4" *ngIf="level3 == 'false' ">Level 4</ion-select-option>
             
             </ion-select>
           </ion-item>
