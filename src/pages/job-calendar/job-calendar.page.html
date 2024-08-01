@@ -1,4 +1,4 @@
-
+<app-header></app-header>
 <ion-content lightgrey padding has-header>
   <ion-row main-breadcrumb ion-fixed> 
     <ion-col>
@@ -13,7 +13,7 @@
    </ion-row>
   <div breadcrumb-height></div>
   <ion-row no-padding>
-     <ion-col col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12>
+     <ion-col size="12" size-md="6">
   <ion-list br-lt-grey margin0 calendar-detail>
     <ion-list-header margin0 no-border br-btm color="light" calendar-top>
   <button ion-button type="button" (click)="goPreviousMonth()" float-left><ion-icon name="arrow-dropleft-circle"></ion-icon></button>
@@ -43,7 +43,7 @@
   </div>
   
    </ion-col>
-  <ion-col col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12>
+  <ion-col size="12" size-md="6">
   <ion-list br-lt-grey margin0>
     <ion-list-header margin0 no-border br-btm color="light">
     List Of  Events
@@ -58,10 +58,10 @@
     No Events Found.
     </ion-item> 
   </ion-list>
-    <button ion-button type="button" color="blue" fnt-regular m-b-10 m-t-10 fnt-normal left (click)="add_new_event($event)" [disabled]="add_disabled">
+    <ion-button color="primary" fnt-regular m-b-10 m-t-10 fnt-normal left (click)="add_new_event($event)" [disabled]="add_disabled">
         <ion-icon name="add" m-r-5></ion-icon>
         <span>Add Event </span>
-     </button>
+     </ion-button>
    </ion-col>
     </ion-row>
   <div footer-height></div>

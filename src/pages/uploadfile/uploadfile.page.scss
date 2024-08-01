@@ -1,33 +1,4 @@
-.my-drop-zone {
-    border: dashed 2px #d0d7e2;
-    border-radius: 4px;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    text-align: center;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-  }
-.well {
-    min-height: 140px !important;
-    color: #000;
-  }
-  .my-drop-zone ion-icon {
-    font-size: 50px;
-    display: block;
-    color: #d0d7e2;
-  }
-  .my-drop-zone h2 {
-    color: #bcc4d2;
-    text-transform: capitalize;
-  }
+
   .item-md h2 {
     margin: 2px 0;
     font-size: 1.6rem;

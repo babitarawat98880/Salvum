@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div (click)="closeDropDown()" class="shadow" style="display: none;"></div>
 <ion-content padding lightgrey manage-job (window:resize)="caclHeight()" has-header>
 <div ion-fixed id="calc_height_ad{{timestamp}}" fixed-top-div>
@@ -80,18 +81,18 @@
   </ion-col>
 </ion-row>
 <ion-col col-12 button-hide  p-lr-0>
-   <button (click) = "addAdendum()" ion-button color="blue" fnt-regular m-l-5 m-b-10 fnt-normal left>
+   <ion-button (click) = "addAdendum()" color="primary" fnt-regular m-l-5 m-b-10 fnt-normal left>
       <ion-icon name="add" m-r-5></ion-icon>
       <span class="hidden-xs">Add</span>
-   </button>
+   </ion-button>
 </ion-col>
 </div>
 <div clearfix id="fixed_height_ad{{timestamp}}"></div>
    <ion-row  p-lr-0 > 
-      <ion-col col-xl-12 col-sm-12 col-12 paddingtop0 p-lr-0 clearboth right-adendum>
+      <ion-col size="12" paddingtop0 p-lr-0 clearboth right-adendum>
          <ion-list  margin0>
 		    <ion-row  p-lr-0> 
-               <ion-col col-12 col-md-12 col-lg-6 col-xl-6 *ngFor="let adendum of sorted_adendums , let indx = index; " >
+               <ion-col size="12" size-md="12" size-lg="6" *ngFor="let adendum of sorted_adendums , let indx = index; " >
                   <ion-item-sliding #item br-lt-grey list-hover>
                      <ion-item  border-none  manage-job>
                         <ion-avatar item-start icon-ionic title="{{adendum.trade_name}}">
@@ -109,43 +110,43 @@
 						   <span float-left>Attachment :</span>
 			
 						   	<ion-fab  float-left [style.z-index]="999-indx" style="">
-							<button ion-fab mini color="light"><ion-icon class="ion-md-arrow-dropdown"></ion-icon></button>
-							<ion-fab-list>
-						   <ion-item  *ngFor="let file of adendum.files">
-						      <ion-icon name="document"></ion-icon>
-                           {{ file.split('____').pop(-1)}} 
-						   </ion-item> 
-						   		</ion-fab-list>
+                  <button ion-fab mini color="light"><ion-icon class="ion-md-arrow-dropdown"></ion-icon></button>
+                  <ion-fab-list>
+                    <ion-item  *ngFor="let file of adendum.files">
+                        <ion-icon name="document"></ion-icon>
+                                {{ file.split('____').pop(-1)}} 
+                    </ion-item> 
+                  </ion-fab-list>
 						  </ion-fab>
                         </h3>
 						<p clearboth>
                         <ion-note fnt-light m-t-5>{{adendum.date_created | date:'short'}}</ion-note>
                         </p>
-                        <button *ngIf="isBrowser == 'true'" (click) = "editAdendum(adendum._id,adendum.name,adendum.tradeId)" ion-button clear item-end margin0 button-none >
+                        <ion-button *ngIf="isBrowser == 'true'" (click) = "editAdendum(adendum._id,adendum.name,adendum.tradeId)"  size="small" color="primary" button-none >
                            <ion-icon name="create" fnt20></ion-icon>
-                        </button>
+                        </ion-button>
 
-                        <button *ngIf="isBrowser == 'true'" (click) = "deleteAdendum(adendum._id)" ion-button clear item-end margin0 button-none>
+                        <ion-button *ngIf="isBrowser == 'true'" (click) = "deleteAdendum(adendum._id)"  size="small" color="danger" button-none>
                            <ion-icon name="trash" fnt20></ion-icon>
-                        </button>
+                        </ion-button>
 
                      </ion-item>
                      <ion-item-options side="end" *ngIf="isBrowser == 'false'">
 
-                        <button (click) = "editAdendum(adendum._id,adendum.name,adendum.tradeId)" ion-button color="primary" >
+                        <ion-button (click) = "editAdendum(adendum._id,adendum.name,adendum.tradeId)" size="small" color="primary" >
                            <ion-icon name="create"></ion-icon>
                            Edit
-                        </button>
+                        </ion-button>
 
-                        <button (click) = "deleteAdendum(adendum._id)" ion-button color="danger">
+                        <ion-button (click) = "deleteAdendum(adendum._id)" size="small" color="danger">
                            <ion-icon name="trash"></ion-icon>
                            Delete
-                        </button>
+                        </ion-button>
 
                      </ion-item-options>
                   </ion-item-sliding>
                </ion-col>
-               <ion-col col-12 col-md-12 col-lg-12 col-xl-12 *ngIf="sorted_adendums == ''"  p-lr-0>
+               <ion-col size="12" *ngIf="sorted_adendums == ''"  p-lr-0>
                		<ion-item border-none br-lt-grey>No Adendums Found.</ion-item>
                </ion-col>
 			   </ion-row>
