@@ -9,6 +9,7 @@ import { JobphotosPageRoutingModule } from './jobphotos-routing.module';
 import { JobphotosPage } from './jobphotos.page';
 import { Ng2DropdownModule } from 'ng2-material-dropdown';
 import { OrderModule } from 'ngx-order-pipe';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +18,7 @@ import { OrderModule } from 'ngx-order-pipe';
     JobphotosPageRoutingModule,
     Ng2DropdownModule,
     OrderModule,
+    SharedModuleModule
   ],
   declarations: [JobphotosPage]
 })
