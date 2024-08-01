@@ -22,13 +22,15 @@ export class ComponentService {
       toast.present();
    }
    async showLoader() {
-    this.loadingCtrl.getTop().then(loader=>{
-      this.loadingCtrl.dismiss();
-    })
-    const loading = await this.loadingCtrl.create({
-      message: 'Loading...',
-    });
-    loading.present();
+    const loader = await this.loadingCtrl.getTop();
+    if (loader)
+        await loader.dismiss(null);    
+    else {
+      const loading = await this.loadingCtrl.create({
+        message: 'Loading...',
+      });
+      loading.present();
+    }
    }
    async dismissLoader(){
     this.loadingCtrl.dismiss()

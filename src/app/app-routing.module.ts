@@ -250,6 +250,18 @@ const routes: Routes = [
   {
     path: 'addfolder',
     loadChildren: () => import('../pages/addfolder/addfolder.module').then( m => m.AddfolderPageModule)
+  },
+  {
+    path: 'contracts',
+    loadChildren: () => import('../pages/contracts/contracts.module').then( m => m.ContractsPageModule)
+  },
+  {
+    path: 'adendum',
+    loadChildren: () => import('../pages/adendum/adendum.module').then( m => m.AdendumPageModule)
+  },
+  {
+    path: 'add-adendum',
+    loadChildren: () => import('../pages/add-adendum/add-adendum.module').then( m => m.AddAdendumPageModule)
   }
 ];
 

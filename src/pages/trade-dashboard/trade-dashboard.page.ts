@@ -122,7 +122,7 @@ export class TradeDashboardPage {
   }
 
   goToAdendums() {
-    this.navCtrl.navigateForward('AdendumPage', { state: { jobId: this.jobId } });
+    this.navCtrl.navigateForward('adendum', { state: { jobId: this.jobId } });
   }
 
   goToBids() {
@@ -143,7 +143,7 @@ export class TradeDashboardPage {
   }
 
   goToContracts() {
-    this.navCtrl.navigateForward('ContractsPage', { state: { jobId: this.jobId } });
+    this.navCtrl.navigateForward('contracts', { state: { jobId: this.jobId } });
   }
 
   goToTransmittals() {
