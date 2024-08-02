@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div (click)="closeDropDown()" class="shadow" style="display: none;"></div>
 <ion-content padding lightgrey manage-job (window:resize)="caclHeight()" has-header>
 <div ion-fixed id="calc_height_photos{{timestamp}}" fixed-top-div>
@@ -83,22 +84,22 @@
    <ion-col>
    <!-- <trade-breadcrumbs (click) = "clickTrade()"></trade-breadcrumbs> -->
       <ion-col col-12 button-hide margin-top-30>
-         <button (click) = "uploadFile()" ion-button color="blue" fnt-regular m-b-10 fnt-normal left >
+         <ion-button (click) = "uploadFile()" color="primary" size="small" >
             <ion-icon name="open" m-r-5></ion-icon>
-            <span class="hidden-xs">Import from Local</span>
-         </button>
-         <button (click) = "filemanagerFiles()" ion-button color="blue" fnt-regular m-b-10 fnt-normal left >
+            <span class="hidden-xs hide-mob">Import from Local</span>
+         </ion-button>
+         <ion-button (click) = "filemanagerFiles()" color="primary" size="small" >
             <ion-icon name="cloud-upload" m-r-5></ion-icon>
-            <span class="hidden-xs">Import from Filemanager</span>
-         </button>
+            <span class="hidden-xs hide-mob">Import from Filemanager</span>
+         </ion-button>
          <!-- <button ion-button color="blue" fnt-regular m-b-10 fnt-normal left >
             <ion-icon name="add" m-r-5></ion-icon>
             <span class="hidden-xs">Import from Smail</span>
          </button> -->
-         <button (click) = "addFolder()" ion-button color="blue" fnt-regular m-b-10 fnt-normal left >
+         <ion-button (click) = "addFolder()" color="primary" size="small" >
             <ion-icon name="add" m-r-5></ion-icon>
-            <span class="hidden-xs">Add Folder</span>
-         </button>
+            <span class="hidden-xs hide-mob">Add Folder</span>
+         </ion-button>
       </ion-col>
      </ion-col>
   </ion-row>
@@ -116,7 +117,7 @@
 	</ion-col>
 	</ion-row> -->
   <ion-row *ngIf="folders == '0'" >
-      <ion-col col-6 col-md-3 col-lg-3 col-xl-2 text-center file-manager *ngFor="let photo of sorted_photos; let i = index ">
+      <ion-col size="6" size-md="4" size-lg="2" file-manager *ngFor="let photo of sorted_photos; let i = index ">
 		<div class="white-box" margin0 (click) = "clickFolder(photo.file_name,photo.tradeId)"> 
 			<div>
 				<ng-container *ngIf="photo.file_name.indexOf('.') >= 0 && has_thumbs.indexOf(photo.file_name.split('.').pop().toLowerCase()) >= 0">
@@ -129,7 +130,7 @@
 		        <img *ngIf="photo.file_name.indexOf('.') == -1" text-center src="assets/img/folder.png"/>
 			</div>
 		</div>
-		<ion-fab right top>
+		<ion-fab right top class="fab-icon">
 		    <button ion-fab color="primary" mini><i class="{{photo.trade_icon == null ? 'arrow-dropdown' : photo.trade_icon}}"></i></button>
 		    <ion-fab-list listfab side="bottom" *ngIf="this.file_types.indexOf(photo.file_name.split('.').pop().toLowerCase()) >= 0">
 		      	<a *ngIf="isBrowser == 'true'" href="{{baseUrl}}/download?file={{APIURL}}/salvum/directory/jobs_data/{{photo.file_name}}&ext={{photo.file_name.split('.').pop().toLowerCase()}}" (click) = "downloadFile()"><button ion-fab mini color="secondary"><ion-icon name="download"></ion-icon></button></a>
@@ -144,13 +145,13 @@
 		<p>{{photo.date_created | date : 'medium'}}</p>
 		<!-- <ion-badge>{{photo.status == '0' ? 'Manual' : ''}}</ion-badge> -->
 	</ion-col>
-	<ion-col col-12 *ngIf="sorted_photos == ''">
+	<ion-col size="12" *ngIf="sorted_photos == ''">
 		<ion-item  border-none br-lt-grey>No Files Found</ion-item>
 	</ion-col>
    </ion-row>
 
    <ion-row *ngIf="folders == '1'">
-      <ion-col col-6 col-md-3 col-lg-3 col-xl-2 text-center file-manager *ngFor="let related_file of related_files; let i = index ">
+      <ion-col size="6" size-md="4" size-lg="2" file-manager *ngFor="let related_file of related_files; let i = index ">
 		<div class="white-box" margin0 (click)="openIt(related_file.path,related_file.type)"> 
 			<div>
 				<ng-container *ngIf="related_file.type == 'file' && has_thumbs.indexOf(related_file.name.split('.').pop().toLowerCase()) >= 0">
@@ -163,7 +164,7 @@
 				<img *ngIf="related_file.type == 'directory'" text-center src="assets/img/folder.png"/> 
 			</div>
 		</div>
-		<ion-fab right top>
+		<ion-fab right top class="fab-icon">
 		    <button ion-fab color="light"><i class="{{related_file.trade_icon == null ? 'arrow-dropdown' : photo.trade_icon}}"></i></button>
 		    <ion-fab-list side="bottom" *ngIf="related_file.type != 'directory'">
 		      	<a *ngIf="isBrowser == 'true'" href="{{baseUrl}}/download?file={{APIURL}}/salvum/{{related_file.path}}&ext={{related_file.name.split('.').pop().toLowerCase()}}"  (click) = "downloadFile()"><button ion-fab><ion-icon name="download"></ion-icon></button></a>
@@ -176,7 +177,7 @@
 		</ion-fab>
 		<p fnt-regular>{{related_file.name.search('_--_') >= 0 ? related_file.name.split('_--_').pop(-1) : related_file.name.split('____').pop(-1)}} </p>
 	</ion-col>
-	<ion-col col-12 *ngIf="related_files == ''">
+	<ion-col size="12" *ngIf="related_files == ''">
 		<ion-item border-none br-lt-grey>No Files Found In This Folder.</ion-item>
 	</ion-col> 
    </ion-row>

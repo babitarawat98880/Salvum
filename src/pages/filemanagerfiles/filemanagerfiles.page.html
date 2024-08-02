@@ -1,9 +1,12 @@
 <ion-header modal-white>
-    <ion-title text-centers>{{modal_title}}</ion-title><ion-buttons end>
-    <button btn-grid  (click)="dismiss()">
-        <ion-icon name="close"></ion-icon>
-    </button>
-  </ion-buttons>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title>{{modal_title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()"><ion-icon name="close"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
@@ -46,11 +49,11 @@
   <ion-row no-padding>
     <ion-col class="file-main" col-4 col-sm-3 *ngFor="let page of pages">
       <div class="white-box " m-t-10 m-b-0  (click)="fetchDirectory(page.path,page.type)"> 
-        <div text-center>
-          <img text-center src="assets/img/folder.png"/>
+        <div class="text-center">
+          <img class="text-center" src="assets/img/folder.png"/>
         </div>
       </div>
-      <p fnt-regular m-5-0 text-center>{{page.name.split('_--_').pop(-1)}} </p>
+      <p fnt-regular m-5-0 class="text-center">{{page.name.split('_--_').pop(-1)}} </p>
     </ion-col>
   </ion-row>
   </ng-container>
@@ -62,18 +65,18 @@
         <div>
 
         <ng-container *ngIf="file.type == 'file' && has_thumbs.indexOf(file.name.split('.').pop().toLowerCase()) >= 0">
-        <img *ngIf="is_video.indexOf(file.name.split('.').pop().toLowerCase()) >= 0" text-center src="{{APIURL}}/salvum/directory/thumbnails/{{file.name.substr(0, file.name.lastIndexOf('.'))}}-thumbnail-320x240-0001.png"/>
-        <img *ngIf="is_video.indexOf(file.name.split('.').pop().toLowerCase()) == -1" text-center src="{{APIURL}}/salvum/{{file.path}}"/>
+        <img *ngIf="is_video.indexOf(file.name.split('.').pop().toLowerCase()) >= 0" class="text-center" src="{{APIURL}}/salvum/directory/thumbnails/{{file.name.substr(0, file.name.lastIndexOf('.'))}}-thumbnail-320x240-0001.png"/>
+        <img *ngIf="is_video.indexOf(file.name.split('.').pop().toLowerCase()) == -1" class="text-center" src="{{APIURL}}/salvum/{{file.path}}"/>
         </ng-container> 
 
-        <img *ngIf="file.type == 'file' && has_thumbs.indexOf(file.name.split('.').pop().toLowerCase()) == -1" text-center src="assets/img/{{this.file_types.indexOf(file.name.split('.').pop().toLowerCase()) >= 0 ? file.name.split('.').pop().toLowerCase() : 'txt'}}.png"/> 
+        <img *ngIf="file.type == 'file' && has_thumbs.indexOf(file.name.split('.').pop().toLowerCase()) == -1" class="text-center" src="assets/img/{{this.file_types.indexOf(file.name.split('.').pop().toLowerCase()) >= 0 ? file.name.split('.').pop().toLowerCase() : 'txt'}}.png"/> 
 
-        <img *ngIf="file.type == 'directory'" text-center src="assets/img/folder.png"/>
+        <img *ngIf="file.type == 'directory'" class="text-center" src="assets/img/folder.png"/>
 
         </div>
       </div>
       <ion-checkbox class="check-abs"  (ionChange)="insertFilesToArray($event,file)" ></ion-checkbox> <!-- *ngIf="file.type != 'directory'" -->
-      <p fnt-regular m-5-0 text-center>{{file.name.search('_--_') >= 0 ? file.name.split('_--_').pop(-1) : file.name.split('____').pop(-1)}} </p>
+      <p fnt-regular m-5-0 class="text-center">{{file.name.search('_--_') >= 0 ? file.name.split('_--_').pop(-1) : file.name.split('____').pop(-1)}} </p>
     </ion-col>
     <ion-col col-12 *ngIf="smail_files == ''">
       <ion-item p-lr-0>No Files Found In This Folder</ion-item>

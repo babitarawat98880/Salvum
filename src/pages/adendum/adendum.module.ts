@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { AdendumPageRoutingModule } from './adendum-routing.module';
 
 import { AdendumPage } from './adendum.page';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AdendumPageRoutingModule
+    AdendumPageRoutingModule,
+    SharedModuleModule
   ],
   declarations: [AdendumPage]
 })

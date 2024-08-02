@@ -1,11 +1,12 @@
 <ion-header modal-white>
-
-    <ion-title text-centers>{{main_page_title}}</ion-title><ion-buttons end>
-    <button btn-grid  (click)="dismiss()">
-        <ion-icon name="close"></ion-icon>
-    </button>
-  </ion-buttons>
-
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title>{{main_page_title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()"><ion-icon name="close"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 
@@ -14,8 +15,7 @@
 <ion-col col-12>  
   <form (ngSubmit)="addFolderEvent(folder_name,tradeId,onLevel)">
   <ion-item p-lr-0>
-    <ion-label stacked fnt-light fnt-regular>Folder Name</ion-label>
-    <ion-input type="text" [(ngModel)] = "folder_name" name = "folder_name"></ion-input>
+    <ion-input type="text" label="Folder Name" labelPlacement="stacked" [(ngModel)] = "folder_name" name = "folder_name"></ion-input>
   </ion-item>
 
   <ion-item p-lr-0 *ngIf="filterTradeId == '0'">
@@ -35,7 +35,7 @@
   </ion-item>
 
   <div padding p-b-0 p-lr-0>
-    <button ion-button color="darkblue" block  fnt-regular type="submit">Save</button>
+    <ion-button color="primary" expand="block"  type="submit">Save</ion-button>
   </div>
   </form>
 </ion-col>

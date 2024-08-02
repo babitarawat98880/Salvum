@@ -177,6 +177,38 @@ $radius12:12px;
   margin-top: 0;
 }
 
+.my-drop-zone {
+  border: dashed 2px #d0d7e2;
+  border-radius: 4px;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-align: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+.well {
+  min-height: 140px !important;
+  color: #000;
+}
+.my-drop-zone ion-icon {
+  font-size: 50px;
+  display: block;
+  color: #d0d7e2;
+}
+.my-drop-zone h2 {
+  color: #bcc4d2;
+  text-transform: capitalize;
+}
+
 @media only screen and (max-width: 768px){
   .hide-mob{
     display: none !important;
@@ -189,4 +221,11 @@ $radius12:12px;
   .hide-pc{
     display: none;
   }
+}
+.white-box {
+  background: #fafafa;
+  padding: 25px;
+  margin-bottom: 30px;
+  border: 1px solid #e5ebec;
+  border-radius: 4px;
 }
