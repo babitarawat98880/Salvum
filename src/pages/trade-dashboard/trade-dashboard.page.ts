@@ -41,6 +41,7 @@ export class TradeDashboardPage {
     this.stateData = this.router.getCurrentNavigation()?.extras.state;
     if (this.stateData) {
       this.jobId = this.stateData.jobId;
+      this.from_smail = this.stateData.from_smail;
     }
     // this.jobId = navParams.get('jobId');
     if (this.jobId != undefined) {
@@ -50,7 +51,7 @@ export class TradeDashboardPage {
         localStorage.removeItem('saved_filter_trade_names');
       }
     }
-    this.from_smail = this.stateData.from_smail;
+    
     if (this.stateData.job_title != undefined) {
       localStorage.setItem('active_job_breadcrumb', this.stateData.job_title);
       this.active_job_breadcrumb = this.stateData.job_title;
@@ -130,16 +131,15 @@ export class TradeDashboardPage {
   }
 
   goToDownloads() {
-    this.navCtrl.navigateForward('DownloadsPage', { state: { jobId: this.jobId } });
+    this.navCtrl.navigateForward('downloads', { state: { jobId: this.jobId } });
   }
 
   goToEmails() {
-    this.navCtrl.navigateForward('RfiMailsPage', { state: { jobId: this.jobId, emails: '1' } });
+    this.navCtrl.navigateForward('rfi-mails', { state: { jobId: this.jobId, emails: '1' } });
   }
 
   goToSmails() {
-    // this.navCtrl.push('SmailInboxPage', {jobId : this.jobId, job_smail : '1'});
-    this.navCtrl.navigateForward('RfiMailsPage', { state: { jobId: this.jobId, emails: '0' } });
+    this.navCtrl.navigateForward('rfi-mails', { state: { jobId: this.jobId, emails: '0' } });
   }
 
   goToContracts() {
@@ -147,7 +147,7 @@ export class TradeDashboardPage {
   }
 
   goToTransmittals() {
-    this.navCtrl.navigateForward('TransmittalsPage', { state: { jobId: this.jobId } });
+    this.navCtrl.navigateForward('transmittals', { state: { jobId: this.jobId } });
   }
 
   goToRFIs() {

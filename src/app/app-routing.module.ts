@@ -262,6 +262,18 @@ const routes: Routes = [
   {
     path: 'add-adendum',
     loadChildren: () => import('../pages/add-adendum/add-adendum.module').then( m => m.AddAdendumPageModule)
+  },
+  {
+    path: 'rfi-mails',
+    loadChildren: () => import('../pages/rfi-mails/rfi-mails.module').then( m => m.RfiMailsPageModule)
+  },
+  {
+    path: 'downloads',
+    loadChildren: () => import('../pages/downloads/downloads.module').then( m => m.DownloadsPageModule)
+  },
+  {
+    path: 'transmittals',
+    loadChildren: () => import('../pages/transmittals/transmittals.module').then( m => m.TransmittalsPageModule)
   }
 ];
 
