@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div (click)="closeDropDown()" class="shadow" style="display: none;"></div>
 <ion-content padding lightgrey manage-job has-header (window:resize)="caclHeight()">
 <div ion-fixed id="calc_height_trans{{timestamp}}" fixed-top-div>
@@ -64,10 +65,10 @@
 		<ion-icon  righticon name="ios-arrow-dropright-circle" (click)="scroll('right')"></ion-icon>
 	</div>
 	<div class="drop-scroll">   
-	    <button title="{{trade.trade_task}}" *ngFor="let trade of filter_list; let i = index " class="trade-btn" trans_m_list>
+	    <ion-button title="{{trade.trade_task}}" *ngFor="let trade of filter_list; let i = index " class="trade-btn" trans_m_list>
 	      <i class="{{trade.trade_icon}}"></i> {{trade.trade_task?.length > 25 ? trade.trade_task.substr(0,25)+'...' : trade.trade_task}}
 	      <ion-icon (click)="cancelFilter(trade,i)" name="close"></ion-icon>
-	    </button>    
+	    </ion-button>    
 	</div>
 	</div>
   </ion-col>
@@ -86,10 +87,10 @@
 		</ion-item>
 	</ion-col>
 	<ion-col col-2 button-hide>
-	 <button (click) = "addTransmittal()" ion-button color="blue" fnt-regular m-b-10 fnt-normal left>
+	 <ion-button (click) = "addTransmittal()" color="primary" fnt-regular m-b-10 fnt-normal left>
 	    <ion-icon name="add" mar-mob-0 m-r-5></ion-icon> 
 	    <span class="hidden-xs">Create New Transmittal</span>
-	 </button>
+	 </ion-button>
 	</ion-col>
 </ion-row>
 </div>
@@ -137,19 +138,19 @@
 							<ion-col col-2 disp-flex comment-para><span head style="display:none">Comments </span><span paragraph>{{transmittal.comments}}</span></ion-col>
 						
 							<ion-col col-2 disp-flex icons-transmittal>
-								<button small *ngIf="transmittal.isSent == '0'" (click)="editTransmittal(transmittal._id)" ion-button clear item-end margin0 button-none pdg0 title="Edit"><ion-icon name="create" fnt20></ion-icon></button>
+								<ion-button small *ngIf="transmittal.isSent == '0'" (click)="editTransmittal(transmittal._id)" color="light" size="small" title="Edit"><ion-icon name="create" fnt20></ion-icon></ion-button>
 
-								<button small (click)="transmittalDetails(transmittal._id)" ion-button clear item-end margin0 button-none pdg0 title="Details"><ion-icon name="list" fnt20></ion-icon></button>
+								<ion-button small (click)="transmittalDetails(transmittal._id)" color="light" size="small" title="Details"><ion-icon name="list" fnt20></ion-icon></ion-button>
 
-								<button *ngIf="transmittal.sender_id == userId && transmittal.isSent == '0'" small (click)="sendTransmittal(transmittal._id,transmittal.submittals,transmittal.sender_id,transmittal.rec_id)" ion-button clear item-end margin0 button-none pdg0>
+								<ion-button *ngIf="transmittal.sender_id == userId && transmittal.isSent == '0'" color="light" size="small" (click)="sendTransmittal(transmittal._id,transmittal.submittals,transmittal.sender_id,transmittal.rec_id)" button-none pdg0>
 									<img width="18" title="Send" src="assets/img/send_icon.png">
-								</button>
+								</ion-button>
 
-								<button *ngIf="transmittal.sender_id == userId" small (click)="copyTransmittal(transmittal._id)" ion-button clear item-end margin0 button-none pdg0>
+								<ion-button *ngIf="transmittal.sender_id == userId" color="light" size="small" (click)="copyTransmittal(transmittal._id)" margin0 button-none pdg0>
 									<img width="18" title="Copy" src="assets/img/copy_icon.svg">
-								</button>
+								</ion-button>
 
-								<button *ngIf="transmittal.submittals != ''" (click)="downloadTransmittal(transmittal._id)" small ion-button clear item-end margin0 button-none pdg0 title="Download"><ion-icon name="download" fnt20></ion-icon></button>
+								<ion-button *ngIf="transmittal.submittals != ''" (click)="downloadTransmittal(transmittal._id)" color="light" size="small" button-none pdg0 title="Download"><ion-icon name="download" fnt20></ion-icon></ion-button>
 							</ion-col>
 						</ion-row>
 					</span>
