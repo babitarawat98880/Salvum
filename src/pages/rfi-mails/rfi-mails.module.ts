@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { RfiMailsPageRoutingModule } from './rfi-mails-routing.module';
 
 import { RfiMailsPage } from './rfi-mails.page';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RfiMailsPageRoutingModule
+    RfiMailsPageRoutingModule,
+    SharedModuleModule
   ],
   declarations: [RfiMailsPage]
 })
