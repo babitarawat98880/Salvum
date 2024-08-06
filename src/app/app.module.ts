@@ -16,7 +16,7 @@ import { DatePipe } from '@angular/common';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 // import { DragulaModule } from 'ng2-dragula';
 import { PushNotificationModule } from 'ng-push-notification';
-
+// import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 // import { TreeViewModule } from "ionic-tree-view";
 // import { TreeModule } from 'angular-tree-component';
 // import { TreeModule } from '@circlon/angular-tree-component';
@@ -26,7 +26,7 @@ import { PushNotificationModule } from 'ng-push-notification';
 // import { DndModule } from 'ng2-dnd';
 // import { TreeModule } from 'angular-tree-component-amphinicy';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,],
   imports: [BrowserModule,
     IonicModule.forRoot(),
     HttpClientModule,
@@ -34,6 +34,7 @@ import { PushNotificationModule } from 'ng-push-notification';
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    // SignaturePad,
     PushNotificationModule.forRoot({
       dir: 'auto',
       lang: 'en-US',

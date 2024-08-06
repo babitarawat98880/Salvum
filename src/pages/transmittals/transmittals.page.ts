@@ -407,7 +407,7 @@ export class TransmittalsPage {
 
   addTransmittal() {
     this.isRefresh = '1';
-    this.navCtrl.navigateForward('AddtransmittalPage', {
+    this.navCtrl.navigateForward('addtransmittal', {
       state: {
         jobId: this.jobId
       }

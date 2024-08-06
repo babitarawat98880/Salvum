@@ -274,6 +274,10 @@ const routes: Routes = [
   {
     path: 'transmittals',
     loadChildren: () => import('../pages/transmittals/transmittals.module').then( m => m.TransmittalsPageModule)
+  },
+  {
+    path: 'addtransmittal',
+    loadChildren: () => import('../pages/addtransmittal/addtransmittal.module').then( m => m.AddtransmittalPageModule)
   }
 ];
 
