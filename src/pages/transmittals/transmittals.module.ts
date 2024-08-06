@@ -10,6 +10,7 @@ import { TransmittalsPage } from './transmittals.page';
 
 import { Ng2DropdownModule } from 'ng2-material-dropdown';
 import { OrderModule } from 'ngx-order-pipe';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,7 +18,8 @@ import { OrderModule } from 'ngx-order-pipe';
     IonicModule,
     Ng2DropdownModule,
     OrderModule,
-    TransmittalsPageRoutingModule
+    TransmittalsPageRoutingModule,
+    SharedModuleModule
   ],
   declarations: [TransmittalsPage]
 })
