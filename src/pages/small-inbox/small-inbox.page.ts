@@ -1909,12 +1909,12 @@ export class SmallInboxPage {
         this.pages.splice(indexes.to, 0, element);
     };
 
-    filterLevel(event, level_number) {
+    filterLevel(evn, level_number) {
         // console.log(event)
         this.details = '';
         this.thread = false;
 
-
+        var event = evn.target;
         if (event.checked == true) {
             this.shown_levels.push(level_number);
         }

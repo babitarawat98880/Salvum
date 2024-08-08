@@ -142,7 +142,8 @@ export class ShareJobContactsPage {
         this.modalController.dismiss(this.selected_contacts);
       }
     }
-    insertContactToArray(event,contact){
+    insertContactToArray(evn,contact){
+      var event = evn.target;
         if(event.checked == true)
         {
           this.selected_contacts.push(contact);

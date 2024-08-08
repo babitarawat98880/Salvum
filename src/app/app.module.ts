@@ -16,6 +16,9 @@ import { DatePipe } from '@angular/common';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 // import { DragulaModule } from 'ng2-dragula';
 import { PushNotificationModule } from 'ng-push-notification';
+// import { PdfmakeModule } from 'ng-pdf-make';
+import { PdfmakeService } from 'ng-pdf-make'
+import { ExpandableListModule } from 'angular2-expandable-list';
 // import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 // import { TreeViewModule } from "ionic-tree-view";
 // import { TreeModule } from 'angular-tree-component';
@@ -25,7 +28,7 @@ import { PushNotificationModule } from 'ng-push-notification';
 // import { DragulaModule } from 'ng2-dragula';
 // import { DndModule } from 'ng2-dnd';
 // import { TreeModule } from 'angular-tree-component-amphinicy';
-@NgModule({
+@NgModule({ 
   declarations: [AppComponent,],
   imports: [BrowserModule,
     IonicModule.forRoot(),
@@ -45,6 +48,7 @@ import { PushNotificationModule } from 'ng-push-notification';
       closeDelay: 6000,
       icon: 'assets/img/logo-icon.png'
   }),
+  // ExpandableListModule
   // TreeViewModule
   // DragulaModule,
   // DndModule.forRoot(),
@@ -57,6 +61,7 @@ import { PushNotificationModule } from 'ng-push-notification';
       FileTransfer,
       FilePath,
       DatePipe,
+      PdfmakeService,
       //{provide: ErrorHandler, useClass: IonicErrorHandler},
       // Camera,
       { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

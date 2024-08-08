@@ -107,7 +107,7 @@ export class AppComponent {
     if(localStorage.getItem('userinfo') == '' || localStorage.getItem('userinfo') == undefined || localStorage.getItem('userinfo') == null){
       this.nav.navigateRoot('login')
     }else{
-      // this.nav.navigateRoot(['dashboard', '0']);
+      this.nav.navigateRoot(['dashboard', '0']);
     } 
 
   };

@@ -1412,7 +1412,8 @@ API_ENDPOINT_URL : any = localStorage.getItem('API_ENDPOINT_URL');
   //   });
   // };
 
-  checkBoxClicked(event, contact){
+  checkBoxClicked(evn, contact){
+    var event = evn.target;
     if(event.checked == true){
       console.log(contact)
       this.selectedContacts.push(contact);

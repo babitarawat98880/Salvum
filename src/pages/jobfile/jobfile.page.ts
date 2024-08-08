@@ -224,7 +224,7 @@ export class JobfilePage {
   getRelatedFiles() {
     this.componentService.showLoader();
     this.getBreadCrums();
-    this.APIService.sendData('getDirectoryFiles',localStorage.getItem('files_folder_path')).subscribe((related_files:any) => {
+    this.APIService.sendData('getDirectoryFiles',{'file_path':localStorage.getItem('files_folder_path')}).subscribe((related_files:any) => {
       if (related_files.data != null) {
         this.related_files = related_files.data.children;
       }
@@ -243,7 +243,8 @@ export class JobfilePage {
     this.modalController.dismiss();
   }
 
-  insertFilesToArray(event, file) {
+  insertFilesToArray(evn, file) {
+    var event = evn.target;
     if (event.checked == true) {
       this.selected_files.push(file);
     }

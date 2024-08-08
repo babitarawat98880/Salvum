@@ -116,7 +116,7 @@ async showAlert(){
   }
 
   getJobs() {
-    this.componentService.showLoader();
+   
     // this.companyProvider.getAllJobs(this.userId).subscribe((jobs)=>{
     this.APIService.getData('myJobsList',this.userId+'/'+this.ses_companyId ).subscribe((jobs) => {
       this.componentService.dismissLoader();
@@ -232,8 +232,6 @@ async showAlert(){
         {
           text: 'Yes',
           handler: () => {
-            this.componentService.dismissLoader();
-
             this.APIService.sendData('openCloseJobs/'+status,{ jobId: jobId }).subscribe((deleted:any) => {
               if (deleted.status == 1) {
                 this.componentService.dismissLoader();

@@ -159,7 +159,8 @@ export class SmailfilesPage {
       }
     }
   
-   insertFilesToArray(event,file){
+   insertFilesToArray(evn,file){
+    var event = evn.target;
     if(event.checked == true)
     {
       this.selected_files.push(file);

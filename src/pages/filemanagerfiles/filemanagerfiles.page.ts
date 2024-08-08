@@ -179,7 +179,7 @@ export class FilemanagerfilesPage {
         this.rootDir = '0';
         localStorage.setItem('filemanager_file_path',file_path);
         this.componentService.showLoader();
-        this.APIService.getData('getDirectoryFiles',{'file_path':file_path}).subscribe((smail_files:any)=>{
+        this.APIService.sendData('getDirectoryFiles',{'file_path':file_path}).subscribe((smail_files:any)=>{
           if(smail_files.data != null)
           {
             this.smail_files = smail_files.data.children;
@@ -238,7 +238,8 @@ export class FilemanagerfilesPage {
       }
     }
   
-   insertFilesToArray(event,file){
+   insertFilesToArray(evn,file){
+    var event = evn.target;
     if(event.checked == true)
     {
        this.selected_files.push(file);

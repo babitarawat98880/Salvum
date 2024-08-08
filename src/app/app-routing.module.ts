@@ -268,6 +268,10 @@ const routes: Routes = [
     loadChildren: () => import('../pages/rfi-mails/rfi-mails.module').then( m => m.RfiMailsPageModule)
   },
   {
+    path: 'rfi',
+    loadChildren: () => import('../pages/rfis/rfis.module').then( m => m.RfisPageModule)
+  },
+  {
     path: 'downloads',
     loadChildren: () => import('../pages/downloads/downloads.module').then( m => m.DownloadsPageModule)
   },
@@ -278,8 +282,33 @@ const routes: Routes = [
   {
     path: 'addtransmittal',
     loadChildren: () => import('../pages/addtransmittal/addtransmittal.module').then( m => m.AddtransmittalPageModule)
+  },
+  {
+    path: 'addrfi',
+    loadChildren: () => import('../pages/addrfi/addrfi.module').then( m => m.AddrfiPageModule)
+  },
+  {
+    path: 'export-bid',
+    loadChildren: () => import('../pages/export-bid/export-bid.module').then( m => m.ExportBidPageModule)
+  },
+  {
+    path: 'ask-engg',
+    loadChildren: () => import('../pages/ask-engg/ask-engg.module').then( m => m.AskEnggPageModule)
+  },
+  {
+    path: 'viewrfi',
+    loadChildren: () => import('../pages/viewrfi/viewrfi.module').then( m => m.ViewrfiPageModule)
+  },
+  {
+    path: 'sendrfi',
+    loadChildren: () => import('../pages/sendrfi/sendrfi.module').then( m => m.SendrfiPageModule)
+  },
+  {
+    path: 'viewbid',
+    loadChildren: () => import('../pages/viewbid/viewbid.module').then( m => m.ViewbidPageModule)
   }
 ];
+
 
 @NgModule({
   imports: [

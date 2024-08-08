@@ -399,7 +399,7 @@ export class FileManagerPage implements OnInit {
       this.file_path = 'directory/' + this.userId + '/files';
     }
     var data = {
-      file_path: this.file_path
+      'file_path': this.file_path
     }
     this.APIService.sendData('getDirectoryFiles', data).subscribe((related_files: any) => {
       localStorage.setItem('shared_user_clicked', '3');
@@ -1820,7 +1820,8 @@ export class FileManagerPage implements OnInit {
     }
   }
 
-  filterlevels(event, level_number) {
+  filterlevels(evn, level_number) {
+    var event = evn.target;
     if (event.checked == true) {
       this.allowed_levels.push(level_number);
     }

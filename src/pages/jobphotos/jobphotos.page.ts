@@ -518,7 +518,7 @@ export class JobphotosPage {
 
     this.componentService.showLoader();
     this.getBreadCrums();
-    this.APIService.sendData('getDirectoryFiles',{file_path:localStorage.getItem('files_folder_path')}).subscribe((related_files:any) => {
+    this.APIService.sendData('getDirectoryFiles',{'file_path':localStorage.getItem('files_folder_path')}).subscribe((related_files:any) => {
       if (related_files.data != null) {
         this.related_files = related_files.data.children;
       }

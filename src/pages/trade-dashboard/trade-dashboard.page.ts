@@ -127,7 +127,7 @@ export class TradeDashboardPage {
   }
 
   goToBids() {
-    this.navCtrl.navigateForward('ViewbidPage', { state: { jobId: this.jobId } });
+    this.navCtrl.navigateForward('viewbid', { state: { jobId: this.jobId } });
   }
 
   goToDownloads() {
@@ -151,7 +151,7 @@ export class TradeDashboardPage {
   }
 
   goToRFIs() {
-    this.navCtrl.navigateForward('RfisPage', { state: { jobId: this.jobId } });
+    this.navCtrl.navigateForward('rfi', { state: { jobId: this.jobId } });
   }
 
   goToFiles(type) {
