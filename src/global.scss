@@ -243,3 +243,7 @@ $radius12:12px;
 .info {
   --background: #5bc0de !important;
 }
+.grayed_out {
+  opacity: .6;
+  pointer-events: none;
+}
