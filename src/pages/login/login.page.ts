@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, Inject, OnInit } from '@angular/core';
 import { EventEmitter, Output } from '@angular/core';
 import { Platform, NavController, LoadingController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http'; 
@@ -7,9 +7,11 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { ComponentService } from '../../services/component.service';
 import { APIService } from '../../services/api.service';
 import * as CryptoJS from 'crypto-js';
-// import { InAppBrowser } from '@ionic-native/in-app-browser';
+// import { InAppBrowser, InAppBrowserOptions, InAppBrowserEvent } from "@ionic-native/in-app-browser/ngx";
 import { FCM } from '@ionic-native/fcm';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+// import { IN_APP_BROWSER } from './../../app/app.module';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -22,6 +24,7 @@ export class LoginPage   {
   remember:any = false;
   isBrowser :any = localStorage.getItem('isBrowser');
   fcm_token: any = '';
+  options = {};
   constructor(
     public navCtrl: NavController,
     private formBuilder: FormBuilder,
@@ -29,7 +32,9 @@ export class LoginPage   {
     public componentService: ComponentService,
     public http: HttpClient, 
     public events: EventService,
-    public APIService:APIService
+    public APIService:APIService,
+    // public inAppBrowser: InAppBrowser
+    // public theInAppBrowser:InAppBrowser
     ){
       this.loginForm = this.formBuilder.group({
         password: ['',[Validators.required]],
@@ -87,6 +92,9 @@ export class LoginPage   {
     this.componentService.presentToast(message, 'info');
   }
 
+  openLink(url){
+   window.open(url);
+  }
   submitForm = () => {
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
@@ -350,5 +358,13 @@ export class LoginPage   {
       return console.log('Please provide all the required values!');
     }
   };
+  openAppBrowser(url : string){
+    let target = "_blank";
+    // this.theInAppBrowser.create(this.baseUrl+url, target, this.options);
+  };
 
 }
+function reject(arg0: string) {
+  throw new Error('Function not implemented.');
+}
+

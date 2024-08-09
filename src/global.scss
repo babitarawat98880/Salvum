@@ -232,3 +232,14 @@ $radius12:12px;
   border: 1px solid #e5ebec;
   border-radius: 4px;
 }
+.success  {
+  --background: #5cb85c !important;
+}
+
+.danger {
+  --background: #d9534f !important;
+}
+
+.info {
+  --background: #5bc0de !important;
+}

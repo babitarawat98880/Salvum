@@ -16,7 +16,7 @@ export class ComponentService {
       message: msg,
       duration: 5000,
       position : 'top',
-      color: type
+      cssClass: type
       });
       toast.removeAttribute('tabindex'); 
       toast.present();

@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { InAppBrowser } from '@ionic-native/in-app-browser/ngx/index';
 import { File } from '@ionic-native/file/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
@@ -19,6 +18,8 @@ import { PushNotificationModule } from 'ng-push-notification';
 // import { PdfmakeModule } from 'ng-pdf-make';
 import { PdfmakeService } from 'ng-pdf-make'
 import { ExpandableListModule } from 'angular2-expandable-list';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
+
 // import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 // import { TreeViewModule } from "ionic-tree-view";
 // import { TreeModule } from 'angular-tree-component';
@@ -27,7 +28,8 @@ import { ExpandableListModule } from 'angular2-expandable-list';
 // import { NgDragDropModule } from 'ng-drag-drop';
 // import { DragulaModule } from 'ng2-dragula';
 // import { DndModule } from 'ng2-dnd';
-// import { TreeModule } from 'angular-tree-component-amphinicy';
+// import { TreeModule } from 'ngular-tree-component-amphinicy';
+// import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 @NgModule({ 
   declarations: [AppComponent,],
   imports: [BrowserModule,
@@ -36,6 +38,7 @@ import { ExpandableListModule } from 'angular2-expandable-list';
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
+    SharedModuleModule,
     BrowserAnimationsModule,
     // SignaturePad,
     PushNotificationModule.forRoot({
@@ -62,9 +65,12 @@ import { ExpandableListModule } from 'angular2-expandable-list';
       FilePath,
       DatePipe,
       PdfmakeService,
+      // InAppBrowser,
       //{provide: ErrorHandler, useClass: IonicErrorHandler},
       // Camera,
       { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+  
+      
     ],
   bootstrap: [AppComponent],
 })

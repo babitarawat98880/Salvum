@@ -55,10 +55,10 @@
     </div>
   
     <p margin-bottom0 *ngIf="isBrowser == 'true'">   
-    <a href="/#/reset-password" fnt-regular>Forgot Password ?</a>
+    <a (click)="openLink('https://www.serrare.com/#/reset-password')" fnt-regular>Forgot Password ?</a>
     </p>
     <p margin-bottom0 *ngIf="isBrowser == 'true'">
-    Don't have an account ? <a href="/#/signup" fnt-regular>Sign up</a>
+    Don't have an account ? <a (click)="openLink('https://www.serrare.com/#/signup')" fnt-regular>Sign up</a>
      
     </p>
   

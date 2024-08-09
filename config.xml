@@ -100,9 +100,9 @@
     <plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="^7.8.0" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
-    <plugin name="cordova-plugin-inappbrowser" spec="^4.1.0" />
     <plugin name="cordova-plugin-filepath" spec="^1.6.0" />
     <plugin name="cordova-plugin-file-transfer" spec="^2.0.0" />
     <plugin name="cordova-plugin-camera" spec="^7.0.0" />
     <plugin name="cordova-plugin-file" spec="^7.0.0" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^6.0.0" />
 </widget>
