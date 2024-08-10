@@ -35,7 +35,7 @@
   </ion-content>
  
 </ion-menu>
-<ion-footer>
+<ion-footer *ngIf="loginId != undefined && loginId != '' && loginId != null">
   <app-footer></app-footer> 
  </ion-footer>
 </ion-app>

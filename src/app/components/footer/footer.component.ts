@@ -14,7 +14,7 @@ import { ComponentService } from 'src/services/component.service';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-  @ViewChild('content') navCtrl: NavController;
+//   @ViewChild('content') navCtrl: NavController;
   level0: string = 'false';
   level1: string = 'true';
   level2: string = 'true'; 
@@ -79,6 +79,7 @@ export class FooterComponent {
   showPasswordField:boolean = false;
   constructor(
     private app: IonApp, 
+    public navCtrl:NavController,
     public popoverCtrl: PopoverController, 
     public modalCtrl: ModalController, 
     public alertCtrl: AlertController, 

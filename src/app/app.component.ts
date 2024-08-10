@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { APIService } from '../services/api.service';
 import { ComponentService } from '../services/component.service';
 import { pipe } from 'rxjs';
+import { EventService } from 'src/services/event.service';
 
 // import { EventService } from '../services/event.service';
 
@@ -40,11 +41,16 @@ export class AppComponent {
      public menu: MenuController, 
      public modalCtrl: ModalController,
      public APIService:APIService,
-     public componentService:ComponentService) {
+     public componentService:ComponentService,
+    public events:EventService) {
 // private fcm: FCM
     // events.subscribe('is_license_activated:changed', (is_license_activated:any) => {
     //   this.getUsersubscriptions();
     // });
+    events.subscribe('username:changed', username => {
+      this.loginId = localStorage.getItem('userinfo');
+    })
+
     this.pages = [
       { title: 'Profile', component: 'ProfilePage', icon: "person-outline", url:'/profile' },
       { title: 'License', component: 'LicensePage', icon: "ribbon", url:'/license' },
@@ -78,6 +84,7 @@ export class AppComponent {
 
     this.platform = platform;
     this.loginId = localStorage.getItem('userinfo');
+    console.log(this.loginId, "lo")
     this.userImage = localStorage.getItem('userImage');
     this.userName = localStorage.getItem('userName');
     this.initializeApp();
