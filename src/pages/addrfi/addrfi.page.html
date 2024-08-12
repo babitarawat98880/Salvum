@@ -1,3 +1,4 @@
+<app-header></app-header>
 <ion-content padding has-header>
   <ion-row main-breadcrumb ion-fixed> 
     <ion-col>
@@ -18,8 +19,7 @@
       Add Manual RFI
     </ion-list-header> 
     <ion-item>
-      <ion-label stacked fnt-light fnt-regular>Question*</ion-label>
-      <ion-input type="text" [(ngModel)] = "question"></ion-input>
+      <ion-input type="text" label="Question*" labelPlacement="stacked" [(ngModel)] = "question"></ion-input>
     </ion-item>
   
     <ion-item *ngIf="filterTradeId == '0'">
@@ -39,23 +39,21 @@
     </ion-item>
   
     <ion-row padd-mob-lr15>
-      <ion-col col-12 col-sm-4 col-xl-4>
-        <ion-item filetype text-center left (click) = "uploadFiles()">
-        <ion-icon name="cloud-upload" color="blue"></ion-icon>
-        <h4 text-center>Drag & Drop Files To Upload From System</h4>
-        </ion-item> 
+      <ion-col size="12" size-md="4">
+        <div hidden-xs ng2FileDrop (click) = "uploadFiles()" class="well my-drop-zone">
+          <h2><ion-icon name="cloud-upload" color="primary"></ion-icon>Drag & Drop Files To Upload From System</h2>
+        </div>
       </ion-col>
-      <ion-col col-12 col-sm-4 col-xl-4 >
-        <ion-item filetype text-center left (click)="filemanagerFiles()">
-        <ion-icon name="cloud-upload" color="blue"></ion-icon>
-        <h4>Add Files From File Manager</h4>
-        </ion-item> 
+      <ion-col size="12" size-md="4">
+        <div hidden-xs ng2FileDrop (click)="filemanagerFiles()" class="well my-drop-zone">
+          
+          <h2><ion-icon name="cloud-upload" color="primary"></ion-icon>Add Files From File Manager</h2>
+        </div>
       </ion-col>
-      <ion-col col-12 col-sm-4 col-xl-4 >
-        <ion-item filetype text-center left (click)="jobFiles()">
-        <ion-icon name="cloud-upload" color="blue"></ion-icon>
-        <h4>Add Files From Jobs</h4>
-        </ion-item> 
+      <ion-col size="12" size-md="4">
+        <div hidden-xs ng2FileDrop (click)="jobFiles()" class="well my-drop-zone">
+          <h2><ion-icon name="cloud-upload" color="primary"></ion-icon>Add Files From Jobs</h2>
+        </div>
       </ion-col>
     </ion-row>
   
@@ -67,7 +65,7 @@
     </ion-row>
   
     <div padding >
-      <button ion-button color="darkblue" block  fnt-regular type="button" (click) = "addManualRfi(question,tradeId,user_id)">Save</button>
+      <ion-button color="primary" expand="block"  fnt-regular type="button" (click) = "addManualRfi(question,tradeId,user_id)">Save</ion-button>
     </div>
     </ion-list>
   <!--/ion-col>

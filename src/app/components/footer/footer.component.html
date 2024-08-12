@@ -1,4 +1,4 @@
-<ion-buttons level-show end h-60 footer-level>  
+<ion-buttons level-show end h-60 footer-level class="hide-pc">  
   <div  class="new-icon" col left level0>
 
      <ion-row>
@@ -355,20 +355,19 @@
      <!-- <input type="text" placeholder="Enter password">placeholder="Enter password for level {{level}}" -->
      <div modal-body>
         <ion-item border-none p-lr-0 >
-           <ion-label floating>Login to level {{level}} :</ion-label>
-           <ion-input type="password" clearOnEdit="false" [(ngModel)]="modal.password" [ngModelOptions]="{standalone: true}"></ion-input>
+           <ion-input type="password" label="Login to level {{level}}" labelPlacement="stacked" clearOnEdit="false" [(ngModel)]="modal.password" [ngModelOptions]="{standalone: true}"></ion-input>
         </ion-item>
      </div>
-     <div modal-footer>
-        <button small  ion-button icon-left color="green" fnt-regular float-right type="submit" (click)="openLevelUsingPassword(modal.password)">
+     <div modal-footer class="text-right">
+        <ion-button size="small" icon-left color="success" fnt-regular float-right type="submit" (click)="openLevelUsingPassword(modal.password)">
            <!-- <ion-icon name="trash"></ion-icon> -->
            Enter 
-        </button>
-        <button small ion-button icon-left color="danger" fnt-regular float-right (click)="dismissModal()" type="cancel" >
+        </ion-button>
+        <ion-button size="small" icon-left color="danger" fnt-regular float-right (click)="dismissModal()" type="cancel" >
         Close 
-        </button>
+        </ion-button>
      <div class="clearfix"></div>
-        <a  color="danger" fnt-regular float-right (click)="forgotPassword()"  *ngIf="level > 1">
+        <a  color="danger" fnt-regular float-right (click)="forgotPassword()"  *ngIf="level > 1" class="font-small">
         Forgot Password? 
         </a>   
      </div>

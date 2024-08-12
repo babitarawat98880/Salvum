@@ -10,6 +10,7 @@ import { ViewbidPage } from './viewbid.page';
 import { Ng2DropdownModule } from 'ng2-material-dropdown';
 import { OrderModule } from 'ngx-order-pipe';
 import { ExpandableListModule } from 'angular2-expandable-list';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +19,7 @@ import { ExpandableListModule } from 'angular2-expandable-list';
     ViewbidPageRoutingModule,
     Ng2DropdownModule,
     OrderModule,
+    SharedModuleModule
     // ExpandableListModule
   ],
   declarations: [ViewbidPage]

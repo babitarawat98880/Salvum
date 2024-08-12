@@ -6,12 +6,14 @@ import { IonicModule } from '@ionic/angular';
 
 import { AddtransmittalPageRoutingModule } from './addtransmittal-routing.module';
 import { AddtransmittalPage } from './addtransmittal.page';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddtransmittalPageRoutingModule
+    AddtransmittalPageRoutingModule,
+    SharedModuleModule
   ],
   declarations: [AddtransmittalPage]
 })

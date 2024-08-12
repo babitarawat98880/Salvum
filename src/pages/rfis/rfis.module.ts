@@ -8,6 +8,7 @@ import { RfisPageRoutingModule } from './rfis-routing.module';
 import { Ng2DropdownModule } from 'ng2-material-dropdown';
 import { OrderModule } from 'ngx-order-pipe';
 import { RfisPage } from './rfis.page';
+import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 // import { PdfmakeModule } from 'ng-pdf-make';
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { RfisPage } from './rfis.page';
     RfisPageRoutingModule,
     Ng2DropdownModule,
     OrderModule,
+    SharedModuleModule
   ],
   declarations: [RfisPage]
 })

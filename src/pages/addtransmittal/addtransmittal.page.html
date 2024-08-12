@@ -1,3 +1,4 @@
+<app-header></app-header>
 <ion-content padding lightgrey has-header> 
   <div ion-fixed style="width: 100%">
   <ion-row main-breadcrumb> 
@@ -14,12 +15,10 @@
   <ion-toolbar no-border-top add-trade>
       <ion-segment [(ngModel)]="tabs" (click)="tabschanged()">
           <ion-segment-button value="basicdetail">
-              <ion-icon name="send" fnt14 m-r-5 visible-xs></ion-icon>
-              <span hidden-xs>Basic Transmittal Details</span>
+              <span hidden-xs><ion-icon name="send" fnt14 m-r-5 visible-xs></ion-icon> Basic Transmittal Details</span>
           </ion-segment-button>
           <ion-segment-button value="submittals_tab">
-              <ion-icon name="list" fnt14 m-r-5 visible-xs></ion-icon>
-              <span hidden-xs>Attach Submittals</span>
+              <span hidden-xs><ion-icon name="list" fnt14 m-r-5 visible-xs></ion-icon> Attach Submittals</span>
           </ion-segment-button>
       </ion-segment>
   </ion-toolbar>
@@ -34,8 +33,7 @@
                       </ion-list-header>
   
                       <ion-item>
-                          <ion-label stacked fnt-light fnt-regular>Subject*</ion-label>
-                          <ion-input type="text" [(ngModel)]="subject"></ion-input>
+                          <ion-input type="text" label="Subject*" labelPlacement="stacked" [(ngModel)]="subject"></ion-input>
                       </ion-item>
   
                       <ion-item>
@@ -59,12 +57,10 @@
                         </ion-item>
   
                       <ion-item>
-                          <ion-label stacked fnt-light fnt-regular>Sent From</ion-label>
-                          <ion-input [disabled]="true" type="text" [(ngModel)]="send_from"></ion-input>
+                          <ion-input [disabled]="true" label="Sent From" labelPlacement="stacked" type="text" [(ngModel)]="send_from"></ion-input>
                       </ion-item>
                       <ion-item>
-                          <ion-label stacked fnt-light fnt-regular>Company</ion-label>
-                          <ion-input [disabled]="true" type="text" [(ngModel)]="curr_comp_name"></ion-input>
+                          <ion-input [disabled]="true" label="Company" labelPlacement="stacked" type="text" [(ngModel)]="curr_comp_name"></ion-input>
                       </ion-item>
   
                       <ng-container *ngIf="all_contracts != ''">
@@ -86,13 +82,11 @@
                       </ng-container>
   
                       <ion-item>
-                          <ion-label stacked fnt-light fnt-regular>Description</ion-label>
-                          <ion-textarea type="" [(ngModel)]="description"></ion-textarea>
+                          <ion-textarea type="" label="Description" labelPlacement="stacked" [(ngModel)]="description"></ion-textarea>
                       </ion-item>
   
                       <ion-item>
-                          <ion-label stacked fnt-light fnt-regular>Comments</ion-label>
-                          <ion-textarea type="" [(ngModel)]="comments"></ion-textarea>
+                          <ion-textarea type="" label="Comments" labelPlacement="stacked" [(ngModel)]="comments"></ion-textarea>
                       </ion-item>
   
                       
@@ -144,13 +138,11 @@
                       <ng-container *ngIf="tradeId != ''">
   
                       <ion-item>
-                        <ion-label stacked fnt-light fnt-regular>Issue date</ion-label>
-                        <ion-datetime displayFormat="YYYY/MM/DD" [(ngModel)]="issue_date"></ion-datetime>
+                        <ion-datetime displayFormat="YYYY/MM/DD" label="Issue date" labelPlacement="stacked" [(ngModel)]="issue_date"></ion-datetime>
                       </ion-item>
   
                       <ion-item>
-                        <ion-label stacked fnt-light fnt-regular>Due date</ion-label>
-                        <ion-datetime displayFormat="YYYY/MM/DD" [(ngModel)]="due_date"></ion-datetime>
+                        <ion-datetime displayFormat="YYYY/MM/DD" label="Due date" labelPlacement="stacked" [(ngModel)]="due_date"></ion-datetime>
                       </ion-item>
   
                       <ng-container *ngIf="submittal_type == 'contract'">
@@ -176,8 +168,7 @@
   
   
                       <ion-item>
-                        <ion-label stacked fnt-light fnt-regular>Quantity/Copies</ion-label>
-                        <ion-input type="number" [(ngModel)]="quantity"></ion-input>
+                        <ion-input type="number" label="Quantity/Copies" labelPlacement="stacked" [(ngModel)]="quantity"></ion-input>
                       </ion-item>
   
                       <ion-list radio-group  m-b-0 [(ngModel)]="state" >
@@ -195,8 +186,7 @@
                       </ion-list>
   
                       <ion-item>
-                        <ion-label stacked fnt-light fnt-regular>Comments</ion-label>
-                        <ion-textarea type="" [(ngModel)] = "sub_comments"></ion-textarea>
+                        <ion-textarea type="" label="Comments" labelPlacement="stacked" [(ngModel)] = "sub_comments"></ion-textarea>
                       </ion-item>
   
                       <ion-grid no-padding actionitems>
@@ -315,9 +305,9 @@
           </ion-list>
   
          
-              <button *ngIf="all_submittals == '' && tabs != 'submittals_tab'" ion-button color="darkblue" fnt-regular type="button" (click)="addTransmittal(subject,rec_id,tradeId,comments,description,sending_items,'submittal')">Next</button>
-              <button *ngIf="all_submittals != '' || tabs == 'submittals_tab'" ion-button color="darkblue" fnt-regular type="button" (click)="addTransmittal(subject,rec_id,tradeId,comments,description,sending_items)">Save</button>
-              <button ion-button color="darkblue" fnt-regular type="button" (click)="backPage()">Back</button>
+              <ion-button *ngIf="all_submittals == '' && tabs != 'submittals_tab'" ion-button color="primary" fnt-regular type="button" (click)="addTransmittal(subject,rec_id,tradeId,comments,description,sending_items,'submittal')">Next</ion-button>
+              <ion-button *ngIf="all_submittals != '' || tabs == 'submittals_tab'" ion-button color="primary" fnt-regular type="button" (click)="addTransmittal(subject,rec_id,tradeId,comments,description,sending_items)">Save</ion-button>
+              <ion-button ion-button color="primary" fnt-regular type="button" (click)="backPage()">Back</ion-button>
           
       </div>
    <div footer-height></div> 
