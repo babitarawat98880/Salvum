@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, Platform, ModalController, AlertController } from '@ionic/angular';
+import { NavController, Platform, ModalController, AlertController, LoadingController } from '@ionic/angular';
 import { EventService } from '../../services/event.service';
 import * as CryptoJS from 'crypto-js';
 import { ComponentService } from '../../services/component.service';
@@ -39,7 +39,8 @@ export class ProfilePage implements OnInit {
     public alertCtrl: AlertController,
     public componentService: ComponentService,
     public events: EventService,
-    public router:Router
+    public router:Router,
+    public loadingController:LoadingController
   ) {
     this.isAndroid = platform.is('android');
     this.events.subscribe('user:updated', (data) =>{
@@ -80,9 +81,14 @@ export class ProfilePage implements OnInit {
     var userdata = {
       userId: localStorage.getItem('userinfo')
     }
+    this.loadingController.getTop().then(res => {
+      this.loadingController.dismiss();
+    });
+   
+    
     this.componentService.showLoader();
     this.APIService.sendData('viewUser', userdata).subscribe((data: any) => {
-      this.componentService.dismissLoader()
+      this.componentService.dismissLoader();
       this.data = data
       this.current_email = data.email;
       if (data != null) {
@@ -307,7 +313,7 @@ export class ProfilePage implements OnInit {
   };
 
   root() {
-    this.navCtrl.navigateRoot('dashboard');
+    this.navCtrl.navigateRoot(['dashboard','0']);
   }
 
 

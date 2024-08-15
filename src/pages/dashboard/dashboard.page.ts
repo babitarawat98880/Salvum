@@ -10,6 +10,7 @@ import { EventService } from '../../services/event.service';
 // import { Socket } from 'ng-socket-io';
 import { UpdateLicensePage } from '../update-license/update-license.page';
 import HandyTimeAgo from 'handy-timeago';
+import timeago from 'timeago.js';
 import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
 @Component({
   selector: 'app-dashboard',
@@ -730,7 +731,9 @@ export class DashboardPage implements OnInit {
     console.log(this.allNotice)
 };
 timesAgo(date_time){
-  return HandyTimeAgo(new Date(date_time).getTime());
+  var timeagoInstance = timeago();
+    return timeagoInstance.format(date_time)
+  // return HandyTimeAgo(new Date(date_time).getTime());
 }
 seeAllNotifications() {
   this.onClickedOutside(null);

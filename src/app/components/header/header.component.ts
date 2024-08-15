@@ -8,6 +8,7 @@ import * as $ from 'jquery';
 // import { Socket } from 'ng-socket-io';
 import { Observable } from 'rxjs';
 import HandyTimeAgo from 'handy-timeago';
+import timeago from 'timeago.js';
 import { EventService } from 'src/services/event.service';
 import { PushNotificationService } from 'ng-push-notification';
 import { Router } from '@angular/router';
@@ -374,7 +375,10 @@ export class HeaderComponent implements OnInit {
   }
 
   timesAgo(date_time) {
-    return HandyTimeAgo(new Date(date_time).getTime());
+  
+    var timeagoInstance = timeago();
+    return timeagoInstance.format(date_time)
+    // return HandyTimeAgo(new Date(date_time).getTime());
   }
 
   backButton() {

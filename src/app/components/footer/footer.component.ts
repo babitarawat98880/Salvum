@@ -6,6 +6,7 @@ import { HttpClient} from '@angular/common/http';
 import * as CryptoJS from 'crypto-js';
 import * as $ from 'jquery';
 import HandyTimeAgo from 'handy-timeago';
+import timeago from 'timeago.js';
 import { APIService } from 'src/services/api.service';
 import { ComponentService } from 'src/services/component.service';
 @Component({
@@ -216,7 +217,9 @@ export class FooterComponent {
   }
 
   timesAgo(date_time){
-      return HandyTimeAgo(new Date(date_time).getTime());
+    //   return HandyTimeAgo(new Date(date_time).getTime());
+      var timeagoInstance = timeago();
+      return timeagoInstance.format(date_time)
   }
 
   getAllNotifications(){
