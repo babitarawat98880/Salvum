@@ -14,6 +14,9 @@ text-align: center;
 ion-item.no-border {
 --border-width: 0;
 }
+.b-border{
+  border-bottom: 1px solid #ccc;
+}
 ion-item.management {
 padding: 8px;
 background: lightgray;
@@ -115,5 +118,11 @@ ion-breadcrumb{
   padding: 0!important;
 }
 .icon-size{
+  font-size: 20px;
+}
+.item-inner{
+  border-bottom: 0!important;
+}
+.icon-dashboard {
   font-size: 20px;
 }

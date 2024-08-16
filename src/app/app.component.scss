@@ -24,3 +24,20 @@ img.profile-rounded-circle {
     bottom: 0;
   }
 
+.box-shadow-none{
+  box-shadow: none;
+}
+.bg-primary{
+  --background: #1976d2;
+  padding: 1em 0;
+}
+.bg-primary img {
+  border-radius: 50%;
+}
+.bg-grey, .bg-grey ion-item{
+  --background: #525e6c;
+  --color: #ffffff;
+}
+ion-list.bg-grey{
+  padding: 0;
+}

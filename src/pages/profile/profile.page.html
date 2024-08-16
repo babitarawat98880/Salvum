@@ -18,14 +18,14 @@
 <ion-card>
    <ion-list  br-lt-grey group-head head-profile>
       <ion-list-header margin0 no-border profile-image br-btm class="bg-primary text-center">
-         <ion-item fnt14 no-border text-center color="primary">
-            <div text-center profile-top  profile-div float-left>
+         <ion-item fnt14 no-border text-center color="primary full-width">
+            <div class="text-center full-width mt-1" profile-top  profile-div float-left>
                <ion-avatar>
                   <img alt="image" class="rounded-circle" src="assets/img/user-dummy.png" *ngIf="!data?.image">
                   <img alt="image" class="rounded-circle" src="{{API_ENDPOINT_URL}}images/{{data?.image}}"  *ngIf="data?.image">
-                  <ion-icon name="create" (click)="openEditprofilePage(data)" class="e-icon"></ion-icon>
+                  <span class="e-icon"><ion-icon name="pencil-outline" color="light" (click)="openEditprofilePage(data)"></ion-icon></span>
                </ion-avatar>
-               <h2  fnt-bold fnt-white>{{data?.name}}</h2>
+               <h2  fnt-bold fnt-white class="mob-font-small">{{data?.name}}</h2>
             </div>
          </ion-item>
       </ion-list-header>
