@@ -50,17 +50,14 @@
     </ion-toolbar>
   </ion-header>-->
   <app-header></app-header>
-  
-  <ion-breadcrumbs>
-    <ion-breadcrumb href="#home">Home</ion-breadcrumb>
-  </ion-breadcrumbs>
+
 
   <ion-content  has-header>
     <div breadcrumb-height></div>
     <ion-grid class="pt-0 pb-0">
       <ion-row>
-        <ion-col size="6" size-md="3" class="m-box">   
-          <ion-item [button]="true"  no-lines detail="false" (click)="openSmailPage()">
+        <ion-col size="6" size-md="3" class="m-box b-border">   
+          <ion-item [button]="true"  lines="none" detail="false" (click)="openSmailPage()">
             <div class="unread-indicator-wrapper" slot="start">
               <ion-icon  name="mail-outline" class="icon-wrap" item-start></ion-icon> 
             </div>
@@ -74,8 +71,8 @@
             </ion-label> 
           </ion-item>
         </ion-col>
-        <ion-col size="6" size-md="3" class="m-box">
-          <ion-item [button]="true"  no-lines detail="false" (click) = "openContacts()" >
+        <ion-col size="6" size-md="3" class="m-box b-border">
+          <ion-item [button]="true"  lines="none" detail="false" (click) = "openContacts()" >
             <div class="unread-indicator-wrapper" slot="start">
               <ion-icon name="person-circle-outline" class="icon-wrap"></ion-icon>
             </div>
@@ -90,7 +87,7 @@
           </ion-item>
         </ion-col>
         <ion-col size="6" size-md="3" class="m-box">   
-          <ion-item [button]="true"  no-lines detail="false"  (click) = "openFilesPage()" >
+          <ion-item [button]="true"   lines="none" detail="false"  (click) = "openFilesPage()" >
             <div class="unread-indicator-wrapper" slot="start">
               <ion-icon name="document-outline" class="icon-wrap" item-start></ion-icon>
             </div>
@@ -105,7 +102,7 @@
           </ion-item>
         </ion-col>
         <ion-col size="6" size-md="3" class="m-box">
-          <ion-item [button]="true"  no-lines detail="false" (click) = "openBidPage()" >
+          <ion-item [button]="true" lines="none" detail="false" (click) = "openBidPage()" >
             <div class="unread-indicator-wrapper" slot="start">
               <span class="icon-wrap mob-icon-wrap"><img style="margin-top: 8px;" src="https://www.serrare.com/userpanel/assets/img/bid_icon_white.png" width="18px"></span>
             </div>
@@ -131,15 +128,15 @@
   <ion-row>
 
     <ion-col size="12" size-md="6" class="m-box">   
-      <ion-item [button]="true"  no-lines detail="false"  (click) = "openJobsPage()" >
+      <ion-item [button]="true"  lines="none" detail="false"  (click) = "openJobsPage()" >
         <div class="unread-indicator-wrapper" slot="start">
           <ion-icon name="briefcase-outline" class="icon-wrap" item-start></ion-icon>
         </div>
         <ion-label>
           <ion-text>
-            <h2 class="ion-text-title">Job Management</h2>
+            <h2 class="ion-text-title mob-font-small">Job Management</h2>
           </ion-text>
-          <ion-note color="medium" class="ion-text-wrap">
+          <ion-note color="medium" class="ion-text-wrap mob-font-small">
             Create Jobs, View Posted Jobs, Submit Proposal
           </ion-note>
         </ion-label> 
@@ -148,13 +145,14 @@
     
     <ion-col size="12" size-md="6" class="m-box">   
       <div class="white-box activity-widget switchcompany" *ngIf="companies != ''">
-        <ion-item>
-          <ion-label>Switch Company</ion-label>
-          <ion-select [(ngModel)]="companyId"  >
-            <ion-select-option *ngFor="let company of companies"value="{{company._id}}" selected="{{companyId == company._id}}">{{company.company_name}}</ion-select-option>
 
-        </ion-select>
-         
+        <ion-item>
+          <ion-label color="medium mob-font-small">Switch Company</ion-label>
+            <ion-note slot="end">
+              <ion-select [(ngModel)]="companyId"  >
+                <ion-select-option *ngFor="let company of companies"value="{{company._id}}" selected="{{companyId == company._id}}">{{company.company_name}}</ion-select-option>
+              </ion-select>
+          </ion-note>
         </ion-item>
         <ion-button size="small" color="primary" (click)="switchCompany()">Switch company</ion-button>
       </div>
@@ -181,7 +179,7 @@
       </ion-item >-->
   
       <ion-row>
-        <ion-col size="12" size-md="6" class="m-box">
+        <ion-col size="12" size-md="6" class="m-box hide-mob">
             <div class="white-box activity-widget min-h-382">
               <h4 class="box-title">Friend Request Log</h4>
               <div class="steamline">
@@ -242,7 +240,7 @@
                     </ion-row>
 
                   </div>
-                    <ion-item [button]="true"  no-lines detail="false" (click)="openContacts()" class="m-box">
+                    <ion-item [button]="true"  lines="none" detail="false" (click)="openContacts()" class="m-box">
                       <div class="unread-indicator-wrapper" slot="start">
                         <ion-icon  name="phone-portrait" class="icon-wrap-light" item-start></ion-icon> 
                       </div>
@@ -256,7 +254,7 @@
                       </ion-label> 
                     </ion-item>
 
-                    <ion-item [button]="true"  no-lines detail="false" (click)="openBidPage()" class="m-box">
+                    <ion-item [button]="true"  lines="none" detail="false" (click)="openBidPage()" class="m-box">
                       <div class="unread-indicator-wrapper" slot="start">
                         <ion-icon  name="paper-plane-outline" class="icon-wrap-light" item-start></ion-icon> 
                       </div>
@@ -293,7 +291,7 @@
                       </ion-col>
                     </ion-row>
                   </div>
-                    <ion-item [button]="true"  no-lines detail="false" (click)="openJobsPage()" class="m-box">
+                    <ion-item [button]="true"  lines="none" detail="false" (click)="openJobsPage()" class="m-box">
                       <div class="unread-indicator-wrapper" slot="start">
                         <ion-icon  name="mail-outline" class="icon-wrap-light" item-start></ion-icon> 
                       </div>
@@ -307,7 +305,7 @@
                       </ion-label> 
                     </ion-item>
 
-                    <ion-item [button]="true"  no-lines detail="false" (click)="openBidPage()" class="m-box">
+                    <ion-item [button]="true"  lines="none" detail="false" (click)="openBidPage()" class="m-box">
                       <div class="unread-indicator-wrapper" slot="start">
                         <ion-icon  name="checkbox-outline" class="icon-wrap-light" item-start></ion-icon> 
                       </div>

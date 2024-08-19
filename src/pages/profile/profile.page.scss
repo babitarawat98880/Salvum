@@ -50,8 +50,7 @@ color: #1976d2 !important ;
 }
 .e-icon {
     position: absolute;
-    top: 32px;
-    left: 45px;
+    top: 52px;
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -60,7 +59,29 @@ color: #1976d2 !important ;
     color: #fafafa;
     line-height: 26px;
     cursor: pointer;
+    left: 27px;
+    right: 0;
+    margin: 0 auto;
+    padding: 4px;
+}
+.e-icon ion-icon{
+    margin-right: 1em;
+    font-size: 17px;
 }
 ion-item-group ion-item ion-icon{
     margin-right: 1em;
+}
+.full-width{
+    width: 100%;
+}
+ion-avatar{
+    margin: 0 auto;
+}
+ion-avatar img{
+    border: 2px solid #fafafa;
+  -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.mt-1{
+    margin-top: 1em;
 }
