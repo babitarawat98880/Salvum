@@ -1,13 +1,14 @@
 <ion-header modal-white>
   <ion-toolbar>
-    <ion-title text-centers>{{isOtpSent == true ? 'Verify' : 'Add'}} Email</ion-title>
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title>{{isOtpSent == true ? 'Verify' : 'Add'}} Email</ion-title>
     <ion-buttons slot="end">
-    <button  (click)="dismiss()">
-        <ion-icon name="close"></ion-icon>
-    </button>
-  </ion-buttons>
-</ion-toolbar>
+      <ion-button (click)="dismiss()"><ion-icon name="close"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
+
 
 <ion-content padding>
 <!-- <ion-row>

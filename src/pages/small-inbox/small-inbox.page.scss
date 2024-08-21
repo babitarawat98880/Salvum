@@ -102,6 +102,34 @@
   ion-checkbox, ion-avatar{
     margin-right: 10px;
   }
+
+  .checkbox-button label input {
+    position: absolute;
+    z-index: -9;
+    opacity: 0;
+  }
+  .checkbox-button label {
+    float: left;
+    width: 35px;
+    margin-bottom: 0px;
+    text-align: center;
+  }
+  .checkbox-button {
+    margin: 0px 6px 0px 0px !important;
+    background-color: #EFEFEF;
+    border-radius: 100px;
+    border: 1px solid #1976d3;
+    float: left;
+    width: 35px;
+    overflow: hidden;
+    height: 18px;
+  }
+  .bg-transparent{
+    --background: transparent !important;
+  }
+  .mt-0{
+    margin-top: 0;
+  }
  
   
   @media (max-width: 767px) {
@@ -115,5 +143,8 @@
     }
     .ion-content-mob {
       height: 100vh;
+    }
+    ion-label, label{
+      font-size: 12px!important;
     }
   }

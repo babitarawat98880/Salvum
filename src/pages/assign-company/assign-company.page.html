@@ -18,14 +18,14 @@
 		   <ion-row br-b-btm>
 		    <ion-col size="6">
 		      <ion-item  lines="none">
-				<ion-checkbox [checked]="selected_comps.indexOf(company?._id) >= 0" (ionChange)="insertContactToArray($event,company._id,0)" ></ion-checkbox>&nbsp;
-		        <ion-label>{{company.company_name}}</ion-label>
+				<ion-checkbox [checked]="selected_comps.indexOf(company?._id) >= 0" (ionChange)="insertContactToArray($event,company._id,0)" ></ion-checkbox>
+		        <ion-label class="mob-font-small">{{company.company_name}}</ion-label>
 		      </ion-item>
 		    </ion-col>
 		    <ion-col  size="6">
 		      <ion-list>
 		      <ion-item lines="none">
-		           <ion-checkbox [checked]="selected_alerts.indexOf(company._id) >= 0" [disabled]="selected_comps.indexOf(company?._id) == -1" (ionChange)="insertContactToArray($event,company._id,1)" item-left value="1" ></ion-checkbox>&nbsp;
+		           <ion-checkbox [checked]="selected_alerts.indexOf(company._id) >= 0" [disabled]="selected_comps.indexOf(company?._id) == -1" (ionChange)="insertContactToArray($event,company._id,1)" item-left value="1" ></ion-checkbox>
 				   <ion-label>Job alerts<!--{{company?._id}}-->  </ion-label>
 		        </ion-item> 
 		     </ion-list>

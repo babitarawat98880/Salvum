@@ -14,27 +14,27 @@
         <ion-row>
            <ion-col size="12" size-md="4">
               <ion-list  br-lt-grey group-head head-profile>
-                 <ion-list-header text-center  margin0 no-border profile-image br-btm>
-                    <ion-item fnt14 no-border text-center>
-                       <div text-center profile-top>  
-                          <div>
+                 <ion-list-header text-center  margin0 no-border profile-image br-btm class="bg-primary text-center">
+                    <ion-item fnt14 no-border text-cente class="bg-primary full-width">
+                       <div class="text-center full-width mt-1 mb-1" text-center profile-top>  
+                          <ion-avatar>
                              <img alt="image" class="rounded-circle preview_image" src="assets/img/user-dummy.png" style="border-radius: 50%; " *ngIf="!data.image">
                              <img alt="image" class="rounded-circle preview_image" src="{{imageUrl + data.image}}" style="border-radius: 50%;   " *ngIf="data.image">
                              <!-- <ion-icon name="create" (click) = "presentActionSheet()"></ion-icon> -->
-                          </div>
+                          </ion-avatar>
                     
                        <!--ion-buttons-->
                           <button ion-button icon-left  color="white"  outline round small (click)="presentActionSheet()" *ngIf="isBrowser == 'false'">
-                          <ion-icon name="camera"></ion-icon>
-                          Select Image
+                          <span class="e-icon"><ion-icon name="camera" color="light"></ion-icon>
+                          Select Image</span>
                           </button> 
                         <label *ngIf="isBrowser =='true'" for="uploadImage" uploadImage>
-                            <ion-icon name="create"></ion-icon>
+                           <span class="e-icon"><ion-icon name="pencil-outline" color="light"></ion-icon></span>
                            </label>
                           <input style="display:none" (change)="uploadImg()" mx-w-190 m-t-10  id="uploadImage" name="uploadImage" type="file" ng2FileSelect [uploader]="uploader" *ngIf="isBrowser =='true' " [(ngModel)]="image">
   
                            <button ion-button color="white"  outline round  small  icon-left (click)="uploadImage()" *ngIf="correctImage != ''">
-                             <ion-icon name="camera"></ion-icon>Update Image
+                              <span class="e-icon"><ion-icon name="camera" color="light"></ion-icon>Update Image</span>
                              </button>
                     </div>
                        <!--/ion-buttons-->
@@ -60,24 +60,24 @@
                   General Info 
                  </ion-list-header>
                  <ion-item-group>
-                    <ion-item >
+                    <ion-item  class="mob-font-small">
                        <ion-input type="text" placeholder="Name"  [(ngModel)]="data.name" fnt14></ion-input>
                     </ion-item>
                     <ion-input type="hidden" placeholder="Email" [(ngModel)]="data.email" fnt14></ion-input>
-                    <ion-item ><ion-input type="text" placeholder="Contact" 
+                    <ion-item  class="mob-font-small"><ion-input type="text" placeholder="Contact" 
                        [(ngModel)]="data.phone" fnt14 maxlength="12" onkeydown="javascript: return ((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || event.keyCode == 8  || event.keyCode == 46 || event.keyCode == 9) ? true : false"></ion-input>
                     </ion-item>
-                    <ion-item ><ion-input type="text" placeholder="Address" [(ngModel)]="data.address" fnt14></ion-input></ion-item>
-                    <ion-item ><ion-input type="text" [(ngModel)]="data.company" placeholder="Company" fnt14></ion-input></ion-item>
-                    <ion-item ><ion-input type="text" placeholder="Website"  [(ngModel)]="data.website" fnt14></ion-input></ion-item>
-                    <ion-item select-gender>
+                    <ion-item  class="mob-font-small"><ion-input type="text" placeholder="Address" [(ngModel)]="data.address" fnt14></ion-input></ion-item>
+                    <ion-item  class="mob-font-small"><ion-input type="text" [(ngModel)]="data.company" placeholder="Company" fnt14></ion-input></ion-item>
+                    <ion-item  class="mob-font-small"><ion-input type="text" placeholder="Website"  [(ngModel)]="data.website" fnt14></ion-input></ion-item>
+                    <ion-item select-gender class="mob-font-small">
                        <ion-label>Gender</ion-label>
                        <ion-select [(ngModel)]="data.gender">
                        <ion-select-option value="male">Male</ion-select-option>
                        <ion-select-option value="female">Female</ion-select-option>
                        </ion-select> 
                     </ion-item>
-                    <ion-item select-gender>
+                    <ion-item select-gender class="mob-font-small">
                        <ion-label>Language</ion-label>
                        <ion-select [(ngModel)]="data.lang">
                        <ion-select-option value="english">English</ion-select-option>
@@ -94,10 +94,10 @@
                  <ion-list-header color="lightgrey" margin0 br-btm>Social Info 
                  </ion-list-header>
                  <ion-item-group>
-                    <ion-item ><ion-input type="text" placeholder="www.facebook.com" fnt14  [(ngModel)]="data.facebook"></ion-input></ion-item>
-                    <ion-item ><ion-input type="text" placeholder="www.twitter.com" fnt14  [(ngModel)]="data.twitter"></ion-input></ion-item>
-                    <ion-item ><ion-input type="text" placeholder="www.googleplus.com" fnt14 [(ngModel)]="data.gplus"></ion-input></ion-item>
-                    <ion-item ><ion-input type="text" placeholder="www.linkedin.com" fnt14 [(ngModel)]="data.linkdin"></ion-input></ion-item>
+                    <ion-item ><ion-input type="text" placeholder="www.facebook.com" fnt14 class="mob-font-small"  [(ngModel)]="data.facebook"></ion-input></ion-item>
+                    <ion-item ><ion-input type="text" placeholder="www.twitter.com" fnt14 class="mob-font-small"  [(ngModel)]="data.twitter"></ion-input></ion-item>
+                    <ion-item ><ion-input type="text" placeholder="www.googleplus.com" fnt14 class="mob-font-small" [(ngModel)]="data.gplus"></ion-input></ion-item>
+                    <ion-item ><ion-input type="text" placeholder="www.linkedin.com" fnt14 class="mob-font-small" [(ngModel)]="data.linkdin"></ion-input></ion-item>
                  </ion-item-group>
               </ion-list>
             </ion-card>
