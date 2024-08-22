@@ -1,3 +1,11 @@
 .btn-xs{
     font-size: 10px;
 }
+.border-radius50{
+    --border-radius: 50% !important;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    margin-top: 5px;
+    font-size: 7px;
+}
