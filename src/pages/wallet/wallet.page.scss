@@ -1,0 +1,16 @@
+@media only screen and (max-width: 768px){
+    .icon-box{
+        margin: 0;
+    }
+    ion-icon{
+        background: #c5ddf0;
+        height: 21px;
+        width: 27px;
+        border-radius: 50%;
+        padding: 14px;
+        margin: 0.5em 0;
+    }
+    .mob-font-small {
+        font-size: 16px !important;
+      }
+}
