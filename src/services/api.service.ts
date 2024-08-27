@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { error } from 'jquery';
 const apiUrl = environment.baseUrl;
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,21 @@ export class APIService {
   // Your function for making the HTTP request
   makeRequest(url: any, postParams: any) {
     return this.http.post(apiUrl + url, postParams);
+
+    // const headers = new HttpHeaders(
+    //   {
+    //     'Content-Type': 'application/x-www-form-urlencoded',
+    //     Accept: '*/*',
+    //   }
+    // );
+    // const body = new HttpParams({ fromObject: postParams });
+    // const options = { headers: headers };
+    // return this.http.post(apiUrl + url, body.toString(), options).subscribe(res => {
+    //   console.log(res);
+    // }, error => {
+    //   console.log(error)
+    // });
+
   }
   sendData(url: any, postParams: any) {
     return this.http.post(apiUrl + url, postParams);
