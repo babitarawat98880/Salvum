@@ -35,20 +35,20 @@
   <div clearboth visibile-xs style="display:none"></div>
      <div padding no_tp padd-mob-tb-0>
         <ion-button (click) = "getExternalContacts()">
-           <ion-icon name="contacts"></ion-icon>
-           <span btn-text> External Contacts </span>
+           <ion-icon name="checkbox"></ion-icon>
+           <span btn-text class="hide-mob"> External Contacts </span>
         </ion-button>
         <ion-button (click) = "goToManageGroup()">
            <ion-icon name="people"></ion-icon>
-           <span btn-text>  Create Group </span>
+           <span btn-text class="hide-mob">  Create Group </span>
         </ion-button>
        <!--  <button m-t-0 btn-hide ion-button (click) = "goToeditGroup()" >
            <ion-icon name="create"></ion-icon>
            <span btn-text>   Edit Group </span>
         </button> -->
         <ion-button (click) = "goToSmail()">
-           <ion-icon name="checkbox"></ion-icon>
-           <span btn-text> {{selected_Ids.length == 0 && selectedContacts.length == 0 ? 'Return' : 'Select'}}</span>
+           <ion-icon name="people"></ion-icon>
+           <span btn-text class="hide-mob"> {{selected_Ids.length == 0 && selectedContacts.length == 0 ? 'Return' : 'Select'}}</span>
         </ion-button>
        <!--  <button m-t-0 btn-hide ion-button  (click) = "groupListing()">
            <ion-icon name="person"></ion-icon>
@@ -93,20 +93,45 @@
                                  <img alt="image" class="" src="assets/img/user-dummy.png" style="" *ngIf="!item.image || (item.senderThumb == 'Hide' || item.senderThumb == 'null' || !item.senderThumb)">
                                  <img alt="image" class="" src="{{API_ENDPOINT_URL}}images/{{item.image}}" style="  " *ngIf="item.image && item.senderThumb == 'Show'">
                               </ion-avatar>
-                              <div float-left m-t-5 select-check  *ngIf="item.senderSetLevelStatus == 1 && item.recevierSetLevelStatus == 1 "> 
+                              <div float-left m-t-5 select-check  *ngIf="item.senderSetLevelStatus == 1 && item.recevierSetLevelStatus == 1 " class="mob-font-small"> 
                                  <ion-label>Select</ion-label>
                                  <ion-checkbox mr_nw [checked]="selectedConIds.indexOf(item.member_id) >= 0"  (ionChange)="checkBoxClicked($event, item)" ></ion-checkbox>
                               </div>
                            </ion-col>
-                           <ion-col size="6">
-                              <ion-button small="size" color="light" *ngIf="item.memberstatus == 2 && (item.senderSetLevelStatus == 1 && item.recevierSetLevelStatus == 0 )" >Pending</ion-button>
+                           <ion-col size="9">
+                              <ion-row>
+                                 <ion-col size="6">
+                                    
+                                    <ion-badge *ngIf="item.memberstatus == 2 && (item.senderSetLevelStatus == 1 && item.recevierSetLevelStatus == 0 )">Pending</ion-badge>
   
-                              <ion-button small="size" color="light" *ngIf="item.memberstatus == 2 && (item.senderSetLevelStatus == 0 && item.recevierSetLevelStatus == 0 )" >Pending</ion-button>
+                                    <ion-badge *ngIf="item.memberstatus == 2 && (item.senderSetLevelStatus == 0 && item.recevierSetLevelStatus == 0 )">Pending</ion-badge>
+                                    
                               
-                                 <!--div  fnt-16 *ngIf="item.senderSetLevelStatus == 1 && item.recevierSetLevelStatus == 1 "> 
+                                    <!--div  fnt-16 *ngIf="item.senderSetLevelStatus == 1 && item.recevierSetLevelStatus == 1 "> 
                                     select
                                     <ion-checkbox [(ngModel)]="item.isChecked" (ionChange)="checkBoxClicked(item.isChecked, item)"></ion-checkbox>
                                     </div-->
+                                 </ion-col>
+                                 <ion-col size="6">
+                                    <div social >
+                                       <ion-button size="small" (click)="showConfirm(item, i)" class="btn-xs">
+                                                    <ion-icon role="img" name="trash"  >
+                                                    </ion-icon>
+                                       </ion-button>
+                                          <ion-button size="small" (click)="onButtonClick(item._id, item )" [hidden]="done[item._id]" class="btn-xs">
+                                             <ion-icon role="img" name="create">
+                                             </ion-icon>
+                                       </ion-button>
+                                       <!-- <button title="Done"  btn-dropdown  ion-button   small (click)="update(item, senderSetLevel, i)"  *ngIf = "done[item._id]">
+                                       <ion-icon class="ion-ios-checkmark-outline"></ion-icon>
+                                       </button> -->
+                                       <ion-button size="small" (click)="showdata(item._id)" *ngIf="hidebutton == false"  class="btn-xs">
+                                          <ion-icon name="caret-down-outline"></ion-icon>
+                                       </ion-button>
+                                    </div>
+                                 </ion-col>
+                              </ion-row>
+                              
                               <ion-row>
                                  <ion-col size="4">
                                        <span> Name : </span> 
@@ -366,50 +391,35 @@
                                  <p card-body-text fnt-light *ngIf="item.senderSetLevelStatus == 0">*You can't communicate with this person until they set your profile levels up on their side</p>
                                  <p card-body-text fnt-light *ngIf="item.senderSetLevelStatus == 1 && item.recevierSetLevelStatus == 0 ">*You can't communicate with this person until he will set your level.</p>
                               </div>
-                              <a href="{{item.facebook.search('http') >= 0 ? item.facebook : 'http://'+item.facebook}}" target="_blank" *ngIf="item.facebook && item.facebook != ''" a_deco_none>
-                              <ion-button  title="Facebook" size="small" color="medium" >
-                                 <ion-icon name="logo-facebook"></ion-icon>
-                              </ion-button>
-                              </a>
-                              <a   title="Twitter" href="{{item.twitter.search('http') >= 0 ? item.twitter : 'http://'+item.twitter}}" target="_blank" *ngIf="item.twitter && item.twitter != ''" a_deco_none>
-                              <ion-button size="small" color="medium"  >
-                                 <ion-icon name="logo-twitter"></ion-icon>
-                              </ion-button>
-                              </a>
-                              <a title="Google Plus"  href="{{item.gplus.search('http') >= 0 ? item.gplus : 'http://'+item.gplus}}" target="_blank" *ngIf="item.gplus && item.gplus != ''" a_deco_none>
-                              <ion-button size="small" color="medium" >
-                                 <ion-icon name="logo-google"></ion-icon>
-                              </ion-button>
-                              </a>
-                              <a  title="Linkedin" href="{{item.linkdin.search('http') >= 0 ? item.linkdin : 'http://'+item.linkdin}}" target="_blank" *ngIf="item.linkdin && item.linkdin != ''" a_deco_none>
-                              <ion-button size="small" color="medium" > 
-                                 <ion-icon name="logo-linkedin"></ion-icon>
-                              </ion-button>
-                              </a>
+                              <div class="text-right">
+                                 <a href="{{item.facebook.search('http') >= 0 ? item.facebook : 'http://'+item.facebook}}" target="_blank" *ngIf="item.facebook && item.facebook != ''" a_deco_none>
+                                 <ion-button  title="Facebook" size="small" color="primary" class="btn-xs border-radius50">
+                                    <ion-icon name="logo-facebook"></ion-icon>
+                                 </ion-button>
+                                 </a>
+                                 <a   title="Twitter" href="{{item.twitter.search('http') >= 0 ? item.twitter : 'http://'+item.twitter}}" target="_blank" *ngIf="item.twitter && item.twitter != ''" a_deco_none>
+                                 <ion-button size="small" color="primary" class="btn-xs border-radius50">
+                                    <ion-icon name="logo-twitter"></ion-icon>
+                                 </ion-button>
+                                 </a>
+                                 <a title="Google Plus"  href="{{item.gplus.search('http') >= 0 ? item.gplus : 'http://'+item.gplus}}" target="_blank" *ngIf="item.gplus && item.gplus != ''" a_deco_none>
+                                 <ion-button size="small" color="primary" class="btn-xs border-radius50">
+                                    <ion-icon name="logo-google"></ion-icon>
+                                 </ion-button>
+                                 </a>
+                                 <a  title="Linkedin" href="{{item.linkdin.search('http') >= 0 ? item.linkdin : 'http://'+item.linkdin}}" target="_blank" *ngIf="item.linkdin && item.linkdin != ''" a_deco_none>
+                                 <ion-button size="small" color="primary" class="btn-xs border-radius50"> 
+                                    <ion-icon name="logo-linkedin"></ion-icon>
+                                 </ion-button>
+                                 </a>
+                              </div>
                               <div *ngIf = "done[item._id]" >
                                  <ion-button size="small"  title="Done" color="primary"  (click)="update(item, senderSetLevel, i)" >  
                                   Update
                                  </ion-button>
                               </div>
                            </ion-col>
-                           <ion-col size="3">
-                              <div social >
-                                 <ion-button size="small" (click)="showConfirm(item, i)" class="btn-xs">
-                                              <ion-icon role="img" name="trash"  >
-                                              </ion-icon>
-                                </ion-button>
-                                       <ion-button size="small" (click)="onButtonClick(item._id, item )" [hidden]="done[item._id]" class="btn-xs">
-                                              <ion-icon role="img" name="create">
-                                              </ion-icon>
-                                    </ion-button>
-                                              <!-- <button title="Done"  btn-dropdown  ion-button   small (click)="update(item, senderSetLevel, i)"  *ngIf = "done[item._id]">
-                                              <ion-icon class="ion-ios-checkmark-outline"></ion-icon>
-                                              </button> -->
-                                              <ion-button size="small" (click)="showdata(item._id)" *ngIf="hidebutton == false"  class="btn-xs">
-                                                <ion-icon name="caret-down-outline"></ion-icon>
-                                              </ion-button>
-                                           </div>
-                           </ion-col>
+                          
                         </ion-row>
                           
                        <!--/ion-col>
@@ -437,7 +447,8 @@
                                              select
                                              <ion-checkbox [(ngModel)]="item.isChecked" (ionChange)="checkBoxClicked(item.isChecked, item)"></ion-checkbox>
                                              </div-->
-                                          <ion-button  size="small" color="light" *ngIf="item.memberstatus == 2 && (item.senderSetLevelStatus == 0 && item.recevierSetLevelStatus == 1 )" >Pending</ion-button>
+                                          <!--<ion-button  size="small" color="primary"  class="btn-xs">Pending</ion-button>-->
+                                          <ion-badge *ngIf="item.memberstatus == 2 && (item.senderSetLevelStatus == 0 && item.recevierSetLevelStatus == 1 )">Pending</ion-badge>
                                           
 
                                              <ion-row>

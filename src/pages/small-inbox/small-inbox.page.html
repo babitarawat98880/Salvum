@@ -115,7 +115,7 @@
                         </ion-col>
                         <ion-col size="2" class="edit-folder">
                           <span class="ion-float-right" (click)="editFolder(child, child._id)">
-                            <ion-icon name="create-outline" color="primary"></ion-icon>
+                            <ion-icon name="pencil-outline" color="primary"></ion-icon>
                           </span>
                           <span class="ion-float-right" (click)="clickNodeChild(child)">
                             <ion-icon [color]="isSelected(child) ? 'primary' : 'medium'" [name]="isSelectedChild(child) ? 'chevron-down-outline' : 'chevron-forward-outline'"></ion-icon>
@@ -273,15 +273,15 @@
                         </ion-row>
                      </ion-col>
       
-                        <ion-col size="6">
+                        <ion-col size="8">
                            <div m-b-10 smail-header >
                               <ng-container *ngIf="items?.length > 0 && selectedFolder == ''">
                               <ion-badge color="white">
                               <ion-checkbox  [(ngModel)]="ischecked" (click)="allChecked(ischecked)" ></ion-checkbox>
-                              </ion-badge>&nbsp;&nbsp;
+                              </ion-badge>
                               <ion-button color="primary" size="small" (click)="trash()">
                                  <ion-icon title="Delete" name="trash" color="" ></ion-icon>
-                              </ion-button>&nbsp;
+                              </ion-button>
                               <ion-button color="primary" size="small" (click)="reload()">
                                  <ion-icon name="reload-outline"></ion-icon>
                                  <!--<img ref_svg src="assets/img/refresh.svg" title="Refresh">-->
@@ -301,8 +301,9 @@
                            </div>
                         </ion-col>
       
-                        <ion-col size="6">   <ion-item  p-l-0 smail-checkox>
-                              <ion-label>
+                        <ion-col size="4">
+                           <ion-item lines="none"  p-l-0 smail-checkox class="bg-transparent">
+                              <ion-label class="mt-0">
                       <!--            <div float-left *ngFor="let n of openedLevel; let i = index " >
                                     <ion-checkbox  float-left color="blue" checked="{{n.checked}}" [(ngModel)]="n.checked" m-r-0 (click)="filterList(n.checked, n.level)" ></ion-checkbox>
                                     <span level-text float-left>{{n.level}}</span>
@@ -347,7 +348,7 @@
                                  </ion-badge>
                               </div> -->
                               <!-- <ion-scroll smail-left scrollY="true" style="width: 100%;  height: 44vh"> -->
-                                 <ion-item-sliding  *ngFor="let x of items ; let index = index ;"> 
+                                 <ion-item-sliding  *ngFor="let x of items ; let index = index ;" class="mob-font-small"> 
       
                                     <ion-item *ngIf="index == 0" class="border-1 text-center">
                                        <p class="text-center">I am <br>advertisement.</p>
