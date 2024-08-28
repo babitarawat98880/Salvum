@@ -92,6 +92,7 @@ export class FooterComponent {
     public componentService: ComponentService) {
       this.http = http;
       this.isBrowser = localStorage.getItem('isBrowser');
+      this.API_ENDPOINT_URL = localStorage.getItem('API_ENDPOINT_URL');
       this.imageUrl = this.API_ENDPOINT_URL+'images/';
       this.alllevel = JSON.parse(localStorage.getItem('alllevel') !);
       var userId = localStorage.getItem('userinfo');
@@ -527,7 +528,7 @@ export class FooterComponent {
       let headers = new Headers({
           'Content-Type': 'application/json'
       });
-      
+      this.API_ENDPOINT_URL = localStorage.getItem('APIURL') +'/';
       return this.http.get(this.API_ENDPOINT_URL+this.notificationData + '/' + userId).subscribe((data:any) => {
           // console.log(data);
           this.items = data;
@@ -575,16 +576,13 @@ export class FooterComponent {
   //this.functionClick = 0;
 
   goToAddPassWordPage(level) {
-      
       this.level = level;
-
-      
       this.alllevel = JSON.parse(localStorage.getItem('alllevel')!);
       var userId = localStorage.getItem('userinfo');
       let headers = new Headers({
           'Content-Type': 'application/json'
       });
-  
+        console.log(this.API_ENDPOINT_URL, "API_ENDPOINT_URL")
       return this.http.get(this.API_ENDPOINT_URL+this.showdataUrl + "/" + userId + "/" + level).subscribe((data:any) => {
           this.checkDate = data.data;
           // console.log(data);
@@ -994,14 +992,14 @@ export class FooterComponent {
       // } 
   }
 
-  lockAllLevel() {
-
-      this.alert = this.alertCtrl.create({
+  async lockAllLevel() {
+    let alert = this.alertCtrl.create({
           subHeader: 'Are you sure you want to lock ?',
           buttons: [{
                   text: 'No',
                   handler: data => {
                       console.log('Cancel clicked');
+                      
                   }
               },
               {
@@ -1030,7 +1028,7 @@ export class FooterComponent {
           ]
 
       });
-      this.alert.present();
+      (await alert).present();
   };
 
   openSmailPage() {

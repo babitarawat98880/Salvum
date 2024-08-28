@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
   level2: string = 'true';
   level3: string = 'true';
   level4: string = 'true';
-  alllevel: any;
+  alllevel: any ='';;
   isBrowser: any;
   alert: any;
   APIURL: any;
@@ -387,7 +387,7 @@ export class HeaderComponent implements OnInit {
 
   showLevelOpenClose() {
     var userId = localStorage.getItem('userinfo');
-    this.alllevel = JSON.parse(localStorage.getItem('alllevel') || '');
+    this.alllevel = JSON.parse(localStorage.getItem('alllevel')!);
     this.APIURL = localStorage.getItem('APIURL');
     if (this.alllevel) {
       this.level1 = 'true';
@@ -467,6 +467,11 @@ export class HeaderComponent implements OnInit {
 
 
   presentPopover(myEvent) {
+    if(this.isOpen){
+      this.isOpen = false;
+    }else{
+      this.isOpen = true;
+    }
     this.level4Notice = false;
     this.level3Notice = false;
     this.level2Notice = false;
@@ -478,7 +483,6 @@ export class HeaderComponent implements OnInit {
       this.displayGrid = false;
     } else {
       this.displayGrid = true;
-
     }
   };
 

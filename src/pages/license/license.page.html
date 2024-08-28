@@ -102,7 +102,7 @@
                     </button> -->
                     
                  </ion-item>
-                 <ion-item-options side="right" *ngIf="isBrowser == 'false'">
+                 <ion-item-options side="end" *ngIf="isBrowser == 'false'">
                     <button (click)="copyKey(license.license_number)" ion-button color="green"> Copy Key</button>
                     <!-- <button *ngIf="license.usedBy != '' && license.usedBy != loginId" (click) = "removeAssignedLicense(license._id,license.usedBy)" ion-button color="blue"> Delete</button>
   
@@ -173,7 +173,7 @@
                        <ion-icon name="trash" fnt20></ion-icon>
                     </button> -->
                  </ion-item>
-                 <ion-item-options side="right" *ngIf="isBrowser == 'false'">
+                 <ion-item-options side="end" *ngIf="isBrowser == 'false'">
                     <button (click)="copyKey(license.license_number)" ion-button color="green"> Copy Key</button>
                     <!-- <button *ngIf="license.usedBy != '' && license.privileges.indexOf(loginId) >= 0 && license.usedBy != loginId" (click) = "removeAssignedLicense(license._id,license.usedBy)" ion-button color="blue"> Delete</button> -->
                  </ion-item-options>
