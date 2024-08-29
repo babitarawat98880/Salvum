@@ -11,6 +11,6 @@ import { EmailMenuComponent } from '../../pages/email-menu/email-menu.component'
 @NgModule({
   declarations: [HeaderComponent,FooterComponent, EmailMenuComponent],
   imports: [CommonModule, IonicModule, FileUploadModule],
-  exports: [HeaderComponent,FooterComponent, IonicModule, FileUploadModule, EmailMenuComponent]
+  exports: [HeaderComponent,FooterComponent, IonicModule, FileUploadModule,EmailMenuComponent]
 })
 export class SharedModuleModule { }

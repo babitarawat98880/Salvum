@@ -8,6 +8,7 @@ import * as $ from 'jquery';
 // import { Socket } from 'ng-socket-io';
 import { Observable } from 'rxjs';
 import HandyTimeAgo from 'handy-timeago';
+import timeago from 'timeago.js';
 import { EventService } from 'src/services/event.service';
 import { PushNotificationService } from 'ng-push-notification';
 import { Router } from '@angular/router';
@@ -47,7 +48,7 @@ export class HeaderComponent implements OnInit {
   level2: string = 'true';
   level3: string = 'true';
   level4: string = 'true';
-  alllevel: any;
+  alllevel: any ='';;
   isBrowser: any;
   alert: any;
   APIURL: any;
@@ -374,7 +375,10 @@ export class HeaderComponent implements OnInit {
   }
 
   timesAgo(date_time) {
-    return HandyTimeAgo(new Date(date_time).getTime());
+  
+    var timeagoInstance = timeago();
+    return timeagoInstance.format(date_time)
+    // return HandyTimeAgo(new Date(date_time).getTime());
   }
 
   backButton() {
@@ -383,7 +387,7 @@ export class HeaderComponent implements OnInit {
 
   showLevelOpenClose() {
     var userId = localStorage.getItem('userinfo');
-    this.alllevel = JSON.parse(localStorage.getItem('alllevel') || '');
+    this.alllevel = JSON.parse(localStorage.getItem('alllevel')!);
     this.APIURL = localStorage.getItem('APIURL');
     if (this.alllevel) {
       this.level1 = 'true';
@@ -463,6 +467,11 @@ export class HeaderComponent implements OnInit {
 
 
   presentPopover(myEvent) {
+    if(this.isOpen){
+      this.isOpen = false;
+    }else{
+      this.isOpen = true;
+    }
     this.level4Notice = false;
     this.level3Notice = false;
     this.level2Notice = false;
@@ -474,7 +483,6 @@ export class HeaderComponent implements OnInit {
       this.displayGrid = false;
     } else {
       this.displayGrid = true;
-
     }
   };
 

@@ -363,7 +363,7 @@
                       <button title="Share" mini color="secondary" (click)="shareFolders(related_file.path)"
                         ion-fab><ion-icon name="share"></ion-icon></button>
                     </ion-fab-list>
-                    <ion-fab-list side="right" *ngIf="related_file.type == 'file'">
+                    <ion-fab-list side="end" *ngIf="related_file.type == 'file'">
 
                       <a id="bro_{{related_file.name}}" title="Download" *ngIf="isBrowser == 'true'"
                         href="{{baseUrl}}/download?file={{APIURL +'/salvum/'+related_file.path}}&ext={{related_file.name.split('.').pop().toLowerCase()}}"
@@ -375,7 +375,7 @@
                             name="download"></ion-icon></button></a>
 
                     </ion-fab-list>
-                    <ion-fab-list side="right" *ngIf="related_file.type == 'directory'">
+                    <ion-fab-list side="end" *ngIf="related_file.type == 'directory'">
                       <a title="Edit" (click)="editSharedFolders(i,related_file.name)"><button color="primary" mini
                           ion-fab><ion-icon name="create"></ion-icon></button></a>
                     </ion-fab-list>
@@ -481,7 +481,7 @@
                         <button title="Share" mini color="secondary" (click)="shareFolders(related_file.path)"
                           ion-fab><ion-icon name="share"></ion-icon></button>
                       </ion-fab-list>
-                      <ion-fab-list side="right" *ngIf="related_file.type == 'file'">
+                      <ion-fab-list side="end" *ngIf="related_file.type == 'file'">
 
                         <a id="bro_{{related_file.name}}" title="Download" *ngIf="isBrowser == 'true'"
                           href="{{baseUrl}}/download?file={{APIURL +'/salvum/'+related_file.path}}&ext={{related_file.name.split('.').pop().toLowerCase()}}"
@@ -493,7 +493,7 @@
                               name="download"></ion-icon></button></a>
 
                       </ion-fab-list>
-                      <ion-fab-list side="right" *ngIf="related_file.type == 'directory'">
+                      <ion-fab-list side="end" *ngIf="related_file.type == 'directory'">
                         <a title="Edit" (click)="editSharedFolders(i,related_file.name)"><button color="primary" mini
                             ion-fab><ion-icon name="create"></ion-icon></button></a>
                       </ion-fab-list>
@@ -600,7 +600,7 @@
                       <button title="View" color="dark" (click)="viewFile(related_file.path)" mini ion-fab><ion-icon
                           name="eye"></ion-icon></button>
                     </ion-fab-list>
-                    <ion-fab-list side="right" *ngIf="related_file.type == 'file'">
+                    <ion-fab-list side="end" *ngIf="related_file.type == 'file'">
 
                       <a id="bro_{{related_file.name}}" title="Download" *ngIf="isBrowser == 'true'"
                         href="{{baseUrl}}/download?file={{APIURL +'/salvum/'+related_file.path}}&ext={{related_file.name.split('.').pop().toLowerCase()}}"
