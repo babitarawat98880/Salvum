@@ -227,7 +227,7 @@
             <ion-row>
               <ion-col col-8 *ngIf="selectedTrade == '' "  fnt-grey>
                   <!---div  *ngIf="selectedTrade == '' " (click)="doCheckbox()"-->
-            <span textleft (click)="doCheckbox()">To :</span> 
+            <span textleft (click)="doCheckbox()" class="mob-font-small">To :</span> 
             <tag-input [ngModel]="testCheckboxResult" [onlyFromAutocomplete]="true" placeholder="" secondaryPlaceholder="Type emails..." (onAdd)="onContactAdd($event)" (onRemove)="removeContact($event)">
                 <tag-input-dropdown [showDropdownIfEmpty]="true" 
                                     [autocompleteItems]="all_emails">
@@ -238,7 +238,7 @@
                   <!-- if trade selected -->
             <ion-col col-8 *ngIf="selectedTrade != ''" fnt-grey>
                   <!--div  *ngIf="selectedTrade != '' " (click)="selectTradeContact()"-->
-            <span textleft (click)="selectTradeContact()">To :</span> 
+            <span textleft (click)="selectTradeContact()" class="mob-font-small">To :</span> 
             <tag-input [ngModel]="testCheckboxResult" [onlyFromAutocomplete]="true" placeholder="" secondaryPlaceholder="Type emails..." (onAdd)="onJobContactAdd($event)" (onRemove)="removeJobContact($event)">
                 <tag-input-dropdown [showDropdownIfEmpty]="true" 
                                     [autocompleteItems]="tradeContacts">
@@ -279,7 +279,7 @@
        
                <ion-item class="compose-text" p-lr-0 *ngIf="cc == true">
                   <div floating  fnt-grey btn-bcc>
-                  <span textleft (click)="ccCheckbox()">Cc :</span> 
+                  <span textleft (click)="ccCheckbox()" class="mob-font-small">Cc :</span> 
                     <tag-input [ngModel]="ccCheckboxResult" [onlyFromAutocomplete]="true" placeholder="" secondaryPlaceholder="Type emails..." (onAdd)="onCcAdd($event)" (onRemove)="removeCcContact($event)">
                         <tag-input-dropdown [showDropdownIfEmpty]="true" 
                                             [autocompleteItems]="all_emails">
@@ -298,7 +298,7 @@
        
                <ion-item class="compose-text"  p-lr-0 *ngIf="bccList == true">
                   <div floating  fnt-grey btn-bcc>
-                  <span textleft (click)="bccCheckbox()">Bcc : </span>
+                  <span textleft (click)="bccCheckbox()" class="mob-font-small">Bcc : </span>
                     <tag-input [ngModel]="bccCheckboxResult" [onlyFromAutocomplete]="true" placeholder="" secondaryPlaceholder="Type emails..." (onAdd)="onBccAdd($event)" (onRemove)="removeBccContact($event)">
                         <tag-input-dropdown [showDropdownIfEmpty]="true" 
                                             [autocompleteItems]="all_emails">
@@ -324,9 +324,10 @@
                   </ion-select>
                </ion-item> -->
                <ion-item class="compose-text" border p-lr-0>
-                  <ion-label textleft floating>Subject :</ion-label>
-                  <ion-input type="text" [(ngModel)]="subject"></ion-input>
+                  <ion-input label="Subject" labelPlacement="stacked" type="text" [(ngModel)]="subject"></ion-input>
                </ion-item>
+
+
                <ion-col col-xl-12 col-lg-12>
                <div>
                  <ion-segment [(ngModel)]="editor_tab" (ionChange)="editoToolbar()">
