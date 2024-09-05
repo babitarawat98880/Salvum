@@ -228,7 +228,7 @@
                               
                               <ion-col size="3" size-md="3">
                                  <ion-label stacked>Jobs</ion-label>
-                                 <ion-select [(ngModel)]="selectedJob" (ionChange)="searchFn(searchTerm, selectedJob, gaming, selectedTrade, true, selectedType)">
+                                 <ion-select [(ngModel)]="selectedJob" (ionChange)="searchFn(searchTerm, selectedJob, gaming, selectedTrade, true, selectedType)" class="border-bottom">
                                  <ion-select-option [disabled]="true" *ngIf="jobListingResult == ''" value="">No jobs</ion-select-option>
                                  <ion-select-option *ngIf="jobListingResult != ''" value="">All Job</ion-select-option>
                                  <ion-select-option value="{{job._id}}" *ngFor="let job of jobListingResult"> {{job.job_title}}</ion-select-option>
@@ -244,7 +244,7 @@
                                     </div>
                                     </div>
                                  <ion-label stacked>Trades</ion-label>
-                                 <ion-select [disabled]="true" [(ngModel)]="selectedTrade"></ion-select>
+                                 <ion-select [disabled]="true" [(ngModel)]="selectedTrade" class="border-bottom"></ion-select>
       
                                  <!-- <ion-select [(ngModel)]="selectedTrade" (ionChange)="searchFn(searchTerm, selectedJob, gaming, selectedTrade, false, selectedType)">
                                  <ion-select-option [disabled]="true" *ngIf="trades == ''" value="">No trades</ion-select-option>
@@ -255,7 +255,7 @@
                         
                               <ion-col size="3" size-md="3">
                                  <ion-label stacked>Type</ion-label>
-                                 <ion-select [(ngModel)]="selectedType" (ionChange)="searchFn(searchTerm, selectedJob, gaming, selectedTrade, false, selectedType)">
+                                 <ion-select [(ngModel)]="selectedType" (ionChange)="searchFn(searchTerm, selectedJob, gaming, selectedTrade, false, selectedType)" class="border-bottom">
                                  <ion-select-option value="addendum"> Addendum</ion-select-option>
                                  <ion-select-option value="rfi"> RFI</ion-select-option>
                                  <ion-select-option value="change_order"> Change Order</ion-select-option>
@@ -264,7 +264,7 @@
       
                               <ion-col size="3" size-md="3">
                                  <ion-label stacked>Status</ion-label>
-                                 <ion-select [(ngModel)]="gaming" (ionChange)="searchFn(searchTerm, selectedJob, gaming, selectedTrade, false, selectedType)">
+                                 <ion-select [(ngModel)]="gaming" (ionChange)="searchFn(searchTerm, selectedJob, gaming, selectedTrade, false, selectedType)" class="border-bottom">
                                  <ion-select-option value="1" >Read</ion-select-option>
                                  <ion-select-option value="0" >Unread</ion-select-option>
                                  </ion-select>
@@ -351,7 +351,7 @@
                                  <ion-item-sliding  *ngFor="let x of items ; let index = index ;" class="mob-font-small"> 
       
                                     <ion-item *ngIf="index == 0" class="border-1 text-center">
-                                       <p class="text-center">I am <br>advertisement.</p>
+                                       <p class="text-center full-width">I am <br>advertisement.</p>
                                     </ion-item>
       
                                     <ion-item smail-list [ngClass]="{unread: x.read == false}">
@@ -479,43 +479,43 @@
                                              {{(opened_levels.indexOf(user.snd_level) >= 0 || user.snd_level == 'level0' || user.snd_level == 'level5') ? (x.unconnected == '1' ? 'Unconnected User' : user.name) : (x.unconnected == '1' ? 'Unconnected User' : user.snd_level+' contact update')}} <span smail-comma>,</span></h2>
                                           </div>
                                           <div *ngIf="preState != 'Sent' && x.subject != 'Friend Request' && x.subject != 'Invitation to join company on Salvum'"> 
-                                             <h2 (mousedown)="dragMail(x._id)"  (mouseleave)="dragOut()" draggable="true" title="Drag mail"  class="{{x.read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} text-capital" left smail-name>
+                                             <h2 (mousedown)="dragMail(x._id)"  (mouseleave)="dragOut()" draggable="true" title="Drag mail"  class="{{x.read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} text-capital mob-font-small" left smail-name>
                                              <ion-icon [ngClass]="'unc'+index" *ngIf="(x.snd_level == 'level5' && x.fromId[0].userId != userId) || x.unconnected == '1'" class="warning_clr" name="warning" title="Unconnected user"></ion-icon>
                                              {{(opened_levels.indexOf(x.snd_level) >= 0 || x.snd_level == 'level0' || x.snd_level == 'level5') ? (x.unconnected == '1' ? 'Unconnected User' : x.name) : (x.unconnected == '1' ? 'Unconnected User' : x.snd_level+' contact update')}} <span smail-comma>,</span></h2>
                                           </div>
                                           <div *ngIf="x.subject == 'Friend Request'  && preState != 'Sent'"> 
-                                             <h2 class="{{x.read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} text-capital" left smail-name>{{x.name}}</h2>
+                                             <h2 class="{{x.read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} text-capital mob-font-small" left smail-name>{{x.name}}</h2>
                                           </div>
                                           <div *ngIf="x.subject == 'Friend Request'  && preState == 'Sent'"> 
-                                             <h2 class="{{x.read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} text-capital" left smail-name *ngFor="let user of x.toArray">{{user.name}}</h2>
+                                             <h2 class="{{x.read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} text-capital mob-font-small" left smail-name *ngFor="let user of x.toArray">{{user.name}}</h2>
                                           </div>
       
                                           <div *ngIf="x.subject == 'Invitation to join company on Salvum' && preState != 'Sent'"> 
-                                             <h2 class="{{x.read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} text-capital" left smail-name>{{(opened_levels.indexOf(x.snd_level) >= 0 || x.snd_level == 'level0' || x.snd_level == 'level5') ?  x.name : x.snd_level+' contact update'}}</h2>
+                                             <h2 class="{{x.read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} text-capital mob-font-small" left smail-name>{{(opened_levels.indexOf(x.snd_level) >= 0 || x.snd_level == 'level0' || x.snd_level == 'level5') ?  x.name : x.snd_level+' contact update'}}</h2>
                                           </div>
                                           <div *ngIf="x.subject == 'Invitation to join company on Salvum' && preState == 'Sent'"> 
-                                             <h2 class="{{x.read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} text-capital" left smail-name *ngFor="let user of x.toArray">{{(opened_levels.indexOf(user.snd_level) >= 0 || user.snd_level == 'level0' || user.snd_level == 'level5') ? user.name :  user.snd_level+' contact update'}}</h2>
+                                             <h2 class="{{x.read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} text-capital mob-font-small" left smail-name *ngFor="let user of x.toArray">{{(opened_levels.indexOf(user.snd_level) >= 0 || user.snd_level == 'level0' || user.snd_level == 'level5') ? user.name :  user.snd_level+' contact update'}}</h2>
                                           </div>
                                           <ng-container *ngIf="preState != 'Sent'">
-                                          <p class="{{x.read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}}"  left clearboth *ngIf="x.subject != 'Friend Request' ">
+                                          <p class="{{x.read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} mob-font-small"  left clearboth *ngIf="x.subject != 'Friend Request' ">
                                           <!-- && (opened_levels.indexOf(x.snd_level) >= 0 || x.snd_level == 'level0') -->
                                              {{x.subject}}     
                                           </p>
                                           <div clearboth></div>
-                                          <p class="{{x.read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}}" *ngIf="x.subject == 'Friend Request'" style=""> Friend Request
+                                          <p class="{{x.read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} mob-font-small" *ngIf="x.subject == 'Friend Request'" style=""> Friend Request
                                           </p>
                                           </ng-container>
                                           <ng-container *ngIf="preState == 'Sent'">
-                                          <p class="{{x.sent_read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}}"  left clearboth *ngIf="x.subject != 'Friend Request' ">
+                                          <p class="{{x.sent_read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} mob-font-small"  left clearboth *ngIf="x.subject != 'Friend Request' ">
                                              {{x.subject}}     
                                           </p>
                                           <div clearboth></div>
-                                          <p class="{{x.sent_read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}}" *ngIf="x.subject == 'Friend Request'" style=""> Friend Request
+                                          <p class="{{x.sent_read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} mob-font-small" *ngIf="x.subject == 'Friend Request'" style=""> Friend Request
                                           </p>
                                           </ng-container>
                                        </ion-label>
                                        <ion-icon class="icon-attach" name="attach" item-end *ngIf="x.attacment?.length > 0" (click)="openSmaildetailPage(x, index)"></ion-icon>
-                                       <ion-note item-end (click)="openSmaildetailPage(x, index)" style="">{{x.date | date: 'h:mm a dd MMM'}}</ion-note>
+                                       <ion-note item-end (click)="openSmaildetailPage(x, index)" style="" class="mob-font-small">{{x.date | date: 'h:mm a dd MMM'}}</ion-note>
                                        <ion-icon title="Undo" item-end  class="ion-ios-undo" color="blue" btn-undo *ngIf="preState == 'Sent' && x.subject != 'Friend Request' && x.subject != 'Invitation to join company on Salvum' && x.sent_read == false" (click)="undo(x, index)"></ion-icon>
                                     </ion-item>
                                  </ion-item-sliding>
@@ -668,25 +668,25 @@
                                           <span class="level4"></span>    
                                        </div>
                                        <div float-left w-100 *ngIf="x.toArray[0].senderId == userId">
-                                          <h2 *ngIf="preState != 'Sent'" class="{{x.read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} text-capital" left margin0 smail-name >
+                                          <h2 *ngIf="preState != 'Sent'" class="{{x.read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} text-capital mob-font-small" left margin0 smail-name >
                                           <ion-icon *ngIf="(x.snd_level == 'level5' && x.userId != userId) || x.unconnected == '1'" class="warning_clr" name="warning" title="Unconnected user"></ion-icon>
                                           {{(opened_levels.indexOf(x.snd_level) >= 0 || x.snd_level == 'level0' || x.snd_level == 'level5') ? (x.unconnected == '1' ? 'Unconnected User' : x.name) : (x.unconnected == '1' ? 'Unconnected User' : x.snd_level+' contact update')}}</h2>
       
-                                          <h2 *ngIf="preState == 'Sent'" class="{{x.sent_read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} text-capital" left margin0 smail-name >
+                                          <h2 *ngIf="preState == 'Sent'" class="{{x.sent_read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} text-capital mob-font-small" left margin0 smail-name >
                                              <ion-icon *ngIf="(x.snd_level == 'level5' && x.userId != userId) || x.unconnected == '1'" class="warning_clr" name="warning" title="Unconnected user"></ion-icon>
                                              {{(opened_levels.indexOf(x.snd_level) >= 0 || x.snd_level == 'level0' || x.snd_level == 'level5') ? (x.unconnected == '1' ? 'Unconnected User' : x.name) : (x.unconnected == '1' ? 'Unconnected User' : x.snd_level+' contact update')}}</h2>
                                        </div>
       
                                        <div float-left w-100 *ngIf=" x.toArray[0].senderId != userId">
                                        <ng-container *ngIf="preState == 'Sent'">
-                                          <h2 class="{{x.read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} text-capital" left margin0 smail-name *ngFor="let user of x.toArray">
+                                          <h2 class="{{x.read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} text-capital mob-font-small" left margin0 smail-name *ngFor="let user of x.toArray">
                                           <ion-icon *ngIf="user.snd_level == 'level5' && user.userId != userId" class="warning_clr" name="warning" title="Unconnected user"></ion-icon>
                                              {{(opened_levels.indexOf(user.snd_level) >= 0 || user.snd_level == 'level0' || user.snd_level == 'level5') ? user.name : user.snd_level+' contact update'}}
                                              <span smail-comma>,</span></h2>
                                           </ng-container>
       
                                           <ng-container *ngIf="preState != 'Sent'">
-                                          <h2  class="{{x.sent_read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} text-capital" left margin0 smail-name >
+                                          <h2  class="{{x.sent_read == false ? (x.isGroupMsg == true ? 'unread_color_level'+x.level : 'unread_color_level'+x.receiverLevel) : ''}} text-capital mob-font-small" left margin0 smail-name >
                                              <ion-icon *ngIf="x.snd_level == 'level5' && x.userId != userId" class="warning_clr" name="warning" title="Unconnected user"></ion-icon>
                                              {{(opened_levels.indexOf(x.snd_level) >= 0 || x.snd_level == 'level0' || x.snd_level == 'level5') ? x.name : x.snd_level+' contact update'}}
                                           </h2>
@@ -706,7 +706,7 @@
                                        </p>
                                     </ion-label>
                                     <ion-icon name="attach" item-end *ngIf="x.attacment?.length > 0" (click)="openSmaildetailPage(x, index)"></ion-icon>
-                                    <ion-note item-end (click)="openSmaildetailPage(x, index)" style="">{{x.date | date: 'h:mm a dd MMM'}}</ion-note>
+                                    <ion-note item-end (click)="openSmaildetailPage(x, index)" style="" class="mob-font-small">{{x.date | date: 'h:mm a dd MMM'}}</ion-note>
                                     </ion-item>
       
                                  
@@ -723,7 +723,7 @@
                <ion-col size="12" size-md="7">
                   <!-- <ion-scroll  #scroll scroll-smail scrollY="true" style="width: 100%;  height: 82vh" id="scroll_rep_forwd">  -->
                      <ion-item advertise class="border-1 text-center">
-                      <p class="text-center"> I am <br> advertisement</p>
+                      <p class="text-center full-width"> I am <br> advertisement</p>
                      </ion-item>
                      <ion-grid class="white-box" margin0 padding0 paddingtop0 *ngIf="details != ''">
                         <ion-list margin0 smail-detail *ngIf="replyMail.thread.length == 0">
@@ -755,7 +755,7 @@
                                           <p fnt-regular>{{replyMail.thread[0]?.email}}</p>
                                        </div>
                                        <div mar-l-55 *ngIf="opened_levels.indexOf(replyMail.thread[0]?.snd_level) == -1 && replyMail.thread[0]?.snd_level != 'level0' && replyMail.thread[0]?.snd_level != 'level5'">
-                                          <h2 fnt-bold class="text-capital">{{replyMail.thread[0]?.snd_level+' contact update'}}</h2>
+                                          <h2 fnt-bold class="text-capital mob-font-small">{{replyMail.thread[0]?.snd_level+' contact update'}}</h2>
                                        </div>
                                        <div mar-l-55 *ngIf="replyMail.thread[0]?.snd_level == 'level5'">
                                           <ion-icon class="warning_clr" name="warning" title="Unconnected user"></ion-icon>
@@ -818,7 +818,7 @@
                                        <p fnt-regular>{{replyMail.thread[0]?.toArray[0]?.email}}</p>
                                     </div>
                                     <div mar-l-55 *ngIf="opened_levels.indexOf(replyMail.thread[0]?.toArray[0]?.on_level) == -1 && replyMail.thread[0]?.toArray[0]?.on_level != 'level0' && replyMail.thread[0]?.toArray[0]?.on_level != 'level5'">
-                                       <h2 fnt-bold class="text-capital">{{replyMail.thread[0]?.toArray[0]?.on_level+' contact update'}}</h2>
+                                       <h2 fnt-bold class="text-capital mob-font-small">{{replyMail.thread[0]?.toArray[0]?.on_level+' contact update'}}</h2>
                                     </div>
                                     <div mar-l-55 *ngIf="replyMail.thread[0]?.toArray[0]?.on_level == 'level5'">
                                        <ion-icon class="warning_clr" name="warning" title="Unconnected user"></ion-icon>
@@ -862,7 +862,7 @@
                                        <p fnt-regular>{{replyMail.thread[0]?.email}}</p>
                                     </div>
                                     <div mar-l-55 *ngIf="opened_levels.indexOf(replyMail.thread[0]?.snd_level) == -1 && replyMail.thread[0]?.snd_level != 'level0' && replyMail.thread[0]?.snd_level != 'level5'">
-                                       <h2 fnt-bold class="text-capital">{{replyMail.thread[0]?.snd_level+' contact update'}}</h2>
+                                       <h2 fnt-bold class="text-capital mob-font-small">{{replyMail.thread[0]?.snd_level+' contact update'}}</h2>
                                     </div>
                                     <div mar-l-55 *ngIf="replyMail.thread[0]?.snd_level == 'level5'">
                                        <ion-icon class="warning_clr" name="warning" title="Unconnected user"></ion-icon>
@@ -890,7 +890,7 @@
                                           {{replyMail.thread[0]?.toArray[0].email}}
                                           </span>
       
-                                          <span float-left m-l-1-t-5 class="text-capital" *ngIf="opened_levels.indexOf(replyMail.thread[0]?.toArray[0].on_level) == -1 && replyMail.thread[0]?.toArray[0].on_level != 'level5'">
+                                          <span float-left m-l-1-t-5 class="text-capital mob-font-small" *ngIf="opened_levels.indexOf(replyMail.thread[0]?.toArray[0].on_level) == -1 && replyMail.thread[0]?.toArray[0].on_level != 'level5'">
                                           {{replyMail.thread[0]?.toArray[0].on_level}} contact update
                                           </span>
                                        </ng-container>
@@ -916,7 +916,7 @@
                                                    <span fnt-bold float-left smail-email>  <{{cont?.email}}>   </span> 
                                                 </ng-container>
                                                 <ng-container *ngIf="opened_levels.indexOf(cont?.on_level) == -1 && cont?.on_level != 'level5'">
-                                                   <span fnt-bold  float-left  smail-username class="text-capital"> {{cont?.on_level}} contact update   </span> 
+                                                   <span fnt-bold  float-left  smail-username class="text-capital mob-font-small"> {{cont?.on_level}} contact update   </span> 
                                                 </ng-container>
                                              </ng-container>
                                              <ng-container *ngIf="userId == cont?.userId">
@@ -929,7 +929,7 @@
                                  </div>
                               </ng-container>
       
-                              <ion-note  item-end margin0 fnt-regular max-90 style="">
+                              <ion-note  item-end margin0 fnt-regular max-90 style="" class="mob-font-small">
                                  {{replyMail.thread[0].date | date: 'h:mm a dd MMM' }} <br> 
                                  ({{(replyMail.thread[0].date | timeAgo)}})
                               </ion-note>
@@ -1058,7 +1058,7 @@
                                           <p fnt-regular>{{item.email}}</p>
                                        </div>
                                        <div mar-l-55 *ngIf="opened_levels.indexOf(item.snd_level) == -1 && item.snd_level != 'level0' && item.snd_level != 'level5'">
-                                          <h2 fnt-bold class="text-capital">From: {{item.snd_level}} contact update</h2>
+                                          <h2 fnt-bold class="text-capital mob-font-small">From: {{item.snd_level}} contact update</h2>
                                        </div>
                                        <div mar-l-55 *ngIf="item.snd_level == 'level5'">
                                           <h2 fnt-bold>From: 
@@ -1084,7 +1084,7 @@
                                                       <span fnt-bold >{{contact.name}}</span> <br> <span contact-email>  <{{contact.email}}>  </span>
                                                    </ng-container>
                                                    <ng-container *ngIf="opened_levels.indexOf(contact?.on_level) == -1 && contact?.on_level != 'level5'">
-                                                      <span fnt-bold  float-left  smail-username class="text-capital"> {{contact?.on_level}} contact update </span> 
+                                                      <span fnt-bold  float-left  smail-username class="text-capital mob-font-small"> {{contact?.on_level}} contact update </span> 
                                                    </ng-container>
                                                    
                                                 </ng-container>
@@ -1155,7 +1155,7 @@
                                                       <span fnt-bold float-left>{{cont.name}}</span> <br> <span contact-email float-left> <{{cont.email}}>  </span>
                                                    </ng-container>
                                                    <ng-container *ngIf="opened_levels.indexOf(cont?.on_level) == -1 && cont?.on_level != 'level5'">
-                                                      <span fnt-bold  float-left  smail-username class="text-capital"> {{cont?.on_level}} contact update </span> 
+                                                      <span fnt-bold  float-left  smail-username class="text-capital mob-font-small"> {{cont?.on_level}} contact update </span> 
                                                    </ng-container>
                                                 </ng-container>
                                                 <ng-container *ngIf="userId == cont?.userId">
@@ -1168,7 +1168,7 @@
                                        </div>
                                     </ng-container>
       
-                                    <ion-note item-end margin0 fnt-regular style=""  max-90>
+                                    <ion-note item-end margin0 fnt-regular style=""  max-90 class="mob-font-small">
                                        {{item.date | date: 'h:mm a dd MMM'}} <br>
       
                                        ({{(item.date | timeAgo)}})

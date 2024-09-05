@@ -1,505 +1,586 @@
-<app-header></app-header>
+<ion-split-pane contentId="main-content" when="md">
+   <!-- Custom Menu -->
+   <ion-menu side="start" menuId="customMenu" contentId="main-content">
+     <!--<ion-header>
+       <ion-toolbar>
+         <ion-title>Menu</ion-title>
+       </ion-toolbar>
+     </ion-header>-->
+     <ion-content>
+      <ion-list>
+         <div class="outer-filter pl-2">
+            <div>Filter Levels</div>
+            <!-- <div *ngFor="let n of levelArray; let i = index "> -->
+              <!--  <button menuClose ion-item  (click)="filterLevel(i)" class="filter" [ngClass]="(n.checked == true) ? 'checked' : ' '" >
+               {{ n.level}}
+               </button> -->
+                        <ion-grid m-t-10 no-padding w-100> 
+         <ion-row no-padding w-100> 
+                  <!--<ion-col col-12>
+                     <div class="checkbox-inline">
+                        <div class="checkbox-button" *ngIf="enable_level1 == 'false'">
+                           <label>
+                              <input type="checkbox" name="chk[]" id="hl1" (change)="filterLevel($event,'level1')" checked="{{this.shown_levels.indexOf('level1') >= 0 ? 'checked' : ''}}" class="ldi"><span>1</span>
+                           </label>
+                        </div>
+                           <div class="checkbox-button" *ngIf="enable_level2 == 'false'">
+                           <label>
+                              <input type="checkbox" name="chk[]" id="hl2"  (change)="filterLevel($event,'level2')" checked="{{this.shown_levels.indexOf('level2') >= 0 ? 'checked' : ''}}" class="ldi"><span>2</span>
+                           </label>
+                        </div>
+                           <div class="checkbox-button" *ngIf="enable_level3 == 'false'">
+                           <label>
+                              <input type="checkbox" name="chk[]" id="hl3" (change)="filterLevel($event,'level3')" checked="{{this.shown_levels.indexOf('level3') >= 0 ? 'checked' : ''}}" class="ldi"><span>3</span>
+                           </label>
+                        </div>
+                           <div class="checkbox-button" *ngIf="enable_level4 == 'false'">
+                           <label>
+                              <input type="checkbox" name="chk[]" id="hl4" (change)="filterLevel($event,'level4')" checked="{{this.shown_levels.indexOf('level4') >= 0 ? 'checked' : ''}}" class="ldi"><span>4</span>
+                           </label>
+                        </div>
+                     </div>
+                  </ion-col>
+                  <ion-col style="display:none" col-2 *ngIf="enable_level1 == 'false'">1 <ion-checkbox (ionChange)="filterLevel($event,'level1')" checked="{{this.shown_levels.indexOf('level1') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
+                  <ion-col  style="display:none"  col-2 *ngIf="enable_level2 == 'false'">2 <ion-checkbox (ionChange)="filterLevel($event,'level2')" checked="{{this.shown_levels.indexOf('level2') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
+                  <ion-col  style="display:none"  col-2 *ngIf="enable_level3 == 'false'">3 <ion-checkbox (ionChange)="filterLevel($event,'level3')" checked="{{this.shown_levels.indexOf('level3') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
+                  <ion-col style="display:none"  col-2 *ngIf="enable_level4 == 'false'">4 <ion-checkbox (ionChange)="filterLevel($event,'level4')" checked="{{this.shown_levels.indexOf('level4') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
+               -->
 
-<ion-split-pane file-split [class.actives]="isParaActive">
-  <ion-menu  side="left" class="show-menu">
-     <ion-header>
-        <ion-toolbar>
-           <ion-title>Smail</ion-title>
-        </ion-toolbar>
-     </ion-header>
-     
-        <ion-list> 
-           <div class="outer-filter " w-100 padding p-b-0>
-              <div>Filter Levels</div> 
-           <ion-grid m-t-10 no-padding w-100> 
-               <ion-row no-padding>
-                 <ion-col col-12>
-                   <div class="checkbox-inline">
-               <div class="checkbox-button" *ngFor="let n of levelArray; let i = index ">
-                <label>
-                 <input (click)="filterLevel(i)" name="chk[]" id="hl{{i}}" type="checkbox" checked="{{this.allowed_levels.indexOf('level' + (i + 1)) >= 0 ? 'checked' : ''}}" class="ldi"><span>{{i+1}}</span>
-                </label>
-             </div>
+                        <!-- <ion-col col-2> -->
+                          <!-- <button menuClose ion-item  (click)="filterLevel(i)" class="filter"  [ngClass]="(n.checked == true) ? 'checked' : ' '" >
+                          {{ n.level}}
+                          </button> -->
+                          <!-- <ion-checkbox (ionChange)="filterLevel(i+1,$event)" checked="{{this.opened_levels.indexOf('level' + (i + 1)) >= 0 ? 'true' : 'false'}}"></ion-checkbox> -->
+                          <!-- </ion-col> -->
+            </ion-row>
+         </ion-grid>  
+            <!-- </div> -->
+         </div> 
+         <div class="pl-2" menuClose ion-item>
+            <ion-button   color="primary" size="small" (click)="presentPrompt()">
+               <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+            <ion-button  color="danger" size="small" (click)="presentConfirm()">
+               <ion-icon name="remove-outline"></ion-icon>
+            </ion-button>
          </div>
-                 </ion-col>
-              <ion-col style="display: none;" col-2 *ngFor="let n of levelArray; let i = index ">
+         <ion-list>
+            <ion-item *ngFor="let p of pages">
+              
+               <ion-button menuClose ion-item (click)="openPage(p)" color="dark" fill="clear" expand="block" [ngClass]="(preState == p.title && is_main == '1') ? 'checked' : ' '">
+                  <ion-icon color="blue" [name]="p.icon" item-left></ion-icon> 
+                  {{p.title}}
+                  </ion-button>
+               
+            </ion-item>
+         </ion-list>
 
-        
-              </ion-col>
-        </ion-row>
-              </ion-grid>  
-           </div>
-           <div menuClose ion-item>
-              <button add-share-btn    color="blue" ion-button>  <ion-icon name="md-add" color="" (click)="presentPrompt()"></ion-icon></button> 
-                <button remove-share-btn  color="danger"   ion-button> <ion-icon name="md-remove" color="" (click)="presentConfirm()"></ion-icon></button> 
-           </div>
-           <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" [ngClass]="('Compose' == p.title) ? 'checked' : ' '">
-           <ion-icon color="blue" [name]="p.icon" item-left></ion-icon>
-           {{p.title}} 
-           </button>
-           <div *ngFor="let n of directory , let i = index " class="divitem">
-              <div>
-                 <button ion-item detail-none no-lines  (click)="clickNode(n)" 
-                 [ngClass]="{nodeactive: isSelected(n)}"  icon-left>
-                 <ion-grid>
-                    <ion-row>                  
-                       <ion-col col-1 no-padding>
-                          <ion-icon name="folder" color="blue"></ion-icon>
-                       </ion-col>
-                       <ion-col col-10 no-padding p-l-10  text-capitalize >
-                          {{n.name}}
-                       </ion-col>
-                 <ion-col col-1 no-padding>
-                          <span item-left *ngIf="n.children.length > 0" >
-                          <ion-icon [color]="isSelected(n) ? 'primary' : 'gray'" [name]="isSelected(n) ? 'ios-arrow-down' : 'ios-arrow-forward'"></ion-icon>
-                          </span> 
-                          <span item-left *ngIf="n.children.length == 0" >
-                          <ion-icon ></ion-icon>
-                          </span>  
-                       </ion-col>
+         
+
+         <ion-list>
+            <div *ngFor="let n of directory; let i = index" class="divitem">
+              <div class="divitem_drop" id="{{n.name}}" (mouseover)="mouseOverDrop($event, n.name)">
+                <ion-item button id="click_{{n.name}}" detail-none lines="none" (click)="clickNode(n)" [ngClass]="{ 'checked': selectedNode === n.name }" class="ion-activatable ripple-parent">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col size="1" class="ion-no-padding">
+                        <ion-icon name="folder" color="primary"></ion-icon>
+                      </ion-col>
+                      <ion-col size="9" class="ion-no-padding" style="text-transform: capitalize;">
+                        {{ n.name }}
+                      </ion-col>
+                      <ion-col size="2" class="ion-no-padding edit-folder">
+                        <span *ngIf="n.children.length > 0">
+                          <ion-icon [color]="isSelected(n) ? 'primary' : 'medium'" [name]="isSelected(n) ? 'chevron-down-outline' : 'chevron-forward-outline'"></ion-icon>
+                        </span>
+                        <span *ngIf="n.children.length === 0">
+                          <ion-icon></ion-icon>
+                        </span>
+                      </ion-col>
                     </ion-row>
-                 </ion-grid>
-                 </button>
-                 <div *ngIf="n.children" [hidden]="!isSelected(n)">
-                 <div *ngFor="let n of n.children; let i = index " class="divitem ">
-                    <div ion-item detail-none no-lines  icon-left  id="0{{i}}">
-                       <ion-row w-100 >
-                          <ion-col col-9>
-                             <ion-grid tree-view>
-                                <ion-row  (click)="clickNodeChild(n)">
-                                   <ion-col col-1>
-                                      <span item-left>
-                                      <ion-icon [color]="gray" [name]="ios-arrow-forward"></ion-icon>
-                                      </span> 
-                                   </ion-col>
-                                   <ion-col col-1>
-                                      <ion-icon name="folder" color="blue"></ion-icon>
-                                   </ion-col>
-                                   <ion-col col-10 p-l-10 id="00{{i}}">
-                                      {{n.name}}
-                                   </ion-col>
-                                </ion-row>
-                             </ion-grid>
-                          </ion-col >
-                          <ion-col  (click)="editFolder(n, i)" col-3 edit-folder>
-                             <ion-icon name="md-create" color="blue"></ion-icon>
-                          </ion-col>
-                       </ion-row>
-                    </div>
-                 </div>
+                  </ion-grid>
+                </ion-item>
               </div>
-           </div>
-           </div>
-        </ion-list>
-     
-  </ion-menu>
-</ion-split-pane>
+              <!-- Nested ion-list for children -->
+              <ion-list *ngIf="isSelected(n)">
+                <ng-container *ngFor="let child of n.children">
+                  <ion-item>
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col size="2">
+                          <ion-icon name="folder" color="primary"></ion-icon>
+                        </ion-col>
+                        <ion-col size="8" (click)="clickNodeChild(child)">
+                          {{ child.name }}
+                        </ion-col>
+                        <ion-col size="2" class="edit-folder">
+                          <span class="ion-float-right" (click)="editFolder(child, child._id)">
+                            <ion-icon name="pencil-outline" color="primary"></ion-icon>
+                          </span>
+                          <span class="ion-float-right" (click)="clickNodeChild(child)">
+                            <ion-icon [color]="isSelected(child) ? 'primary' : 'medium'" [name]="isSelectedChild(child) ? 'chevron-down-outline' : 'chevron-forward-outline'"></ion-icon>
+                          </span>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </ion-item>
+                  <!-- Third level -->
+                  <ion-list *ngIf="isSelectedChild(child)">
+                    <ion-item *ngFor="let grandchild of child.children">
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col size="2">
+                            <ion-icon name="folder" color="primary"></ion-icon>
+                          </ion-col>
+                          <ion-col size="8" (click)="clickNodeGrandChild(grandchild)">
+                            {{ grandchild.name }}
+                          </ion-col>
+                          <ion-col size="2" class="edit-folder">
+                            <span class="ion-float-right" (click)="editFolder(grandchild, grandchild._id)">
+                              <ion-icon name="create-outline" color="primary"></ion-icon>
+                            </span>
+                            <span class="ion-float-right" (click)="clickNodeGrandChild(grandchild)">
+                              <ion-icon [color]="isSelected(grandchild) ? 'primary' : 'medium'" [name]="isSelectedGrandChild(grandchild) ? 'chevron-down-outline' : 'chevron-forward-outline'"></ion-icon>
+                            </span>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </ion-item>
+                  </ion-list>
+                </ng-container>
+                <!-- Static nodes (Inbox and Sent) -->
+                <ion-item button (click)="clickNodeStatic('inbox')" [hidden]="!isSelectedChild(n)">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col size="4">
+                        <ion-icon name="folder" color="primary"></ion-icon>
+                      </ion-col>
+                      <ion-col size="8">
+                        Inbox
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-item>
+                <ion-item button (click)="clickNodeStatic('sent')" [hidden]="!isSelectedChild(n)">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col size="4">
+                        <ion-icon name="folder" color="primary"></ion-icon>
+                      </ion-col>
+                      <ion-col size="8">
+                        Sent
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-item>
+              </ion-list>
+            </div>
+          </ion-list>
+          
+          
+          
 
-<ion-row main-breadcrumb ion-fixed style="top:60px">
-  <ion-col>
-     <ol class="breadcrumb">
-       <li (click)="root()"><a>Home</a></li>
-       <li (click)="inboxPage()"><a>Smail</a></li>
-       <li class="active">Compose</li>
-     </ol>
-  </ion-col>
-</ion-row>
+      </ion-list>
+   </ion-content>
+   </ion-menu>
+ 
+   <!-- Main Content -->
+   <div id="main-content">
+      <app-header></app-header>
+     <!--<ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false" menu="customMenu"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Small Inbox</ion-title>
+    </ion-toolbar>-->
 
- <!-- style="margin-left:250px;width: calc(100% - 250px);"-->
-<ion-content file-content lightgrey padding has-header [class.actives]="isParaActive">
-<div breadcrumb-height></div>
-
-   <ion-row>
-     <!-- Sidebar -->
-     <ion-col size="12" size-md="3" class="hide-mob">
-       <ion-card>
-          <ion-card-content>
-             <ion-button color="primary" size="small"><ion-icon name="add-outline"></ion-icon></ion-button> 
-             <ion-button color="danger" size="small"><ion-icon name="remove-outline"></ion-icon></ion-button>
-             <ion-list>
-               <ion-item (click)="composePage()">
-                  <ion-label><ion-icon name="pencil-outline" color="primary"></ion-icon> Compose</ion-label>
-               </ion-item>
-               <ion-item (click)="smailPage()">
-                  <ion-label><ion-icon name="mail-outline" color="primary"></ion-icon> Inbox</ion-label>
-               </ion-item>
-               <ion-item>
-                  <ion-label><ion-icon name="mail-open-outline" color="primary"></ion-icon> Sent</ion-label>
-               </ion-item>
-               <ion-item>
-                  <ion-label><ion-icon name="folder-open-outline" color="primary"></ion-icon> Level1</ion-label>
-               </ion-item>
-            </ion-list>
-          </ion-card-content>
-       </ion-card>
-     </ion-col>
-     <ion-col size="12" size-md="9">
+    <!----================== CONTENT START ==================----->
+    
+    
+    <ion-content [ngClass]="{'actives':isParaActive}" class="ion-content-mob">
+      <div breadcrumb-height></div>
+      <ion-grid no-padding>
          <ion-row>
-            <ion-col size="12" size-md="6">
-               <ion-buttons style="display:none">
-                  <button btn-grid btn-side    [class.actives]="isBtnActive" (click)="toggleClass()">
-                  <ion-icon class="ion-md-arrow-dropleft-circle" hide-t-icon r ></ion-icon>
-                  <ion-icon class="ion-md-arrow-dropright-circle" show-t-icon  style=""></ion-icon>
-                  </button>
+            <ion-col size="2" class="hide-pc">
+               <ion-buttons text-center  header-icon hide-icon  btn-tree btn-smail-splitp>
+                  <ion-menu-button autoHide="false" menu="customMenu"><ion-icon name="caret-back-circle" color="primary"></ion-icon></ion-menu-button>
+                  <!--<button btn-grid btn-side [class.actives]="isBtnActive" (click)="toggleClass()">
+                  <ion-icon name="chevron-back-outline"></ion-icon>
+                  <ion-icon name="caret-forward-outline"></ion-icon>
+                  </button>-->
                </ion-buttons>
             </ion-col>
-            <ion-col size="12" size-md="3">
+            <ion-col size="6">
                <ion-item>
-                  <ion-label>Job Message</ion-label>
                   <ion-checkbox [(ngModel)]="isJobChecked" (ionChange)="checkBoxClicked(isJobChecked)" *ngIf="selectedGroups == ''" ></ion-checkbox>
+                  <ion-label>Job Message</ion-label>
                 </ion-item>
             </ion-col>
-            <ion-col size="12" size-md="3">
-               <ion-button (click) = "goToContacts()" color="primary">
-                  <ion-icon name="contacts"></ion-icon>
-                  <span class="hidden-xs">Contact </span>
-                 </ion-button>
+            <ion-col size="4">
+               <ion-toolbar>
+                  <ion-buttons slot="end">
+                     <ion-button (click) = "goToContacts()" fill="solid" color="primary">
+                        <ion-icon name="people-circle-outline"></ion-icon>
+                        <span class="hidden-xs hide-mob">Contact </span>
+                       </ion-button>
+                  </ion-buttons>
+               </ion-toolbar>
+               
             </ion-col>
          </ion-row>
-
-
-         <ion-grid class="white-box box-white" paddingtop0>
-            <ion-list class="input-st">
-               <ion-item p-lr-0 *ngIf="selectedGroups != '' ">
-                  <div  style="white-space: initial;margin: 0px !important;">
-                  <span (click)="groupListing()">To Group :</span> 
-                  <tag-input [ngModel]="selectedGroups.selectedGroups" [onlyFromAutocomplete]="true" placeholder="" secondaryPlaceholder="Type emails..." (onAdd)="onGroupAdd($event)" (onRemove)="removeGroup($event)">
-                      <tag-input-dropdown [showDropdownIfEmpty]="true" 
-                                          [autocompleteItems]="all_groups">
-                      </tag-input-dropdown>
-                  </tag-input>
-                  </div>
-               </ion-item>
-
-               <ion-item *ngIf="selectedGroups != ''  ">
-                  <div  style="white-space: initial;margin: 0px !important;">
-                  <span (click)="toIndividuals()">To Individual :</span> 
-                  <tag-input [ngModel]="selectedGroups.selectedContacts" [onlyFromAutocomplete]="true" placeholder="" secondaryPlaceholder="Type emails..." (onAdd)="onIndividualAdd($event)" (onRemove)="removeIndividual($event)">
-                      <tag-input-dropdown [showDropdownIfEmpty]="true" 
-                                          [autocompleteItems]="all_emails">
-                      </tag-input-dropdown>
-                  </tag-input>
-                  </div>
-       
-       
-                  <!-- <div *ngIf="selectedGroups.selectedContacts?.length != 0">
-                     <span *ngFor="let contact of selectedGroups.selectedContacts"  badge-custom >
-                        {{contact.name}}
-                        <span>
-                           <ion-icon  style="margin-left: 5px;" name="close" (click)="removeIndividualContact(contact)"></ion-icon>
-                        </span>
-                     </span>
-                  </div> -->
-               </ion-item>
-       
-               <ion-item p-lr-0 *ngIf="isJobChecked == true">
-                  <ion-label>Job: </ion-label>
-                  <ion-select [(ngModel)]="selectedJob" (ionChange)="getTrades($event, selectedJob, i)">
-                      
-                     <!--  -->
-                     <ion-select-option value="{{job._id}}" *ngFor="let job of jobListingResult; let i = index ">{{job.job_title}}</ion-select-option>
-                  </ion-select>
-               </ion-item>
-       
-               <ion-item p-lr-0 *ngIf="isJobChecked == true">
-                  <!-- <div (click)="doCheckbox()" style="white-space: initial;margin: 0px !important;">Trade : </div> -->
-                  <ion-label>Trade: </ion-label>
-                  <ion-select [(ngModel)]="selectedTrade" (ngModelChange)="getTradeContacts($event, selectedTrade)">
-                  <ion-select-option value="">Select Trade</ion-select-option>
-                     <ion-select-option value="{{trade._id}}" *ngFor="let trade of trades">{{trade.trade_name}}</ion-select-option>
-                  </ion-select>
-               </ion-item>
-       
-               <ion-item p-lr-0 *ngIf="isJobChecked == true && selectedTrade != '' && selectedTrade != undefined && selectedTrade != null">
-                  <!-- <div (click)="doCheckbox()" style="white-space: initial;margin: 0px !important;">Trade : </div> -->
-                  <ion-label>Type: </ion-label>
-                  <ion-select [(ngModel)]="selectedType" >
-                  <ion-select-option value="">Select Type</ion-select-option>
-                     <ion-select-option value="addendum"> Addendum</ion-select-option>
-                     <ion-select-option value="rfi"> RFI</ion-select-option>
-                     <ion-select-option value="change_order"> Change Order</ion-select-option>
-                  </ion-select>
-               </ion-item>
-       
-               <ion-item class="compose-text" p-lr-0 *ngIf="selectedGroups == '' " style="display: flex;">
-                  <!-- if no trade selected -->
-          <ion-grid no-padding>
-            <ion-row>
-              <ion-col col-8 *ngIf="selectedTrade == '' "  fnt-grey>
-                  <!---div  *ngIf="selectedTrade == '' " (click)="doCheckbox()"-->
-            <span textleft (click)="doCheckbox()" class="mob-font-small">To :</span> 
-            <tag-input [ngModel]="testCheckboxResult" [onlyFromAutocomplete]="true" placeholder="" secondaryPlaceholder="Type emails..." (onAdd)="onContactAdd($event)" (onRemove)="removeContact($event)">
-                <tag-input-dropdown [showDropdownIfEmpty]="true" 
-                                    [autocompleteItems]="all_emails">
-                </tag-input-dropdown>
-            </tag-input>
-            <!--/div-->
-                 </ion-col>
-                  <!-- if trade selected -->
-            <ion-col col-8 *ngIf="selectedTrade != ''" fnt-grey>
-                  <!--div  *ngIf="selectedTrade != '' " (click)="selectTradeContact()"-->
-            <span textleft (click)="selectTradeContact()" class="mob-font-small">To :</span> 
-            <tag-input [ngModel]="testCheckboxResult" [onlyFromAutocomplete]="true" placeholder="" secondaryPlaceholder="Type emails..." (onAdd)="onJobContactAdd($event)" (onRemove)="removeJobContact($event)">
-                <tag-input-dropdown [showDropdownIfEmpty]="true" 
-                                    [autocompleteItems]="tradeContacts">
-                </tag-input-dropdown>
-            </tag-input>
-            <!--/div-->
-                 </ion-col>
-             <ion-col col-4  *ngIf="isJobChecked == false" text-right  fnt-grey> 
-                  <!--div  *ngIf="isJobChecked == false"-->
-                  <ion-toolbar>
-                     <ion-buttons slot="end">
-                        <ion-button color="medium" (click)="enableCc()" *ngIf="cc == false" btn-bcc>CC</ion-button> 
-                        <ion-button color="medium" (click)="enableBcc()" *ngIf="bccList == false" btn-bcc>BCC</ion-button>
-                     </ion-buttons>
-                  </ion-toolbar>
-                  <!--/div-->
-                </ion-col>
-              </ion-row>
-                </ion-grid>
-       <!--             <div *ngIf="testCheckboxResult?.length != 0 && isJobChecked == true" >
-                     <span *ngFor="let contact of testCheckboxResult"  badge-custom>
-                        {{contact.name}} ({{selectedCompany}})
-                        <span>
-                           <ion-icon  style="margin-left: 5px;" name="close" (click)="removeContact(contact)"></ion-icon>
-                        </span>
-                     </span>
-                  </div> -->
-       
-                 <!--  <div *ngIf="testCheckboxResult?.length != 0 && isJobChecked == false">
-                     <span *ngFor="let contact of testCheckboxResult" badge-custom>
-                        {{contact.name}} 
-                        <span>
-                           <ion-icon  style="margin-left: 5px;" name="close" (click)="removeContact(contact)"></ion-icon>
-                        </span>
-                     </span>
-                  </div> -->
-               </ion-item>
-       
-               <ion-item class="compose-text" p-lr-0 *ngIf="cc == true">
-                  <div floating  fnt-grey btn-bcc>
-                  <span textleft (click)="ccCheckbox()" class="mob-font-small">Cc :</span> 
-                    <tag-input [ngModel]="ccCheckboxResult" [onlyFromAutocomplete]="true" placeholder="" secondaryPlaceholder="Type emails..." (onAdd)="onCcAdd($event)" (onRemove)="removeCcContact($event)">
-                        <tag-input-dropdown [showDropdownIfEmpty]="true" 
-                                            [autocompleteItems]="all_emails">
-                        </tag-input-dropdown>
-                    </tag-input>
-                  </div>
-                  <!-- <div *ngIf="ccCheckboxResult?.length != 0">
-                     <span *ngFor="let contact of ccCheckboxResult" badge-custom>
-                        {{contact.name}}
-                        <span>
-                           <ion-icon  style="margin-left: 5px;" name="close" (click)="removeCcContact(contact)"></ion-icon>
-                        </span>
-                     </span>
-                  </div> -->
-               </ion-item>
-       
-               <ion-item class="compose-text"  p-lr-0 *ngIf="bccList == true">
-                  <div floating  fnt-grey btn-bcc>
-                  <span textleft (click)="bccCheckbox()" class="mob-font-small">Bcc : </span>
-                    <tag-input [ngModel]="bccCheckboxResult" [onlyFromAutocomplete]="true" placeholder="" secondaryPlaceholder="Type emails..." (onAdd)="onBccAdd($event)" (onRemove)="removeBccContact($event)">
-                        <tag-input-dropdown [showDropdownIfEmpty]="true" 
-                                            [autocompleteItems]="all_emails">
-                        </tag-input-dropdown>
-                    </tag-input>
-                  </div>
-                  <!-- <div *ngIf="bccCheckboxResult?.length != 0">
-                     <span *ngFor="let contact of bccCheckboxResult" badge-custom >
-                        {{contact.name}}
-                        <span>
-                           <ion-icon  style="margin-left: 5px;" name="close" (click)="removeBccContact(contact)"></ion-icon>
-                        </span>
-                     </span>
-                  </div> -->
-               </ion-item>
-               
-               <!-- <ion-item p-lr-0  *ngIf="bccList == true">
-                  <ion-label floating>Bcc :</ion-label>
-                  <ion-select  cancelText="Nah" okText="Okay!" multiple="true" [(ngModel)]="bcc" (ionChange)="toBccName($event)">
-                  <div *ngFor="let item of data" >
-                     <ion-select-option value="{{item.userId}}"  *ngIf="item.memberstatus == 2">{{item.name}}</ion-select-option>
-                  </div>
-                  </ion-select>
-               </ion-item> -->
-               <ion-item class="compose-text" border p-lr-0>
-                  <ion-input label="Subject" labelPlacement="stacked" type="text" [(ngModel)]="subject"></ion-input>
-               </ion-item>
-
-
-               <ion-col col-xl-12 col-lg-12>
-               <div>
-                 <ion-segment [(ngModel)]="editor_tab" (ionChange)="editoToolbar()">
-                   <ion-segment-button value="format">
-                     Format
-                   </ion-segment-button>
-                   <ion-segment-button value="insert">
-                     Insert
-                   </ion-segment-button>
-                   <ion-segment-button value="styles">
-                     Styles
-                   </ion-segment-button>
-                 </ion-segment>
+      </ion-grid>
+      <ion-grid class="white-box box-white" paddingtop0>
+         <ion-list class="input-st">
+            <ion-item p-lr-0 *ngIf="selectedGroups != '' ">
+               <div  style="white-space: initial;margin: 0px !important;">
+               <span (click)="groupListing()">To Group :</span> 
+               <tag-input [ngModel]="selectedGroups.selectedGroups" [onlyFromAutocomplete]="true" placeholder="" secondaryPlaceholder="Type emails..." (onAdd)="onGroupAdd($event)" (onRemove)="removeGroup($event)">
+                   <tag-input-dropdown [showDropdownIfEmpty]="true" 
+                                       [autocompleteItems]="all_groups">
+                   </tag-input-dropdown>
+               </tag-input>
                </div>
-            </ion-col>
-               <ion-item  class="compose-text">
-                  <!-- <rich-text [formControlItem]="desc" placeholderText="A sample of placeholder text"></rich-text> -->
-                  <ckeditor 
-                      [(ngModel)]="desc"
-                      (ready)="editorReady()"
-                      debounce="500" style="width: 100%;">
-                    </ckeditor>   
-       
-                  <!-- <div padding [innerHTML]="item.value"></div> -->
-                  <!-- <div   [(ngModel)]="desc"></div> -->
-               </ion-item>
-            </ion-list>
-            <ion-row compose-footer>
-               <ion-col size="12" size-md="3">
-                  <button btn-hides1  ion-button icon-left color="lightgrey" fnt-regular (click)="attachfiles()">
-                     <ion-icon name="attach"></ion-icon>
-                   <span btn-text>   Attach A File </span>
-                  </button>
+            </ion-item>
+
+            <ion-item *ngIf="selectedGroups != ''  ">
+               <div  style="white-space: initial;margin: 0px !important;">
+               <span (click)="toIndividuals()">To Individual :</span> 
+               <tag-input [ngModel]="selectedGroups.selectedContacts" [onlyFromAutocomplete]="true" placeholder="" secondaryPlaceholder="Type emails..." (onAdd)="onIndividualAdd($event)" (onRemove)="removeIndividual($event)">
+                   <tag-input-dropdown [showDropdownIfEmpty]="true" 
+                                       [autocompleteItems]="all_emails">
+                   </tag-input-dropdown>
+               </tag-input>
+               </div>
+    
+    
+               <!-- <div *ngIf="selectedGroups.selectedContacts?.length != 0">
+                  <span *ngFor="let contact of selectedGroups.selectedContacts"  badge-custom >
+                     {{contact.name}}
+                     <span>
+                        <ion-icon  style="margin-left: 5px;" name="close" (click)="removeIndividualContact(contact)"></ion-icon>
+                     </span>
+                  </span>
+               </div> -->
+            </ion-item>
+    
+            <ion-item p-lr-0 *ngIf="isJobChecked == true">
+               <ion-label>Job: </ion-label>
+               <ion-select [(ngModel)]="selectedJob" (ionChange)="getTrades($event, selectedJob, i)">
+                   
+                  <!--  -->
+                  <ion-select-option value="{{job._id}}" *ngFor="let job of jobListingResult; let i = index ">{{job.job_title}}</ion-select-option>
+               </ion-select>
+            </ion-item>
+    
+            <ion-item p-lr-0 *ngIf="isJobChecked == true">
+               <!-- <div (click)="doCheckbox()" style="white-space: initial;margin: 0px !important;">Trade : </div> -->
+               <ion-label>Trade: </ion-label>
+               <ion-select [(ngModel)]="selectedTrade" (ngModelChange)="getTradeContacts($event, selectedTrade)">
+               <ion-select-option value="">Select Trade</ion-select-option>
+                  <ion-select-option value="{{trade._id}}" *ngFor="let trade of trades">{{trade.trade_name}}</ion-select-option>
+               </ion-select>
+            </ion-item>
+    
+            <ion-item p-lr-0 *ngIf="isJobChecked == true && selectedTrade != '' && selectedTrade != undefined && selectedTrade != null">
+               <!-- <div (click)="doCheckbox()" style="white-space: initial;margin: 0px !important;">Trade : </div> -->
+               <ion-label>Type: </ion-label>
+               <ion-select [(ngModel)]="selectedType" >
+               <ion-select-option value="">Select Type</ion-select-option>
+                  <ion-select-option value="addendum"> Addendum</ion-select-option>
+                  <ion-select-option value="rfi"> RFI</ion-select-option>
+                  <ion-select-option value="change_order"> Change Order</ion-select-option>
+               </ion-select>
+            </ion-item>
+    
+            <ion-item class="compose-text" lines="none" p-lr-0 *ngIf="selectedGroups == '' " style="display: flex;">
+               <!-- if no trade selected -->
+       <ion-grid no-padding>
+         <ion-row>
+           <ion-col size="12" *ngIf="selectedTrade == '' "  fnt-grey>
+               <!---div  *ngIf="selectedTrade == '' " (click)="doCheckbox()"-->
+         
+               <ion-row>
+                  <ion-col size="8">
+                     <span textleft (click)="doCheckbox()" class="mob-font-small">To :</span> 
+                  </ion-col>
+                  <ion-col size="4" *ngIf="isJobChecked == false" text-right  fnt-grey>
+                        <!--div  *ngIf="isJobChecked == false"-->
+                        <ion-toolbar>
+                           <ion-buttons slot="end">
+                              <ion-button color="medium" size="small" (click)="enableCc()" *ngIf="cc == false" btn-bcc>CC</ion-button> 
+                              <ion-button color="medium" size="small" (click)="enableBcc()" *ngIf="bccList == false" btn-bcc>BCC</ion-button>
+                           </ion-buttons>
+                        </ion-toolbar>
+                        <!--/div-->
+                  </ion-col>
+               </ion-row>
+               <tag-input [ngModel]="testCheckboxResult" [onlyFromAutocomplete]="true" placeholder="" secondaryPlaceholder="Type emails..." (onAdd)="onContactAdd($event)" (onRemove)="removeContact($event)">
+                  <tag-input-dropdown [showDropdownIfEmpty]="true" 
+                                       [autocompleteItems]="all_emails">
+                  </tag-input-dropdown>
+               </tag-input>
+               <!--/div-->
+              </ion-col>
+               <!-- if trade selected -->
+         <ion-col size="12" *ngIf="selectedTrade != ''" fnt-grey>
+               <!--div  *ngIf="selectedTrade != '' " (click)="selectTradeContact()"-->
+            <ion-row>
+               <ion-col size="8">
+                  <span textleft (click)="selectTradeContact()" class="mob-font-small">To :</span> 
                </ion-col>
-               <ion-col size="12" size="3">
-                  <ion-item *ngIf="override == false && (testCheckboxResult.length == 1 && ccCheckboxResult.length == 0 && bccCheckboxResult.length == 0) && isJobChecked == false" >
-                     <ion-select  [(ngModel)]="level" style="min-width: 100%;" disabled="true">
-                     <ion-select-option selected value="">Select Level</ion-select-option>
-                     <ion-select-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-select-option>
-                     </ion-select>
-                  </ion-item>
-                  <ion-item *ngIf="override == false && isJobChecked == true" >
-                     <ion-select  [(ngModel)]="level" style="min-width: 100%;" disabled="true">
-                     <ion-select-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-select-option>
-                     </ion-select>
-                  </ion-item>
-                  <ion-item *ngIf="override == false && (testCheckboxResult.length > 1 || ccCheckboxResult.length > 1 || bccCheckboxResult.length > 1 || (testCheckboxResult.length > 0 && ccCheckboxResult.length > 0) || (testCheckboxResult.length > 0 && bccCheckboxResult.length > 0) || (ccCheckboxResult.length > 0 && bccCheckboxResult.length > 0)) &&isJobChecked == false " >
-                     <!-- Select Level -->
-                     <ion-select  [(ngModel)]="level" style="min-width: 100%;">
-                      <ion-select-option value="" >Select Level</ion-select-option> 
-                      <ion-select-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-select-option>
-                      </ion-select>
-                   </ion-item>
-                   <ion-item *ngIf="override == false && ((testCheckboxResult.length == 0 && ccCheckboxResult.length == 1 && bccCheckboxResult.length == 0) || (testCheckboxResult.length == 0 && ccCheckboxResult.length == 0 && bccCheckboxResult.length == 1) || (testCheckboxResult.length == 0 && ccCheckboxResult.length == 0 && bccCheckboxResult.length == 0) || selectedGroups.selectedGroups?.length == 1) && isJobChecked == false">
-                     <!-- <ion-label>Select Level</ion-label> -->
-                     <ion-select  [(ngModel)]="level" style="min-width: 100%;" [disabled]="((selectedGroups.selectedGroups?.length > 0 && selectedGroups.selectedContacts?.length > 0) || (selectedGroups.selectedGroups?.length == 1 && selectedGroups.selectedContacts?.length == 0) || (selectedGroups.selectedGroups?.length == 0 && selectedGroups.selectedContacts?.length == 1) || (selectedGroups.selectedGroups?.length == 0 && selectedGroups.selectedContacts?.length > 1) || selectedGroups.selectedGroups?.length > 1 && selectedGroups.selectedContacts?.length == 0) ? false : true">
-                     <ion-select-option selected value="">Select Level</ion-select-option>
-                     <ion-select-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-select-option>
-                     </ion-select>
-                  </ion-item>
-                  <ion-item *ngIf="override == true">
-                     <!-- <ion-label>Select Level</ion-label> -->
-                     <ion-select  [(ngModel)]="level" style="min-width: 100%;" (ionChange)="getValueOpton(level)">
-                     <ion-select-option selected value="">Select Level</ion-select-option>
-                     <ion-select-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-select-option>
-                     <!-- <ion-select-option value="2">Level 2</ion-select-option>
-                     <ion-select-option value="3">Level 3</ion-select-option>
-                     <ion-select-option value="4">Level 4</ion-select-option> -->
-                     </ion-select>
-                  </ion-item>
-               </ion-col>
-               <ion-col size="12" size="3">
-                  <ion-item>
-                     <ion-label>Override</ion-label>
-                     <ion-checkbox compose-m-r-9 color="blue" [(ngModel)]="override"></ion-checkbox>
-                  </ion-item>
-               </ion-col>
-               <ion-col size="12" size="3">
-                <div float-right btn-width100>
-                <ion-button color="medium" fnt-regular (click)="attachfiles()" style="display:none">
-                     <ion-icon name="attach"></ion-icon>
-                   <span btn-text>   Attach A File </span>
-                  </ion-button>
-                  <ion-button  color="success" (click)="sendSmail()" *ngIf="isJobChecked == false">
-                     <ion-icon name="paper-plane"></ion-icon>
-                    <span btn-text> Send </span>
-                  </ion-button>
-       
-                  <ion-button  color="success" fnt-regular  (click)="sendJobSmail()" *ngIf="isJobChecked == true">
-                     <ion-icon name="paper-plane"></ion-icon>
-                     <span btn-text> Send  </span>
-                  </ion-button>
-       
-                  <ion-button color="danger" fnt-regular  (click)="discardSmail()">
-                     <ion-icon name="trash"></ion-icon>
-                    <!-- <span btn-text>  Discard </span> -->
-                  </ion-button>
-                  
-                  <!-- <button ion-button icon-left color="danger" fnt-regular float-right (click)="presentPromptGroup()" *ngIf="selectedGroups != '' && selectedGroups.selectedGroups?.length > 1 || selectedGroups.selectedContact?.length > 1 ">
-                     <ion-icon name="trash"></ion-icon>
-                      Create Group 
-                     </button> -->
-                  
-                  <button ion-button icon-left  fnt-regular float-right (click)="presentPromptGroup()" *ngIf="((testCheckboxResult?.length > 0 && ccCheckboxResult?.length > 0)  || (testCheckboxResult?.length > 0 && bccCheckboxResult?.length > 0) || (ccCheckboxResult?.length > 0 && bccCheckboxResult?.length > 0) || testCheckboxResult?.length > 1 || ccCheckboxResult?.length > 1 || bccCheckboxResult?.length > 1 || (selectedGroups != '' && selectedGroups.selectedGroups?.length > 1 && selectedGroups.selectedContacts?.length > 1) || (selectedGroups.selectedGroups?.length > 1 && selectedGroups.selectedContacts?.length == 0) || (selectedGroups.selectedGroups?.length == 0 && selectedGroups.selectedContacts?.length > 1) || ((selectedGroups.selectedGroups?.length > 0 && selectedGroups.selectedContacts?.length > 0))) && isJobChecked == false">
-                  <!-- <ion-icon name="trash"></ion-icon> -->
-                  Create Group 
-                  </button>
-             </div>
-       <div>
-                  
-                  
-                  
-       
-                  
-       
-                  
-       
-                  
-       
-       
-                  
-                  
-                  </div>
+               <ion-col size="4" *ngIf="isJobChecked == false" text-right  fnt-grey>
+                     <!--div  *ngIf="isJobChecked == false"-->
+                     <ion-toolbar>
+                        <ion-buttons slot="end">
+                           <ion-button color="medium" (click)="enableCc()" *ngIf="cc == false" btn-bcc>CC</ion-button> 
+                           <ion-button color="medium" (click)="enableBcc()" *ngIf="bccList == false" btn-bcc>BCC</ion-button>
+                        </ion-buttons>
+                     </ion-toolbar>
+                     <!--/div-->
                </ion-col>
             </ion-row>
-           
-               <ion-item  p-lr-0 *ngFor="let file of attacments; let i = index ">
-                  {{file.split('____').pop(-1)}} 
-                  <ion-icon name="close" (click)="removeFile(i)"></ion-icon>
+         <tag-input [ngModel]="testCheckboxResult" [onlyFromAutocomplete]="true" placeholder="" secondaryPlaceholder="Type emails..." (onAdd)="onJobContactAdd($event)" (onRemove)="removeJobContact($event)">
+             <tag-input-dropdown [showDropdownIfEmpty]="true" 
+                                 [autocompleteItems]="tradeContacts">
+             </tag-input-dropdown>
+         </tag-input>
+         <!--/div-->
+              </ion-col>
+          
+           </ion-row>
+             </ion-grid>
+    <!--             <div *ngIf="testCheckboxResult?.length != 0 && isJobChecked == true" >
+                  <span *ngFor="let contact of testCheckboxResult"  badge-custom>
+                     {{contact.name}} ({{selectedCompany}})
+                     <span>
+                        <ion-icon  style="margin-left: 5px;" name="close" (click)="removeContact(contact)"></ion-icon>
+                     </span>
+                  </span>
+               </div> -->
+    
+              <!--  <div *ngIf="testCheckboxResult?.length != 0 && isJobChecked == false">
+                  <span *ngFor="let contact of testCheckboxResult" badge-custom>
+                     {{contact.name}} 
+                     <span>
+                        <ion-icon  style="margin-left: 5px;" name="close" (click)="removeContact(contact)"></ion-icon>
+                     </span>
+                  </span>
+               </div> -->
+            </ion-item>
+    
+            <ion-item class="compose-text" lines="none" p-lr-0 *ngIf="cc == true">
+               <div floating  fnt-grey btn-bcc>
+               <span textleft (click)="ccCheckbox()" class="mob-font-small">Cc :</span> 
+                 <tag-input [ngModel]="ccCheckboxResult" [onlyFromAutocomplete]="true" placeholder="" secondaryPlaceholder="Type emails..." (onAdd)="onCcAdd($event)" (onRemove)="removeCcContact($event)">
+                     <tag-input-dropdown [showDropdownIfEmpty]="true" 
+                                         [autocompleteItems]="all_emails">
+                     </tag-input-dropdown>
+                 </tag-input>
+               </div>
+               <!-- <div *ngIf="ccCheckboxResult?.length != 0">
+                  <span *ngFor="let contact of ccCheckboxResult" badge-custom>
+                     {{contact.name}}
+                     <span>
+                        <ion-icon  style="margin-left: 5px;" name="close" (click)="removeCcContact(contact)"></ion-icon>
+                     </span>
+                  </span>
+               </div> -->
+            </ion-item>
+    
+            <ion-item class="compose-text" lines="none"  p-lr-0 *ngIf="bccList == true">
+               <div floating  fnt-grey btn-bcc>
+               <span textleft (click)="bccCheckbox()" class="mob-font-small">Bcc : </span>
+                 <tag-input [ngModel]="bccCheckboxResult" [onlyFromAutocomplete]="true" placeholder="" secondaryPlaceholder="Type emails..." (onAdd)="onBccAdd($event)" (onRemove)="removeBccContact($event)">
+                     <tag-input-dropdown [showDropdownIfEmpty]="true" 
+                                         [autocompleteItems]="all_emails">
+                     </tag-input-dropdown>
+                 </tag-input>
+               </div>
+               <!-- <div *ngIf="bccCheckboxResult?.length != 0">
+                  <span *ngFor="let contact of bccCheckboxResult" badge-custom >
+                     {{contact.name}}
+                     <span>
+                        <ion-icon  style="margin-left: 5px;" name="close" (click)="removeBccContact(contact)"></ion-icon>
+                     </span>
+                  </span>
+               </div> -->
+            </ion-item>
+            
+            <!-- <ion-item p-lr-0  *ngIf="bccList == true">
+               <ion-label floating>Bcc :</ion-label>
+               <ion-select  cancelText="Nah" okText="Okay!" multiple="true" [(ngModel)]="bcc" (ionChange)="toBccName($event)">
+               <div *ngFor="let item of data" >
+                  <ion-select-option value="{{item.userId}}"  *ngIf="item.memberstatus == 2">{{item.name}}</ion-select-option>
+               </div>
+               </ion-select>
+            </ion-item> -->
+            <ion-item class="compose-text" border p-lr-0>
+               <ion-input label="Subject" labelPlacement="stacked" type="text" [(ngModel)]="subject"></ion-input>
+            </ion-item>
+
+
+            <ion-col col-xl-12 col-lg-12>
+            <div>
+              <ion-segment [(ngModel)]="editor_tab" (ionChange)="editoToolbar()">
+                <ion-segment-button value="format">
+                  Format
+                </ion-segment-button>
+                <ion-segment-button value="insert">
+                  Insert
+                </ion-segment-button>
+                <ion-segment-button value="styles">
+                  Styles
+                </ion-segment-button>
+              </ion-segment>
+            </div>
+         </ion-col>
+            <ion-item  class="compose-text">
+               <!-- <rich-text [formControlItem]="desc" placeholderText="A sample of placeholder text"></rich-text> -->
+               <ckeditor 
+                   [(ngModel)]="desc"
+                   (ready)="editorReady()"
+                   debounce="500" style="width: 100%;">
+                 </ckeditor>   
+    
+               <!-- <div padding [innerHTML]="item.value"></div> -->
+               <!-- <div   [(ngModel)]="desc"></div> -->
+            </ion-item>
+         </ion-list>
+         <ion-row compose-footer>
+            <ion-col size="12" size-md="3">
+               <button btn-hides1  ion-button icon-left color="lightgrey" fnt-regular (click)="attachfiles()">
+                  <ion-icon name="attach"></ion-icon>
+                <span btn-text>   Attach A File </span>
+               </button>
+            </ion-col>
+            <ion-col size="12" size-md="3">
+               <ion-item *ngIf="override == false && (testCheckboxResult.length == 1 && ccCheckboxResult.length == 0 && bccCheckboxResult.length == 0) && isJobChecked == false" >
+                  <ion-select  [(ngModel)]="level" style="min-width: 100%;" disabled="true">
+                  <ion-select-option selected value="">Select Level</ion-select-option>
+                  <ion-select-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-select-option>
+                  </ion-select>
                </ion-item>
+               <ion-item *ngIf="override == false && isJobChecked == true" >
+                  <ion-select  [(ngModel)]="level" style="min-width: 100%;" disabled="true">
+                     <ion-select-option selected value="">Select Level</ion-select-option>
+                  <ion-select-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-select-option>
+                  </ion-select>
+               </ion-item>
+               <ion-item *ngIf="override == false && (testCheckboxResult.length > 1 || ccCheckboxResult.length > 1 || bccCheckboxResult.length > 1 || (testCheckboxResult.length > 0 && ccCheckboxResult.length > 0) || (testCheckboxResult.length > 0 && bccCheckboxResult.length > 0) || (ccCheckboxResult.length > 0 && bccCheckboxResult.length > 0)) &&isJobChecked == false " >
+                  <!-- Select Level -->
+                  <ion-select  [(ngModel)]="level" style="min-width: 100%;">
+                   <ion-select-option value="" >Select Level</ion-select-option> 
+                   <ion-select-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-select-option>
+                   </ion-select>
+                </ion-item>
+                <ion-item *ngIf="override == false && ((testCheckboxResult.length == 0 && ccCheckboxResult.length == 1 && bccCheckboxResult.length == 0) || (testCheckboxResult.length == 0 && ccCheckboxResult.length == 0 && bccCheckboxResult.length == 1) || (testCheckboxResult.length == 0 && ccCheckboxResult.length == 0 && bccCheckboxResult.length == 0) || selectedGroups.selectedGroups?.length == 1) && isJobChecked == false">
+                  <!-- <ion-label>Select Level</ion-label> -->
+                  <ion-select  [(ngModel)]="level" style="min-width: 100%;" [disabled]="((selectedGroups.selectedGroups?.length > 0 && selectedGroups.selectedContacts?.length > 0) || (selectedGroups.selectedGroups?.length == 1 && selectedGroups.selectedContacts?.length == 0) || (selectedGroups.selectedGroups?.length == 0 && selectedGroups.selectedContacts?.length == 1) || (selectedGroups.selectedGroups?.length == 0 && selectedGroups.selectedContacts?.length > 1) || selectedGroups.selectedGroups?.length > 1 && selectedGroups.selectedContacts?.length == 0) ? false : true">
+                  <ion-select-option selected value="">Select Level</ion-select-option>
+                  <ion-select-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-select-option>
+                  </ion-select>
+               </ion-item>
+               
+            
+               <ion-item>
+                  <ion-checkbox compose-m-r-9 color="blue" [(ngModel)]="override"></ion-checkbox>
+                  <ion-label>Override</ion-label>
+               </ion-item>
+               <ion-item *ngIf="override == true">
+                  <!-- <ion-label>Select Level</ion-label> -->
+                  <ion-select  [(ngModel)]="level" style="min-width: 100%;" (ionChange)="getValueOpton(level)">
+                  <ion-select-option selected value="">Select Level</ion-select-option>
+                  <ion-select-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-select-option>
+                  <!-- <ion-select-option value="2">Level 2</ion-select-option>
+                  <ion-select-option value="3">Level 3</ion-select-option>
+                  <ion-select-option value="4">Level 4</ion-select-option> -->
+                  </ion-select>
+               </ion-item>
+            </ion-col>
+            <ion-col size="12">
+               <ion-toolbar>
+                  <ion-buttons slot="end">
+                     <ion-button color="medium" fnt-regular (click)="attachfiles()" style="display:none">
+                        <ion-icon name="attach"></ion-icon>
+                        <span btn-text>   Attach A File </span>
+                     </ion-button>
+                     <ion-button  color="success" fill="solid" (click)="sendSmail()" *ngIf="isJobChecked == false">
+                        <ion-icon name="paper-plane-outline"></ion-icon>
+                        <span class="hide-mob"> Send  </span>
+                     </ion-button>
+         
+                     <ion-button  color="success" fill="solid" fnt-regular  (click)="sendJobSmail()" *ngIf="isJobChecked == true">
+                        <ion-icon name="paper-plane-outline"></ion-icon>
+                        <span class="hide-mob"> Send  </span>
+                     </ion-button>
+         
+                     <ion-button color="danger" fill="solid"fnt-regular  (click)="discardSmail()">
+                        <ion-icon name="trash"></ion-icon>
+                     </ion-button>
+                     
+                     <!-- <button ion-button icon-left color="danger" fnt-regular float-right (click)="presentPromptGroup()" *ngIf="selectedGroups != '' && selectedGroups.selectedGroups?.length > 1 || selectedGroups.selectedContact?.length > 1 ">
+                        <ion-icon name="trash"></ion-icon>
+                        Create Group 
+                        </button> -->
+                     
+                     <ion-button ion-button icon-left  fnt-regular float-right (click)="presentPromptGroup()" *ngIf="((testCheckboxResult?.length > 0 && ccCheckboxResult?.length > 0)  || (testCheckboxResult?.length > 0 && bccCheckboxResult?.length > 0) || (ccCheckboxResult?.length > 0 && bccCheckboxResult?.length > 0) || testCheckboxResult?.length > 1 || ccCheckboxResult?.length > 1 || bccCheckboxResult?.length > 1 || (selectedGroups != '' && selectedGroups.selectedGroups?.length > 1 && selectedGroups.selectedContacts?.length > 1) || (selectedGroups.selectedGroups?.length > 1 && selectedGroups.selectedContacts?.length == 0) || (selectedGroups.selectedGroups?.length == 0 && selectedGroups.selectedContacts?.length > 1) || ((selectedGroups.selectedGroups?.length > 0 && selectedGroups.selectedContacts?.length > 0))) && isJobChecked == false">
+                     <!-- <ion-icon name="trash"></ion-icon> -->
+                     Create Group 
+                     </ion-button>
+                  </ion-buttons>
+               </ion-toolbar>
+    <div>
+               </div>
+            </ion-col>
+         </ion-row>
         
-         </ion-grid>
+            <ion-item  p-lr-0 *ngFor="let file of attacments; let i = index ">
+               {{file.split('____').pop(-1)}} 
+               <ion-icon name="close" (click)="removeFile(i)"></ion-icon>
+            </ion-item>
+     
+      </ion-grid>
+      <div *ngIf="forgetPwdModal == true" class="overlay" >
+         <div class="pwmodal" style="left: 21%;right: 0px;
+          margin: 0px; ">
+            <!-- <form  margin0 (ngSubmit)=""> -->
+               <p class="ptag">{{create_grp_title}}</p>
+               <div modal-body>
+                  <!-- <input type="text" placeholder="Enter password">placeholder="Enter password for level {{level}}" -->
+                  <ion-item border-none  p-lr-0 >
+                     <ion-label stacked>Group Name:</ion-label>
+                     <ion-input type="text" clearOnEdit="false" [(ngModel)]="groupname"  name="ans" ></ion-input>
+                  </ion-item>
+       
+                  <ion-item border-none  p-lr-0 >
+                     <ion-label stacked>Group Level:</ion-label> 
+                     <ion-select  [(ngModel)]="grouplevel" style="min-width: 100%;" (ionChange)="getLevel(grouplevel)">
+                        <ion-select-option selected value="">Select Level</ion-select-option>
+                        <ion-select-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-select-option>
+                     </ion-select>
+                  </ion-item>
+                  
+               </div>
+               <div modal-footer>
+                  <button small ion-button icon-left color="green" fnt-regular float-right type="submit" (click)="validateGroup(groupname,grouplevel)">
+                     <!-- <ion-icon name="trash"></ion-icon> -->
+                     Save 
+                  </button>
+                  <button small ion-button icon-left color="danger" fnt-regular float-right (click)="dismissPwdModal()" style="" >
+                  <!-- <ion-icon name="trash"></ion-icon> -->
+                  Cancel 
+                  </button>
+               </div>
+            <!-- </form> -->
+         </div>
+       </div>
+       <div footer-height></div>
+       <br>
+       <br><br><br><br>
+      </ion-content>
 
-     </ion-col>
-   </ion-row>
 
-  
-
-
-<div *ngIf="forgetPwdModal == true" class="overlay" >
-  <div class="pwmodal" style="left: 21%;right: 0px;
-   margin: 0px; ">
-     <!-- <form  margin0 (ngSubmit)=""> -->
-        <p class="ptag">{{create_grp_title}}</p>
-        <div modal-body>
-           <!-- <input type="text" placeholder="Enter password">placeholder="Enter password for level {{level}}" -->
-           <ion-item border-none  p-lr-0 >
-              <ion-label stacked>Group Name:</ion-label>
-              <ion-input type="text" clearOnEdit="false" [(ngModel)]="groupname"  name="ans" ></ion-input>
-           </ion-item>
-
-           <ion-item border-none  p-lr-0 >
-              <ion-label stacked>Group Level:</ion-label> 
-              <ion-select  [(ngModel)]="grouplevel" style="min-width: 100%;" (ionChange)="getLevel(grouplevel)">
-                 <ion-select-option selected value="">Select Level</ion-select-option>
-                 <ion-select-option  *ngFor="let levels of allowed_levels; let i = index " value="{{i+1}}">Level {{i+1}}</ion-select-option>
-              </ion-select>
-           </ion-item>
-           
-        </div>
-        <div modal-footer>
-           <button small ion-button icon-left color="green" fnt-regular float-right type="submit" (click)="validateGroup(groupname,grouplevel)">
-              <!-- <ion-icon name="trash"></ion-icon> -->
-              Save 
-           </button>
-           <button small ion-button icon-left color="danger" fnt-regular float-right (click)="dismissPwdModal()" style="" >
-           <!-- <ion-icon name="trash"></ion-icon> -->
-           Cancel 
-           </button>
-        </div>
-     <!-- </form> -->
-  </div>
-</div>
-<div footer-height></div>
-</ion-content>
+   <!----================== CONTENT END ==================----->
+     
+   </div>
+ </ion-split-pane>
