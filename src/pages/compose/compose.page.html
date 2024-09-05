@@ -1,188 +1,188 @@
 <ion-split-pane contentId="main-content" when="md">
    <!-- Custom Menu -->
    <ion-menu side="start" menuId="customMenu" contentId="main-content">
-     <!--<ion-header>
-       <ion-toolbar>
-         <ion-title>Menu</ion-title>
-       </ion-toolbar>
-     </ion-header>-->
-     <ion-content>
-      <ion-list>
-         <div class="outer-filter pl-2">
-            <div>Filter Levels</div>
-            <!-- <div *ngFor="let n of levelArray; let i = index "> -->
-              <!--  <button menuClose ion-item  (click)="filterLevel(i)" class="filter" [ngClass]="(n.checked == true) ? 'checked' : ' '" >
-               {{ n.level}}
-               </button> -->
-                        <ion-grid m-t-10 no-padding w-100> 
-         <ion-row no-padding w-100> 
-                  <!--<ion-col col-12>
-                     <div class="checkbox-inline">
-                        <div class="checkbox-button" *ngIf="enable_level1 == 'false'">
-                           <label>
-                              <input type="checkbox" name="chk[]" id="hl1" (change)="filterLevel($event,'level1')" checked="{{this.shown_levels.indexOf('level1') >= 0 ? 'checked' : ''}}" class="ldi"><span>1</span>
-                           </label>
-                        </div>
-                           <div class="checkbox-button" *ngIf="enable_level2 == 'false'">
-                           <label>
-                              <input type="checkbox" name="chk[]" id="hl2"  (change)="filterLevel($event,'level2')" checked="{{this.shown_levels.indexOf('level2') >= 0 ? 'checked' : ''}}" class="ldi"><span>2</span>
-                           </label>
-                        </div>
-                           <div class="checkbox-button" *ngIf="enable_level3 == 'false'">
-                           <label>
-                              <input type="checkbox" name="chk[]" id="hl3" (change)="filterLevel($event,'level3')" checked="{{this.shown_levels.indexOf('level3') >= 0 ? 'checked' : ''}}" class="ldi"><span>3</span>
-                           </label>
-                        </div>
-                           <div class="checkbox-button" *ngIf="enable_level4 == 'false'">
-                           <label>
-                              <input type="checkbox" name="chk[]" id="hl4" (change)="filterLevel($event,'level4')" checked="{{this.shown_levels.indexOf('level4') >= 0 ? 'checked' : ''}}" class="ldi"><span>4</span>
-                           </label>
-                        </div>
-                     </div>
-                  </ion-col>
-                  <ion-col style="display:none" col-2 *ngIf="enable_level1 == 'false'">1 <ion-checkbox (ionChange)="filterLevel($event,'level1')" checked="{{this.shown_levels.indexOf('level1') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
-                  <ion-col  style="display:none"  col-2 *ngIf="enable_level2 == 'false'">2 <ion-checkbox (ionChange)="filterLevel($event,'level2')" checked="{{this.shown_levels.indexOf('level2') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
-                  <ion-col  style="display:none"  col-2 *ngIf="enable_level3 == 'false'">3 <ion-checkbox (ionChange)="filterLevel($event,'level3')" checked="{{this.shown_levels.indexOf('level3') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
-                  <ion-col style="display:none"  col-2 *ngIf="enable_level4 == 'false'">4 <ion-checkbox (ionChange)="filterLevel($event,'level4')" checked="{{this.shown_levels.indexOf('level4') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
-               -->
-
-                        <!-- <ion-col col-2> -->
-                          <!-- <button menuClose ion-item  (click)="filterLevel(i)" class="filter"  [ngClass]="(n.checked == true) ? 'checked' : ' '" >
-                          {{ n.level}}
-                          </button> -->
-                          <!-- <ion-checkbox (ionChange)="filterLevel(i+1,$event)" checked="{{this.opened_levels.indexOf('level' + (i + 1)) >= 0 ? 'true' : 'false'}}"></ion-checkbox> -->
-                          <!-- </ion-col> -->
-            </ion-row>
-         </ion-grid>  
-            <!-- </div> -->
-         </div> 
-         <div class="pl-2" menuClose ion-item>
-            <ion-button   color="primary" size="small" (click)="presentPrompt()">
-               <ion-icon name="add-outline"></ion-icon>
-            </ion-button>
-            <ion-button  color="danger" size="small" (click)="presentConfirm()">
-               <ion-icon name="remove-outline"></ion-icon>
-            </ion-button>
-         </div>
-         <ion-list>
-            <ion-item *ngFor="let p of pages">
-              
-               <ion-button menuClose ion-item (click)="openPage(p)" color="dark" fill="clear" expand="block" [ngClass]="(preState == p.title && is_main == '1') ? 'checked' : ' '">
-                  <ion-icon color="blue" [name]="p.icon" item-left></ion-icon> 
-                  {{p.title}}
-                  </ion-button>
+      <!--<ion-header>
+        <ion-toolbar>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>-->
+      <ion-content>
+       <ion-list>
+          <div class="outer-filter pl-2">
+             <div>Filter Levels</div>
+             <!-- <div *ngFor="let n of levelArray; let i = index "> -->
+               <!--  <button menuClose ion-item  (click)="filterLevel(i)" class="filter" [ngClass]="(n.checked == true) ? 'checked' : ' '" >
+                {{ n.level}}
+                </button> -->
+                         <ion-grid m-t-10 no-padding w-100> 
+          <ion-row no-padding w-100> 
+                   <!--<ion-col col-12>
+                      <div class="checkbox-inline">
+                         <div class="checkbox-button" *ngIf="enable_level1 == 'false'">
+                            <label>
+                               <input type="checkbox" name="chk[]" id="hl1" (change)="filterLevel($event,'level1')" checked="{{this.shown_levels.indexOf('level1') >= 0 ? 'checked' : ''}}" class="ldi"><span>1</span>
+                            </label>
+                         </div>
+                            <div class="checkbox-button" *ngIf="enable_level2 == 'false'">
+                            <label>
+                               <input type="checkbox" name="chk[]" id="hl2"  (change)="filterLevel($event,'level2')" checked="{{this.shown_levels.indexOf('level2') >= 0 ? 'checked' : ''}}" class="ldi"><span>2</span>
+                            </label>
+                         </div>
+                            <div class="checkbox-button" *ngIf="enable_level3 == 'false'">
+                            <label>
+                               <input type="checkbox" name="chk[]" id="hl3" (change)="filterLevel($event,'level3')" checked="{{this.shown_levels.indexOf('level3') >= 0 ? 'checked' : ''}}" class="ldi"><span>3</span>
+                            </label>
+                         </div>
+                            <div class="checkbox-button" *ngIf="enable_level4 == 'false'">
+                            <label>
+                               <input type="checkbox" name="chk[]" id="hl4" (change)="filterLevel($event,'level4')" checked="{{this.shown_levels.indexOf('level4') >= 0 ? 'checked' : ''}}" class="ldi"><span>4</span>
+                            </label>
+                         </div>
+                      </div>
+                   </ion-col>
+                   <ion-col style="display:none" col-2 *ngIf="enable_level1 == 'false'">1 <ion-checkbox (ionChange)="filterLevel($event,'level1')" checked="{{this.shown_levels.indexOf('level1') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
+                   <ion-col  style="display:none"  col-2 *ngIf="enable_level2 == 'false'">2 <ion-checkbox (ionChange)="filterLevel($event,'level2')" checked="{{this.shown_levels.indexOf('level2') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
+                   <ion-col  style="display:none"  col-2 *ngIf="enable_level3 == 'false'">3 <ion-checkbox (ionChange)="filterLevel($event,'level3')" checked="{{this.shown_levels.indexOf('level3') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
+                   <ion-col style="display:none"  col-2 *ngIf="enable_level4 == 'false'">4 <ion-checkbox (ionChange)="filterLevel($event,'level4')" checked="{{this.shown_levels.indexOf('level4') >= 0 ? 'true' : 'false'}}"></ion-checkbox></ion-col>
+                  -->
+ 
+                         <!-- <ion-col col-2> -->
+                           <!-- <button menuClose ion-item  (click)="filterLevel(i)" class="filter"  [ngClass]="(n.checked == true) ? 'checked' : ' '" >
+                           {{ n.level}}
+                           </button> -->
+                           <!-- <ion-checkbox (ionChange)="filterLevel(i+1,$event)" checked="{{this.opened_levels.indexOf('level' + (i + 1)) >= 0 ? 'true' : 'false'}}"></ion-checkbox> -->
+                           <!-- </ion-col> -->
+             </ion-row>
+          </ion-grid>  
+             <!-- </div> -->
+          </div> 
+          <div class="pl-2" menuClose ion-item>
+             <ion-button   color="primary" size="small" (click)="presentPrompt()">
+                <ion-icon name="add-outline"></ion-icon>
+             </ion-button>
+             <ion-button  color="danger" size="small" (click)="presentConfirm()">
+                <ion-icon name="remove-outline"></ion-icon>
+             </ion-button>
+          </div>
+          <ion-list>
+             <ion-item *ngFor="let p of pages">
                
-            </ion-item>
-         </ion-list>
-
-         
-
-         <!--<ion-list>
-            <div *ngFor="let n of directory; let i = index" class="divitem">
-              <div class="divitem_drop" id="{{n.name}}" (mouseover)="mouseOverDrop($event, n.name)">
-                <ion-item button id="click_{{n.name}}" detail-none lines="none" (click)="clickNode(n)" [ngClass]="{ 'checked': selectedNode === n.name }" class="ion-activatable ripple-parent">
-                  <ion-grid>
-                    <ion-row>
-                      <ion-col size="1" class="ion-no-padding">
-                        <ion-icon name="folder" color="primary"></ion-icon>
-                      </ion-col>
-                      <ion-col size="9" class="ion-no-padding" style="text-transform: capitalize;">
-                        {{ n.name }}
-                      </ion-col>
-                      <ion-col size="2" class="ion-no-padding edit-folder">
-                        <span *ngIf="n.children.length > 0">
-                          <ion-icon [color]="isSelected(n) ? 'primary' : 'medium'" [name]="isSelected(n) ? 'chevron-down-outline' : 'chevron-forward-outline'"></ion-icon>
-                        </span>
-                        <span *ngIf="n.children.length === 0">
-                          <ion-icon></ion-icon>
-                        </span>
-                      </ion-col>
-                    </ion-row>
-                  </ion-grid>
-                </ion-item>
-              </div>-->
-              <!-- Nested ion-list for children -->
-              <!--<ion-list *ngIf="isSelected(n)">
-                <ng-container *ngFor="let child of n.children">
-                  <ion-item>
-                    <ion-grid>
-                      <ion-row>
-                        <ion-col size="2">
-                          <ion-icon name="folder" color="primary"></ion-icon>
-                        </ion-col>
-                        <ion-col size="8" (click)="clickNodeChild(child)">
-                          {{ child.name }}
-                        </ion-col>
-                        <ion-col size="2" class="edit-folder">
-                          <span class="ion-float-right" (click)="editFolder(child, child._id)">
-                            <ion-icon name="pencil-outline" color="primary"></ion-icon>
-                          </span>
-                          <span class="ion-float-right" (click)="clickNodeChild(child)">
-                            <ion-icon [color]="isSelected(child) ? 'primary' : 'medium'" [name]="isSelectedChild(child) ? 'chevron-down-outline' : 'chevron-forward-outline'"></ion-icon>
-                          </span>
-                        </ion-col>
-                      </ion-row>
-                    </ion-grid>
-                  </ion-item>-->
-                  <!-- Third level -->
-                  <!--<ion-list *ngIf="isSelectedChild(child)">
-                    <ion-item *ngFor="let grandchild of child.children">
-                      <ion-grid>
-                        <ion-row>
-                          <ion-col size="2">
-                            <ion-icon name="folder" color="primary"></ion-icon>
-                          </ion-col>
-                          <ion-col size="8" (click)="clickNodeGrandChild(grandchild)">
-                            {{ grandchild.name }}
-                          </ion-col>
-                          <ion-col size="2" class="edit-folder">
-                            <span class="ion-float-right" (click)="editFolder(grandchild, grandchild._id)">
-                              <ion-icon name="create-outline" color="primary"></ion-icon>
-                            </span>
-                            <span class="ion-float-right" (click)="clickNodeGrandChild(grandchild)">
-                              <ion-icon [color]="isSelected(grandchild) ? 'primary' : 'medium'" [name]="isSelectedGrandChild(grandchild) ? 'chevron-down-outline' : 'chevron-forward-outline'"></ion-icon>
-                            </span>
-                          </ion-col>
-                        </ion-row>
-                      </ion-grid>
-                    </ion-item>
-                  </ion-list>
-                </ng-container>-->
-                <!-- Static nodes (Inbox and Sent) -->
-                <!--<ion-item button (click)="clickNodeStatic('inbox')" [hidden]="!isSelectedChild(n)">
-                  <ion-grid>
-                    <ion-row>
-                      <ion-col size="4">
-                        <ion-icon name="folder" color="primary"></ion-icon>
-                      </ion-col>
-                      <ion-col size="8">
-                        Inbox
-                      </ion-col>
-                    </ion-row>
-                  </ion-grid>
-                </ion-item>
-                <ion-item button (click)="clickNodeStatic('sent')" [hidden]="!isSelectedChild(n)">
-                  <ion-grid>
-                    <ion-row>
-                      <ion-col size="4">
-                        <ion-icon name="folder" color="primary"></ion-icon>
-                      </ion-col>
-                      <ion-col size="8">
-                        Sent
-                      </ion-col>
-                    </ion-row>
-                  </ion-grid>
-                </ion-item>
-              </ion-list>-->
-            <!--</div>
-          </ion-list>-->
+                <ion-button menuClose ion-item (click)="openPage(p)" color="dark" fill="clear" expand="block" [ngClass]="(preState == p.title && is_main == '1') ? 'checked' : ' '">
+                   <ion-icon color="blue" [name]="p.icon" item-left></ion-icon> 
+                   {{p.title}}
+                   </ion-button>
+                
+             </ion-item>
+          </ion-list>
+ 
           
-          
-          
-
-      </ion-list>
-   </ion-content>
-   </ion-menu>
+ 
+          <ion-list>
+             <div *ngFor="let n of directory; let i = index" class="divitem">
+               <div class="divitem_drop" id="{{n.name}}" (mouseover)="mouseOverDrop($event, n.name)">
+                 <ion-item button id="click_{{n.name}}" detail-none lines="none" (click)="clickNode(n)" [ngClass]="{ 'checked': selectedNode === n.name }" class="ion-activatable ripple-parent">
+                   <ion-grid>
+                     <ion-row>
+                       <ion-col size="1" class="ion-no-padding">
+                         <ion-icon name="folder" color="primary"></ion-icon>
+                       </ion-col>
+                       <ion-col size="9" class="ion-no-padding" style="text-transform: capitalize;">
+                         {{ n.name }}
+                       </ion-col>
+                       <ion-col size="2" class="ion-no-padding edit-folder">
+                         <span *ngIf="n.children.length > 0">
+                           <ion-icon [color]="isSelected(n) ? 'primary' : 'medium'" [name]="isSelected(n) ? 'chevron-down-outline' : 'chevron-forward-outline'"></ion-icon>
+                         </span>
+                         <span *ngIf="n.children.length === 0">
+                           <ion-icon></ion-icon>
+                         </span>
+                       </ion-col>
+                     </ion-row>
+                   </ion-grid>
+                 </ion-item>
+               </div>
+               <!-- Nested ion-list for children -->
+               <ion-list *ngIf="isSelected(n)">
+                 <ng-container *ngFor="let child of n.children">
+                   <ion-item>
+                     <ion-grid>
+                       <ion-row>
+                         <ion-col size="2">
+                           <ion-icon name="folder" color="primary"></ion-icon>
+                         </ion-col>
+                         <ion-col size="8" (click)="clickNodeChild(child)">
+                           {{ child.name }}
+                         </ion-col>
+                         <ion-col size="2" class="edit-folder">
+                           <span class="ion-float-right" (click)="editFolder(child, child._id)">
+                             <ion-icon name="pencil-outline" color="primary"></ion-icon>
+                           </span>
+                           <span class="ion-float-right" (click)="clickNodeChild(child)">
+                             <ion-icon [color]="isSelected(child) ? 'primary' : 'medium'" [name]="isSelectedChild(child) ? 'chevron-down-outline' : 'chevron-forward-outline'"></ion-icon>
+                           </span>
+                         </ion-col>
+                       </ion-row>
+                     </ion-grid>
+                   </ion-item>
+                   <!-- Third level -->
+                   <ion-list *ngIf="isSelectedChild(child)">
+                     <ion-item *ngFor="let grandchild of child.children">
+                       <ion-grid>
+                         <ion-row>
+                           <ion-col size="2">
+                             <ion-icon name="folder" color="primary"></ion-icon>
+                           </ion-col>
+                           <ion-col size="8" (click)="clickNodeGrandChild(grandchild)">
+                             {{ grandchild.name }}
+                           </ion-col>
+                           <ion-col size="2" class="edit-folder">
+                             <span class="ion-float-right" (click)="editFolder(grandchild, grandchild._id)">
+                               <ion-icon name="create-outline" color="primary"></ion-icon>
+                             </span>
+                             <span class="ion-float-right" (click)="clickNodeGrandChild(grandchild)">
+                               <ion-icon [color]="isSelected(grandchild) ? 'primary' : 'medium'" [name]="isSelectedGrandChild(grandchild) ? 'chevron-down-outline' : 'chevron-forward-outline'"></ion-icon>
+                             </span>
+                           </ion-col>
+                         </ion-row>
+                       </ion-grid>
+                     </ion-item>
+                   </ion-list>
+                 </ng-container>
+                 <!-- Static nodes (Inbox and Sent) -->
+                 <ion-item button (click)="clickNodeStatic('inbox')" [hidden]="!isSelectedChild(n)">
+                   <ion-grid>
+                     <ion-row>
+                       <ion-col size="4">
+                         <ion-icon name="folder" color="primary"></ion-icon>
+                       </ion-col>
+                       <ion-col size="8">
+                         Inbox
+                       </ion-col>
+                     </ion-row>
+                   </ion-grid>
+                 </ion-item>
+                 <ion-item button (click)="clickNodeStatic('sent')" [hidden]="!isSelectedChild(n)">
+                   <ion-grid>
+                     <ion-row>
+                       <ion-col size="4">
+                         <ion-icon name="folder" color="primary"></ion-icon>
+                       </ion-col>
+                       <ion-col size="8">
+                         Sent
+                       </ion-col>
+                     </ion-row>
+                   </ion-grid>
+                 </ion-item>
+               </ion-list>
+             </div>
+           </ion-list>
+           
+           
+           
+ 
+       </ion-list>
+    </ion-content>
+    </ion-menu>
  
    <!-- Main Content -->
    <div id="main-content">
