@@ -511,7 +511,7 @@ export class SmallInboxPage {
         this.pages = [{
             title: 'Compose',
             component: 'compose',
-            icon: "md-create"
+            icon: "pencil"
         },
         {
             title: 'Inbox',
@@ -521,7 +521,7 @@ export class SmallInboxPage {
         {
             title: 'Sent',
             component: 'small-inbox',
-            icon: "md-mail-open"
+            icon: "mail-open"
         }
         ];
 
