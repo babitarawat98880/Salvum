@@ -77,7 +77,7 @@
 
          
 
-         <ion-list>
+         <!--<ion-list>
             <div *ngFor="let n of directory; let i = index" class="divitem">
               <div class="divitem_drop" id="{{n.name}}" (mouseover)="mouseOverDrop($event, n.name)">
                 <ion-item button id="click_{{n.name}}" detail-none lines="none" (click)="clickNode(n)" [ngClass]="{ 'checked': selectedNode === n.name }" class="ion-activatable ripple-parent">
@@ -100,9 +100,9 @@
                     </ion-row>
                   </ion-grid>
                 </ion-item>
-              </div>
+              </div>-->
               <!-- Nested ion-list for children -->
-              <ion-list *ngIf="isSelected(n)">
+              <!--<ion-list *ngIf="isSelected(n)">
                 <ng-container *ngFor="let child of n.children">
                   <ion-item>
                     <ion-grid>
@@ -123,9 +123,9 @@
                         </ion-col>
                       </ion-row>
                     </ion-grid>
-                  </ion-item>
+                  </ion-item>-->
                   <!-- Third level -->
-                  <ion-list *ngIf="isSelectedChild(child)">
+                  <!--<ion-list *ngIf="isSelectedChild(child)">
                     <ion-item *ngFor="let grandchild of child.children">
                       <ion-grid>
                         <ion-row>
@@ -147,9 +147,9 @@
                       </ion-grid>
                     </ion-item>
                   </ion-list>
-                </ng-container>
+                </ng-container>-->
                 <!-- Static nodes (Inbox and Sent) -->
-                <ion-item button (click)="clickNodeStatic('inbox')" [hidden]="!isSelectedChild(n)">
+                <!--<ion-item button (click)="clickNodeStatic('inbox')" [hidden]="!isSelectedChild(n)">
                   <ion-grid>
                     <ion-row>
                       <ion-col size="4">
@@ -173,9 +173,9 @@
                     </ion-row>
                   </ion-grid>
                 </ion-item>
-              </ion-list>
-            </div>
-          </ion-list>
+              </ion-list>-->
+            <!--</div>
+          </ion-list>-->
           
           
           
