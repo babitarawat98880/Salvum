@@ -3,8 +3,8 @@
   <ion-row main-breadcrumb ion-fixed> 
     <ion-col *ngIf="from_smail != '1'"> 
       <ol class="breadcrumb">
-        <li (click)="root()"><a>Home</a></li>
-        <li (click)="goToJobs()"><a>Jobs</a></li>
+        <li (click)="root()" class="crumb-z-index-2"><a>Home</a></li>
+        <li (click)="goToJobs()" class="mid-crumb crumb-z-index-1"><a>Jobs</a></li>
         <li class="active">{{active_job_breadcrumb}}</li>
       </ol>
     </ion-col>
