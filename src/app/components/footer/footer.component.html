@@ -8,7 +8,7 @@
               <ion-badge color="danger" *ngIf="smail0.length > 0">{{counts?.smail0_count}}</ion-badge>
            </button>
         </ion-col>
-        <ion-col text-right p-b-0 (click)="opennotification(0)">
+        <ion-col text-right p-b-0 (click)="opennotification(0)" class="text-right">
            <button bg-trans-p0>
               <ion-icon name="notifications" ></ion-icon>
               <ion-badge color="danger" *ngIf="zeroLevelCount > 0">{{zeroLevelCount}}</ion-badge>
@@ -25,6 +25,7 @@
      </ion-row>
   </div>
   <div level1 [ngClass]="(level1 == 'true') ? 'new-icon icon-lock' : 'new-icon'" col left *ngIf="level1 == 'true'"  (click)="goToAddPassWordPage(1)"> 
+   <ion-icon name="lock-closed" class="icon-abs" *ngIf="level1 == 'true'"></ion-icon>
   <ion-row>
      <ion-col text-left p-b-0  (click)="mails(1)">
         <button bg-trans-p0 >
@@ -32,7 +33,7 @@
            <ion-badge color="danger" *ngIf="smail1.length > 0">{{counts?.smail1_count}}</ion-badge>
         </button>
      </ion-col>
-     <ion-col text-right p-b-0 (click)="opennotification(1)">
+     <ion-col text-right p-b-0 (click)="opennotification(1)" class="text-right">
         <button bg-trans-p0 (click)="showMessages()">
            <ion-icon name="notifications" ></ion-icon>
            <ion-badge color="danger" *ngIf="notification1.length > 0">{{counts?.notify1_count}}</ion-badge>  
@@ -49,6 +50,7 @@
   </ion-row>
   </div>
   <div level1 [ngClass]="(level1 == 'true') ? 'new-icon icon-lock' : 'new-icon'" col left  *ngIf="level1 != 'true'" > 
+   <ion-icon name="lock-closed" class="icon-abs" *ngIf="level1 == 'true'"></ion-icon>
   <ion-row>
      <ion-col text-left p-b-0  (click)="mails(1)">
         <button bg-trans-p0 >
@@ -56,7 +58,7 @@
            <ion-badge color="danger" *ngIf="smail1.length > 0">{{counts?.smail1_count}}</ion-badge>
         </button>
      </ion-col>
-     <ion-col text-right p-b-0 (click)="opennotification(1)">
+     <ion-col text-right p-b-0 (click)="opennotification(1)" class="text-right">
         <button bg-trans-p0 >
            <!-- (click)="showMessages()" -->
            <ion-icon name="notifications" ></ion-icon>
@@ -108,6 +110,7 @@
   </ion-row>
   </div>
   <div  level2 [ngClass]="(level2 == 'true') ? 'new-icon icon-lock' : 'new-icon'" col left *ngIf="level2 == 'true'" (click)="goToAddPassWordPage(2)">
+   <ion-icon name="lock-closed" class="icon-abs" *ngIf="level2 == 'true'"></ion-icon>
   <ion-row>
      <ion-col text-left p-b-0 (click)="mails(2)">
         <button bg-trans-p0>
@@ -115,7 +118,7 @@
            <ion-badge color="danger" *ngIf="smail2.length > 0">{{counts?.smail2_count}}</ion-badge>
         </button>
      </ion-col>
-     <ion-col text-right p-b-0 (click)="opennotification(2)">
+     <ion-col text-right p-b-0 (click)="opennotification(2)" class="text-right">
         <button bg-trans-p0 >
            <ion-icon name="notifications" ></ion-icon>
            <ion-badge color="danger" *ngIf="notification2.length > 0">{{counts?.notify2_count}}</ion-badge>
@@ -139,7 +142,7 @@
               <ion-badge color="danger" *ngIf="smail2.length > 0">{{counts?.smail2_count}}</ion-badge>
            </button>
         </ion-col>
-        <ion-col text-right p-b-0 (click)="opennotification(2)">
+        <ion-col text-right p-b-0 (click)="opennotification(2)" class="text-right">
            <button bg-trans-p0 >
               <ion-icon name="notifications" ></ion-icon>
               <ion-badge color="danger" *ngIf="notification2.length > 0">{{counts?.notify2_count}}</ion-badge>
@@ -186,6 +189,7 @@
      </ion-row>
   </div>
   <div   level3  [ngClass]="(level3 == 'true') ? 'new-icon icon-lock' : 'new-icon'"  *ngIf="level3 == 'true'" (click) = "goToAddPassWordPage(3)"  col left >
+   <ion-icon name="lock-closed" class="icon-abs" *ngIf="level3 == 'true'"></ion-icon>
   <ion-row>
      <ion-col text-left p-b-0 >
         <button bg-trans-p0>
@@ -193,7 +197,7 @@
            <ion-badge color="danger" *ngIf="smail3.length > 0">{{counts?.smail3_count}}</ion-badge>
         </button>
      </ion-col>
-     <ion-col text-right p-b-0 (click)="opennotification(3)">
+     <ion-col text-right p-b-0 (click)="opennotification(3)" class="text-right">
         <button bg-trans-p0>
            <ion-icon name="notifications" ></ion-icon>
            <ion-badge color="danger" *ngIf="notification3.length > 0">{{counts?.notify3_count}}</ion-badge>
@@ -217,7 +221,7 @@
               <ion-badge color="danger" *ngIf="smail3.length > 0">{{counts?.smail3_count}}</ion-badge>
            </button>
         </ion-col>
-        <ion-col text-right p-b-0 (click)="opennotification(3)">
+        <ion-col text-right p-b-0 (click)="opennotification(3)" class="text-right">
            <button bg-trans-p0 >
               <ion-icon name="notifications" ></ion-icon>
               <ion-badge color="danger" *ngIf="notification3.length > 0">{{counts?.notify3_count}}</ion-badge>
@@ -264,6 +268,7 @@
      </ion-row>
   </div>
   <div level4  [ngClass]="(level4 == 'true') ? 'new-icon icon-lock' : 'new-icon'" col left  (click) = "goToAddPassWordPage(4)"  *ngIf="level4 == 'true'">
+   <ion-icon name="lock-closed" class="icon-abs" *ngIf="level4 == 'true'"></ion-icon>
   <ion-row>
      <ion-col text-left p-b-0 >
         <button bg-trans-p0>
@@ -271,7 +276,7 @@
            <ion-badge color="danger" *ngIf="smail4.length > 0">{{counts?.smail4_count}}</ion-badge>
         </button>
      </ion-col>
-     <ion-col text-right p-b-0 (click)="opennotification(4)">
+     <ion-col text-right p-b-0 (click)="opennotification(4)" class="text-right">
         <button bg-trans-p0 >
            <ion-icon name="notifications" ></ion-icon>
            <ion-badge color="danger" *ngIf="notification4.length > 0">{{counts?.notify4_count}}</ion-badge>
@@ -295,7 +300,7 @@
               <ion-badge color="danger" *ngIf="smail4.length > 0">{{counts?.smail4_count}}</ion-badge>
            </button>
         </ion-col>
-        <ion-col text-right p-b-0 (click)="opennotification(4)">
+        <ion-col text-right p-b-0 (click)="opennotification(4)" class="text-right">
            <button bg-trans-p0 >
               <ion-icon name="notifications" ></ion-icon>
               <ion-badge color="danger" *ngIf="notification4.length > 0">{{counts?.notify4_count}}</ion-badge>
